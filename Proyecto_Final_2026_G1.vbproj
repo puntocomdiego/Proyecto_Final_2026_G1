@@ -37,10 +37,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Grupo1\" />
-    <Folder Include="Grupo2\" />
-    <Folder Include="Grupo3\" />
-  </ItemGroup>
-
 </Project>
