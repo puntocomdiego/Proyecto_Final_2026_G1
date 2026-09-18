@@ -80,6 +80,7 @@ Partial Class MDIParent1
         ABREMEÇToolStripMenuItem = New ToolStripMenuItem()
         ADMINISTRADORToolStripMenuItem = New ToolStripMenuItem()
         VENDEDORToolStripMenuItem = New ToolStripMenuItem()
+        HELOToolStripMenuItem = New ToolStripMenuItem()
         MenuStrip.SuspendLayout()
         ToolStrip.SuspendLayout()
         StatusStrip.SuspendLayout()
@@ -463,7 +464,7 @@ Partial Class MDIParent1
         ' 
         ' ABREMEÇToolStripMenuItem
         ' 
-        ABREMEÇToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ADMINISTRADORToolStripMenuItem, VENDEDORToolStripMenuItem})
+        ABREMEÇToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ADMINISTRADORToolStripMenuItem, VENDEDORToolStripMenuItem, HELOToolStripMenuItem})
         ABREMEÇToolStripMenuItem.Name = "ABREMEÇToolStripMenuItem"
         ABREMEÇToolStripMenuItem.Size = New Size(64, 20)
         ABREMEÇToolStripMenuItem.Text = "ABREME"
@@ -479,6 +480,12 @@ Partial Class MDIParent1
         VENDEDORToolStripMenuItem.Name = "VENDEDORToolStripMenuItem"
         VENDEDORToolStripMenuItem.Size = New Size(180, 22)
         VENDEDORToolStripMenuItem.Text = "VENDEDOR"
+        ' 
+        ' HELOToolStripMenuItem
+        ' 
+        HELOToolStripMenuItem.Name = "HELOToolStripMenuItem"
+        HELOToolStripMenuItem.Size = New Size(180, 22)
+        HELOToolStripMenuItem.Text = "HELO"
         ' 
         ' MDIParent1
         ' 
@@ -558,5 +565,6 @@ Partial Class MDIParent1
     Friend WithEvents ABREMEÇToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ADMINISTRADORToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VENDEDORToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents HELOToolStripMenuItem As ToolStripMenuItem
 
 End Class
