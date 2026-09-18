@@ -484,8 +484,8 @@ Partial Class MDIParent1
         ' HELOToolStripMenuItem
         ' 
         HELOToolStripMenuItem.Name = "HELOToolStripMenuItem"
-        HELOToolStripMenuItem.Size = New Size(180, 22)
-        HELOToolStripMenuItem.Text = "HELO"
+        HELOToolStripMenuItem.Size = New Size(167, 22)
+        HELOToolStripMenuItem.Text = "HEELO"
         ' 
         ' MDIParent1
         ' 
