@@ -56,15 +56,16 @@ Partial Class SPLASH
         Button1.Name = "Button1"
         Button1.Size = New Size(75, 23)
         Button1.TabIndex = 2
-        Button1.Text = "Button1"
+        Button1.Text = "Borrar esto"
         Button1.UseVisualStyleBackColor = True
         ' 
         ' lblPorcentaje
         ' 
         lblPorcentaje.AutoSize = True
-        lblPorcentaje.Location = New Point(182, 178)
+        lblPorcentaje.Font = New Font("Segoe UI", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        lblPorcentaje.Location = New Point(178, 172)
         lblPorcentaje.Name = "lblPorcentaje"
-        lblPorcentaje.Size = New Size(23, 15)
+        lblPorcentaje.Size = New Size(33, 21)
         lblPorcentaje.TabIndex = 3
         lblPorcentaje.Text = "0%"
         lblPorcentaje.TextAlign = ContentAlignment.TopCenter
