@@ -380,7 +380,7 @@ Partial Class MDIParent1
         ' btn_vendedor
         ' 
         btn_vendedor.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btn_vendedor.Location = New Point(387, 102)
+        btn_vendedor.Location = New Point(373, 102)
         btn_vendedor.Name = "btn_vendedor"
         btn_vendedor.Size = New Size(292, 279)
         btn_vendedor.TabIndex = 11
