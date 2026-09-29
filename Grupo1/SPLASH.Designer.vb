@@ -26,15 +26,16 @@ Partial Class SPLASH
         Label1 = New Label()
         ProgressBar1 = New ProgressBar()
         Timer1 = New Timer(components)
+        Button1 = New Button()
         SuspendLayout()
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Tw Cen MT Condensed", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(82, 80)
+        Label1.Font = New Font("News701 BT", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Location = New Point(27, 76)
         Label1.Name = "Label1"
-        Label1.Size = New Size(220, 74)
+        Label1.Size = New Size(327, 78)
         Label1.TabIndex = 0
         Label1.Text = "Level Up"
         ' 
@@ -48,11 +49,21 @@ Partial Class SPLASH
         ' Timer1
         ' 
         ' 
+        ' Button1
+        ' 
+        Button1.Location = New Point(24, 249)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(75, 23)
+        Button1.TabIndex = 2
+        Button1.Text = "Button1"
+        Button1.UseVisualStyleBackColor = True
+        ' 
         ' SPLASH
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(398, 280)
+        Controls.Add(Button1)
         Controls.Add(ProgressBar1)
         Controls.Add(Label1)
         FormBorderStyle = FormBorderStyle.None
@@ -66,4 +77,5 @@ Partial Class SPLASH
     Friend WithEvents Label1 As Label
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents Button1 As Button
 End Class
