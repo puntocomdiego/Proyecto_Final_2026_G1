@@ -88,4 +88,8 @@ Public Class MDIParent1
     Private Sub ADMINISTRADORToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
     End Sub
+
+    Private Sub VENDEDORToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VENDEDORToolStripMenuItem.Click
+
+    End Sub
 End Class
