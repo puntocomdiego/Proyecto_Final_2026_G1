@@ -85,4 +85,7 @@ Public Class MDIParent1
 
     Private m_ChildFormNumber As Integer
 
+    Private Sub ADMINISTRADORToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ADMINISTRADORToolStripMenuItem.Click
+
+    End Sub
 End Class

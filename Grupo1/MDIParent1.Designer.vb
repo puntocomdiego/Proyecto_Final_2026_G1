@@ -65,6 +65,10 @@ Partial Class MDIParent1
         SearchToolStripMenuItem = New ToolStripMenuItem()
         ToolStripSeparator8 = New ToolStripSeparator()
         AboutToolStripMenuItem = New ToolStripMenuItem()
+        ABREMEÇToolStripMenuItem = New ToolStripMenuItem()
+        ADMINISTRADORToolStripMenuItem = New ToolStripMenuItem()
+        VENDEDORToolStripMenuItem = New ToolStripMenuItem()
+        HELOToolStripMenuItem = New ToolStripMenuItem()
         ToolStrip = New ToolStrip()
         NewToolStripButton = New ToolStripButton()
         OpenToolStripButton = New ToolStripButton()
@@ -77,10 +81,6 @@ Partial Class MDIParent1
         StatusStrip = New StatusStrip()
         ToolStripStatusLabel = New ToolStripStatusLabel()
         ToolTip = New ToolTip(components)
-        ABREMEÇToolStripMenuItem = New ToolStripMenuItem()
-        ADMINISTRADORToolStripMenuItem = New ToolStripMenuItem()
-        VENDEDORToolStripMenuItem = New ToolStripMenuItem()
-        HELOToolStripMenuItem = New ToolStripMenuItem()
         MenuStrip.SuspendLayout()
         ToolStrip.SuspendLayout()
         StatusStrip.SuspendLayout()
@@ -373,6 +373,31 @@ Partial Class MDIParent1
         AboutToolStripMenuItem.Size = New Size(176, 22)
         AboutToolStripMenuItem.Text = "&Acerca de..."
         ' 
+        ' ABREMEÇToolStripMenuItem
+        ' 
+        ABREMEÇToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ADMINISTRADORToolStripMenuItem, VENDEDORToolStripMenuItem, HELOToolStripMenuItem})
+        ABREMEÇToolStripMenuItem.Name = "ABREMEÇToolStripMenuItem"
+        ABREMEÇToolStripMenuItem.Size = New Size(64, 20)
+        ABREMEÇToolStripMenuItem.Text = "ABREME"
+        ' 
+        ' ADMINISTRADORToolStripMenuItem
+        ' 
+        ADMINISTRADORToolStripMenuItem.Name = "ADMINISTRADORToolStripMenuItem"
+        ADMINISTRADORToolStripMenuItem.Size = New Size(180, 22)
+        ADMINISTRADORToolStripMenuItem.Text = "ADMINISTRADOR"
+        ' 
+        ' VENDEDORToolStripMenuItem
+        ' 
+        VENDEDORToolStripMenuItem.Name = "VENDEDORToolStripMenuItem"
+        VENDEDORToolStripMenuItem.Size = New Size(180, 22)
+        VENDEDORToolStripMenuItem.Text = "VENDEDOR"
+        ' 
+        ' HELOToolStripMenuItem
+        ' 
+        HELOToolStripMenuItem.Name = "HELOToolStripMenuItem"
+        HELOToolStripMenuItem.Size = New Size(180, 22)
+        HELOToolStripMenuItem.Text = "HEELO"
+        ' 
         ' ToolStrip
         ' 
         ToolStrip.Items.AddRange(New ToolStripItem() {NewToolStripButton, OpenToolStripButton, SaveToolStripButton, ToolStripSeparator1, PrintToolStripButton, PrintPreviewToolStripButton, ToolStripSeparator2, HelpToolStripButton})
@@ -461,31 +486,6 @@ Partial Class MDIParent1
         ToolStripStatusLabel.Name = "ToolStripStatusLabel"
         ToolStripStatusLabel.Size = New Size(42, 17)
         ToolStripStatusLabel.Text = "Estado"
-        ' 
-        ' ABREMEÇToolStripMenuItem
-        ' 
-        ABREMEÇToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ADMINISTRADORToolStripMenuItem, VENDEDORToolStripMenuItem, HELOToolStripMenuItem})
-        ABREMEÇToolStripMenuItem.Name = "ABREMEÇToolStripMenuItem"
-        ABREMEÇToolStripMenuItem.Size = New Size(64, 20)
-        ABREMEÇToolStripMenuItem.Text = "ABREME"
-        ' 
-        ' ADMINISTRADORToolStripMenuItem
-        ' 
-        ADMINISTRADORToolStripMenuItem.Name = "ADMINISTRADORToolStripMenuItem"
-        ADMINISTRADORToolStripMenuItem.Size = New Size(180, 22)
-        ADMINISTRADORToolStripMenuItem.Text = "ADMINISTRADOR"
-        ' 
-        ' VENDEDORToolStripMenuItem
-        ' 
-        VENDEDORToolStripMenuItem.Name = "VENDEDORToolStripMenuItem"
-        VENDEDORToolStripMenuItem.Size = New Size(180, 22)
-        VENDEDORToolStripMenuItem.Text = "VENDEDOR"
-        ' 
-        ' HELOToolStripMenuItem
-        ' 
-        HELOToolStripMenuItem.Name = "HELOToolStripMenuItem"
-        HELOToolStripMenuItem.Size = New Size(167, 22)
-        HELOToolStripMenuItem.Text = "HEELO"
         ' 
         ' MDIParent1
         ' 
