@@ -1,6 +1,7 @@
 ﻿Module Conexion
 
-    Public RutaDB As String = "provider=microsoft.ace.oledb.12.0; data source=" & My.Application.Info.DirectoryPath & "\LEVEL_UP.accdb"
-    Public Ruta As String = My.Application.Info.DirectoryPath & "\LEVEL_UP.accdb"
+    Public ReadOnly Ruta As String = My.Application.Info.DirectoryPath & "\LEVEL_UP.accdb"
+    Public ReadOnly CadenaDeConexion As String = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={Ruta};"
+
 
 End Module
