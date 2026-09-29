@@ -23,49 +23,61 @@ Partial Class SPLASH
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Label1 = New Label()
-        ProgressBar1 = New ProgressBar()
+        lblTitulo = New Label()
+        pgr = New ProgressBar()
         Timer1 = New Timer(components)
         Button1 = New Button()
+        lblPorcentaje = New Label()
         SuspendLayout()
         ' 
-        ' Label1
+        ' lblTitulo
         ' 
-        Label1.AutoSize = True
-        Label1.Font = New Font("News701 BT", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(27, 76)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(327, 78)
-        Label1.TabIndex = 0
-        Label1.Text = "Level Up"
+        lblTitulo.AutoSize = True
+        lblTitulo.Font = New Font("News701 BT", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblTitulo.Location = New Point(27, 76)
+        lblTitulo.Name = "lblTitulo"
+        lblTitulo.Size = New Size(327, 78)
+        lblTitulo.TabIndex = 0
+        lblTitulo.Text = "Level Up"
         ' 
-        ' ProgressBar1
+        ' pgr
         ' 
-        ProgressBar1.Location = New Point(118, 196)
-        ProgressBar1.Name = "ProgressBar1"
-        ProgressBar1.Size = New Size(151, 23)
-        ProgressBar1.TabIndex = 1
+        pgr.Location = New Point(118, 196)
+        pgr.Name = "pgr"
+        pgr.Size = New Size(151, 23)
+        pgr.TabIndex = 1
         ' 
         ' Timer1
         ' 
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(24, 249)
+        Button1.Location = New Point(12, 245)
         Button1.Name = "Button1"
         Button1.Size = New Size(75, 23)
         Button1.TabIndex = 2
         Button1.Text = "Button1"
         Button1.UseVisualStyleBackColor = True
         ' 
+        ' lblPorcentaje
+        ' 
+        lblPorcentaje.AutoSize = True
+        lblPorcentaje.Location = New Point(182, 178)
+        lblPorcentaje.Name = "lblPorcentaje"
+        lblPorcentaje.Size = New Size(23, 15)
+        lblPorcentaje.TabIndex = 3
+        lblPorcentaje.Text = "0%"
+        lblPorcentaje.TextAlign = ContentAlignment.TopCenter
+        ' 
         ' SPLASH
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(398, 280)
+        Controls.Add(lblPorcentaje)
         Controls.Add(Button1)
-        Controls.Add(ProgressBar1)
-        Controls.Add(Label1)
+        Controls.Add(pgr)
+        Controls.Add(lblTitulo)
         FormBorderStyle = FormBorderStyle.None
         Name = "SPLASH"
         StartPosition = FormStartPosition.CenterScreen
@@ -74,8 +86,9 @@ Partial Class SPLASH
         PerformLayout()
     End Sub
 
-    Friend WithEvents Label1 As Label
-    Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents lblTitulo As Label
+    Friend WithEvents pgr As ProgressBar
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Button1 As Button
+    Friend WithEvents lblPorcentaje As Label
 End Class

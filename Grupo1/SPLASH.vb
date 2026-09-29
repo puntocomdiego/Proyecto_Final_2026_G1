@@ -5,21 +5,24 @@
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        If ProgressBar1.Value < 90 Then
-            ProgressBar1.Value += Int((3 - 0 + 1) * Rnd() + 1)
+        lblPorcentaje.Text = pgr.Value.ToString() & "%"
+
+        If pgr.Value < 90 Then
+            pgr.Value += Int((3 - 0 + 1) * Rnd() + 1)
         Else
-            ProgressBar1.Value += 1
+            pgr.Value += 1
         End If
 
-        If ProgressBar1.Value = 100 Then
+        If pgr.Value = 100 Then
             Timer1.Enabled = False
             'Me.Hide()
             'Form1.Show()
         End If
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        ProgressBar1.Value = 0
+        pgr.Value = 0
         Timer1.Enabled = True
     End Sub
 End Class
