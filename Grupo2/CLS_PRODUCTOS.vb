@@ -12,8 +12,11 @@ Imports System.Data.OleDb
         Public Property FechaIngreso As Date
         Public Property Portada As String
 
+
     ' Obtenemos la conexión desde el módulo común del proyecto
     Private Function ObtenerConexion() As OleDbConnection
+
+
         Return ModuloConexion.ObtenerConexion()
     End Function
 
