@@ -12,13 +12,28 @@ Imports System.Data.OleDb
         Public Property FechaIngreso As Date
         Public Property Portada As String
 
-        ' Obtenemos la conexión desde el módulo común del proyecto
-        Private Function ObtenerConexion() As OleDbConnection
-            Return ModuloConexion.ObtenerConexion()
-        End Function
+    ' Obtenemos la conexión desde el módulo común del proyecto
+    Private Function ObtenerConexion() As OleDbConnection
+        Return ModuloConexion.ObtenerConexion()
+    End Function
 
-        ' Carga todos los juegos relacionándolos con el nombre de su categoría
-        Public Function ListarJuegos() As DataTable
+    Public Function ListarJuegosPorCategoria(idCategoria As Integer) As DataTable
+        Dim dt As New DataTable()
+        Using conn As OleDbConnection = ObtenerConexion()
+            Dim query As String = "SELECT j.id, j.nombre, c.nombre AS Categoria, j.precio, j.stock, j.fecha_ingreso, j.portada, j.id_categoria " &
+                                     "FROM juegos j INNER JOIN categorias c ON j.id_categoria = c.id " &
+                                     "WHERE j.id_categoria = ? " &
+                                     "ORDER BY j.id DESC"
+            Dim cmd As New OleDbCommand(query, conn)
+            cmd.Parameters.AddWithValue("@id_categoria", idCategoria)
+            Dim da As New OleDbDataAdapter(cmd)
+            da.Fill(dt)
+        End Using
+        Return dt
+    End Function
+
+    ' Carga todos los juegos relacionándolos con el nombre de su categoría
+    Public Function ListarJuegos() As DataTable
             Dim dt As New DataTable()
             Using conn As OleDbConnection = ObtenerConexion()
                 Dim query As String = "SELECT j.id, j.nombre, c.nombre AS Categoria, j.precio, j.stock, j.fecha_ingreso, j.portada, j.id_categoria " &
