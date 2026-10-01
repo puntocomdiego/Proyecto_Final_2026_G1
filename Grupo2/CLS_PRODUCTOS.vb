@@ -16,8 +16,7 @@ Imports System.Data.OleDb
     ' Obtenemos la conexión desde el módulo común del proyecto
     Private Function ObtenerConexion() As OleDbConnection
 
-
-        Return ModuloConexion.ObtenerConexion()
+        Return Conexion.ObtenerConexion()
     End Function
 
     Public Function ListarJuegosPorCategoria(idCategoria As Integer) As DataTable
