@@ -238,7 +238,7 @@ Partial Class fmr_usurios
         picfoto.TabIndex = 19
         picfoto.TabStop = False
         ' 
-        ' Form1
+        ' fmr_usurios
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
@@ -252,7 +252,7 @@ Partial Class fmr_usurios
         Controls.Add(gbx_usuarioinfo)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Margin = New Padding(3, 2, 3, 2)
-        Name = "Form1"
+        Name = "fmr_usurios"
         Text = "Ingrese nombre de usuario y contraseña"
         gbx_usuarioinfo.ResumeLayout(False)
         gbx_usuarioinfo.PerformLayout()
