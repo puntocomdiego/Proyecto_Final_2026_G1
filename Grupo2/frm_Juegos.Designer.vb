@@ -32,10 +32,10 @@ Partial Class frm_Juegos
         btnGuardar = New Button()
         btnEliminar = New Button()
         btnLimpiar = New Button()
-        DataGridView1 = New DataGridView()
+        dgvJuegos = New DataGridView()
         ofd = New OpenFileDialog()
         CType(picPortada, ComponentModel.ISupportInitialize).BeginInit()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(dgvJuegos, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' txtNombre
@@ -118,13 +118,13 @@ Partial Class frm_Juegos
         btnLimpiar.Text = "Limpiar"
         btnLimpiar.UseVisualStyleBackColor = True
         ' 
-        ' DataGridView1
+        ' dgvJuegos
         ' 
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(67, 250)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(598, 188)
-        DataGridView1.TabIndex = 11
+        dgvJuegos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvJuegos.Location = New Point(67, 250)
+        dgvJuegos.Name = "dgvJuegos"
+        dgvJuegos.Size = New Size(598, 188)
+        dgvJuegos.TabIndex = 11
         ' 
         ' ofd
         ' 
@@ -135,7 +135,7 @@ Partial Class frm_Juegos
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(720, 450)
-        Controls.Add(DataGridView1)
+        Controls.Add(dgvJuegos)
         Controls.Add(btnLimpiar)
         Controls.Add(btnEliminar)
         Controls.Add(btnGuardar)
@@ -149,7 +149,7 @@ Partial Class frm_Juegos
         Name = "frm_Juegos"
         Text = "frm_Juegos"
         CType(picPortada, ComponentModel.ISupportInitialize).EndInit()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvJuegos, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -164,6 +164,6 @@ Partial Class frm_Juegos
     Friend WithEvents btnGuardar As Button
     Friend WithEvents btnEliminar As Button
     Friend WithEvents btnLimpiar As Button
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvJuegos As DataGridView
     Friend WithEvents ofd As OpenFileDialog
 End Class

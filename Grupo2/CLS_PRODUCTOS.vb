@@ -1,6 +1,7 @@
-﻿Public Class CLS_PRODUCTOS
-    Imports System.Data
-    Imports System.Data.OleDb
+﻿
+Imports System.Data
+
+Imports System.Data.OleDb
 
     Public Class CLS_PRODUCTOS
         Public Property Id As Integer
@@ -76,4 +77,4 @@
             End Using
         End Function
     End Class
-End Class
+
