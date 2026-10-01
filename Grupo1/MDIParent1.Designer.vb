@@ -358,7 +358,7 @@ Partial Class MDIParent1
         ' 
         ' btn_administrador
         ' 
-        btn_administrador.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btn_administrador.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btn_administrador.Location = New Point(45, 102)
         btn_administrador.Name = "btn_administrador"
         btn_administrador.Size = New Size(292, 279)
@@ -379,7 +379,7 @@ Partial Class MDIParent1
         ' 
         ' btn_vendedor
         ' 
-        btn_vendedor.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btn_vendedor.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btn_vendedor.Location = New Point(360, 102)
         btn_vendedor.Name = "btn_vendedor"
         btn_vendedor.Size = New Size(292, 279)
@@ -389,7 +389,7 @@ Partial Class MDIParent1
         ' 
         ' MDIParent1
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(737, 523)
         Controls.Add(btn_vendedor)
