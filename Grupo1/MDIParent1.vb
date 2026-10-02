@@ -11,7 +11,7 @@ Public Class MDIParent1
         m_ChildFormNumber += 1
         ChildForm.Text = "Ventana " & m_ChildFormNumber
 
-        ChildForm.Show
+        ChildForm.Show()
     End Sub
 
     Private Sub OpenFile(ByVal sender As Object, ByVal e As EventArgs) Handles OpenToolStripMenuItem.Click, OpenToolStripButton.Click
@@ -79,13 +79,17 @@ Public Class MDIParent1
     Private Sub CloseAllToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
         ' Cierre todos los formularios secundarios del principal.
         For Each ChildForm In MdiChildren
-            ChildForm.Close
+            ChildForm.Close()
         Next
     End Sub
 
     Private m_ChildFormNumber As Integer
 
     Private Sub ADMINISTRADORToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub MDIParent1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
