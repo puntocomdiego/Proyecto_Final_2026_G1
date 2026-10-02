@@ -22,40 +22,91 @@ Partial Class Login
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        TextBox1 = New TextBox()
-        Label1 = New Label()
+        lblUsuario = New Label()
+        lblContrasena = New Label()
+        txtUsuario = New TextBox()
+        txtContraseña = New TextBox()
+        btnIniciarSesion = New Button()
+        btnMostrar = New Button()
         SuspendLayout()
         ' 
-        ' TextBox1
+        ' lblUsuario
         ' 
-        TextBox1.Location = New Point(104, 70)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(245, 23)
-        TextBox1.TabIndex = 0
+        lblUsuario.AutoSize = True
+        lblUsuario.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblUsuario.Location = New Point(39, 31)
+        lblUsuario.Name = "lblUsuario"
+        lblUsuario.Size = New Size(73, 21)
+        lblUsuario.TabIndex = 4
+        lblUsuario.Text = "Usuario:"
         ' 
-        ' Label1
+        ' lblContrasena
         ' 
-        Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(12, 72)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(77, 21)
-        Label1.TabIndex = 1
-        Label1.Text = "Nombre:"
+        lblContrasena.AutoSize = True
+        lblContrasena.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblContrasena.Location = New Point(12, 77)
+        lblContrasena.Name = "lblContrasena"
+        lblContrasena.Size = New Size(100, 21)
+        lblContrasena.TabIndex = 5
+        lblContrasena.Text = "Contraseña:"
+        ' 
+        ' txtUsuario
+        ' 
+        txtUsuario.Location = New Point(118, 29)
+        txtUsuario.Name = "txtUsuario"
+        txtUsuario.Size = New Size(224, 23)
+        txtUsuario.TabIndex = 1
+        ' 
+        ' txtContraseña
+        ' 
+        txtContraseña.Location = New Point(118, 77)
+        txtContraseña.Name = "txtContraseña"
+        txtContraseña.PasswordChar = "*"c
+        txtContraseña.Size = New Size(224, 23)
+        txtContraseña.TabIndex = 2
+        ' 
+        ' btnIniciarSesion
+        ' 
+        btnIniciarSesion.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnIniciarSesion.Location = New Point(12, 128)
+        btnIniciarSesion.Name = "btnIniciarSesion"
+        btnIniciarSesion.Size = New Size(168, 43)
+        btnIniciarSesion.TabIndex = 4
+        btnIniciarSesion.Text = "Iniciar Sesion"
+        btnIniciarSesion.UseVisualStyleBackColor = True
+        ' 
+        ' btnMostrar
+        ' 
+        btnMostrar.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnMostrar.Location = New Point(348, 71)
+        btnMostrar.Name = "btnMostrar"
+        btnMostrar.Size = New Size(46, 40)
+        btnMostrar.TabIndex = 3
+        btnMostrar.Text = "👁"
+        btnMostrar.TextAlign = ContentAlignment.TopLeft
+        btnMostrar.UseVisualStyleBackColor = True
         ' 
         ' Login
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(414, 450)
-        Controls.Add(Label1)
-        Controls.Add(TextBox1)
+        ClientSize = New Size(414, 183)
+        Controls.Add(btnMostrar)
+        Controls.Add(btnIniciarSesion)
+        Controls.Add(txtContraseña)
+        Controls.Add(txtUsuario)
+        Controls.Add(lblContrasena)
+        Controls.Add(lblUsuario)
         Name = "Login"
         Text = "Login"
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblUsuario As Label
+    Friend WithEvents lblContrasena As Label
+    Friend WithEvents txtUsuario As TextBox
+    Friend WithEvents txtContraseña As TextBox
+    Friend WithEvents btnIniciarSesion As Button
+    Friend WithEvents btnMostrar As Button
 End Class

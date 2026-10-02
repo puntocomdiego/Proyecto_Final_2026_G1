@@ -26,8 +26,8 @@ Partial Class SPLASH
         lblTitulo = New Label()
         pgr = New ProgressBar()
         Timer1 = New Timer(components)
-        Button1 = New Button()
         lblPorcentaje = New Label()
+        lblEstado = New Label()
         SuspendLayout()
         ' 
         ' lblTitulo
@@ -50,15 +50,6 @@ Partial Class SPLASH
         ' Timer1
         ' 
         ' 
-        ' Button1
-        ' 
-        Button1.Location = New Point(12, 245)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(75, 23)
-        Button1.TabIndex = 2
-        Button1.Text = "Borrar esto"
-        Button1.UseVisualStyleBackColor = True
-        ' 
         ' lblPorcentaje
         ' 
         lblPorcentaje.AutoSize = True
@@ -70,13 +61,24 @@ Partial Class SPLASH
         lblPorcentaje.Text = "0%"
         lblPorcentaje.TextAlign = ContentAlignment.TopCenter
         ' 
+        ' lblEstado
+        ' 
+        lblEstado.AutoSize = True
+        lblEstado.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblEstado.Location = New Point(1, 261)
+        lblEstado.Name = "lblEstado"
+        lblEstado.Size = New Size(21, 20)
+        lblEstado.TabIndex = 4
+        lblEstado.Text = "..."
+        ' 
         ' SPLASH
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.LightGreen
         ClientSize = New Size(398, 280)
+        Controls.Add(lblEstado)
         Controls.Add(lblPorcentaje)
-        Controls.Add(Button1)
         Controls.Add(pgr)
         Controls.Add(lblTitulo)
         FormBorderStyle = FormBorderStyle.None
@@ -90,6 +92,6 @@ Partial Class SPLASH
     Friend WithEvents lblTitulo As Label
     Friend WithEvents pgr As ProgressBar
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents Button1 As Button
     Friend WithEvents lblPorcentaje As Label
+    Friend WithEvents lblEstado As Label
 End Class
