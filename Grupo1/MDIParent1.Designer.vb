@@ -51,6 +51,11 @@ Partial Class MDIParent1
         ToolBarToolStripMenuItem = New ToolStripMenuItem()
         StatusBarToolStripMenuItem = New ToolStripMenuItem()
         ABREMEÇToolStripMenuItem = New ToolStripMenuItem()
+        UsuariosToolStripMenuItem = New ToolStripMenuItem()
+        CategoriasToolStripMenuItem = New ToolStripMenuItem()
+        JuegosToolStripMenuItem = New ToolStripMenuItem()
+        VentasToolStripMenuItem = New ToolStripMenuItem()
+        ConsultasToolStripMenuItem = New ToolStripMenuItem()
         ToolStrip = New ToolStrip()
         NewToolStripButton = New ToolStripButton()
         OpenToolStripButton = New ToolStripButton()
@@ -263,9 +268,40 @@ Partial Class MDIParent1
         ' 
         ' ABREMEÇToolStripMenuItem
         ' 
+        ABREMEÇToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {UsuariosToolStripMenuItem, CategoriasToolStripMenuItem, JuegosToolStripMenuItem, VentasToolStripMenuItem, ConsultasToolStripMenuItem})
         ABREMEÇToolStripMenuItem.Name = "ABREMEÇToolStripMenuItem"
-        ABREMEÇToolStripMenuItem.Size = New Size(64, 20)
-        ABREMEÇToolStripMenuItem.Text = "ABREME"
+        ABREMEÇToolStripMenuItem.Size = New Size(50, 20)
+        ABREMEÇToolStripMenuItem.Text = "Menu"
+        ' 
+        ' UsuariosToolStripMenuItem
+        ' 
+        UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
+        UsuariosToolStripMenuItem.Size = New Size(180, 22)
+        UsuariosToolStripMenuItem.Text = "Usuarios"
+        ' 
+        ' CategoriasToolStripMenuItem
+        ' 
+        CategoriasToolStripMenuItem.Name = "CategoriasToolStripMenuItem"
+        CategoriasToolStripMenuItem.Size = New Size(180, 22)
+        CategoriasToolStripMenuItem.Text = "Categorias"
+        ' 
+        ' JuegosToolStripMenuItem
+        ' 
+        JuegosToolStripMenuItem.Name = "JuegosToolStripMenuItem"
+        JuegosToolStripMenuItem.Size = New Size(180, 22)
+        JuegosToolStripMenuItem.Text = "Juegos"
+        ' 
+        ' VentasToolStripMenuItem
+        ' 
+        VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
+        VentasToolStripMenuItem.Size = New Size(180, 22)
+        VentasToolStripMenuItem.Text = "Ventas"
+        ' 
+        ' ConsultasToolStripMenuItem
+        ' 
+        ConsultasToolStripMenuItem.Name = "ConsultasToolStripMenuItem"
+        ConsultasToolStripMenuItem.Size = New Size(180, 22)
+        ConsultasToolStripMenuItem.Text = "Consultas"
         ' 
         ' ToolStrip
         ' 
@@ -358,7 +394,7 @@ Partial Class MDIParent1
         ' 
         ' btn_administrador
         ' 
-        btn_administrador.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btn_administrador.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btn_administrador.Location = New Point(45, 102)
         btn_administrador.Name = "btn_administrador"
         btn_administrador.Size = New Size(292, 279)
@@ -379,7 +415,7 @@ Partial Class MDIParent1
         ' 
         ' btn_vendedor
         ' 
-        btn_vendedor.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btn_vendedor.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btn_vendedor.Location = New Point(360, 102)
         btn_vendedor.Name = "btn_vendedor"
         btn_vendedor.Size = New Size(292, 279)
@@ -389,7 +425,7 @@ Partial Class MDIParent1
         ' 
         ' MDIParent1
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(737, 523)
         Controls.Add(btn_vendedor)
@@ -403,6 +439,7 @@ Partial Class MDIParent1
         Margin = New Padding(4, 3, 4, 3)
         Name = "MDIParent1"
         Text = "MDIParent1"
+        WindowState = FormWindowState.Maximized
         MenuStrip.ResumeLayout(False)
         MenuStrip.PerformLayout()
         ToolStrip.ResumeLayout(False)
@@ -457,5 +494,10 @@ Partial Class MDIParent1
     Friend WithEvents btn_administrador As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents btn_vendedor As Button
+    Friend WithEvents UsuariosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CategoriasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents JuegosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VentasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ConsultasToolStripMenuItem As ToolStripMenuItem
 
 End Class

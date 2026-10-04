@@ -96,4 +96,22 @@ Public Class MDIParent1
     Private Sub VENDEDORToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VENDEDORToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub ABREMEÇToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ABREMEÇToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
+        Dim f As New fmr_usurios
+        f.MdiParent = Me
+        f.Show()
+
+    End Sub
+
+    Private Sub CategoriasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoriasToolStripMenuItem.Click
+        Dim f As New frm_categorias
+        f.MdiParent = Me
+        f.Show()
+
+    End Sub
 End Class
