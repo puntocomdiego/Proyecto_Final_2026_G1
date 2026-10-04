@@ -114,4 +114,11 @@ Public Class MDIParent1
         f.Show()
 
     End Sub
+
+    Private Sub JuegosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JuegosToolStripMenuItem.Click
+        Dim f As New frm_Juegos
+        f.MdiParent = Me
+        f.Show()
+
+    End Sub
 End Class
