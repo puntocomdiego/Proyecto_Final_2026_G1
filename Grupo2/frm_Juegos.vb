@@ -4,7 +4,7 @@
 Public Class frm_Juegos
 
     Private objJuego As New CLS_PRODUCTOS()
-    Private objCat As New cls_categoria()
+    Private objCat As New CLS_CATEGORIAS()
     Private idJuegoSeleccionado As Integer = 0
     Private rutaImagenOrigen As String = ""
 
@@ -16,7 +16,7 @@ Public Class frm_Juegos
 
     ' Llena el ComboBox llamando a la clase del formulario de mi amigo
     Private Sub CargarCategoriasCombo()
-        Dim dt As DataTable = objCat.ListarCategorias()
+        Dim dt As DataTable = objCat.obtenercategorias()
         cmbCategoria.DataSource = dt
         cmbCategoria.DisplayMember = "nombre"
         cmbCategoria.ValueMember = "id"
