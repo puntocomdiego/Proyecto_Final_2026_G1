@@ -1,4 +1,4 @@
-﻿Public Class Form1
+﻿Public Class frm_categorias
     Private objCategoria As New CLS_CATEGORIAS()
     Private idcategoriaSeleccionada As Integer = 0
 

@@ -1,12 +1,11 @@
 ﻿
 Imports System.Data.OleDb
 Public Class CLS_CATEGORIAS
-    Private moduloconexion As Object
     Public Property Nombre As String
     Public Property Descripcion As String
     Public Property Id As string
     Private Function obtenerconexion() As OleDbConnection
-        Return moduloconexion.obtenerconexion()
+        Return Conexion.ObtenerConexion()
     End Function
     Friend Function obtenercategorias() As DataTable
         Dim dt As New DataTable

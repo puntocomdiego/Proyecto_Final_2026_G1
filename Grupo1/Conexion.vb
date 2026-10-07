@@ -5,4 +5,8 @@
 
     Public rol As String = ""
 
+    Public Function ObtenerConexion() As System.Data.OleDb.OleDbConnection
+        Return New System.Data.OleDb.OleDbConnection(CadenaDeConexion)
+    End Function
+
 End Module
