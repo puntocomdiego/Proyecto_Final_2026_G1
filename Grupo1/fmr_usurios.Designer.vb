@@ -38,7 +38,7 @@ Partial Class fmr_usurios
         btnfoto = New Button()
         Button5 = New Button()
         GroupBox1 = New GroupBox()
-        txt = New TextBox()
+        txtbuscar = New TextBox()
         Label6 = New Label()
         dgvusuarios = New DataGridView()
         picfoto = New PictureBox()
@@ -151,7 +151,7 @@ Partial Class fmr_usurios
         ' 
         btnmodificar.Image = CType(resources.GetObject("btnmodificar.Image"), Image)
         btnmodificar.ImageAlign = ContentAlignment.MiddleLeft
-        btnmodificar.Location = New Point(35, 94)
+        btnmodificar.Location = New Point(35, 99)
         btnmodificar.Name = "btnmodificar"
         btnmodificar.Size = New Size(122, 33)
         btnmodificar.TabIndex = 12
@@ -163,7 +163,7 @@ Partial Class fmr_usurios
         ' 
         btneliminar.Image = CType(resources.GetObject("btneliminar.Image"), Image)
         btneliminar.ImageAlign = ContentAlignment.MiddleLeft
-        btneliminar.Location = New Point(35, 144)
+        btneliminar.Location = New Point(35, 149)
         btneliminar.Name = "btneliminar"
         btneliminar.Size = New Size(122, 33)
         btneliminar.TabIndex = 13
@@ -175,7 +175,7 @@ Partial Class fmr_usurios
         ' 
         btnfoto.Image = CType(resources.GetObject("btnfoto.Image"), Image)
         btnfoto.ImageAlign = ContentAlignment.MiddleLeft
-        btnfoto.Location = New Point(35, 192)
+        btnfoto.Location = New Point(35, 197)
         btnfoto.Name = "btnfoto"
         btnfoto.Size = New Size(122, 33)
         btnfoto.TabIndex = 14
@@ -200,17 +200,17 @@ Partial Class fmr_usurios
         GroupBox1.Controls.Add(btnmodificar)
         GroupBox1.Location = New Point(541, 57)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(200, 240)
+        GroupBox1.Size = New Size(200, 264)
         GroupBox1.TabIndex = 16
         GroupBox1.TabStop = False
         GroupBox1.Text = "GroupBox1"
         ' 
-        ' txt
+        ' txtbuscar
         ' 
-        txt.Location = New Point(254, 324)
-        txt.Name = "txt"
-        txt.Size = New Size(196, 23)
-        txt.TabIndex = 17
+        txtbuscar.Location = New Point(254, 324)
+        txtbuscar.Name = "txtbuscar"
+        txtbuscar.Size = New Size(196, 23)
+        txtbuscar.TabIndex = 17
         ' 
         ' Label6
         ' 
@@ -246,7 +246,7 @@ Partial Class fmr_usurios
         Controls.Add(picfoto)
         Controls.Add(dgvusuarios)
         Controls.Add(Label6)
-        Controls.Add(txt)
+        Controls.Add(txtbuscar)
         Controls.Add(GroupBox1)
         Controls.Add(Button5)
         Controls.Add(gbx_usuarioinfo)
@@ -278,7 +278,7 @@ Partial Class fmr_usurios
     Friend WithEvents btnfoto As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents txt As TextBox
+    Friend WithEvents txtbuscar As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents dgvusuarios As DataGridView
     Friend WithEvents picfoto As PictureBox

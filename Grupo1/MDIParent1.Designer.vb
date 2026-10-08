@@ -69,12 +69,10 @@ Partial Class MDIParent1
         ToolStripStatusLabel = New ToolStripStatusLabel()
         ToolTip = New ToolTip(components)
         btn_administrador = New Button()
-        PictureBox1 = New PictureBox()
         btn_vendedor = New Button()
         MenuStrip.SuspendLayout()
         ToolStrip.SuspendLayout()
         StatusStrip.SuspendLayout()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' MenuStrip
@@ -276,31 +274,31 @@ Partial Class MDIParent1
         ' UsuariosToolStripMenuItem
         ' 
         UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        UsuariosToolStripMenuItem.Size = New Size(180, 22)
+        UsuariosToolStripMenuItem.Size = New Size(130, 22)
         UsuariosToolStripMenuItem.Text = "Usuarios"
         ' 
         ' CategoriasToolStripMenuItem
         ' 
         CategoriasToolStripMenuItem.Name = "CategoriasToolStripMenuItem"
-        CategoriasToolStripMenuItem.Size = New Size(180, 22)
+        CategoriasToolStripMenuItem.Size = New Size(130, 22)
         CategoriasToolStripMenuItem.Text = "Categorias"
         ' 
         ' JuegosToolStripMenuItem
         ' 
         JuegosToolStripMenuItem.Name = "JuegosToolStripMenuItem"
-        JuegosToolStripMenuItem.Size = New Size(180, 22)
+        JuegosToolStripMenuItem.Size = New Size(130, 22)
         JuegosToolStripMenuItem.Text = "Juegos"
         ' 
         ' VentasToolStripMenuItem
         ' 
         VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        VentasToolStripMenuItem.Size = New Size(180, 22)
+        VentasToolStripMenuItem.Size = New Size(130, 22)
         VentasToolStripMenuItem.Text = "Ventas"
         ' 
         ' ConsultasToolStripMenuItem
         ' 
         ConsultasToolStripMenuItem.Name = "ConsultasToolStripMenuItem"
-        ConsultasToolStripMenuItem.Size = New Size(180, 22)
+        ConsultasToolStripMenuItem.Size = New Size(130, 22)
         ConsultasToolStripMenuItem.Text = "Consultas"
         ' 
         ' ToolStrip
@@ -402,17 +400,6 @@ Partial Class MDIParent1
         btn_administrador.Text = "administrador"
         btn_administrador.UseVisualStyleBackColor = True
         ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), Image)
-        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(0, 52)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(31, 24)
-        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox1.TabIndex = 10
-        PictureBox1.TabStop = False
-        ' 
         ' btn_vendedor
         ' 
         btn_vendedor.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
@@ -429,7 +416,6 @@ Partial Class MDIParent1
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(737, 523)
         Controls.Add(btn_vendedor)
-        Controls.Add(PictureBox1)
         Controls.Add(btn_administrador)
         Controls.Add(ToolStrip)
         Controls.Add(MenuStrip)
@@ -446,7 +432,6 @@ Partial Class MDIParent1
         ToolStrip.PerformLayout()
         StatusStrip.ResumeLayout(False)
         StatusStrip.PerformLayout()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
 
@@ -492,7 +477,6 @@ Partial Class MDIParent1
     Friend WithEvents ADMINISTRADORToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VENDEDORToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btn_administrador As Button
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents btn_vendedor As Button
     Friend WithEvents UsuariosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CategoriasToolStripMenuItem As ToolStripMenuItem
