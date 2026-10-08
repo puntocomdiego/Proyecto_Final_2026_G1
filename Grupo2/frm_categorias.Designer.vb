@@ -23,9 +23,6 @@ Partial Class frm_categorias
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         dgvcategorias = New DataGridView()
-        nombre = New DataGridViewTextBoxColumn()
-        id = New DataGridViewTextBoxColumn()
-        descripcion = New DataGridViewTextBoxColumn()
         txtnombre = New TextBox()
         txtdescripcion = New TextBox()
         btnguardar = New Button()
@@ -37,26 +34,10 @@ Partial Class frm_categorias
         ' dgvcategorias
         ' 
         dgvcategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvcategorias.Columns.AddRange(New DataGridViewColumn() {nombre, id, descripcion})
         dgvcategorias.Location = New Point(161, 24)
         dgvcategorias.Name = "dgvcategorias"
         dgvcategorias.Size = New Size(532, 184)
         dgvcategorias.TabIndex = 0
-        ' 
-        ' nombre
-        ' 
-        nombre.HeaderText = "nombre"
-        nombre.Name = "nombre"
-        ' 
-        ' id
-        ' 
-        id.HeaderText = "id"
-        id.Name = "id"
-        ' 
-        ' descripcion
-        ' 
-        descripcion.HeaderText = "descripcion"
-        descripcion.Name = "descripcion"
         ' 
         ' txtnombre
         ' 
@@ -99,9 +80,9 @@ Partial Class frm_categorias
         btnlimpiar.Text = "limpiar"
         btnlimpiar.UseVisualStyleBackColor = True
         ' 
-        ' Form1
+        ' frm_categorias
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
         Controls.Add(btnlimpiar)
@@ -110,7 +91,7 @@ Partial Class frm_categorias
         Controls.Add(txtdescripcion)
         Controls.Add(txtnombre)
         Controls.Add(dgvcategorias)
-        Name = "Form1"
+        Name = "frm_categorias"
         Text = "J"
         CType(dgvcategorias, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
@@ -124,7 +105,4 @@ Partial Class frm_categorias
     Friend WithEvents btnguardar As Button
     Friend WithEvents btneliminar As Button
     Friend WithEvents btnlimpiar As Button
-    Friend WithEvents nombre As DataGridViewTextBoxColumn
-    Friend WithEvents id As DataGridViewTextBoxColumn
-    Friend WithEvents descripcion As DataGridViewTextBoxColumn
 End Class
