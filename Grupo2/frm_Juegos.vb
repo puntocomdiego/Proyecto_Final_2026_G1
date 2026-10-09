@@ -4,7 +4,7 @@
 Public Class frm_Juegos
 
     Private objJuego As New CLS_PRODUCTOS()
-    Private objCat As New CLS_CATEGORIAS()
+    Private objCat As New cls_categorias_datos()
     Private idJuegoSeleccionado As Integer = 0
     Private rutaImagenOrigen As String = ""
 

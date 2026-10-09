@@ -23,40 +23,23 @@ Partial Class frm_categorias
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         dgvcategorias = New DataGridView()
-        nombre = New DataGridViewTextBoxColumn()
-        id = New DataGridViewTextBoxColumn()
-        descripcion = New DataGridViewTextBoxColumn()
         txtnombre = New TextBox()
         txtdescripcion = New TextBox()
         btnguardar = New Button()
         btneliminar = New Button()
         btnlimpiar = New Button()
+        Label1 = New Label()
+        Label2 = New Label()
         CType(dgvcategorias, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' dgvcategorias
         ' 
         dgvcategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvcategorias.Columns.AddRange(New DataGridViewColumn() {nombre, id, descripcion})
-        dgvcategorias.Location = New Point(161, 24)
+        dgvcategorias.Location = New Point(161, 12)
         dgvcategorias.Name = "dgvcategorias"
         dgvcategorias.Size = New Size(532, 184)
         dgvcategorias.TabIndex = 0
-        ' 
-        ' nombre
-        ' 
-        nombre.HeaderText = "nombre"
-        nombre.Name = "nombre"
-        ' 
-        ' id
-        ' 
-        id.HeaderText = "id"
-        id.Name = "id"
-        ' 
-        ' descripcion
-        ' 
-        descripcion.HeaderText = "descripcion"
-        descripcion.Name = "descripcion"
         ' 
         ' txtnombre
         ' 
@@ -67,6 +50,7 @@ Partial Class frm_categorias
         ' 
         ' txtdescripcion
         ' 
+        txtdescripcion.BackColor = SystemColors.ScrollBar
         txtdescripcion.Location = New Point(322, 266)
         txtdescripcion.Name = "txtdescripcion"
         txtdescripcion.Size = New Size(285, 23)
@@ -74,44 +58,68 @@ Partial Class frm_categorias
         ' 
         ' btnguardar
         ' 
+        btnguardar.BackColor = SystemColors.AppWorkspace
         btnguardar.Location = New Point(161, 307)
         btnguardar.Name = "btnguardar"
         btnguardar.Size = New Size(169, 47)
         btnguardar.TabIndex = 4
-        btnguardar.Text = "guardar :)"
-        btnguardar.UseVisualStyleBackColor = True
+        btnguardar.Text = "GUARDAR"
+        btnguardar.UseVisualStyleBackColor = False
         ' 
         ' btneliminar
         ' 
+        btneliminar.BackColor = SystemColors.AppWorkspace
         btneliminar.Location = New Point(374, 306)
         btneliminar.Name = "btneliminar"
         btneliminar.Size = New Size(165, 48)
         btneliminar.TabIndex = 5
-        btneliminar.Text = "eliminar"
-        btneliminar.UseVisualStyleBackColor = True
+        btneliminar.Text = "ELIMINAR"
+        btneliminar.UseVisualStyleBackColor = False
         ' 
         ' btnlimpiar
         ' 
+        btnlimpiar.BackColor = SystemColors.AppWorkspace
         btnlimpiar.Location = New Point(579, 307)
         btnlimpiar.Name = "btnlimpiar"
         btnlimpiar.Size = New Size(154, 47)
         btnlimpiar.TabIndex = 6
-        btnlimpiar.Text = "limpiar"
-        btnlimpiar.UseVisualStyleBackColor = True
+        btnlimpiar.Text = "LIMPIAR"
+        btnlimpiar.UseVisualStyleBackColor = False
         ' 
-        ' Form1
+        ' Label1
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        Label1.AutoSize = True
+        Label1.Location = New Point(252, 217)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(59, 15)
+        Label1.TabIndex = 7
+        Label1.Text = "NOMBRE:"
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Location = New Point(227, 269)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(84, 15)
+        Label2.TabIndex = 8
+        Label2.Text = "DESCRIPCION:"
+        ' 
+        ' frm_categorias
+        ' 
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(800, 450)
+        Controls.Add(Label2)
+        Controls.Add(Label1)
         Controls.Add(btnlimpiar)
         Controls.Add(btneliminar)
         Controls.Add(btnguardar)
         Controls.Add(txtdescripcion)
         Controls.Add(txtnombre)
         Controls.Add(dgvcategorias)
-        Name = "Form1"
-        Text = "J"
+        Name = "frm_categorias"
+        Text = "CATEGORIAS"
         CType(dgvcategorias, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
@@ -124,7 +132,5 @@ Partial Class frm_categorias
     Friend WithEvents btnguardar As Button
     Friend WithEvents btneliminar As Button
     Friend WithEvents btnlimpiar As Button
-    Friend WithEvents nombre As DataGridViewTextBoxColumn
-    Friend WithEvents id As DataGridViewTextBoxColumn
-    Friend WithEvents descripcion As DataGridViewTextBoxColumn
+    Friend WithEvents Label2 As Label
 End Class
