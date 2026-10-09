@@ -4,6 +4,7 @@ Public Class CLS_CATEGORIAS
     Public Property Nombre As String
     Public Property Descripcion As String
     Public Property Id As Integer
+
     Private Function obtenerconexion() As OleDbConnection
         Return Conexion.ObtenerConexion()
     End Function
@@ -19,6 +20,8 @@ Public Class CLS_CATEGORIAS
 
     End Sub
 
-
+    Friend Function obtenerTodos() As Object
+        Throw New NotImplementedException()
+    End Function
 End Class
 
