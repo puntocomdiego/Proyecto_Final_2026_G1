@@ -92,7 +92,7 @@ Partial Class frm_categorias
         Controls.Add(txtnombre)
         Controls.Add(dgvcategorias)
         Name = "frm_categorias"
-        Text = "J"
+        Text = "e"
         CType(dgvcategorias, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
