@@ -1,5 +1,5 @@
 ﻿Imports System.Data.OleDb
-Imports System.Runtime.InteropServices.JavaScript.JSType
+
 
 Public Class cls_categorias_datos
     Private Shared ReadOnly ruta As String =
