@@ -20,8 +20,6 @@ Public Class CLS_CATEGORIAS
 
     End Sub
 
-    Friend Function obtenerTodos() As Object
-        Throw New NotImplementedException()
-    End Function
+
 End Class
 
