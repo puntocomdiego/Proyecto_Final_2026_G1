@@ -53,10 +53,13 @@ Public Class Login
                 If dt.Rows.Count > 0 Then
                     rol = "admin"
                     MsgBox("Usuario autentificado correctamente como 'Admin'.", MsgBoxStyle.OkOnly, "Login")
-                    'MDIParent1.Show()
+                    Me.Close()
+                    MDIParent1.Show()
                 Else
                     rol = "vendedor"
                     MsgBox("Usuario autentificado correctamente como 'Vendedor'.", MsgBoxStyle.OkOnly, "Login")
+                    Me.Close()
+                    fmr_usurios.Show()
                 End If
 
                 Me.Hide()

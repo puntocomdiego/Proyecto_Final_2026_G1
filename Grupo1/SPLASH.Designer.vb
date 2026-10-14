@@ -42,6 +42,7 @@ Partial Class SPLASH
         ' 
         ' pgr
         ' 
+        pgr.ForeColor = SystemColors.GradientActiveCaption
         pgr.Location = New Point(118, 196)
         pgr.Name = "pgr"
         pgr.Size = New Size(151, 23)
@@ -75,7 +76,7 @@ Partial Class SPLASH
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.LightGreen
+        BackColor = Color.Ivory
         ClientSize = New Size(398, 280)
         Controls.Add(lblEstado)
         Controls.Add(lblPorcentaje)

@@ -18,7 +18,7 @@
             ElseIf pgr.Value < 70 Then
                 lblEstado.Text = "Conectando a la base de datos."
             ElseIf pgr.Value < 90 Then
-                lblEstado.Text = "Buscando por archivos corruptos."
+                lblEstado.Text = "Verificando información."
             End If
         Else
             pgr.Value += 1

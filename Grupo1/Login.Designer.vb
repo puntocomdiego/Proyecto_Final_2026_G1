@@ -22,6 +22,7 @@ Partial Class Login
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Login))
         lblUsuario = New Label()
         lblContrasena = New Label()
         txtUsuario = New TextBox()
@@ -68,11 +69,14 @@ Partial Class Login
         ' btnIniciarSesion
         ' 
         btnIniciarSesion.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnIniciarSesion.Location = New Point(12, 128)
+        btnIniciarSesion.Image = CType(resources.GetObject("btnIniciarSesion.Image"), Image)
+        btnIniciarSesion.ImageAlign = ContentAlignment.MiddleRight
+        btnIniciarSesion.Location = New Point(12, 124)
         btnIniciarSesion.Name = "btnIniciarSesion"
-        btnIniciarSesion.Size = New Size(168, 43)
+        btnIniciarSesion.Size = New Size(190, 47)
         btnIniciarSesion.TabIndex = 4
         btnIniciarSesion.Text = "Iniciar Sesion"
+        btnIniciarSesion.TextAlign = ContentAlignment.MiddleLeft
         btnIniciarSesion.UseVisualStyleBackColor = True
         ' 
         ' btnMostrar
