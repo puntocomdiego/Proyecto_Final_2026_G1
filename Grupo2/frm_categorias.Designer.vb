@@ -30,20 +30,23 @@ Partial Class frm_categorias
         btnlimpiar = New Button()
         Label1 = New Label()
         Label2 = New Label()
+        Label4 = New Label()
         CType(dgvcategorias, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' dgvcategorias
         ' 
         dgvcategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvcategorias.Location = New Point(161, 12)
+        dgvcategorias.Location = New Point(115, 108)
         dgvcategorias.Name = "dgvcategorias"
-        dgvcategorias.Size = New Size(532, 184)
+        dgvcategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvcategorias.Size = New Size(572, 184)
         dgvcategorias.TabIndex = 0
         ' 
         ' txtnombre
         ' 
-        txtnombre.Location = New Point(322, 214)
+        txtnombre.BackColor = SystemColors.ScrollBar
+        txtnombre.Location = New Point(277, 307)
         txtnombre.Name = "txtnombre"
         txtnombre.Size = New Size(282, 23)
         txtnombre.TabIndex = 2
@@ -51,7 +54,7 @@ Partial Class frm_categorias
         ' txtdescripcion
         ' 
         txtdescripcion.BackColor = SystemColors.ScrollBar
-        txtdescripcion.Location = New Point(322, 266)
+        txtdescripcion.Location = New Point(274, 356)
         txtdescripcion.Name = "txtdescripcion"
         txtdescripcion.Size = New Size(285, 23)
         txtdescripcion.TabIndex = 3
@@ -59,7 +62,7 @@ Partial Class frm_categorias
         ' btnguardar
         ' 
         btnguardar.BackColor = SystemColors.AppWorkspace
-        btnguardar.Location = New Point(161, 307)
+        btnguardar.Location = New Point(102, 398)
         btnguardar.Name = "btnguardar"
         btnguardar.Size = New Size(169, 47)
         btnguardar.TabIndex = 4
@@ -69,7 +72,7 @@ Partial Class frm_categorias
         ' btneliminar
         ' 
         btneliminar.BackColor = SystemColors.AppWorkspace
-        btneliminar.Location = New Point(374, 306)
+        btneliminar.Location = New Point(314, 397)
         btneliminar.Name = "btneliminar"
         btneliminar.Size = New Size(165, 48)
         btneliminar.TabIndex = 5
@@ -79,7 +82,7 @@ Partial Class frm_categorias
         ' btnlimpiar
         ' 
         btnlimpiar.BackColor = SystemColors.AppWorkspace
-        btnlimpiar.Location = New Point(579, 307)
+        btnlimpiar.Location = New Point(519, 398)
         btnlimpiar.Name = "btnlimpiar"
         btnlimpiar.Size = New Size(154, 47)
         btnlimpiar.TabIndex = 6
@@ -89,7 +92,7 @@ Partial Class frm_categorias
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(252, 217)
+        Label1.Location = New Point(212, 307)
         Label1.Name = "Label1"
         Label1.Size = New Size(59, 15)
         Label1.TabIndex = 7
@@ -98,18 +101,29 @@ Partial Class frm_categorias
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(227, 269)
+        Label2.Location = New Point(187, 359)
         Label2.Name = "Label2"
         Label2.Size = New Size(84, 15)
         Label2.TabIndex = 8
         Label2.Text = "DESCRIPCION:"
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Font = New Font("Segoe UI", 54F)
+        Label4.Location = New Point(175, 9)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(449, 96)
+        Label4.TabIndex = 10
+        Label4.Text = "CATEGORIAS"
         ' 
         ' frm_categorias
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(821, 450)
+        Controls.Add(Label4)
         Controls.Add(Label2)
         Controls.Add(Label1)
         Controls.Add(btnlimpiar)
@@ -133,4 +147,5 @@ Partial Class frm_categorias
     Friend WithEvents btneliminar As Button
     Friend WithEvents btnlimpiar As Button
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label4 As Label
 End Class

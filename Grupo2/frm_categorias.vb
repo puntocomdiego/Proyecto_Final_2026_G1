@@ -60,28 +60,27 @@
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btneliminar.Click
-        ' Verificar que haya una fila seleccionada
         If dgvcategorias.CurrentRow Is Nothing Then
             MessageBox.Show("Seleccioná una categoría para eliminar.", "Atención",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
-        ' Confirmación
-        Dim nombre As String = dgvcategorias.CurrentRow.Cells("nombre").Value.ToString()
-        Dim respuesta As DialogResult = MessageBox.Show(
-        $"¿Seguro que querés eliminar la categoría '{nombre}'?",
-        "Confirmar eliminación",
-        MessageBoxButtons.YesNo,
-        MessageBoxIcon.Question)
-
-        If respuesta <> DialogResult.Yes Then Return
-
         Try
-            Dim codigo As Integer = Convert.ToInt32(dgvcategorias.CurrentRow.Cells("codigo").Value)
+            Dim nombre As String = Convert.ToString(dgvcategorias.CurrentRow.Cells("nombre").Value)
+
+            Dim respuesta As DialogResult = MessageBox.Show(
+            $"¿Seguro que querés eliminar la categoría '{nombre}'?",
+            "Confirmar eliminación",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question)
+
+            If respuesta <> DialogResult.Yes Then Return
+
+            Dim id As Integer = Convert.ToInt32(dgvcategorias.CurrentRow.Cells("id").Value)
             Dim datos As New cls_categorias_datos()
 
-            If datos.Eliminar(codigo) Then
+            If datos.Eliminar(id) Then
                 MessageBox.Show("Categoría eliminada correctamente.", "Éxito",
                             MessageBoxButtons.OK, MessageBoxIcon.Information)
                 CargarCategorias()

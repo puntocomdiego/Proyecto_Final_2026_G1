@@ -33,11 +33,15 @@ Public Class cls_categorias_datos
 
     End Function
 
-    Public Function Eliminar(codigo As Integer) As Boolean
+    Public Function ObtenerConexion() As OleDbConnection
+        Return New OleDbConnection(cadenaConexion)
+
+    End Function
+    Public Function Eliminar(id As Integer) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
-            Dim sql As String = "DELETE FROM categorias WHERE codigo = ?"
+            Dim sql As String = "DELETE * FROM categorias WHERE ID = ?"
             Using cmd As New OleDbCommand(sql, cn)
-                cmd.Parameters.AddWithValue("?", codigo)
+                cmd.Parameters.AddWithValue("?", id)
                 cn.Open()
                 Return cmd.ExecuteNonQuery() > 0
             End Using
