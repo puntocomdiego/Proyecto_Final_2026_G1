@@ -68,8 +68,6 @@ Partial Class MDIParent1
         StatusStrip = New StatusStrip()
         ToolStripStatusLabel = New ToolStripStatusLabel()
         ToolTip = New ToolTip(components)
-        btn_administrador = New Button()
-        btn_vendedor = New Button()
         MenuStrip.SuspendLayout()
         ToolStrip.SuspendLayout()
         StatusStrip.SuspendLayout()
@@ -390,33 +388,11 @@ Partial Class MDIParent1
         ToolStripStatusLabel.Size = New Size(42, 17)
         ToolStripStatusLabel.Text = "Estado"
         ' 
-        ' btn_administrador
-        ' 
-        btn_administrador.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btn_administrador.Location = New Point(45, 102)
-        btn_administrador.Name = "btn_administrador"
-        btn_administrador.Size = New Size(292, 279)
-        btn_administrador.TabIndex = 9
-        btn_administrador.Text = "administrador"
-        btn_administrador.UseVisualStyleBackColor = True
-        ' 
-        ' btn_vendedor
-        ' 
-        btn_vendedor.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btn_vendedor.Location = New Point(360, 102)
-        btn_vendedor.Name = "btn_vendedor"
-        btn_vendedor.Size = New Size(292, 279)
-        btn_vendedor.TabIndex = 11
-        btn_vendedor.Text = "vendedor"
-        btn_vendedor.UseVisualStyleBackColor = True
-        ' 
         ' MDIParent1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(737, 523)
-        Controls.Add(btn_vendedor)
-        Controls.Add(btn_administrador)
         Controls.Add(ToolStrip)
         Controls.Add(MenuStrip)
         Controls.Add(StatusStrip)
@@ -476,8 +452,6 @@ Partial Class MDIParent1
     Friend WithEvents ABREMEÇToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ADMINISTRADORToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VENDEDORToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents btn_administrador As Button
-    Friend WithEvents btn_vendedor As Button
     Friend WithEvents UsuariosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CategoriasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents JuegosToolStripMenuItem As ToolStripMenuItem
