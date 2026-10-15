@@ -1,70 +1,113 @@
 ﻿Public Class fmr_usurios
 
-    Private usuarios As New cls_usaurios_datos()
+
+    Private datos As New cls_usuarios_datos()
     Private rutaFoto As String = String.Empty
 
+    Private Sub ConfigurarGrilla()
+        dgvusuarios.ReadOnly = True
+        dgvusuarios.AllowUserToAddRows = False
+        dgvusuarios.MultiSelect = False
+        dgvusuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvusuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+    End Sub
+
+    Private Sub MostrarUsuarios(dt As DataTable)
+        dgvusuarios.DataSource = dt
+        dgvusuarios.Columns("id").Visible = False
+        dgvusuarios.Columns("nombre").HeaderText = "Nombre"
+        dgvusuarios.Columns("apellido").HeaderText = "Apellido"
+        dgvusuarios.Columns("usuario").HeaderText = "Usuario"
+        dgvusuarios.Columns("contrasena").HeaderText = "Contraseña"
+        dgvusuarios.Columns("fecha_creacion").HeaderText = "Fecha de creación"
+        dgvusuarios.Columns("fecha_creacion").DefaultCellStyle.Format = "d"
+    End Sub
+
+    Private Sub dgvusuarios_SelectionChanged(sender As Object, e As EventArgs) Handles dgvusuarios.SelectionChanged
+        If dgvusuarios.CurrentRow Is Nothing Then Exit Sub
+
+        txtnombre.Text = dgvusuarios.CurrentRow.Cells("nombre").Value.ToString()
+        txtapellido.Text = dgvusuarios.CurrentRow.Cells("apellido").Value.ToString()
+        txtnomusuario.Text = dgvusuarios.CurrentRow.Cells("usuario").Value.ToString()
+        txtcontra.Text = dgvusuarios.CurrentRow.Cells("contrasena").Value.ToString()
+    End Sub
+
     Private Sub fmr_usurios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'ConfigurarGrilla()
-        'MostrarProductos(datos.Listar())        ' antes: Producto.Listar() 
+        ConfigurarGrilla()
+        MostrarUsuarios(datos.Listar())
     End Sub
 
     Private Sub txtbuscar_TextChanged(sender As Object, e As EventArgs) Handles txtbuscar.TextChanged
-        'MostrarProductos(datos.Buscar(txtbuscar.Text.Trim()))
+        MostrarUsuarios(datos.Buscar(txtbuscar.Text.Trim()))
     End Sub
 
     Private Sub btnnuevo_Click(sender As Object, e As EventArgs) Handles btnnuevo.Click
+        If Not DatosValidos() Then Exit Sub
+        Try
+            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now)
+            If datos.Agregar(u) Then          ' el objeto datos hace el trabajo
+                MostrarUsuarios(datos.Listar())
+                Limpiar()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("No se pudo agregar el usuario: " & ex.Message)
+        End Try
+    End Sub
 
-        btnnuevo.Text = "agregar"
-
-        'If Not DatosValidos() Then Exit Sub
-
-        'Try
-        '    Dim u As New Usuario(txtnomusuario.Text.Trim(), txtcontra.Text, txtnombre.Text.Trim(), txtapellido.Text.Trim()
-
-        '    If datos.Agregar(u) Then
-
-        '    End If
-
-        '    MostrarUsuarios(datos.Listar())
-        '    Limpiar()
-
-        'Catch ex As Exception
-        '    MessageBox.Show("No se pudo agregar el usuario: " & ex.Message)
-        'End Try
-
+    Private Sub btnmodificar_Click(sender As Object, e As EventArgs) Handles btnmodificar.Click
+        If dgvusuarios.CurrentRow Is Nothing Then Exit Sub
+        If Not DatosValidos() Then Exit Sub
+        Try
+            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now)
+            u.Id = Integer.Parse(dgvusuarios.CurrentRow.Cells("id").Value.ToString())
+            If datos.Modificar(u) Then MostrarUsuarios(datos.Listar())
+        Catch ex As Exception
+            MessageBox.Show("No se pudo modificar el usuario: " & ex.Message)
+        End Try
     End Sub
 
     Private Sub btneliminar_Click(sender As Object, e As EventArgs) Handles btneliminar.Click
-
-        'If txtusario.Text = "" Then Exit Sub
-
-        'If MessageBox.Show("¿Eliminar el usuario seleccionado?", "Confirmar", MessageBoxButtons.YesNo) = DialogResult.No Then
-        '    Exit Sub
-        'End If
-
-
-        'Try
-        '    If datos.Eliminar(Integer.Parse(txtCodigo.Text)) Then
-        '        MostrarUsuarios(datos.Listar())
-        '        Limpiar()
-        '    End If
-        'Catch ex As Exception
-        '    MessageBox.Show("No se pudo eliminar el usuario: " & ex.Message)
-        'End Try
-
-
-
+        If dgvusuarios.CurrentRow Is Nothing Then Exit Sub
+        If MessageBox.Show("¿Eliminar el usuario seleccionado?", "Confirmar",
+                           MessageBoxButtons.YesNo) = DialogResult.No Then Exit Sub
+        Try
+            If datos.Eliminar(Integer.Parse(dgvusuarios.CurrentRow.Cells("id").Value.ToString())) Then
+                MostrarUsuarios(datos.Listar())
+                Limpiar()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("No se pudo eliminar el usuario: " & ex.Message)
+        End Try
     End Sub
 
+    Private Sub Limpiar()
+        txtnombre.Clear()
+        txtapellido.Clear()
+        txtnomusuario.Clear()
+        txtcontra.Clear()
+    End Sub
 
+    Private Function DatosValidos() As Boolean
+        If txtnombre.Text.Trim() = "" Then
+            MessageBox.Show("Ingresá el nombre.")
+            Return False
+        End If
+        If txtapellido.Text.Trim() = "" Then
+            MessageBox.Show("Ingresá el apellido.")
+            Return False
+        End If
+        If txtnomusuario.Text.Trim() = "" Then
+            MessageBox.Show("Ingresá el usuario.")
+            Return False
+        End If
+        If txtcontra.Text = "" Then
+            MessageBox.Show("Ingresá la contraseña.")
+            Return False
+        End If
+        Return True
+    End Function
 
-
-
-
-
-
-
-
-
-
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Limpiar()
+    End Sub
 End Class
