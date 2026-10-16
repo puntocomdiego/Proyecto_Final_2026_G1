@@ -39,86 +39,98 @@ Partial Class frm_Juegos
         Label3 = New Label()
         Label4 = New Label()
         Label5 = New Label()
+        Label6 = New Label()
+        lblID = New Label()
         CType(picPortada, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvJuegos, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' txtNombre
         ' 
-        txtNombre.Location = New Point(67, 38)
+        txtNombre.Location = New Point(78, 91)
+        txtNombre.Margin = New Padding(3, 4, 3, 4)
         txtNombre.Name = "txtNombre"
-        txtNombre.Size = New Size(100, 23)
+        txtNombre.Size = New Size(114, 27)
         txtNombre.TabIndex = 1
         ' 
         ' txtStock
         ' 
-        txtStock.Location = New Point(67, 128)
+        txtStock.Location = New Point(78, 211)
+        txtStock.Margin = New Padding(3, 4, 3, 4)
         txtStock.Name = "txtStock"
-        txtStock.Size = New Size(100, 23)
+        txtStock.Size = New Size(114, 27)
         txtStock.TabIndex = 2
         ' 
         ' txtPrecio
         ' 
-        txtPrecio.Location = New Point(67, 84)
+        txtPrecio.Location = New Point(78, 152)
+        txtPrecio.Margin = New Padding(3, 4, 3, 4)
         txtPrecio.Name = "txtPrecio"
-        txtPrecio.Size = New Size(100, 23)
+        txtPrecio.Size = New Size(114, 27)
         txtPrecio.TabIndex = 3
         ' 
         ' cmbCategoria
         ' 
         cmbCategoria.FormattingEnabled = True
-        cmbCategoria.Location = New Point(67, 170)
+        cmbCategoria.Location = New Point(78, 267)
+        cmbCategoria.Margin = New Padding(3, 4, 3, 4)
         cmbCategoria.Name = "cmbCategoria"
-        cmbCategoria.Size = New Size(121, 23)
+        cmbCategoria.Size = New Size(138, 28)
         cmbCategoria.TabIndex = 4
         ' 
         ' dtpFechaIngreso
         ' 
-        dtpFechaIngreso.Location = New Point(67, 214)
+        dtpFechaIngreso.Location = New Point(78, 325)
+        dtpFechaIngreso.Margin = New Padding(3, 4, 3, 4)
         dtpFechaIngreso.Name = "dtpFechaIngreso"
-        dtpFechaIngreso.Size = New Size(200, 23)
+        dtpFechaIngreso.Size = New Size(228, 27)
         dtpFechaIngreso.TabIndex = 5
         ' 
         ' picPortada
         ' 
-        picPortada.Location = New Point(281, 34)
+        picPortada.Location = New Point(322, 85)
+        picPortada.Margin = New Padding(3, 4, 3, 4)
         picPortada.Name = "picPortada"
-        picPortada.Size = New Size(216, 176)
+        picPortada.Size = New Size(247, 235)
         picPortada.TabIndex = 6
         picPortada.TabStop = False
         ' 
         ' btnExaminar
         ' 
-        btnExaminar.Location = New Point(544, 32)
+        btnExaminar.Location = New Point(623, 83)
+        btnExaminar.Margin = New Padding(3, 4, 3, 4)
         btnExaminar.Name = "btnExaminar"
-        btnExaminar.Size = New Size(121, 40)
+        btnExaminar.Size = New Size(138, 53)
         btnExaminar.TabIndex = 7
         btnExaminar.Text = "Examinar"
         btnExaminar.UseVisualStyleBackColor = True
         ' 
         ' btnGuardar
         ' 
-        btnGuardar.Location = New Point(544, 78)
+        btnGuardar.Location = New Point(623, 144)
+        btnGuardar.Margin = New Padding(3, 4, 3, 4)
         btnGuardar.Name = "btnGuardar"
-        btnGuardar.Size = New Size(121, 40)
+        btnGuardar.Size = New Size(138, 53)
         btnGuardar.TabIndex = 8
         btnGuardar.Text = "Guardar"
         btnGuardar.UseVisualStyleBackColor = True
         ' 
         ' btnEliminar
         ' 
-        btnEliminar.Location = New Point(544, 124)
+        btnEliminar.Location = New Point(623, 205)
+        btnEliminar.Margin = New Padding(3, 4, 3, 4)
         btnEliminar.Name = "btnEliminar"
-        btnEliminar.Size = New Size(121, 40)
+        btnEliminar.Size = New Size(138, 53)
         btnEliminar.TabIndex = 9
         btnEliminar.Text = "Eliminar"
         btnEliminar.UseVisualStyleBackColor = True
         ' 
         ' btnLimpiar
         ' 
-        btnLimpiar.Location = New Point(544, 170)
+        btnLimpiar.Location = New Point(623, 267)
+        btnLimpiar.Margin = New Padding(3, 4, 3, 4)
         btnLimpiar.Name = "btnLimpiar"
-        btnLimpiar.Size = New Size(121, 40)
+        btnLimpiar.Size = New Size(138, 53)
         btnLimpiar.TabIndex = 10
         btnLimpiar.Text = "Limpiar"
         btnLimpiar.UseVisualStyleBackColor = True
@@ -126,9 +138,11 @@ Partial Class frm_Juegos
         ' dgvJuegos
         ' 
         dgvJuegos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvJuegos.Location = New Point(67, 250)
+        dgvJuegos.Location = New Point(78, 373)
+        dgvJuegos.Margin = New Padding(3, 4, 3, 4)
         dgvJuegos.Name = "dgvJuegos"
-        dgvJuegos.Size = New Size(598, 188)
+        dgvJuegos.RowHeadersWidth = 51
+        dgvJuegos.Size = New Size(683, 251)
         dgvJuegos.TabIndex = 11
         ' 
         ' ofd
@@ -138,53 +152,73 @@ Partial Class frm_Juegos
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(72, 21)
+        Label1.Location = New Point(83, 68)
         Label1.Name = "Label1"
-        Label1.Size = New Size(54, 15)
+        Label1.Size = New Size(67, 20)
         Label1.TabIndex = 12
         Label1.Text = "Nombre:"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(72, 64)
+        Label2.Location = New Point(83, 125)
         Label2.Name = "Label2"
-        Label2.Size = New Size(43, 15)
+        Label2.Size = New Size(53, 20)
         Label2.TabIndex = 13
         Label2.Text = "Precio:"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(72, 110)
+        Label3.Location = New Point(83, 187)
         Label3.Name = "Label3"
-        Label3.Size = New Size(39, 15)
+        Label3.Size = New Size(48, 20)
         Label3.TabIndex = 14
         Label3.Text = "Stock:"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(72, 154)
+        Label4.Location = New Point(83, 245)
         Label4.Name = "Label4"
-        Label4.Size = New Size(61, 15)
+        Label4.Size = New Size(77, 20)
         Label4.TabIndex = 15
         Label4.Text = "Categoria:"
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(72, 196)
+        Label5.Location = New Point(83, 301)
         Label5.Name = "Label5"
-        Label5.Size = New Size(83, 15)
+        Label5.Size = New Size(103, 20)
         Label5.TabIndex = 16
         Label5.Text = "Fecha Ingreso:"
         ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Location = New Point(83, 28)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(67, 20)
+        Label6.TabIndex = 17
+        Label6.Text = "Nombre:"
+        ' 
+        ' lblID
+        ' 
+        lblID.AutoSize = True
+        lblID.Location = New Point(195, 28)
+        lblID.Name = "lblID"
+        lblID.Size = New Size(67, 20)
+        lblID.TabIndex = 18
+        lblID.Text = "Nombre:"
+        ' 
         ' frm_Juegos
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(720, 450)
+        ClientSize = New Size(823, 600)
+        Controls.Add(lblID)
+        Controls.Add(Label6)
         Controls.Add(Label5)
         Controls.Add(Label4)
         Controls.Add(Label3)
@@ -201,6 +235,7 @@ Partial Class frm_Juegos
         Controls.Add(txtPrecio)
         Controls.Add(txtStock)
         Controls.Add(txtNombre)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "frm_Juegos"
         Text = "frm_Juegos"
         CType(picPortada, ComponentModel.ISupportInitialize).EndInit()
@@ -226,4 +261,6 @@ Partial Class frm_Juegos
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents lblID As Label
 End Class
