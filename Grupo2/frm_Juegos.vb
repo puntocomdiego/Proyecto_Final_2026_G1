@@ -1,9 +1,11 @@
 ﻿Imports System.IO
+Imports Proyecto_Final_2026_G1.cls_Productos_Datos
 
 
 Public Class frm_Juegos
 
-    Private objJuego As New CLS_PRODUCTOS()
+    Private objJuego As New cls_Productos_Datos
+
     Private objCat As New cls_categorias_datos()
     Private idJuegoSeleccionado As Integer = 0
     Private rutaImagenOrigen As String = ""
@@ -79,44 +81,56 @@ Public Class frm_Juegos
 
     ' Botón Guardar (Alta / Modificación)
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        If Not ValidarCampos() Then Exit Sub
 
-        Try
-            Dim rutaGuardada As String = ""
-            If Not String.IsNullOrEmpty(rutaImagenOrigen) Then
-                Dim carpetaDestino As String = Path.Combine(Application.StartupPath, "Portadas")
-                If Not Directory.Exists(carpetaDestino) Then Directory.CreateDirectory(carpetaDestino)
 
-                rutaGuardada = Path.Combine("Portadas", Guid.NewGuid().ToString() & Path.GetExtension(rutaImagenOrigen))
-                File.Copy(rutaImagenOrigen, Path.Combine(Application.StartupPath, rutaGuardada), True)
-            Else
-                rutaGuardada = If(idJuegoSeleccionado > 0, objJuego.Portada, "")
-            End If
 
-            objJuego.Id = idJuegoSeleccionado
-            objJuego.Nombre = txtNombre.Text.Trim()
-            objJuego.IdCategoria = Convert.ToInt32(cmbCategoria.SelectedValue)
-            objJuego.Precio = Convert.ToDouble(txtPrecio.Text)
-            objJuego.Stock = Convert.ToInt32(txtStock.Text)
-            objJuego.FechaIngreso = dtpFechaIngreso.Value
-            objJuego.Portada = rutaGuardada
+        'If Not ValidarCampos() Then Exit Sub
 
-            Dim exito As Boolean = False
-            If idJuegoSeleccionado = 0 Then
-                exito = objJuego.Guardar()
-                MessageBox.Show("Juego guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                exito = objJuego.Modificar()
-                MessageBox.Show("Juego modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
+        'Dim objJuego1 As New CLS_PRODUCTOS(txtNombre.Text,
+        ' Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToDouble(txtPrecio.Text), Convert.ToInt32(txtStock.Text), dtpFechaIngreso.Value, rutaImagenOrigen)
 
-            If exito Then
-                CargarGridJuegos()
-                LimpiarFormulario()
-            End If
-        Catch ex As Exception
-            MessageBox.Show("Error al guardar: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+
+
+
+        ''  objJuego1. = Integer.Parse(txtCodigo.Text)
+
+
+        'Try
+        '    Dim rutaGuardada As String = ""
+        '    If Not String.IsNullOrEmpty(rutaImagenOrigen) Then
+        '        Dim carpetaDestino As String = Path.Combine(Application.StartupPath, "Portadas")
+        '        If Not Directory.Exists(carpetaDestino) Then Directory.CreateDirectory(carpetaDestino)
+
+        '        rutaGuardada = Path.Combine("Portadas", Guid.NewGuid().ToString() & Path.GetExtension(rutaImagenOrigen))
+        '        File.Copy(rutaImagenOrigen, Path.Combine(Application.StartupPath, rutaGuardada), True)
+        '    Else
+        '        rutaGuardada = If(idJuegoSeleccionado > 0, objJuego.Portada, "")
+        '    End If
+
+        '    objJuego.Id = idJuegoSeleccionado
+        '    objJuego.Nombre = txtNombre.Text.Trim()
+        '    objJuego.IdCategoria = Convert.ToInt32(cmbCategoria.SelectedValue)
+        '    objJuego.Precio = Convert.ToDouble(txtPrecio.Text)
+        '    objJuego.Stock = Convert.ToInt32(txtStock.Text)
+        '    objJuego.FechaIngreso = dtpFechaIngreso.Value
+        '    objJuego.Portada = rutaGuardada
+
+        '    Dim exito As Boolean = False
+        '    If idJuegoSeleccionado = 0 Then
+        '        exito = objJuego.Guardar()
+        '        MessageBox.Show("Juego guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        '    Else
+        '        exito = objJuego.Modificar()
+        '        MessageBox.Show("Juego modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        '    End If
+
+        '    If exito Then
+        '        CargarGridJuegos()
+        '        LimpiarFormulario()
+        '    End If
+        'Catch ex As Exception
+        '    MessageBox.Show("Error al guardar: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'End Try
     End Sub
 
     ' Cargar datos al hacer clic en una fila del DataGridView
@@ -133,10 +147,10 @@ Public Class frm_Juegos
             Dim rutaFoto As String = row.Cells("portada").Value.ToString()
             If Not String.IsNullOrEmpty(rutaFoto) AndAlso File.Exists(Path.Combine(Application.StartupPath, rutaFoto)) Then
                 picPortada.ImageLocation = Path.Combine(Application.StartupPath, rutaFoto)
-                objJuego.Portada = rutaFoto
+                'objJuego.Portada = rutaFoto
             Else
                 picPortada.Image = Nothing
-                objJuego.Portada = ""
+                'objJuego.Portada = ""
             End If
         End If
     End Sub
