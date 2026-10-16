@@ -159,11 +159,11 @@ Public Class frm_Juegos
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If idJuegoSeleccionado > 0 Then
             If MessageBox.Show("¿Desea eliminar el juego seleccionado?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                If objJuego.Eliminar(idJuegoSeleccionado) Then
-                    MessageBox.Show("Juego eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    CargarGridJuegos()
-                    LimpiarFormulario()
-                End If
+                'If objJuego.Eliminar(idJuegoSeleccionado) Then
+                '    MessageBox.Show("Juego eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                '    CargarGridJuegos()
+                '    LimpiarFormulario()
+                'End If
             End If
         Else
             MessageBox.Show("Seleccione un juego del listado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
