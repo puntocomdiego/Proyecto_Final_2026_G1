@@ -17,6 +17,18 @@ Public Class CLS_PRODUCTOS
     Private Shared ReadOnly cadenaConexion As String =
     $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={ruta};"
     ' Obtenemos la conexión desde el módulo común del proyecto
+    Public Sub New()
+        ' Constructor vacío: crear el objeto y cargar sus datos después.
+    End Sub
+    Public Sub New(nombre As String, idCategoria As Integer, precio As Double, stock As Integer, fechaIngreso As Date, portada As String)
+        Me.Nombre = nombre
+        Me.IdCategoria = idCategoria
+        Me.Precio = precio
+        Me.Stock = stock
+        Me.FechaIngreso = fechaIngreso
+        Me.Portada = portada
+
+    End Sub
 
 End Class
 
