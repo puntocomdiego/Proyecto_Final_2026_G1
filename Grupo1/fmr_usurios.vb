@@ -1,4 +1,22 @@
-﻿Public Class fmr_usurios
+﻿
+
+Public Class fmr_usurios
+
+    Private Sub MostrarFoto(ruta As String)
+        Try
+            If Not String.IsNullOrEmpty(ruta) AndAlso IO.File.Exists(ruta) Then
+                Using fs As New IO.FileStream(ruta, IO.FileMode.Open, IO.FileAccess.Read)
+                    picfoto.Image = Image.FromStream(fs)
+                End Using
+            Else
+                picfoto.Image = Nothing
+            End If
+        Catch
+            picfoto.Image = Nothing
+        End Try
+    End Sub
+
+
 
 
     Private datos As New cls_usuarios_datos()
@@ -21,6 +39,9 @@
         dgvusuarios.Columns("contrasena").HeaderText = "Contraseña"
         dgvusuarios.Columns("fecha_creacion").HeaderText = "Fecha de creación"
         dgvusuarios.Columns("fecha_creacion").DefaultCellStyle.Format = "d"
+        dgvusuarios.Columns("foto").HeaderText = "Ruta de la foto"
+
+
     End Sub
 
     Private Sub dgvusuarios_SelectionChanged(sender As Object, e As EventArgs) Handles dgvusuarios.SelectionChanged
@@ -30,6 +51,9 @@
         txtapellido.Text = dgvusuarios.CurrentRow.Cells("apellido").Value.ToString()
         txtnomusuario.Text = dgvusuarios.CurrentRow.Cells("usuario").Value.ToString()
         txtcontra.Text = dgvusuarios.CurrentRow.Cells("contrasena").Value.ToString()
+        rutaFoto = dgvusuarios.CurrentRow.Cells("foto").Value.ToString()
+        MostrarFoto(rutaFoto)
+
     End Sub
 
     Private Sub fmr_usurios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -54,11 +78,12 @@
         End Try
     End Sub
 
-    Private Sub btnmodificar_Click(sender As Object, e As EventArgs) Handles btnmodificar.Click
+    Private Sub btnmodificar_Click(sender As Object, e As EventArgs) Handles btnmodificar.Click ''''''''''''''''
         If dgvusuarios.CurrentRow Is Nothing Then Exit Sub
         If Not DatosValidos() Then Exit Sub
         Try
             Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now)
+
             u.Id = Integer.Parse(dgvusuarios.CurrentRow.Cells("id").Value.ToString())
             If datos.Modificar(u) Then MostrarUsuarios(datos.Listar())
         Catch ex As Exception
@@ -109,5 +134,14 @@
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Limpiar()
+    End Sub
+
+    Private Sub btnfoto_Click(sender As Object, e As EventArgs) Handles btnfoto.Click
+        ofdfoto.Filter = "Imágenes|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
+        If ofdfoto.ShowDialog() = DialogResult.OK Then
+            rutaFoto = ofdfoto.FileName
+            MostrarFoto(rutaFoto)
+        End If
+
     End Sub
 End Class

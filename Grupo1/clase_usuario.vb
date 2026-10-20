@@ -8,6 +8,8 @@ Public Class clase_usuario
     Public Property NombreUsuario As String
     Public Property Contrasena As String
     Public Property FechaCreacion As Date
+    Public Property Foto As String
+
 
     Public Sub New()
     End Sub
@@ -19,6 +21,7 @@ Public Class clase_usuario
         Me.NombreUsuario = nombreUsuario
         Me.Contrasena = contrasena
         Me.FechaCreacion = fechaCreacion
+        Me.Foto = Foto
     End Sub
 
 End Class

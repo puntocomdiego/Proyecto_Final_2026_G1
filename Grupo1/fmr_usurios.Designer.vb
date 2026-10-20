@@ -37,12 +37,16 @@ Partial Class fmr_usurios
         btneliminar = New Button()
         Button5 = New Button()
         GroupBox1 = New GroupBox()
+        btnfoto = New Button()
         txtbuscar = New TextBox()
         Label6 = New Label()
         dgvusuarios = New DataGridView()
+        picfoto = New PictureBox()
+        ofdfoto = New OpenFileDialog()
         gbx_usuarioinfo.SuspendLayout()
         GroupBox1.SuspendLayout()
         CType(dgvusuarios, ComponentModel.ISupportInitialize).BeginInit()
+        CType(picfoto, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
@@ -179,15 +183,26 @@ Partial Class fmr_usurios
         ' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(btnfoto)
         GroupBox1.Controls.Add(btneliminar)
         GroupBox1.Controls.Add(btnnuevo)
         GroupBox1.Controls.Add(btnmodificar)
         GroupBox1.Location = New Point(541, 57)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(200, 202)
+        GroupBox1.Size = New Size(200, 265)
         GroupBox1.TabIndex = 16
         GroupBox1.TabStop = False
         GroupBox1.Text = "GroupBox1"
+        ' 
+        ' btnfoto
+        ' 
+        btnfoto.ImageAlign = ContentAlignment.MiddleLeft
+        btnfoto.Location = New Point(35, 198)
+        btnfoto.Name = "btnfoto"
+        btnfoto.Size = New Size(122, 33)
+        btnfoto.TabIndex = 14
+        btnfoto.Text = "foto"
+        btnfoto.UseVisualStyleBackColor = True
         ' 
         ' txtbuscar
         ' 
@@ -214,12 +229,26 @@ Partial Class fmr_usurios
         dgvusuarios.Size = New Size(580, 209)
         dgvusuarios.TabIndex = 18
         ' 
+        ' picfoto
+        ' 
+        picfoto.Location = New Point(641, 401)
+        picfoto.Name = "picfoto"
+        picfoto.Size = New Size(275, 209)
+        picfoto.SizeMode = PictureBoxSizeMode.AutoSize
+        picfoto.TabIndex = 19
+        picfoto.TabStop = False
+        ' 
+        ' ofdfoto
+        ' 
+        ofdfoto.FileName = "OpenFileDialog1"
+        ' 
         ' fmr_usurios
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(962, 692)
+        Controls.Add(picfoto)
         Controls.Add(dgvusuarios)
         Controls.Add(Label6)
         Controls.Add(txtbuscar)
@@ -235,6 +264,7 @@ Partial Class fmr_usurios
         gbx_usuarioinfo.PerformLayout()
         GroupBox1.ResumeLayout(False)
         CType(dgvusuarios, ComponentModel.ISupportInitialize).EndInit()
+        CType(picfoto, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -256,5 +286,8 @@ Partial Class fmr_usurios
     Friend WithEvents txtbuscar As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents dgvusuarios As DataGridView
+    Friend WithEvents btnfoto As Button
+    Friend WithEvents picfoto As PictureBox
+    Friend WithEvents ofdfoto As OpenFileDialog
 
 End Class
