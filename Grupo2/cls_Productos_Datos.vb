@@ -10,17 +10,18 @@ Public Class cls_Productos_Datos
     End Function
 
     Public Function AgregarJuego(p As CLS_PRODUCTOS) As Boolean
-        'Using cn As New OleDbConnection(cadenaConexion)
-        '    Dim sql As String =
-        '    "INSERT INTO Productos (descripcion, precio, foto) VALUES (?, ?, ?)"
-        '    Using cmd As New OleDbCommand(sql, cn)
-        '        cmd.Parameters.AddWithValue("?", p.Descripcion)
-        '        cmd.Parameters.AddWithValue("?", p.Precio)
-        '        cmd.Parameters.AddWithValue("?", p.Foto)
-        '        cn.Open()
-        '        Return cmd.ExecuteNonQuery() > 0
-        '    End Using
-        'End Using
+        Using cn As New OleDbConnection(cadenaConexion)
+            Dim sql As String =
+            "INSERT INTO Productos (descripcion, precio, foto) VALUES (?, ?, ?)"
+            Using cmd As New OleDbCommand(sql, cn)
+                cmd.Parameters.AddWithValue("?", p.Nombre)
+                cmd.Parameters.AddWithValue("?", p.Precio)
+                cmd.Parameters.AddWithValue("?", p.Stock)
+                cmd.Parameters.AddWithValue("?", p.IdCategoria)
+                cn.Open()
+                Return cmd.ExecuteNonQuery() > 0
+            End Using
+        End Using
     End Function
 
     Public Function ActualizarJuego(juego As CLS_PRODUCTOS) As Boolean
