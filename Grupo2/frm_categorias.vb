@@ -56,7 +56,9 @@
     End Sub
 
     Private Sub frm_categorias_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Timer1.Interval = 1000      ' 1 segundo
+        Timer1.Enabled = True
+        lblHora.Text = DateTime.Now.ToString("HH:mm:ss")
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btneliminar.Click
@@ -97,5 +99,69 @@
 
     Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnlimpiar.Click
         LimpiarCampos()
+    End Sub
+
+    Private Sub txtnombre_TextChanged(sender As Object, e As EventArgs) Handles txtnombre.TextChanged
+
+    End Sub
+
+    ' Variable a nivel de formulario (fuera de cualquier Sub)
+    Private textoBusqueda As String = ""
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        textoBusqueda = TXTBUSCAR.Text.Trim()
+        dgvcategorias.Invalidate()   ' fuerza a redibujar el grid
+    End Sub
+
+    Private Sub dgvcategorias_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) _
+    Handles dgvcategorias.CellPainting
+
+        If e.RowIndex < 0 OrElse e.ColumnIndex < 0 OrElse textoBusqueda = "" Then Return
+
+        Dim valor As String = Convert.ToString(e.Value)
+        If valor = "" OrElse valor.IndexOf(textoBusqueda, StringComparison.CurrentCultureIgnoreCase) < 0 Then Return
+
+        ' Dibujamos nosotros la celda
+        e.Handled = True
+        Dim seleccionada As Boolean = (e.State And DataGridViewElementStates.Selected) <> 0
+        e.PaintBackground(e.ClipBounds, seleccionada)
+
+        Dim fuente As Font = e.CellStyle.Font
+        Dim flags As TextFormatFlags = TextFormatFlags.Left Or TextFormatFlags.VerticalCenter Or
+                                   TextFormatFlags.NoPadding Or TextFormatFlags.NoPrefix
+        Dim tam As New Size(Integer.MaxValue, e.CellBounds.Height)
+        Dim xInicio As Integer = e.CellBounds.X + 3
+
+        ' Pintar de amarillo SOLO las letras que coinciden
+        Dim pos As Integer = valor.IndexOf(textoBusqueda, StringComparison.CurrentCultureIgnoreCase)
+        While pos >= 0
+            Dim anchoAntes As Integer = If(pos = 0, 0,
+            TextRenderer.MeasureText(e.Graphics, valor.Substring(0, pos), fuente, tam, flags).Width)
+            Dim anchoHasta As Integer =
+            TextRenderer.MeasureText(e.Graphics, valor.Substring(0, pos + textoBusqueda.Length), fuente, tam, flags).Width
+
+            Dim rectAmarillo As New Rectangle(xInicio + anchoAntes, e.CellBounds.Y + 2,
+                                          anchoHasta - anchoAntes, e.CellBounds.Height - 4)
+            e.Graphics.FillRectangle(Brushes.Yellow, rectAmarillo)
+
+            pos = valor.IndexOf(textoBusqueda, pos + textoBusqueda.Length, StringComparison.CurrentCultureIgnoreCase)
+        End While
+
+        ' Dibujar el texto encima
+        Dim colorTexto As Color = If(seleccionada, e.CellStyle.SelectionForeColor, e.CellStyle.ForeColor)
+        Dim rectTexto As New Rectangle(xInicio, e.CellBounds.Y, e.CellBounds.Width - 3, e.CellBounds.Height)
+        TextRenderer.DrawText(e.Graphics, valor, fuente, rectTexto, colorTexto, flags)
+
+        ' Dibujar los bordes de la celda
+        e.Paint(e.ClipBounds, DataGridViewPaintParts.Border)
+    End Sub
+
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        lblHora.Text = DateTime.Now.ToString("HH:mm:ss")
+    End Sub
+
+    Private Sub lblHora_Click(sender As Object, e As EventArgs) Handles lblHora.Click
+
     End Sub
 End Class
