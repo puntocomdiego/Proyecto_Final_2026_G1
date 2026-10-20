@@ -68,6 +68,8 @@ Partial Class Login
         ' 
         ' btnIniciarSesion
         ' 
+        btnIniciarSesion.BackColor = SystemColors.GradientActiveCaption
+        btnIniciarSesion.FlatStyle = FlatStyle.Popup
         btnIniciarSesion.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnIniciarSesion.Image = CType(resources.GetObject("btnIniciarSesion.Image"), Image)
         btnIniciarSesion.ImageAlign = ContentAlignment.MiddleRight
@@ -77,10 +79,12 @@ Partial Class Login
         btnIniciarSesion.TabIndex = 4
         btnIniciarSesion.Text = "Iniciar Sesion"
         btnIniciarSesion.TextAlign = ContentAlignment.MiddleLeft
-        btnIniciarSesion.UseVisualStyleBackColor = True
+        btnIniciarSesion.UseVisualStyleBackColor = False
         ' 
         ' btnMostrar
         ' 
+        btnMostrar.BackColor = SystemColors.GradientActiveCaption
+        btnMostrar.FlatStyle = FlatStyle.Popup
         btnMostrar.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnMostrar.Location = New Point(348, 71)
         btnMostrar.Name = "btnMostrar"
@@ -88,12 +92,13 @@ Partial Class Login
         btnMostrar.TabIndex = 3
         btnMostrar.Text = "👁"
         btnMostrar.TextAlign = ContentAlignment.TopLeft
-        btnMostrar.UseVisualStyleBackColor = True
+        btnMostrar.UseVisualStyleBackColor = False
         ' 
         ' Login
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(414, 183)
         Controls.Add(btnMostrar)
         Controls.Add(btnIniciarSesion)

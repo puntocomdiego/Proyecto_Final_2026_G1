@@ -34,7 +34,7 @@ Partial Class SPLASH
         ' 
         lblTitulo.AutoSize = True
         lblTitulo.Font = New Font("News701 BT", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblTitulo.Location = New Point(27, 76)
+        lblTitulo.Location = New Point(32, 75)
         lblTitulo.Name = "lblTitulo"
         lblTitulo.Size = New Size(327, 78)
         lblTitulo.TabIndex = 0
@@ -76,7 +76,7 @@ Partial Class SPLASH
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.Ivory
+        BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(398, 280)
         Controls.Add(lblEstado)
         Controls.Add(lblPorcentaje)
