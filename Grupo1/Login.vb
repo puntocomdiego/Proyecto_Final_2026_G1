@@ -59,7 +59,8 @@ Public Class Login
                     rol = "vendedor"
                     MsgBox("Usuario autentificado correctamente como 'Vendedor'.", MsgBoxStyle.OkOnly, "Login")
                     Me.Close()
-                    fmr_usurios.Show()
+                    MDIParent1.Show()
+                    MDIParent1.UsuariosToolStripMenuItem.Visible = False
                 End If
 
                 Me.Hide()
