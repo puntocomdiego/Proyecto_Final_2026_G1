@@ -179,5 +179,9 @@ Public Class frm_Juegos
         picPortada.Image = Nothing
         rutaImagenOrigen = ""
     End Sub
+
+    Private Sub picPortada_Click(sender As Object, e As EventArgs) Handles picPortada.Click
+
+    End Sub
 End Class
 

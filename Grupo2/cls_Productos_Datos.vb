@@ -24,32 +24,50 @@ Public Class cls_Productos_Datos
         End Using
     End Function
 
-    Public Function ActualizarJuego(juego As CLS_PRODUCTOS) As Boolean
-
+    Public Function ActualizarJuego(p As CLS_PRODUCTOS) As Boolean
+        Using cn As New OleDbConnection(cadenaConexion)
+            Dim sql As String =
+            "UPDATE Productos SET descripcion = ?, precio = ?, foto = ? WHERE codigo = ?"
+            Using cmd As New OleDbCommand(sql, cn)
+                cmd.Parameters.AddWithValue("?", p.Nombre)
+                cmd.Parameters.AddWithValue("?", p.Precio)
+                cmd.Parameters.AddWithValue("?", p.Stock)
+                cmd.Parameters.AddWithValue("?", p.Id)
+                cn.Open()
+                Return cmd.ExecuteNonQuery() > 0
+            End Using
+        End Using
     End Function
 
-    Public Function EliminarJuego(id As Integer) As Boolean
-
+    Public Function EliminarJuego(codigo As Integer) As Boolean
+        Using cn As New OleDbConnection(cadenaConexion)
+            Dim sql As String = "DELETE FROM Productos WHERE codigo = ?"
+            Using cmd As New OleDbCommand(sql, cn)
+                cmd.Parameters.AddWithValue("?", codigo)
+                cn.Open()
+                Return cmd.ExecuteNonQuery() > 0
+            End Using
+        End Using
     End Function
 
-    Public Function ObtenerJuegoPorId(id As Integer) As CLS_PRODUCTOS
+    'Public Function ObtenerJuegoPorId(id As Integer) As CLS_PRODUCTOS
 
-    End Function
+    'End Function
 
-    ' ---------- CATEGORÍAS ----------
+    '' ---------- CATEGORÍAS ----------
 
-    Public Function ListarCategorias() As DataTable
+    'Public Function ListarCategorias() As DataTable
 
-    End Function
+    'End Function
 
-    ' Una sola función (antes estaba duplicada)
-    Public Function ObtenerNombreCategoriaPorId(id As Integer) As String
+    '' Una sola función (antes estaba duplicada)
+    'Public Function ObtenerNombreCategoriaPorId(id As Integer) As String
 
-    End Function
+    'End Function
 
-    Public Function ObtenerIdCategoriaPorNombre(nombre As String) As Integer
+    'Public Function ObtenerIdCategoriaPorNombre(nombre As String) As Integer
 
-    End Function
+    'End Function
 
 
 
