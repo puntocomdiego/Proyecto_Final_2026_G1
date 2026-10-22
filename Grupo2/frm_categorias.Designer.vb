@@ -34,19 +34,25 @@ Partial Class frm_categorias
         Label4 = New Label()
         TXTBUSCAR = New TextBox()
         Label3 = New Label()
-        btnBuscar = New Button()
         lblHora = New Label()
         Timer1 = New Timer(components)
+        btntutorial = New Button()
+        Label5 = New Label()
+        Label6 = New Label()
+        Label7 = New Label()
+        Label8 = New Label()
+        btnBuscar = New Button()
+        lblcoincidencias = New Label()
         CType(dgvcategorias, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' dgvcategorias
         ' 
         dgvcategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvcategorias.Location = New Point(303, 108)
+        dgvcategorias.Location = New Point(303, 110)
         dgvcategorias.Name = "dgvcategorias"
         dgvcategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvcategorias.Size = New Size(561, 184)
+        dgvcategorias.Size = New Size(420, 184)
         dgvcategorias.TabIndex = 0
         ' 
         ' txtnombre
@@ -68,7 +74,7 @@ Partial Class frm_categorias
         ' btnguardar
         ' 
         btnguardar.BackColor = SystemColors.AppWorkspace
-        btnguardar.Location = New Point(43, 231)
+        btnguardar.Location = New Point(-1, 233)
         btnguardar.Name = "btnguardar"
         btnguardar.Size = New Size(169, 47)
         btnguardar.TabIndex = 4
@@ -78,7 +84,7 @@ Partial Class frm_categorias
         ' btneliminar
         ' 
         btneliminar.BackColor = SystemColors.AppWorkspace
-        btneliminar.Location = New Point(43, 284)
+        btneliminar.Location = New Point(1, 286)
         btneliminar.Name = "btneliminar"
         btneliminar.Size = New Size(169, 48)
         btneliminar.TabIndex = 5
@@ -88,7 +94,7 @@ Partial Class frm_categorias
         ' btnlimpiar
         ' 
         btnlimpiar.BackColor = SystemColors.AppWorkspace
-        btnlimpiar.Location = New Point(43, 338)
+        btnlimpiar.Location = New Point(1, 340)
         btnlimpiar.Name = "btnlimpiar"
         btnlimpiar.Size = New Size(169, 47)
         btnlimpiar.TabIndex = 6
@@ -117,7 +123,7 @@ Partial Class frm_categorias
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 54F)
-        Label4.Location = New Point(89, -4)
+        Label4.Location = New Point(1, -1)
         Label4.Name = "Label4"
         Label4.Size = New Size(449, 96)
         Label4.TabIndex = 10
@@ -126,49 +132,122 @@ Partial Class frm_categorias
         ' TXTBUSCAR
         ' 
         TXTBUSCAR.BackColor = SystemColors.ScrollBar
-        TXTBUSCAR.Location = New Point(303, 338)
+        TXTBUSCAR.Location = New Point(775, 181)
         TXTBUSCAR.Name = "TXTBUSCAR"
-        TXTBUSCAR.Size = New Size(561, 23)
+        TXTBUSCAR.Size = New Size(246, 23)
         TXTBUSCAR.TabIndex = 11
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(549, 317)
+        Label3.Location = New Point(867, 151)
         Label3.Name = "Label3"
         Label3.Size = New Size(54, 15)
         Label3.TabIndex = 12
         Label3.Text = "BUSCAR:"
         ' 
+        ' lblHora
+        ' 
+        lblHora.AutoSize = True
+        lblHora.Font = New Font("Rockwell Condensed", 40F)
+        lblHora.Location = New Point(526, 26)
+        lblHora.Name = "lblHora"
+        lblHora.Size = New Size(54, 64)
+        lblHora.TabIndex = 14
+        lblHora.Text = "..."
+        ' 
+        ' Timer1
+        ' 
+        ' 
+        ' btntutorial
+        ' 
+        btntutorial.BackColor = SystemColors.AppWorkspace
+        btntutorial.Location = New Point(-1, 407)
+        btntutorial.Name = "btntutorial"
+        btntutorial.Size = New Size(148, 41)
+        btntutorial.TabIndex = 15
+        btntutorial.Text = "Como usar?"
+        btntutorial.UseVisualStyleBackColor = False
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Font = New Font("Segoe UI", 10F)
+        Label5.Location = New Point(167, 314)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(1057, 23)
+        Label5.TabIndex = 16
+        Label5.Text = "GUARDAR: Coloca el nombre en la caja de texto y descripcion antes de tocar el boton. Luego de haber colocado los parametros toca el boton y se guardara automaticamente"
+        Label5.TextAlign = ContentAlignment.MiddleCenter
+        Label5.UseCompatibleTextRendering = True
+        Label5.Visible = False
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Font = New Font("Segoe UI", 10F)
+        Label6.Location = New Point(176, 337)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(805, 19)
+        Label6.TabIndex = 17
+        Label6.Text = "ELIMINAR: Toca la flecha al inicio de la linea que quieras borrar para seleccionarla y luego toca el boton eliminar para borrar la linea"
+        Label6.Visible = False
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Font = New Font("Segoe UI", 10F)
+        Label7.Location = New Point(176, 354)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(884, 19)
+        Label7.TabIndex = 18
+        Label7.Text = "LIMPIAR:Al colocar un texto que te hayas arrepentido oprime el boton para eliminar lo que colocaste en las cajas de texto nombre y descripcion"
+        Label7.Visible = False
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Font = New Font("Segoe UI", 10F)
+        Label8.Location = New Point(176, 375)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(868, 19)
+        Label8.TabIndex = 19
+        Label8.Text = "APLICAR PARAMETROS: Coloca una letra o palabra en la caja de texto buscar y al tocar el boton se remarcaran las letras que hayas colocado "
+        Label8.Visible = False
+        ' 
         ' btnBuscar
         ' 
         btnBuscar.BackColor = SystemColors.AppWorkspace
-        btnBuscar.Location = New Point(372, 406)
+        btnBuscar.Location = New Point(798, 210)
         btnBuscar.Name = "btnBuscar"
-        btnBuscar.Size = New Size(425, 70)
+        btnBuscar.Size = New Size(206, 70)
         btnBuscar.TabIndex = 13
         btnBuscar.Text = "APLICAR PARAMETROS"
         btnBuscar.UseVisualStyleBackColor = False
         ' 
-        ' lblHora
+        ' lblcoincidencias
         ' 
-        lblHora.AutoSize = True
-        lblHora.Font = New Font("Rockwell Condensed", 25F)
-        lblHora.Location = New Point(616, 31)
-        lblHora.Name = "lblHora"
-        lblHora.Size = New Size(87, 40)
-        lblHora.TabIndex = 14
-        lblHora.Text = "Label5"
-        ' 
-        ' Timer1
-        ' 
+        lblcoincidencias.AutoSize = True
+        lblcoincidencias.Font = New Font("Segoe UI", 45F)
+        lblcoincidencias.Location = New Point(303, 313)
+        lblcoincidencias.Name = "lblcoincidencias"
+        lblcoincidencias.Size = New Size(74, 81)
+        lblcoincidencias.TabIndex = 20
+        lblcoincidencias.Text = "..."
         ' 
         ' frm_categorias
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
-        ClientSize = New Size(876, 500)
+        BackgroundImageLayout = ImageLayout.Zoom
+        ClientSize = New Size(1110, 453)
+        Controls.Add(lblcoincidencias)
+        Controls.Add(Label8)
+        Controls.Add(Label7)
+        Controls.Add(Label6)
+        Controls.Add(Label5)
+        Controls.Add(btntutorial)
         Controls.Add(lblHora)
         Controls.Add(btnBuscar)
         Controls.Add(Label3)
@@ -182,6 +261,7 @@ Partial Class frm_categorias
         Controls.Add(txtdescripcion)
         Controls.Add(txtnombre)
         Controls.Add(dgvcategorias)
+        KeyPreview = True
         Name = "frm_categorias"
         Text = "CATEGORIAS"
         CType(dgvcategorias, ComponentModel.ISupportInitialize).EndInit()
@@ -200,7 +280,13 @@ Partial Class frm_categorias
     Friend WithEvents Label4 As Label
     Friend WithEvents TXTBUSCAR As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents btnBuscar As Button
     Friend WithEvents lblHora As Label
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents btntutorial As Button
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents btnBuscar As Button
+    Friend WithEvents lblcoincidencias As Label
 End Class
