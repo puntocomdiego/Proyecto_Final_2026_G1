@@ -29,6 +29,7 @@ Partial Class Login
         txtContraseña = New TextBox()
         btnIniciarSesion = New Button()
         btnMostrar = New Button()
+        Button1 = New Button()
         SuspendLayout()
         ' 
         ' lblUsuario
@@ -86,7 +87,7 @@ Partial Class Login
         btnMostrar.BackColor = SystemColors.GradientActiveCaption
         btnMostrar.FlatStyle = FlatStyle.Popup
         btnMostrar.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnMostrar.Location = New Point(348, 71)
+        btnMostrar.Location = New Point(348, 66)
         btnMostrar.Name = "btnMostrar"
         btnMostrar.Size = New Size(46, 40)
         btnMostrar.TabIndex = 3
@@ -94,12 +95,26 @@ Partial Class Login
         btnMostrar.TextAlign = ContentAlignment.TopLeft
         btnMostrar.UseVisualStyleBackColor = False
         ' 
+        ' Button1
+        ' 
+        Button1.BackColor = SystemColors.GradientActiveCaption
+        Button1.FlatStyle = FlatStyle.Popup
+        Button1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Button1.ImageAlign = ContentAlignment.MiddleRight
+        Button1.Location = New Point(335, 143)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(67, 28)
+        Button1.TabIndex = 6
+        Button1.Text = "Salir"
+        Button1.UseVisualStyleBackColor = False
+        ' 
         ' Login
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(414, 183)
+        Controls.Add(Button1)
         Controls.Add(btnMostrar)
         Controls.Add(btnIniciarSesion)
         Controls.Add(txtContraseña)
@@ -118,4 +133,5 @@ Partial Class Login
     Friend WithEvents txtContraseña As TextBox
     Friend WithEvents btnIniciarSesion As Button
     Friend WithEvents btnMostrar As Button
+    Friend WithEvents Button1 As Button
 End Class
