@@ -27,8 +27,8 @@
 
         If pgr.Value = 100 Then
             Timer1.Enabled = False
-            Me.Hide()
             Login.Show()
+            Me.Close()
         End If
 
     End Sub
