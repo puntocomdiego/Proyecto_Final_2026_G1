@@ -22,6 +22,7 @@ Public Class fmr_usurios
     Private datos As New cls_usuarios_datos()
     Private rutaFoto As String = String.Empty
 
+
     Private Sub ConfigurarGrilla()
         dgvusuarios.ReadOnly = True
         dgvusuarios.AllowUserToAddRows = False
@@ -52,8 +53,8 @@ Public Class fmr_usurios
         txtnomusuario.Text = dgvusuarios.CurrentRow.Cells("usuario").Value.ToString()
         txtcontra.Text = dgvusuarios.CurrentRow.Cells("contrasena").Value.ToString()
         rutaFoto = dgvusuarios.CurrentRow.Cells("foto").Value.ToString()
-        MostrarFoto(rutaFoto)
 
+        MostrarFoto(rutaFoto)
     End Sub
 
     Private Sub fmr_usurios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -68,7 +69,8 @@ Public Class fmr_usurios
     Private Sub btnnuevo_Click(sender As Object, e As EventArgs) Handles btnnuevo.Click
         If Not DatosValidos() Then Exit Sub
         Try
-            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now)
+            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now, rutaFoto)
+
             If datos.Agregar(u) Then          ' el objeto datos hace el trabajo
                 MostrarUsuarios(datos.Listar())
                 Limpiar()
@@ -82,12 +84,14 @@ Public Class fmr_usurios
         If dgvusuarios.CurrentRow Is Nothing Then Exit Sub
         If Not DatosValidos() Then Exit Sub
         Try
-            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now)
+            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now, rutaFoto)
+
 
             u.Id = Integer.Parse(dgvusuarios.CurrentRow.Cells("id").Value.ToString())
             If datos.Modificar(u) Then MostrarUsuarios(datos.Listar())
+            MessageBox.Show("se pudo modificar el usuario con exito")
         Catch ex As Exception
-            MessageBox.Show("No se pudo modificar el usuario: " & ex.Message)
+            MessageBox.Show("No se pudo modificar el usuario" & ex.Message)
         End Try
     End Sub
 
@@ -110,6 +114,8 @@ Public Class fmr_usurios
         txtapellido.Clear()
         txtnomusuario.Clear()
         txtcontra.Clear()
+        rutaFoto = String.Empty
+        picfoto.Image = Nothing
     End Sub
 
     Private Function DatosValidos() As Boolean

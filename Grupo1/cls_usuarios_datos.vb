@@ -13,7 +13,7 @@ Public Class cls_usuarios_datos
     Public Function Agregar(u As clase_usuario) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-                "INSERT INTO usuarios (nombre, apellido, usuario, contrasena, fecha_creacion, foto) VALUES (?, ?, ?, ?, ?)"
+                "INSERT INTO usuarios (nombre, apellido, usuario, contrasena, fecha_creacion, foto) VALUES (?, ?, ?, ?, ?, ?)"
             Using cmd As New OleDbCommand(sql, cn)
                 cmd.Parameters.AddWithValue("?", u.Nombre)
                 cmd.Parameters.AddWithValue("?", u.Apellido)
@@ -32,7 +32,7 @@ Public Class cls_usuarios_datos
     Public Function Modificar(u As clase_usuario) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-                "UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ?, contrasena = ?, foto = ? WHERE id = ?"
+    "UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ?, contrasena = ?, foto = ? WHERE id = ?"
             Using cmd As New OleDbCommand(sql, cn)
                 cmd.Parameters.AddWithValue("?", u.Nombre)
                 cmd.Parameters.AddWithValue("?", u.Apellido)
@@ -40,7 +40,7 @@ Public Class cls_usuarios_datos
                 cmd.Parameters.AddWithValue("?", u.Contrasena)
                 cmd.Parameters.AddWithValue("?", u.Foto)
                 cmd.Parameters.AddWithValue("?", u.Id)
-                cmd.Parameters.AddWithValue("?", u.Foto)
+
                 cn.Open()
                 Return cmd.ExecuteNonQuery() > 0
             End Using
@@ -64,7 +64,7 @@ Public Class cls_usuarios_datos
         Dim dt As New DataTable()
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-                "SELECT id, nombre, apellido, usuario, contrasena, fecha_creacion, foto FROM usuarios ORDER BY nombre"
+                "SELECT id, nombre, apellido, usuario, contrasena, fecha_creacion, foto, tipo FROM usuarios ORDER BY nombre"
             Using da As New OleDbDataAdapter(sql, cn)
                 da.Fill(dt)
             End Using
@@ -77,7 +77,7 @@ Public Class cls_usuarios_datos
         Dim dt As New DataTable()
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-                "SELECT id, nombre, apellido, usuario, contrasena, fecha_creacion, foto FROM usuarios " &
+                "SELECT id, nombre, apellido, usuario, contrasena, fecha_creacion, foto, tipo FROM usuarios " &
                 "WHERE nombre LIKE ? ORDER BY nombre"
             Using cmd As New OleDbCommand(sql, cn)
                 cmd.Parameters.AddWithValue("?", "%" & texto & "%")

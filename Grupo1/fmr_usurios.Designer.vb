@@ -32,6 +32,9 @@ Partial Class fmr_usurios
         txtnomusuario = New TextBox()
         txtapellido = New TextBox()
         gbx_usuarioinfo = New GroupBox()
+        rdbadmin = New RadioButton()
+        rdbvendedor = New RadioButton()
+        Label7 = New Label()
         btnnuevo = New Button()
         btnmodificar = New Button()
         btneliminar = New Button()
@@ -119,6 +122,9 @@ Partial Class fmr_usurios
         ' 
         ' gbx_usuarioinfo
         ' 
+        gbx_usuarioinfo.Controls.Add(rdbadmin)
+        gbx_usuarioinfo.Controls.Add(rdbvendedor)
+        gbx_usuarioinfo.Controls.Add(Label7)
         gbx_usuarioinfo.Controls.Add(Label3)
         gbx_usuarioinfo.Controls.Add(Label1)
         gbx_usuarioinfo.Controls.Add(txtapellido)
@@ -130,10 +136,42 @@ Partial Class fmr_usurios
         gbx_usuarioinfo.Font = New Font("Modern No. 20", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         gbx_usuarioinfo.Location = New Point(36, 33)
         gbx_usuarioinfo.Name = "gbx_usuarioinfo"
-        gbx_usuarioinfo.Size = New Size(459, 264)
+        gbx_usuarioinfo.Size = New Size(459, 366)
         gbx_usuarioinfo.TabIndex = 10
         gbx_usuarioinfo.TabStop = False
         gbx_usuarioinfo.Text = "Usuario info"
+        ' 
+        ' rdbadmin
+        ' 
+        rdbadmin.AutoSize = True
+        rdbadmin.Location = New Point(218, 309)
+        rdbadmin.Name = "rdbadmin"
+        rdbadmin.Size = New Size(58, 19)
+        rdbadmin.TabIndex = 12
+        rdbadmin.TabStop = True
+        rdbadmin.Text = "Admin"
+        rdbadmin.UseVisualStyleBackColor = True
+        ' 
+        ' rdbvendedor
+        ' 
+        rdbvendedor.AutoSize = True
+        rdbvendedor.Location = New Point(218, 267)
+        rdbvendedor.Name = "rdbvendedor"
+        rdbvendedor.Size = New Size(68, 19)
+        rdbvendedor.TabIndex = 11
+        rdbvendedor.TabStop = True
+        rdbvendedor.Text = "vendedor"
+        rdbvendedor.UseVisualStyleBackColor = True
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Font = New Font("Modern No. 20", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label7.Location = New Point(6, 267)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(45, 22)
+        Label7.TabIndex = 10
+        Label7.Text = "tipo"
         ' 
         ' btnnuevo
         ' 
@@ -206,7 +244,7 @@ Partial Class fmr_usurios
         ' 
         ' txtbuscar
         ' 
-        txtbuscar.Location = New Point(254, 324)
+        txtbuscar.Location = New Point(254, 419)
         txtbuscar.Name = "txtbuscar"
         txtbuscar.Size = New Size(196, 23)
         txtbuscar.TabIndex = 17
@@ -215,7 +253,7 @@ Partial Class fmr_usurios
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Modern No. 20", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(55, 321)
+        Label6.Location = New Point(55, 416)
         Label6.Name = "Label6"
         Label6.Size = New Size(167, 22)
         Label6.TabIndex = 10
@@ -224,30 +262,29 @@ Partial Class fmr_usurios
         ' dgvusuarios
         ' 
         dgvusuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvusuarios.Location = New Point(22, 401)
+        dgvusuarios.Location = New Point(21, 475)
         dgvusuarios.Name = "dgvusuarios"
         dgvusuarios.Size = New Size(580, 209)
         dgvusuarios.TabIndex = 18
         ' 
         ' picfoto
         ' 
-        picfoto.Location = New Point(641, 401)
+        picfoto.Location = New Point(625, 385)
         picfoto.Name = "picfoto"
-        picfoto.Size = New Size(275, 209)
-        picfoto.SizeMode = PictureBoxSizeMode.AutoSize
+        picfoto.Size = New Size(296, 299)
         picfoto.TabIndex = 19
         picfoto.TabStop = False
         ' 
         ' ofdfoto
         ' 
-        ofdfoto.FileName = "OpenFileDialog1"
+        ofdfoto.FileName = "ingrese una imaguen"
         ' 
         ' fmr_usurios
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
-        ClientSize = New Size(962, 692)
+        ClientSize = New Size(962, 733)
         Controls.Add(picfoto)
         Controls.Add(dgvusuarios)
         Controls.Add(Label6)
@@ -289,5 +326,8 @@ Partial Class fmr_usurios
     Friend WithEvents btnfoto As Button
     Friend WithEvents picfoto As PictureBox
     Friend WithEvents ofdfoto As OpenFileDialog
+    Friend WithEvents rdbadmin As RadioButton
+    Friend WithEvents rdbvendedor As RadioButton
+    Friend WithEvents Label7 As Label
 
 End Class
