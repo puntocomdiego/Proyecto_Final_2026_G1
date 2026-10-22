@@ -6,7 +6,15 @@ Public Class cls_Productos_Datos
     Private Shared ReadOnly cadenaConexion As String =
             $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={ruta};"
     Public Function ListarJuegos() As DataTable
-
+        Dim dt As New DataTable()
+        Using cn As New OleDbConnection(cadenaConexion)
+            Dim sql As String =
+            "SELECT codigo, nombre, precio, stock FROM Productos ORDER BY descripcion"
+            Using da As New OleDbDataAdapter(sql, cn)
+                da.Fill(dt)
+            End Using
+        End Using
+        Return dt
     End Function
 
     Public Function AgregarJuego(p As CLS_PRODUCTOS) As Boolean
