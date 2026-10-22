@@ -58,9 +58,29 @@ Public Class cls_Productos_Datos
         End Using
     End Function
 
-    'Public Function ObtenerJuegoPorId(id As Integer) As CLS_PRODUCTOS
+    Public Function ObtenerJuegoPorId(id As Integer) As CLS_PRODUCTOS
+        Using cn As New OleDbConnection(cadenaConexion)
+            Dim sql As String = "SELECT * FROM Productos WHERE codigo = ?"
+            Using cmd As New OleDbCommand(sql, cn)
+                cmd.Parameters.AddWithValue("?", id)
+                cn.Open()
+                Using reader As OleDbDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        Return New CLS_PRODUCTOS With {
+                            .Id = Convert.ToInt32(reader("codigo")),
+                            .Nombre = reader("descripcion").ToString(),
+                            .Precio = Convert.ToDouble(reader("precio")),
+                            .Stock = Convert.ToInt32(reader("stock")),
+                            .IdCategoria = Convert.ToInt32(reader("id_categoria"))
+                        }
+                    Else
+                        Return Nothing
+                    End If
+                End Using
+            End Using
+        End Using
 
-    'End Function
+    End Function
 
     '' ---------- CATEGORÍAS ----------
 
