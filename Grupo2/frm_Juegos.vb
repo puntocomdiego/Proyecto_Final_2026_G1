@@ -183,5 +183,9 @@ Public Class frm_Juegos
     Private Sub picPortada_Click(sender As Object, e As EventArgs) Handles picPortada.Click
 
     End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+
+    End Sub
 End Class
 

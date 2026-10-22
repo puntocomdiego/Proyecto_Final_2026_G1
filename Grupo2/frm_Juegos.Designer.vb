@@ -191,6 +191,7 @@ Partial Class frm_Juegos
         Label6.Size = New Size(54, 15)
         Label6.TabIndex = 17
         Label6.Text = "Nombre:"
+        Label6.Visible = False
         ' 
         ' lblID
         ' 
@@ -200,6 +201,7 @@ Partial Class frm_Juegos
         lblID.Size = New Size(54, 15)
         lblID.TabIndex = 18
         lblID.Text = "Nombre:"
+        lblID.Visible = False
         ' 
         ' frm_Juegos
         ' 
