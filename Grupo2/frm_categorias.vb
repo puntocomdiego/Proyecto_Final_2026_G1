@@ -110,7 +110,31 @@
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         textoBusqueda = TXTBUSCAR.Text.Trim()
-        dgvcategorias.Invalidate()   ' fuerza a redibujar el grid
+        dgvcategorias.Invalidate()   ' redibuja el grid para marcar las letras
+
+        If textoBusqueda = "" Then
+            lblcoincidencias.Text = ""
+            Return
+        End If
+
+        Dim coincidencias As Integer = 0
+
+        For Each fila As DataGridViewRow In dgvcategorias.Rows
+            If fila.IsNewRow Then Continue For
+
+            For Each celda As DataGridViewCell In fila.Cells
+                Dim valor As String = Convert.ToString(celda.Value)
+                Dim pos As Integer = valor.IndexOf(textoBusqueda, StringComparison.CurrentCultureIgnoreCase)
+
+                While pos >= 0
+                    coincidencias += 1
+                    pos = valor.IndexOf(textoBusqueda, pos + textoBusqueda.Length,
+                                    StringComparison.CurrentCultureIgnoreCase)
+                End While
+            Next
+        Next
+
+        lblcoincidencias.Text = $"Coincidencias: {coincidencias}"
     End Sub
 
     Private Sub dgvcategorias_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) _
@@ -162,6 +186,27 @@
     End Sub
 
     Private Sub lblHora_Click(sender As Object, e As EventArgs) Handles lblHora.Click
+
+    End Sub
+
+    Private Sub btntutorial_MouseEnter(sender As Object, e As EventArgs) Handles btntutorial.MouseEnter
+        Label5.Visible = True
+        Label6.Visible = True
+        Label7.Visible = True
+        Label8.Visible = True
+        lblcoincidencias.Visible = False
+
+    End Sub
+
+    Private Sub btntutorial_MouseLeave(sender As Object, e As EventArgs) Handles btntutorial.MouseLeave
+        Label5.Visible = False
+        Label6.Visible = False
+        Label7.Visible = False
+        Label8.Visible = False
+        lblcoincidencias.Visible = True
+    End Sub
+
+    Private Sub lblcoincidencias_Click(sender As Object, e As EventArgs) Handles lblcoincidencias.Click
 
     End Sub
 End Class
