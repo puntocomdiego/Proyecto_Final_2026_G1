@@ -1,8 +1,62 @@
-﻿Public Class fmr_usurios
+﻿
+
+Public Class fmr_usurios
+
+
+
+
+
+    '    ████████╗██╗   ██╗███╗   ██╗ ██████╗
+    '╚══██╔══╝██║   ██║████╗  ██║██╔════╝
+    '   ██║   ██║   ██║██╔██╗ ██║██║  ███╗                                                                           
+    '   ██║   ██║   ██║██║╚██╗██║██║   ██║                                                                   
+    '   ██║   ╚██████╔╝██║ ╚████║╚██████╔╝                                                            
+    '   ╚═╝    ╚═════╝ ╚═╝  ╚═══╝                                                                           
+
+
+
+    '    ████████╗██╗   ██╗███╗   ██╗ ██████╗
+    '╚══██╔══╝██║   ██║████╗  ██║██╔════╝
+    '   ██║   ██║   ██║██╔██╗ ██║██║  ███╗
+    '   ██║   ██║   ██║██║╚██╗██║██║   ██║
+    '   ██║   ╚██████╔╝██║ ╚████║╚██████╔╝
+    '   ╚═╝    ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝
+
+
+
+    '███████╗ █████╗ ██╗  ██╗██╗   ██╗██████╗
+    '██╔════╝██╔══██╗██║  ██║██║   ██║██╔══██╗
+    '███████╗███████║███████║██║   ██║██████╔╝
+    '╚════██║██╔══██║██╔══██║██║   ██║██╔══██╗
+    '███████║██║  ██║██║  ██║╚██████╔╝██║  ██║
+    '╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   
+    'abrime
+
+
+
+
+
+
+    Private Sub MostrarFoto(ruta As String)
+        Try
+            If Not String.IsNullOrEmpty(ruta) AndAlso IO.File.Exists(ruta) Then
+                Using fs As New IO.FileStream(ruta, IO.FileMode.Open, IO.FileAccess.Read)
+                    picfoto.Image = Image.FromStream(fs)
+                End Using
+            Else
+                picfoto.Image = Nothing
+            End If
+        Catch
+            picfoto.Image = Nothing
+        End Try
+    End Sub
+
+
 
 
     Private datos As New cls_usuarios_datos()
     Private rutaFoto As String = String.Empty
+
 
     Private Sub ConfigurarGrilla()
         dgvusuarios.ReadOnly = True
@@ -19,17 +73,27 @@
         dgvusuarios.Columns("apellido").HeaderText = "Apellido"
         dgvusuarios.Columns("usuario").HeaderText = "Usuario"
         dgvusuarios.Columns("contrasena").HeaderText = "Contraseña"
-        dgvusuarios.Columns("fecha_creacion").HeaderText = "Fecha de creación"
+        dgvusuarios.Columns("fecha_creacion").Visible = False
         dgvusuarios.Columns("fecha_creacion").DefaultCellStyle.Format = "d"
+        dgvusuarios.Columns("foto").Visible = False
+
+
     End Sub
 
     Private Sub dgvusuarios_SelectionChanged(sender As Object, e As EventArgs) Handles dgvusuarios.SelectionChanged
+
+
+
+
         If dgvusuarios.CurrentRow Is Nothing Then Exit Sub
 
         txtnombre.Text = dgvusuarios.CurrentRow.Cells("nombre").Value.ToString()
         txtapellido.Text = dgvusuarios.CurrentRow.Cells("apellido").Value.ToString()
         txtnomusuario.Text = dgvusuarios.CurrentRow.Cells("usuario").Value.ToString()
         txtcontra.Text = dgvusuarios.CurrentRow.Cells("contrasena").Value.ToString()
+        rutaFoto = dgvusuarios.CurrentRow.Cells("foto").Value.ToString()
+        MostrarFoto(rutaFoto)
+
     End Sub
 
     Private Sub fmr_usurios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -37,14 +101,13 @@
         MostrarUsuarios(datos.Listar())
     End Sub
 
-    Private Sub txtbuscar_TextChanged(sender As Object, e As EventArgs) Handles txtbuscar.TextChanged
-        MostrarUsuarios(datos.Buscar(txtbuscar.Text.Trim()))
-    End Sub
+
 
     Private Sub btnnuevo_Click(sender As Object, e As EventArgs) Handles btnnuevo.Click
         If Not DatosValidos() Then Exit Sub
         Try
-            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now)
+            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now, rutaFoto)
+
             If datos.Agregar(u) Then          ' el objeto datos hace el trabajo
                 MostrarUsuarios(datos.Listar())
                 Limpiar()
@@ -54,15 +117,18 @@
         End Try
     End Sub
 
-    Private Sub btnmodificar_Click(sender As Object, e As EventArgs) Handles btnmodificar.Click
+    Private Sub btnmodificar_Click(sender As Object, e As EventArgs) Handles btnmodificar.Click ''''''''''''''''
         If dgvusuarios.CurrentRow Is Nothing Then Exit Sub
         If Not DatosValidos() Then Exit Sub
         Try
-            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now)
+            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now, rutaFoto)
+
+
             u.Id = Integer.Parse(dgvusuarios.CurrentRow.Cells("id").Value.ToString())
             If datos.Modificar(u) Then MostrarUsuarios(datos.Listar())
+            MessageBox.Show("se pudo modificar el usuario con exito")
         Catch ex As Exception
-            MessageBox.Show("No se pudo modificar el usuario: " & ex.Message)
+            MessageBox.Show("No se pudo modificar el usuario" & ex.Message)
         End Try
     End Sub
 
@@ -85,6 +151,8 @@
         txtapellido.Clear()
         txtnomusuario.Clear()
         txtcontra.Clear()
+        rutaFoto = String.Empty
+        picfoto.Image = Nothing
     End Sub
 
     Private Function DatosValidos() As Boolean
@@ -109,5 +177,33 @@
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Limpiar()
+    End Sub
+
+    Private Sub btnfoto_Click(sender As Object, e As EventArgs) Handles btnfoto.Click
+        ofdfoto.Filter = "Imágenes|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
+        If ofdfoto.ShowDialog() = DialogResult.OK Then
+            rutaFoto = ofdfoto.FileName
+            MostrarFoto(rutaFoto)
+        End If
+
+    End Sub
+
+
+
+    Private Sub txtbuscar_TextChanged_1(sender As Object, e As EventArgs) Handles txtbuscar.TextChanged
+        MostrarUsuarios(datos.Buscar(txtbuscar.Text.Trim))
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        Dim i As DialogResult = MsgBox("desea salir del formulario de usuarios?", MsgBoxStyle.YesNo, "salir")
+
+        If i = DialogResult.Yes Then
+            Me.Close()
+            MDIParent1.Show()
+        ElseIf i = DialogResult.No Then
+            Exit Sub
+        End If
+
     End Sub
 End Class
