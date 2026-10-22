@@ -2,6 +2,41 @@
 
 Public Class fmr_usurios
 
+
+
+
+
+    '    ████████╗██╗   ██╗███╗   ██╗ ██████╗
+    '╚══██╔══╝██║   ██║████╗  ██║██╔════╝
+    '   ██║   ██║   ██║██╔██╗ ██║██║  ███╗                                                                           
+    '   ██║   ██║   ██║██║╚██╗██║██║   ██║                                                                   
+    '   ██║   ╚██████╔╝██║ ╚████║╚██████╔╝                                                            
+    '   ╚═╝    ╚═════╝ ╚═╝  ╚═══╝                                                                           
+
+
+
+    '    ████████╗██╗   ██╗███╗   ██╗ ██████╗
+    '╚══██╔══╝██║   ██║████╗  ██║██╔════╝
+    '   ██║   ██║   ██║██╔██╗ ██║██║  ███╗
+    '   ██║   ██║   ██║██║╚██╗██║██║   ██║
+    '   ██║   ╚██████╔╝██║ ╚████║╚██████╔╝
+    '   ╚═╝    ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝
+
+
+
+    '███████╗ █████╗ ██╗  ██╗██╗   ██╗██████╗
+    '██╔════╝██╔══██╗██║  ██║██║   ██║██╔══██╗
+    '███████╗███████║███████║██║   ██║██████╔╝
+    '╚════██║██╔══██║██╔══██║██║   ██║██╔══██╗
+    '███████║██║  ██║██║  ██║╚██████╔╝██║  ██║
+    '╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   
+    'abrime
+
+
+
+
+
+
     Private Sub MostrarFoto(ruta As String)
         Try
             If Not String.IsNullOrEmpty(ruta) AndAlso IO.File.Exists(ruta) Then
@@ -38,14 +73,18 @@ Public Class fmr_usurios
         dgvusuarios.Columns("apellido").HeaderText = "Apellido"
         dgvusuarios.Columns("usuario").HeaderText = "Usuario"
         dgvusuarios.Columns("contrasena").HeaderText = "Contraseña"
-        dgvusuarios.Columns("fecha_creacion").HeaderText = "Fecha de creación"
+        dgvusuarios.Columns("fecha_creacion").Visible = False
         dgvusuarios.Columns("fecha_creacion").DefaultCellStyle.Format = "d"
-        dgvusuarios.Columns("foto").HeaderText = "Ruta de la foto"
+        dgvusuarios.Columns("foto").Visible = False
 
 
     End Sub
 
     Private Sub dgvusuarios_SelectionChanged(sender As Object, e As EventArgs) Handles dgvusuarios.SelectionChanged
+
+
+
+
         If dgvusuarios.CurrentRow Is Nothing Then Exit Sub
 
         txtnombre.Text = dgvusuarios.CurrentRow.Cells("nombre").Value.ToString()
@@ -53,8 +92,8 @@ Public Class fmr_usurios
         txtnomusuario.Text = dgvusuarios.CurrentRow.Cells("usuario").Value.ToString()
         txtcontra.Text = dgvusuarios.CurrentRow.Cells("contrasena").Value.ToString()
         rutaFoto = dgvusuarios.CurrentRow.Cells("foto").Value.ToString()
-
         MostrarFoto(rutaFoto)
+
     End Sub
 
     Private Sub fmr_usurios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -62,9 +101,7 @@ Public Class fmr_usurios
         MostrarUsuarios(datos.Listar())
     End Sub
 
-    Private Sub txtbuscar_TextChanged(sender As Object, e As EventArgs) Handles txtbuscar.TextChanged
-        MostrarUsuarios(datos.Buscar(txtbuscar.Text.Trim()))
-    End Sub
+
 
     Private Sub btnnuevo_Click(sender As Object, e As EventArgs) Handles btnnuevo.Click
         If Not DatosValidos() Then Exit Sub
@@ -147,6 +184,25 @@ Public Class fmr_usurios
         If ofdfoto.ShowDialog() = DialogResult.OK Then
             rutaFoto = ofdfoto.FileName
             MostrarFoto(rutaFoto)
+        End If
+
+    End Sub
+
+
+
+    Private Sub txtbuscar_TextChanged_1(sender As Object, e As EventArgs) Handles txtbuscar.TextChanged
+        MostrarUsuarios(datos.Buscar(txtbuscar.Text.Trim))
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        Dim i As DialogResult = MsgBox("desea salir del formulario de usuarios?", MsgBoxStyle.YesNo, "salir")
+
+        If i = DialogResult.Yes Then
+            Me.Close()
+            MDIParent1.Show()
+        ElseIf i = DialogResult.No Then
+            Exit Sub
         End If
 
     End Sub
