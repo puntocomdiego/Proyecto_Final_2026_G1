@@ -9,7 +9,7 @@ Public Class cls_Productos_Datos
         Dim dt As New DataTable()
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-            "SELECT codigo, nombre, precio, stock FROM juegos ORDER BY nombre"
+            "SELECT id, nombre, precio, stock FROM juegos ORDER BY nombre"
             Using da As New OleDbDataAdapter(sql, cn)
                 da.Fill(dt)
             End Using
@@ -20,12 +20,14 @@ Public Class cls_Productos_Datos
     Public Function AgregarJuego(p As CLS_PRODUCTOS) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-            "INSERT INTO Productos (descripcion, precio, foto) VALUES (?, ?, ?)"
+            "INSERT INTO juegos (id, nombre, precio, stock) VALUES (?, ?, ?)"
             Using cmd As New OleDbCommand(sql, cn)
+
+                cmd.Parameters.AddWithValue("?", p.Id)
                 cmd.Parameters.AddWithValue("?", p.Nombre)
                 cmd.Parameters.AddWithValue("?", p.Precio)
                 cmd.Parameters.AddWithValue("?", p.Stock)
-                cmd.Parameters.AddWithValue("?", p.IdCategoria)
+
                 cn.Open()
                 Return cmd.ExecuteNonQuery() > 0
             End Using
@@ -37,10 +39,11 @@ Public Class cls_Productos_Datos
             Dim sql As String =
             "UPDATE Productos SET descripcion = ?, precio = ?, foto = ? WHERE codigo = ?"
             Using cmd As New OleDbCommand(sql, cn)
+                cmd.Parameters.AddWithValue("?", p.Id)
                 cmd.Parameters.AddWithValue("?", p.Nombre)
                 cmd.Parameters.AddWithValue("?", p.Precio)
                 cmd.Parameters.AddWithValue("?", p.Stock)
-                cmd.Parameters.AddWithValue("?", p.Id)
+
                 cn.Open()
                 Return cmd.ExecuteNonQuery() > 0
             End Using
@@ -70,9 +73,9 @@ Public Class cls_Productos_Datos
                             .Id = Convert.ToInt32(reader("codigo")),
                             .Nombre = reader("descripcion").ToString(),
                             .Precio = Convert.ToDouble(reader("precio")),
-                            .Stock = Convert.ToInt32(reader("stock")),
-                            .IdCategoria = Convert.ToInt32(reader("id_categoria"))
-                        }
+                            .Stock = Convert.ToInt32(reader("stock"))}
+                        '.IdCategoria = Convert.ToInt32(reader("id_categoria"))
+
                     Else
                         Return Nothing
                     End If

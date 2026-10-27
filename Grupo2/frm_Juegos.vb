@@ -134,19 +134,19 @@ Public Class frm_Juegos
             Dim row As DataGridViewRow = dgvJuegos.Rows(e.RowIndex)
             idJuegoSeleccionado = Convert.ToInt32(row.Cells("id").Value)
             txtNombre.Text = row.Cells("nombre").Value.ToString()
-            cmbCategoria.SelectedValue = Convert.ToInt32(row.Cells("id_categoria").Value)
+            'cmbCategoria.SelectedValue = Convert.ToInt32(row.Cells("id_categoria").Value)
             txtPrecio.Text = row.Cells("precio").Value.ToString()
             txtStock.Text = row.Cells("stock").Value.ToString()
-            dtpFechaIngreso.Value = Convert.ToDateTime(row.Cells("fecha_ingreso").Value)
+            'dtpFechaIngreso.Value = Convert.ToDateTime(row.Cells("fecha_ingreso").Value)
 
-            Dim rutaFoto As String = row.Cells("portada").Value.ToString()
-            If Not String.IsNullOrEmpty(rutaFoto) AndAlso File.Exists(Path.Combine(Application.StartupPath, rutaFoto)) Then
-                picPortada.ImageLocation = Path.Combine(Application.StartupPath, rutaFoto)
-                'objJuego.Portada = rutaFoto
-            Else
-                picPortada.Image = Nothing
-                'objJuego.Portada = ""
-            End If
+            'Dim rutaFoto As String = row.Cells("portada").Value.ToString()
+            'If Not String.IsNullOrEmpty(rutaFoto) AndAlso File.Exists(Path.Combine(Application.StartupPath, rutaFoto)) Then
+            '    picPortada.ImageLocation = Path.Combine(Application.StartupPath, rutaFoto)
+            '    'objJuego.Portada = rutaFoto
+            'Else
+            '    picPortada.Image = Nothing
+            '    'objJuego.Portada = ""
+            'End If
         End If
     End Sub
 
@@ -178,6 +178,7 @@ Public Class frm_Juegos
         dtpFechaIngreso.Value = DateTime.Now
         picPortada.Image = Nothing
         rutaImagenOrigen = ""
+        lblID.Text = "0"
     End Sub
 
     Private Sub picPortada_Click(sender As Object, e As EventArgs) Handles picPortada.Click
