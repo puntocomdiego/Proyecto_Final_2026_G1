@@ -76,9 +76,10 @@ Partial Class frm_Juegos
         ' 
         ' dtpFechaIngreso
         ' 
+        dtpFechaIngreso.Format = DateTimePickerFormat.Short
         dtpFechaIngreso.Location = New Point(68, 244)
         dtpFechaIngreso.Name = "dtpFechaIngreso"
-        dtpFechaIngreso.Size = New Size(200, 23)
+        dtpFechaIngreso.Size = New Size(121, 23)
         dtpFechaIngreso.TabIndex = 5
         ' 
         ' picPortada
@@ -127,10 +128,13 @@ Partial Class frm_Juegos
         ' 
         ' dgvJuegos
         ' 
+        dgvJuegos.AllowUserToAddRows = False
+        dgvJuegos.AllowUserToDeleteRows = False
         dgvJuegos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvJuegos.Location = New Point(68, 280)
         dgvJuegos.Name = "dgvJuegos"
         dgvJuegos.RowHeadersWidth = 51
+        dgvJuegos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         dgvJuegos.Size = New Size(598, 188)
         dgvJuegos.TabIndex = 11
         ' 

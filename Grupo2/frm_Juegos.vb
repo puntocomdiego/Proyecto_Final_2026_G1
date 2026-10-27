@@ -87,7 +87,7 @@ Public Class frm_Juegos
         If Not ValidarCampos() Then Exit Sub
 
         Dim objJuego1 As New CLS_PRODUCTOS(txtNombre.Text, Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToDouble(txtPrecio.Text), Convert.ToInt32(txtStock.Text), dtpFechaIngreso.Value, rutaImagenOrigen)
-        objJuego1.Id = Integer.Parse(lblID.Text)
+        ' objJuego1.Id = Integer.Parse(lblID.Text)
 
 
         Try
@@ -102,7 +102,7 @@ Public Class frm_Juegos
                 rutaGuardada = If(idJuegoSeleccionado > 0, objJuego1.Portada, "")
             End If
 
-            objJuego1.Id = idJuegoSeleccionado
+            ' objJuego1.Id = idJuegoSeleccionado
             objJuego1.Nombre = txtNombre.Text.Trim()
             objJuego1.IdCategoria = Convert.ToInt32(cmbCategoria.SelectedValue)
             objJuego1.Precio = Convert.ToDouble(txtPrecio.Text)
@@ -154,11 +154,11 @@ Public Class frm_Juegos
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If idJuegoSeleccionado > 0 Then
             If MessageBox.Show("¿Desea eliminar el juego seleccionado?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                'If objJuego.Eliminar(idJuegoSeleccionado) Then
-                '    MessageBox.Show("Juego eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                '    CargarGridJuegos()
-                '    LimpiarFormulario()
-                'End If
+                If objJuego.EliminarJuego(idJuegoSeleccionado) Then
+                    MessageBox.Show("Juego eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    CargarGridJuegos()
+                    LimpiarFormulario()
+                End If
             End If
         Else
             MessageBox.Show("Seleccione un juego del listado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -186,6 +186,14 @@ Public Class frm_Juegos
     End Sub
 
     Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+
+    End Sub
+
+    Private Sub dgvJuegos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvJuegos.CellContentClick
+
+    End Sub
+
+    Private Sub cmbCategoria_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCategoria.SelectedIndexChanged
 
     End Sub
 End Class
