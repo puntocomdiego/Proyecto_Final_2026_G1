@@ -6,49 +6,96 @@ Public Class cls_Productos_Datos
     Private Shared ReadOnly cadenaConexion As String =
             $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={ruta};"
     Public Function ListarJuegos() As DataTable
-
+        Dim dt As New DataTable()
+        Using cn As New OleDbConnection(cadenaConexion)
+            Dim sql As String =
+            "SELECT codigo, nombre, precio, stock FROM juegos ORDER BY nombre"
+            Using da As New OleDbDataAdapter(sql, cn)
+                da.Fill(dt)
+            End Using
+        End Using
+        Return dt
     End Function
 
     Public Function AgregarJuego(p As CLS_PRODUCTOS) As Boolean
-        'Using cn As New OleDbConnection(cadenaConexion)
-        '    Dim sql As String =
-        '    "INSERT INTO Productos (descripcion, precio, foto) VALUES (?, ?, ?)"
-        '    Using cmd As New OleDbCommand(sql, cn)
-        '        cmd.Parameters.AddWithValue("?", p.Descripcion)
-        '        cmd.Parameters.AddWithValue("?", p.Precio)
-        '        cmd.Parameters.AddWithValue("?", p.Foto)
-        '        cn.Open()
-        '        Return cmd.ExecuteNonQuery() > 0
-        '    End Using
-        'End Using
+        Using cn As New OleDbConnection(cadenaConexion)
+            Dim sql As String =
+            "INSERT INTO Productos (descripcion, precio, foto) VALUES (?, ?, ?)"
+            Using cmd As New OleDbCommand(sql, cn)
+                cmd.Parameters.AddWithValue("?", p.Nombre)
+                cmd.Parameters.AddWithValue("?", p.Precio)
+                cmd.Parameters.AddWithValue("?", p.Stock)
+                cmd.Parameters.AddWithValue("?", p.IdCategoria)
+                cn.Open()
+                Return cmd.ExecuteNonQuery() > 0
+            End Using
+        End Using
     End Function
 
-    Public Function ActualizarJuego(juego As CLS_PRODUCTOS) As Boolean
-
+    Public Function ActualizarJuego(p As CLS_PRODUCTOS) As Boolean
+        Using cn As New OleDbConnection(cadenaConexion)
+            Dim sql As String =
+            "UPDATE Productos SET descripcion = ?, precio = ?, foto = ? WHERE codigo = ?"
+            Using cmd As New OleDbCommand(sql, cn)
+                cmd.Parameters.AddWithValue("?", p.Nombre)
+                cmd.Parameters.AddWithValue("?", p.Precio)
+                cmd.Parameters.AddWithValue("?", p.Stock)
+                cmd.Parameters.AddWithValue("?", p.Id)
+                cn.Open()
+                Return cmd.ExecuteNonQuery() > 0
+            End Using
+        End Using
     End Function
 
-    Public Function EliminarJuego(id As Integer) As Boolean
-
+    Public Function EliminarJuego(codigo As Integer) As Boolean
+        Using cn As New OleDbConnection(cadenaConexion)
+            Dim sql As String = "DELETE FROM Productos WHERE codigo = ?"
+            Using cmd As New OleDbCommand(sql, cn)
+                cmd.Parameters.AddWithValue("?", codigo)
+                cn.Open()
+                Return cmd.ExecuteNonQuery() > 0
+            End Using
+        End Using
     End Function
 
     Public Function ObtenerJuegoPorId(id As Integer) As CLS_PRODUCTOS
+        Using cn As New OleDbConnection(cadenaConexion)
+            Dim sql As String = "SELECT * FROM Productos WHERE codigo = ?"
+            Using cmd As New OleDbCommand(sql, cn)
+                cmd.Parameters.AddWithValue("?", id)
+                cn.Open()
+                Using reader As OleDbDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        Return New CLS_PRODUCTOS With {
+                            .Id = Convert.ToInt32(reader("codigo")),
+                            .Nombre = reader("descripcion").ToString(),
+                            .Precio = Convert.ToDouble(reader("precio")),
+                            .Stock = Convert.ToInt32(reader("stock")),
+                            .IdCategoria = Convert.ToInt32(reader("id_categoria"))
+                        }
+                    Else
+                        Return Nothing
+                    End If
+                End Using
+            End Using
+        End Using
 
     End Function
 
-    ' ---------- CATEGORÍAS ----------
+    '' ---------- CATEGORÍAS ----------
 
-    Public Function ListarCategorias() As DataTable
+    'Public Function ListarCategorias() As DataTable
 
-    End Function
+    'End Function
 
-    ' Una sola función (antes estaba duplicada)
-    Public Function ObtenerNombreCategoriaPorId(id As Integer) As String
+    '' Una sola función (antes estaba duplicada)
+    'Public Function ObtenerNombreCategoriaPorId(id As Integer) As String
 
-    End Function
+    'End Function
 
-    Public Function ObtenerIdCategoriaPorNombre(nombre As String) As Integer
+    'Public Function ObtenerIdCategoriaPorNombre(nombre As String) As Integer
 
-    End Function
+    'End Function
 
 
 
