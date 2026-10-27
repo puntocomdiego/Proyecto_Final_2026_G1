@@ -6,7 +6,7 @@ Public Class fmr_usurios
 
 
 
-    '    ████████╗██╗   ██╗███╗   ██╗ ██████╗
+    '████████╗██╗   ██╗███╗   ██╗ ██████╗
     '╚══██╔══╝██║   ██║████╗  ██║██╔════╝
     '   ██║   ██║   ██║██╔██╗ ██║██║  ███╗                                                                           
     '   ██║   ██║   ██║██║╚██╗██║██║   ██║                                                                   
@@ -15,7 +15,7 @@ Public Class fmr_usurios
 
 
 
-    '    ████████╗██╗   ██╗███╗   ██╗ ██████╗
+    '████████╗██╗   ██╗███╗   ██╗ ██████╗
     '╚══██╔══╝██║   ██║████╗  ██║██╔════╝
     '   ██║   ██║   ██║██╔██╗ ██║██║  ███╗
     '   ██║   ██║   ██║██║╚██╗██║██║   ██║
@@ -175,9 +175,7 @@ Public Class fmr_usurios
         Return True
     End Function
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Limpiar()
-    End Sub
+
 
     Private Sub btnfoto_Click(sender As Object, e As EventArgs) Handles btnfoto.Click
         ofdfoto.Filter = "Imágenes|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
@@ -194,8 +192,13 @@ Public Class fmr_usurios
         MostrarUsuarios(datos.Buscar(txtbuscar.Text.Trim))
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
+
+    Private Sub btnlimpiar_Click(sender As Object, e As EventArgs) Handles btnlimpiar.Click
+        Limpiar()
+    End Sub
+
+    Private Sub btnsalir_Click(sender As Object, e As EventArgs) Handles btnsalir.Click
         Dim i As DialogResult = MsgBox("desea salir del formulario de usuarios?", MsgBoxStyle.YesNo, "salir")
 
         If i = DialogResult.Yes Then
@@ -204,6 +207,5 @@ Public Class fmr_usurios
         ElseIf i = DialogResult.No Then
             Exit Sub
         End If
-
     End Sub
 End Class
