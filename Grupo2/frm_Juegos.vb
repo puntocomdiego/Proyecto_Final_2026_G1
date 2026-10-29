@@ -134,19 +134,31 @@ Public Class frm_Juegos
             Dim row As DataGridViewRow = dgvJuegos.Rows(e.RowIndex)
             idJuegoSeleccionado = Convert.ToInt32(row.Cells("id").Value)
             txtNombre.Text = row.Cells("nombre").Value.ToString()
-            'cmbCategoria.SelectedValue = Convert.ToInt32(row.Cells("id_categoria").Value)
+            cmbCategoria.SelectedValue = Convert.ToInt32(row.Cells("id_categoria").Value)
             txtPrecio.Text = row.Cells("precio").Value.ToString()
             txtStock.Text = row.Cells("stock").Value.ToString()
-            'dtpFechaIngreso.Value = Convert.ToDateTime(row.Cells("fecha_ingreso").Value)
+            dtpFechaIngreso.Value = Convert.ToDateTime(row.Cells("fecha_ingreso").Value)
+            picPortada.Image = Nothing
 
-            'Dim rutaFoto As String = row.Cells("portada").Value.ToString()
-            'If Not String.IsNullOrEmpty(rutaFoto) AndAlso File.Exists(Path.Combine(Application.StartupPath, rutaFoto)) Then
-            '    picPortada.ImageLocation = Path.Combine(Application.StartupPath, rutaFoto)
-            '    'objJuego.Portada = rutaFoto
-            'Else
+            Dim rutaFoto As String = row.Cells("portada").Value.ToString()
+            If Not String.IsNullOrEmpty(rutaFoto) AndAlso File.Exists(Path.Combine(Application.StartupPath, rutaFoto)) Then
+                picPortada.ImageLocation = Path.Combine(Application.StartupPath, rutaFoto)
+                objJuego.Portada = rutaFoto
+            Else
+                picPortada.Image = Nothing
+                objJuego.Portada = ""
+            End If
+            'Try
+            '    If Not String.IsNullOrEmpty(rutaFoto) AndAlso IO.File.Exists(Ruta) Then
+            '        Using fs As New IO.FileStream(Ruta, IO.FileMode.Open, IO.FileAccess.Read)
+            '            picPortada.Image = Image.FromStream(fs)
+            '        End Using
+            '    Else
+            '        picPortada.Image = Nothing
+            '    End If
+            'Catch
             '    picPortada.Image = Nothing
-            '    'objJuego.Portada = ""
-            'End If
+            'End Try
         End If
     End Sub
 
@@ -181,20 +193,6 @@ Public Class frm_Juegos
         lblID.Text = "0"
     End Sub
 
-    Private Sub picPortada_Click(sender As Object, e As EventArgs) Handles picPortada.Click
 
-    End Sub
-
-    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-
-    End Sub
-
-    Private Sub dgvJuegos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvJuegos.CellContentClick
-
-    End Sub
-
-    Private Sub cmbCategoria_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCategoria.SelectedIndexChanged
-
-    End Sub
 End Class
 
