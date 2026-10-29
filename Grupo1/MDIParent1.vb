@@ -121,4 +121,10 @@ Public Class MDIParent1
         f.Show()
 
     End Sub
+
+    Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
+        Dim f As New FrmVentas
+        f.MdiParent = Me
+        f.Show()
+    End Sub
 End Class
