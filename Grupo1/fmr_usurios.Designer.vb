@@ -37,6 +37,7 @@ Partial Class fmr_usurios
         btneliminar = New Button()
         btnlimpiar = New Button()
         GroupBox1 = New GroupBox()
+        Button1 = New Button()
         btnfoto = New Button()
         Label6 = New Label()
         dgvusuarios = New DataGridView()
@@ -44,7 +45,6 @@ Partial Class fmr_usurios
         ofdfoto = New OpenFileDialog()
         txtbuscar = New TextBox()
         btnsalir = New Button()
-        Button1 = New Button()
         gbx_usuarioinfo.SuspendLayout()
         GroupBox1.SuspendLayout()
         CType(dgvusuarios, ComponentModel.ISupportInitialize).BeginInit()
@@ -206,6 +206,22 @@ Partial Class fmr_usurios
         GroupBox1.TabStop = False
         GroupBox1.Text = "GroupBox1"
         ' 
+        ' Button1
+        ' 
+        Button1.BackColor = SystemColors.GradientActiveCaption
+        Button1.BackgroundImageLayout = ImageLayout.Zoom
+        Button1.FlatStyle = FlatStyle.Popup
+        Button1.Font = New Font("Segoe UI", 15.75F)
+        Button1.Image = CType(resources.GetObject("Button1.Image"), Image)
+        Button1.ImageAlign = ContentAlignment.MiddleLeft
+        Button1.Location = New Point(48, 104)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(175, 50)
+        Button1.TabIndex = 15
+        Button1.Text = "guardar"
+        Button1.TextAlign = ContentAlignment.MiddleRight
+        Button1.UseVisualStyleBackColor = False
+        ' 
         ' btnfoto
         ' 
         btnfoto.BackColor = SystemColors.GradientActiveCaption
@@ -273,22 +289,6 @@ Partial Class fmr_usurios
         btnsalir.Text = "salir"
         btnsalir.TextAlign = ContentAlignment.MiddleLeft
         btnsalir.UseVisualStyleBackColor = False
-        ' 
-        ' Button1
-        ' 
-        Button1.BackColor = SystemColors.GradientActiveCaption
-        Button1.BackgroundImageLayout = ImageLayout.Zoom
-        Button1.FlatStyle = FlatStyle.Popup
-        Button1.Font = New Font("Segoe UI", 15.75F)
-        Button1.Image = CType(resources.GetObject("Button1.Image"), Image)
-        Button1.ImageAlign = ContentAlignment.MiddleLeft
-        Button1.Location = New Point(48, 104)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(175, 50)
-        Button1.TabIndex = 15
-        Button1.Text = "nuevo"
-        Button1.TextAlign = ContentAlignment.MiddleRight
-        Button1.UseVisualStyleBackColor = False
         ' 
         ' fmr_usurios
         ' 
