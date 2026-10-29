@@ -40,6 +40,13 @@ Public Class Ventas
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
-        MsgBox("¿Desea salir del sistema?", MsgBoxStyle.YesNo, "Salir")
+        '  MsgBox("¿Desea salir del sistema?", MsgBoxStyle.YesNo, "Salir")
+        Dim r = MessageBox.Show("¿Desea salir del sistema? ",
+                        "Level Up · ventas", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+        If r = DialogResult.Yes Then
+            ' ... eliminar ... 
+            Me.Close()
+        End If
     End Sub
 End Class
