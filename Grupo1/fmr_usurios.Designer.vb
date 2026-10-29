@@ -44,6 +44,7 @@ Partial Class fmr_usurios
         ofdfoto = New OpenFileDialog()
         txtbuscar = New TextBox()
         btnsalir = New Button()
+        Button1 = New Button()
         gbx_usuarioinfo.SuspendLayout()
         GroupBox1.SuspendLayout()
         CType(dgvusuarios, ComponentModel.ISupportInitialize).BeginInit()
@@ -159,7 +160,7 @@ Partial Class fmr_usurios
         btnmodificar.Font = New Font("Segoe UI", 15.75F)
         btnmodificar.Image = CType(resources.GetObject("btnmodificar.Image"), Image)
         btnmodificar.ImageAlign = ContentAlignment.MiddleLeft
-        btnmodificar.Location = New Point(48, 100)
+        btnmodificar.Location = New Point(48, 172)
         btnmodificar.Name = "btnmodificar"
         btnmodificar.Size = New Size(175, 50)
         btnmodificar.TabIndex = 12
@@ -174,7 +175,7 @@ Partial Class fmr_usurios
         btneliminar.Font = New Font("Segoe UI", 15.75F)
         btneliminar.Image = CType(resources.GetObject("btneliminar.Image"), Image)
         btneliminar.ImageAlign = ContentAlignment.MiddleLeft
-        btneliminar.Location = New Point(48, 160)
+        btneliminar.Location = New Point(48, 231)
         btneliminar.Name = "btneliminar"
         btneliminar.Size = New Size(175, 50)
         btneliminar.TabIndex = 13
@@ -193,13 +194,14 @@ Partial Class fmr_usurios
         ' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(Button1)
         GroupBox1.Controls.Add(btnfoto)
         GroupBox1.Controls.Add(btneliminar)
         GroupBox1.Controls.Add(btnnuevo)
         GroupBox1.Controls.Add(btnmodificar)
         GroupBox1.Location = New Point(573, 33)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(278, 294)
+        GroupBox1.Size = New Size(278, 362)
         GroupBox1.TabIndex = 16
         GroupBox1.TabStop = False
         GroupBox1.Text = "GroupBox1"
@@ -211,7 +213,7 @@ Partial Class fmr_usurios
         btnfoto.Font = New Font("Segoe UI", 15.75F)
         btnfoto.Image = CType(resources.GetObject("btnfoto.Image"), Image)
         btnfoto.ImageAlign = ContentAlignment.MiddleLeft
-        btnfoto.Location = New Point(48, 216)
+        btnfoto.Location = New Point(48, 297)
         btnfoto.Name = "btnfoto"
         btnfoto.Size = New Size(175, 50)
         btnfoto.TabIndex = 14
@@ -272,6 +274,22 @@ Partial Class fmr_usurios
         btnsalir.TextAlign = ContentAlignment.MiddleLeft
         btnsalir.UseVisualStyleBackColor = False
         ' 
+        ' Button1
+        ' 
+        Button1.BackColor = SystemColors.GradientActiveCaption
+        Button1.BackgroundImageLayout = ImageLayout.Zoom
+        Button1.FlatStyle = FlatStyle.Popup
+        Button1.Font = New Font("Segoe UI", 15.75F)
+        Button1.Image = CType(resources.GetObject("Button1.Image"), Image)
+        Button1.ImageAlign = ContentAlignment.MiddleLeft
+        Button1.Location = New Point(48, 104)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(175, 50)
+        Button1.TabIndex = 15
+        Button1.Text = "nuevo"
+        Button1.TextAlign = ContentAlignment.MiddleRight
+        Button1.UseVisualStyleBackColor = False
+        ' 
         ' fmr_usurios
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -321,5 +339,6 @@ Partial Class fmr_usurios
     Friend WithEvents ofdfoto As OpenFileDialog
     Friend WithEvents txtbuscar As TextBox
     Friend WithEvents btnsalir As Button
+    Friend WithEvents Button1 As Button
 
 End Class

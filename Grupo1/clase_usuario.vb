@@ -5,7 +5,7 @@ Public Class clase_usuario
     Public Property Id As Integer
     Public Property Nombre As String
     Public Property Apellido As String
-    Public Property NombreUsuario As String
+    Public Property usuario As String
     Public Property Contrasena As String
     Public Property FechaCreacion As Date
     Public Property Foto As String
@@ -14,11 +14,11 @@ Public Class clase_usuario
     Public Sub New()
     End Sub
 
-    Public Sub New(nombre As String, apellido As String, nombreUsuario As String, contrasena As String, fechaCreacion As Date, foto As String)
+    Public Sub New(nombre As String, apellido As String, usuario As String, contrasena As String, fechaCreacion As Date, foto As String)
 
         Me.Nombre = nombre
         Me.Apellido = apellido
-        Me.NombreUsuario = nombreUsuario
+        Me.usuario = usuario
         Me.Contrasena = contrasena
         Me.FechaCreacion = fechaCreacion
         Me.Foto = foto

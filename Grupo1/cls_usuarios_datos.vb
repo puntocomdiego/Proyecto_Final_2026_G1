@@ -13,14 +13,14 @@ Public Class cls_usuarios_datos
     Public Function Agregar(u As clase_usuario) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-                "INSERT INTO usuarios (nombre, apellido, usuario, contrasena, fecha_creacion, foto) VALUES (?, ?, ?, ?, ?, ?)"
+            "INSERT INTO usuarios (nombre, apellido, usuario, contrasena, fecha_creacion, foto) VALUES (?, ?, ?, ?, ?, ?)"
             Using cmd As New OleDbCommand(sql, cn)
-                cmd.Parameters.AddWithValue("?", u.Nombre)
-                cmd.Parameters.AddWithValue("?", u.Apellido)
-                cmd.Parameters.AddWithValue("?", u.NombreUsuario)
-                cmd.Parameters.AddWithValue("?", u.Contrasena)
-                cmd.Parameters.AddWithValue("?", u.FechaCreacion)
-                cmd.Parameters.AddWithValue("?", u.Foto)
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Nombre
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Apellido
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.usuario
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Contrasena
+                cmd.Parameters.Add("?", OleDbType.Date).Value = u.FechaCreacion.Date
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Foto
 
                 cn.Open()
                 Return cmd.ExecuteNonQuery() > 0
@@ -32,21 +32,20 @@ Public Class cls_usuarios_datos
     Public Function Modificar(u As clase_usuario) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-    "UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ?, contrasena = ?, foto = ? WHERE id = ?"
+            "UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ?, contrasena = ?, foto = ? WHERE id = ?"
             Using cmd As New OleDbCommand(sql, cn)
-                cmd.Parameters.AddWithValue("?", u.Nombre)
-                cmd.Parameters.AddWithValue("?", u.Apellido)
-                cmd.Parameters.AddWithValue("?", u.NombreUsuario)
-                cmd.Parameters.AddWithValue("?", u.Contrasena)
-                cmd.Parameters.AddWithValue("?", u.Foto)
-                cmd.Parameters.AddWithValue("?", u.Id)
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Nombre
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Apellido
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.usuario
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Contrasena
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Foto
+                cmd.Parameters.Add("?", OleDbType.Integer).Value = u.Id
 
                 cn.Open()
                 Return cmd.ExecuteNonQuery() > 0
             End Using
         End Using
     End Function
-
     'funcion eliminar
     Public Function Eliminar(codigo As Integer) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
