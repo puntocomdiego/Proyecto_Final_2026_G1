@@ -5,6 +5,8 @@ Public Class cls_Productos_Datos
             IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "level_up.accdb")
     Private Shared ReadOnly cadenaConexion As String =
             $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={ruta};"
+    Public Property Portada As String
+
     Public Function ListarJuegos() As DataTable
         Dim dt As New DataTable()
         Using cn As New OleDbConnection(cadenaConexion)
