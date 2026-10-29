@@ -5,11 +5,13 @@ Public Class cls_Productos_Datos
             IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "level_up.accdb")
     Private Shared ReadOnly cadenaConexion As String =
             $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={ruta};"
+    Public Property Portada As String
+
     Public Function ListarJuegos() As DataTable
         Dim dt As New DataTable()
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-            "SELECT codigo, nombre, precio, stock FROM juegos ORDER BY nombre"
+            "SELECT id, nombre, id_Categoria, precio, stock, fecha_ingreso, portada FROM juegos ORDER BY nombre"
             Using da As New OleDbDataAdapter(sql, cn)
                 da.Fill(dt)
             End Using
@@ -20,12 +22,17 @@ Public Class cls_Productos_Datos
     Public Function AgregarJuego(p As CLS_PRODUCTOS) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-            "INSERT INTO Productos (descripcion, precio, foto) VALUES (?, ?, ?)"
+            "INSERT INTO juegos (nombre, id_Categoria, precio, stock, fecha_Ingreso, portada) VALUES (?, ?, ?, ?, ?, ?)"
             Using cmd As New OleDbCommand(sql, cn)
+
+                'cmd.Parameters.AddWithValue("?", p.Id)
                 cmd.Parameters.AddWithValue("?", p.Nombre)
+                cmd.Parameters.AddWithValue("?", p.IdCategoria)
                 cmd.Parameters.AddWithValue("?", p.Precio)
                 cmd.Parameters.AddWithValue("?", p.Stock)
-                cmd.Parameters.AddWithValue("?", p.IdCategoria)
+                cmd.Parameters.AddWithValue("?", p.FechaIngreso)
+                cmd.Parameters.AddWithValue("?", p.Portada)
+
                 cn.Open()
                 Return cmd.ExecuteNonQuery() > 0
             End Using
@@ -35,12 +42,16 @@ Public Class cls_Productos_Datos
     Public Function ActualizarJuego(p As CLS_PRODUCTOS) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-            "UPDATE Productos SET descripcion = ?, precio = ?, foto = ? WHERE codigo = ?"
+            "UPDATE Juegos SET nombre = ?, id_Categoria = ?, precio = ?, fecha_Ingreso = ? WHERE portada = ?"
             Using cmd As New OleDbCommand(sql, cn)
+                'cmd.Parameters.AddWithValue("?", p.Id)
                 cmd.Parameters.AddWithValue("?", p.Nombre)
+                cmd.Parameters.AddWithValue("?", p.IdCategoria)
                 cmd.Parameters.AddWithValue("?", p.Precio)
                 cmd.Parameters.AddWithValue("?", p.Stock)
-                cmd.Parameters.AddWithValue("?", p.Id)
+                cmd.Parameters.AddWithValue("?", p.FechaIngreso)
+                cmd.Parameters.AddWithValue("?", p.Portada)
+
                 cn.Open()
                 Return cmd.ExecuteNonQuery() > 0
             End Using
@@ -49,7 +60,7 @@ Public Class cls_Productos_Datos
 
     Public Function EliminarJuego(codigo As Integer) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
-            Dim sql As String = "DELETE FROM Productos WHERE codigo = ?"
+            Dim sql As String = "DELETE * FROM juegos WHERE id = ?"
             Using cmd As New OleDbCommand(sql, cn)
                 cmd.Parameters.AddWithValue("?", codigo)
                 cn.Open()
@@ -70,9 +81,9 @@ Public Class cls_Productos_Datos
                             .Id = Convert.ToInt32(reader("codigo")),
                             .Nombre = reader("descripcion").ToString(),
                             .Precio = Convert.ToDouble(reader("precio")),
-                            .Stock = Convert.ToInt32(reader("stock")),
-                            .IdCategoria = Convert.ToInt32(reader("id_categoria"))
-                        }
+                            .Stock = Convert.ToInt32(reader("stock"))}
+                        '.IdCategoria = Convert.ToInt32(reader("id_categoria"))
+
                     Else
                         Return Nothing
                     End If
