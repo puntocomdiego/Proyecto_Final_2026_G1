@@ -1,5 +1,5 @@
 ﻿Module Estilos
-    ' --- Paleta de marca ---
+    ' --- Paleta de marca --- rgb  red - green - blue
     Public ReadOnly ColorNegro As Color = Color.FromArgb(8, 8, 14)
     Public ReadOnly ColorCeleste As Color = Color.FromArgb(0, 158, 255)
     Public ReadOnly ColorAmarillo As Color = Color.FromArgb(255, 208, 0)
@@ -41,6 +41,7 @@
         btn.ForeColor = ColorNegro
         btn.FlatAppearance.BorderSize = 0
         btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 134, 217)
+        btn.Size = TamBotonGrande
     End Sub
 
     Public Sub BotonSecundario(btn As Button)
