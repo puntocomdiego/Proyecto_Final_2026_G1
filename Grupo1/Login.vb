@@ -1,4 +1,5 @@
 ﻿Imports System.Data.OleDb
+Imports System.Reflection.Metadata.Ecma335
 
 Public Class Login
     Private Sub btnMostrar_Click(sender As Object, e As EventArgs) Handles btnMostrar.Click
@@ -16,10 +17,16 @@ Public Class Login
     Private Sub btnIniciarSesion_Click(sender As Object, e As EventArgs) Handles btnIniciarSesion.Click
         Try
             If txtUsuario.Text = "" Or txtContraseña.Text = "" Then
-                MsgBox("Ingrese nombre de usuario y contraseña")
+                MessageBox.Show("Ingrese un nombre de usuario y una contraseña valida, no deje campos vacíos.", "Campos vacíos detectados", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 txtUsuario.Focus()
                 Exit Sub
             End If
+
+            btnIniciarSesion.Enabled = False
+            txtContraseña.Enabled = False
+            txtUsuario.Enabled = False
+
+            MessageBox.Show("Verificando Información, esto puede tomar unos segundos, cierre esta ventana para proseguir", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
             Dim SQL1 As String
             Dim SQL2 As String
@@ -41,6 +48,9 @@ Public Class Login
             If dt.Rows.Count = 0 Then
                 MsgBox("Usuario inexistente o contraseña incorrecta...")
                 txtUsuario.Focus()
+                btnIniciarSesion.Enabled = True
+                txtContraseña.Enabled = True
+                txtUsuario.Enabled = True
                 Exit Sub
             Else
                 Dim dr As DataRow
@@ -52,19 +62,23 @@ Public Class Login
 
                 If dt.Rows.Count > 0 Then
                     rol = "admin"
-                    MsgBox("Usuario autentificado correctamente como 'Admin'.", MsgBoxStyle.OkOnly, "Login")
-                    Me.Close()
+                    MessageBox.Show("Usuario autentificado correctamente como 'Administrador'.", "Inicio de sesion concedido", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     MDIParent1.Show()
+                    Me.Close()
+
                 Else
                     rol = "vendedor"
-                    MsgBox("Usuario autentificado correctamente como 'Vendedor'.", MsgBoxStyle.OkOnly, "Login")
+                    MessageBox.Show("Usuario autentificado correctamente como 'Vendedor'.", "Inicio de sesion concedido", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MDIParent1.Show()
+                    MDIParent1.UsuariosToolStripMenuItem.Visible = False
                     Me.Close()
-                    fmr_usurios.Show()
                 End If
 
-                Me.Hide()
+                Hide()
 
             End If
+
+
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -87,5 +101,25 @@ Public Class Login
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtContraseña_LostFocus(Nothing, Nothing)
+    End Sub
+
+    Private Sub txtUsuario_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsuario.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            txtContraseña.Focus()
+        End If
+    End Sub
+
+    Private Sub txtContraseña_KeyDown(sender As Object, e As KeyEventArgs) Handles txtContraseña.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            btnIniciarSesion.Focus()
+            btnIniciarSesion.PerformClick()
+        End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim i As DialogResult = MessageBox.Show("Esta seguro de que desea salir del programa?", "Salir del programa", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If i = DialogResult.Yes Then
+            Application.Exit()
+        End If
     End Sub
 End Class

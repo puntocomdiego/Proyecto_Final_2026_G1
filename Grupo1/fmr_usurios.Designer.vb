@@ -35,60 +35,65 @@ Partial Class fmr_usurios
         btnnuevo = New Button()
         btnmodificar = New Button()
         btneliminar = New Button()
-        Button5 = New Button()
+        btnlimpiar = New Button()
         GroupBox1 = New GroupBox()
-        txtbuscar = New TextBox()
+        btnfoto = New Button()
         Label6 = New Label()
         dgvusuarios = New DataGridView()
+        picfoto = New PictureBox()
+        ofdfoto = New OpenFileDialog()
+        txtbuscar = New TextBox()
+        btnsalir = New Button()
         gbx_usuarioinfo.SuspendLayout()
         GroupBox1.SuspendLayout()
         CType(dgvusuarios, ComponentModel.ISupportInitialize).BeginInit()
+        CType(picfoto, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Modern No. 20", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Segoe UI", 12F)
         Label1.Location = New Point(6, 33)
         Label1.Name = "Label1"
-        Label1.Size = New Size(91, 22)
+        Label1.Size = New Size(75, 21)
         Label1.TabIndex = 0
         Label1.Text = "Nombre :"
         ' 
         ' txtnombre
         ' 
-        txtnombre.Location = New Point(218, 32)
+        txtnombre.Location = New Point(218, 35)
         txtnombre.Name = "txtnombre"
-        txtnombre.Size = New Size(137, 20)
+        txtnombre.Size = New Size(255, 20)
         txtnombre.TabIndex = 1
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Modern No. 20", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Segoe UI", 12F)
         Label2.Location = New Point(6, 84)
         Label2.Name = "Label2"
-        Label2.Size = New Size(99, 22)
+        Label2.Size = New Size(74, 21)
         Label2.TabIndex = 2
         Label2.Text = "Apellido :"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Modern No. 20", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label3.Font = New Font("Segoe UI", 12F)
         Label3.Location = New Point(6, 144)
         Label3.Name = "Label3"
-        Label3.Size = New Size(189, 22)
+        Label3.Size = New Size(152, 21)
         Label3.TabIndex = 3
         Label3.Text = "Nombre de usuario :"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Modern No. 20", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label4.Font = New Font("Segoe UI", 12F)
         Label4.Location = New Point(6, 203)
         Label4.Name = "Label4"
-        Label4.Size = New Size(121, 22)
+        Label4.Size = New Size(96, 21)
         Label4.TabIndex = 4
         Label4.Text = "Contraseña :"
         ' 
@@ -96,21 +101,21 @@ Partial Class fmr_usurios
         ' 
         txtcontra.Location = New Point(218, 206)
         txtcontra.Name = "txtcontra"
-        txtcontra.Size = New Size(215, 20)
+        txtcontra.Size = New Size(255, 20)
         txtcontra.TabIndex = 6
         ' 
         ' txtnomusuario
         ' 
-        txtnomusuario.Location = New Point(218, 144)
+        txtnomusuario.Location = New Point(218, 146)
         txtnomusuario.Name = "txtnomusuario"
-        txtnomusuario.Size = New Size(215, 20)
+        txtnomusuario.Size = New Size(255, 20)
         txtnomusuario.TabIndex = 7
         ' 
         ' txtapellido
         ' 
-        txtapellido.Location = New Point(218, 87)
+        txtapellido.Location = New Point(218, 86)
         txtapellido.Name = "txtapellido"
-        txtapellido.Size = New Size(137, 20)
+        txtapellido.Size = New Size(255, 20)
         txtapellido.TabIndex = 8
         ' 
         ' gbx_usuarioinfo
@@ -126,105 +131,160 @@ Partial Class fmr_usurios
         gbx_usuarioinfo.Font = New Font("Modern No. 20", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         gbx_usuarioinfo.Location = New Point(36, 33)
         gbx_usuarioinfo.Name = "gbx_usuarioinfo"
-        gbx_usuarioinfo.Size = New Size(459, 264)
+        gbx_usuarioinfo.Size = New Size(485, 289)
         gbx_usuarioinfo.TabIndex = 10
         gbx_usuarioinfo.TabStop = False
         gbx_usuarioinfo.Text = "Usuario info"
         ' 
         ' btnnuevo
         ' 
+        btnnuevo.BackColor = SystemColors.GradientActiveCaption
         btnnuevo.BackgroundImageLayout = ImageLayout.Zoom
+        btnnuevo.FlatStyle = FlatStyle.Popup
+        btnnuevo.Font = New Font("Segoe UI", 15.75F)
         btnnuevo.Image = CType(resources.GetObject("btnnuevo.Image"), Image)
         btnnuevo.ImageAlign = ContentAlignment.MiddleLeft
-        btnnuevo.Location = New Point(35, 38)
+        btnnuevo.Location = New Point(48, 38)
         btnnuevo.Name = "btnnuevo"
-        btnnuevo.Size = New Size(122, 41)
+        btnnuevo.Size = New Size(175, 50)
         btnnuevo.TabIndex = 11
         btnnuevo.Text = "nuevo"
         btnnuevo.TextAlign = ContentAlignment.MiddleRight
-        btnnuevo.UseVisualStyleBackColor = True
+        btnnuevo.UseVisualStyleBackColor = False
         ' 
         ' btnmodificar
         ' 
+        btnmodificar.BackColor = SystemColors.GradientActiveCaption
+        btnmodificar.FlatStyle = FlatStyle.Popup
+        btnmodificar.Font = New Font("Segoe UI", 15.75F)
         btnmodificar.Image = CType(resources.GetObject("btnmodificar.Image"), Image)
         btnmodificar.ImageAlign = ContentAlignment.MiddleLeft
-        btnmodificar.Location = New Point(35, 99)
+        btnmodificar.Location = New Point(48, 100)
         btnmodificar.Name = "btnmodificar"
-        btnmodificar.Size = New Size(122, 33)
+        btnmodificar.Size = New Size(175, 50)
         btnmodificar.TabIndex = 12
         btnmodificar.Text = "modificar"
         btnmodificar.TextAlign = ContentAlignment.MiddleRight
-        btnmodificar.UseVisualStyleBackColor = True
+        btnmodificar.UseVisualStyleBackColor = False
         ' 
         ' btneliminar
         ' 
+        btneliminar.BackColor = SystemColors.GradientActiveCaption
+        btneliminar.FlatStyle = FlatStyle.Popup
+        btneliminar.Font = New Font("Segoe UI", 15.75F)
         btneliminar.Image = CType(resources.GetObject("btneliminar.Image"), Image)
         btneliminar.ImageAlign = ContentAlignment.MiddleLeft
-        btneliminar.Location = New Point(35, 149)
+        btneliminar.Location = New Point(48, 160)
         btneliminar.Name = "btneliminar"
-        btneliminar.Size = New Size(122, 33)
+        btneliminar.Size = New Size(175, 50)
         btneliminar.TabIndex = 13
         btneliminar.Text = "eliminar"
         btneliminar.TextAlign = ContentAlignment.MiddleRight
-        btneliminar.UseVisualStyleBackColor = True
+        btneliminar.UseVisualStyleBackColor = False
         ' 
-        ' Button5
+        ' btnlimpiar
         ' 
-        Button5.Image = CType(resources.GetObject("Button5.Image"), Image)
-        Button5.Location = New Point(477, 21)
-        Button5.Name = "Button5"
-        Button5.Size = New Size(44, 33)
-        Button5.TabIndex = 15
-        Button5.UseVisualStyleBackColor = True
+        btnlimpiar.Image = CType(resources.GetObject("btnlimpiar.Image"), Image)
+        btnlimpiar.Location = New Point(510, 12)
+        btnlimpiar.Name = "btnlimpiar"
+        btnlimpiar.Size = New Size(44, 33)
+        btnlimpiar.TabIndex = 15
+        btnlimpiar.UseVisualStyleBackColor = True
         ' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(btnfoto)
         GroupBox1.Controls.Add(btneliminar)
         GroupBox1.Controls.Add(btnnuevo)
         GroupBox1.Controls.Add(btnmodificar)
-        GroupBox1.Location = New Point(541, 57)
+        GroupBox1.Location = New Point(573, 33)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(200, 202)
+        GroupBox1.Size = New Size(278, 294)
         GroupBox1.TabIndex = 16
         GroupBox1.TabStop = False
         GroupBox1.Text = "GroupBox1"
         ' 
-        ' txtbuscar
+        ' btnfoto
         ' 
-        txtbuscar.Location = New Point(254, 324)
-        txtbuscar.Name = "txtbuscar"
-        txtbuscar.Size = New Size(196, 23)
-        txtbuscar.TabIndex = 17
+        btnfoto.BackColor = SystemColors.GradientActiveCaption
+        btnfoto.FlatStyle = FlatStyle.Popup
+        btnfoto.Font = New Font("Segoe UI", 15.75F)
+        btnfoto.Image = CType(resources.GetObject("btnfoto.Image"), Image)
+        btnfoto.ImageAlign = ContentAlignment.MiddleLeft
+        btnfoto.Location = New Point(48, 216)
+        btnfoto.Name = "btnfoto"
+        btnfoto.Size = New Size(175, 50)
+        btnfoto.TabIndex = 14
+        btnfoto.Text = "cargar foto"
+        btnfoto.TextAlign = ContentAlignment.MiddleRight
+        btnfoto.UseVisualStyleBackColor = False
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Modern No. 20", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(55, 321)
+        Label6.Font = New Font("Segoe UI", 12F)
+        Label6.Location = New Point(49, 395)
         Label6.Name = "Label6"
-        Label6.Size = New Size(167, 22)
+        Label6.Size = New Size(129, 21)
         Label6.TabIndex = 10
-        Label6.Text = "usuario a buscar :"
+        Label6.Text = "Usuario a busacr:"
         ' 
         ' dgvusuarios
         ' 
         dgvusuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvusuarios.Location = New Point(22, 401)
+        dgvusuarios.Location = New Point(36, 480)
         dgvusuarios.Name = "dgvusuarios"
         dgvusuarios.Size = New Size(580, 209)
         dgvusuarios.TabIndex = 18
+        ' 
+        ' picfoto
+        ' 
+        picfoto.Location = New Point(655, 420)
+        picfoto.Name = "picfoto"
+        picfoto.Size = New Size(218, 269)
+        picfoto.TabIndex = 19
+        picfoto.TabStop = False
+        ' 
+        ' ofdfoto
+        ' 
+        ofdfoto.FileName = "ingrese una imaguen"
+        ' 
+        ' txtbuscar
+        ' 
+        txtbuscar.Location = New Point(233, 394)
+        txtbuscar.Name = "txtbuscar"
+        txtbuscar.Size = New Size(215, 23)
+        txtbuscar.TabIndex = 9
+        ' 
+        ' btnsalir
+        ' 
+        btnsalir.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        btnsalir.BackColor = SystemColors.GradientActiveCaption
+        btnsalir.FlatStyle = FlatStyle.Popup
+        btnsalir.Font = New Font("Segoe UI", 10F)
+        btnsalir.Image = CType(resources.GetObject("btnsalir.Image"), Image)
+        btnsalir.ImageAlign = ContentAlignment.MiddleRight
+        btnsalir.Location = New Point(937, 633)
+        btnsalir.Name = "btnsalir"
+        btnsalir.Size = New Size(80, 35)
+        btnsalir.TabIndex = 20
+        btnsalir.Text = "salir"
+        btnsalir.TextAlign = ContentAlignment.MiddleLeft
+        btnsalir.UseVisualStyleBackColor = False
         ' 
         ' fmr_usurios
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
-        ClientSize = New Size(962, 692)
+        ClientSize = New Size(1042, 693)
+        Controls.Add(btnsalir)
+        Controls.Add(txtbuscar)
+        Controls.Add(picfoto)
         Controls.Add(dgvusuarios)
         Controls.Add(Label6)
-        Controls.Add(txtbuscar)
         Controls.Add(GroupBox1)
-        Controls.Add(Button5)
+        Controls.Add(btnlimpiar)
         Controls.Add(gbx_usuarioinfo)
         ForeColor = SystemColors.ActiveCaptionText
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
@@ -235,6 +295,7 @@ Partial Class fmr_usurios
         gbx_usuarioinfo.PerformLayout()
         GroupBox1.ResumeLayout(False)
         CType(dgvusuarios, ComponentModel.ISupportInitialize).EndInit()
+        CType(picfoto, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -251,10 +312,14 @@ Partial Class fmr_usurios
     Friend WithEvents btnnuevo As Button
     Friend WithEvents btnmodificar As Button
     Friend WithEvents btneliminar As Button
-    Friend WithEvents Button5 As Button
+    Friend WithEvents btnlimpiar As Button
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents txtbuscar As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents dgvusuarios As DataGridView
+    Friend WithEvents btnfoto As Button
+    Friend WithEvents picfoto As PictureBox
+    Friend WithEvents ofdfoto As OpenFileDialog
+    Friend WithEvents txtbuscar As TextBox
+    Friend WithEvents btnsalir As Button
 
 End Class
