@@ -87,7 +87,7 @@ Public Class frm_Juegos
         If Not ValidarCampos() Then Exit Sub
 
         Dim objJuego1 As New CLS_PRODUCTOS(txtNombre.Text, Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToDouble(txtPrecio.Text), Convert.ToInt32(txtStock.Text), dtpFechaIngreso.Value, rutaImagenOrigen)
-        objJuego1.Id = Integer.Parse(lblID.Text)
+        ' objJuego1.Id = Integer.Parse(lblID.Text)
 
 
         Try
@@ -102,7 +102,7 @@ Public Class frm_Juegos
                 rutaGuardada = If(idJuegoSeleccionado > 0, objJuego1.Portada, "")
             End If
 
-            objJuego1.Id = idJuegoSeleccionado
+            ' objJuego1.Id = idJuegoSeleccionado
             objJuego1.Nombre = txtNombre.Text.Trim()
             objJuego1.IdCategoria = Convert.ToInt32(cmbCategoria.SelectedValue)
             objJuego1.Precio = Convert.ToDouble(txtPrecio.Text)
@@ -138,15 +138,27 @@ Public Class frm_Juegos
             txtPrecio.Text = row.Cells("precio").Value.ToString()
             txtStock.Text = row.Cells("stock").Value.ToString()
             dtpFechaIngreso.Value = Convert.ToDateTime(row.Cells("fecha_ingreso").Value)
+            picPortada.Image = Nothing
 
             Dim rutaFoto As String = row.Cells("portada").Value.ToString()
             If Not String.IsNullOrEmpty(rutaFoto) AndAlso File.Exists(Path.Combine(Application.StartupPath, rutaFoto)) Then
                 picPortada.ImageLocation = Path.Combine(Application.StartupPath, rutaFoto)
-                'objJuego.Portada = rutaFoto
+                objJuego.Portada = rutaFoto
             Else
                 picPortada.Image = Nothing
-                'objJuego.Portada = ""
+                objJuego.Portada = ""
             End If
+            'Try
+            '    If Not String.IsNullOrEmpty(rutaFoto) AndAlso IO.File.Exists(Ruta) Then
+            '        Using fs As New IO.FileStream(Ruta, IO.FileMode.Open, IO.FileAccess.Read)
+            '            picPortada.Image = Image.FromStream(fs)
+            '        End Using
+            '    Else
+            '        picPortada.Image = Nothing
+            '    End If
+            'Catch
+            '    picPortada.Image = Nothing
+            'End Try
         End If
     End Sub
 
@@ -154,11 +166,11 @@ Public Class frm_Juegos
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If idJuegoSeleccionado > 0 Then
             If MessageBox.Show("¿Desea eliminar el juego seleccionado?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                'If objJuego.Eliminar(idJuegoSeleccionado) Then
-                '    MessageBox.Show("Juego eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                '    CargarGridJuegos()
-                '    LimpiarFormulario()
-                'End If
+                If objJuego.EliminarJuego(idJuegoSeleccionado) Then
+                    MessageBox.Show("Juego eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    CargarGridJuegos()
+                    LimpiarFormulario()
+                End If
             End If
         Else
             MessageBox.Show("Seleccione un juego del listado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -178,14 +190,9 @@ Public Class frm_Juegos
         dtpFechaIngreso.Value = DateTime.Now
         picPortada.Image = Nothing
         rutaImagenOrigen = ""
+        lblID.Text = "0"
     End Sub
 
-    Private Sub picPortada_Click(sender As Object, e As EventArgs) Handles picPortada.Click
 
-    End Sub
-
-    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-
-    End Sub
 End Class
 

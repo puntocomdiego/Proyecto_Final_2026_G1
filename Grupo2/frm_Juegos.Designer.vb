@@ -139,6 +139,8 @@ Partial Class frm_Juegos
         ' 
         ' dgvJuegos
         ' 
+        dgvJuegos.AllowUserToAddRows = False
+        dgvJuegos.AllowUserToDeleteRows = False
         dgvJuegos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvJuegos.Location = New Point(78, 373)
         dgvJuegos.Margin = New Padding(3, 4, 3, 4)
