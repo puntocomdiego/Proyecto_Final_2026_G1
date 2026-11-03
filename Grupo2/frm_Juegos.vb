@@ -26,7 +26,7 @@ Public Class frm_Juegos
     End Sub
 
     Private Sub CargarGridJuegos()
-        dgvJuegos.DataSource = objJuego.ListarJuegos()
+        dgvJuegos.DataSource = objJuego.ListarJuegos
         If dgvJuegos.Columns.Contains("id_categoria") Then
             dgvJuegos.Columns("id_categoria").Visible = False
         End If
