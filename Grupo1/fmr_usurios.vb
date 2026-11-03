@@ -4,7 +4,7 @@ Public Class fmr_usurios
 
 
 
-
+    Private modo As String = ""
 
     '████████╗██╗   ██╗███╗   ██╗ ██████╗
     '╚══██╔══╝██║   ██║████╗  ██║██╔════╝
@@ -80,21 +80,7 @@ Public Class fmr_usurios
 
     End Sub
 
-    Private Sub dgvusuarios_SelectionChanged(sender As Object, e As EventArgs) Handles dgvusuarios.SelectionChanged
 
-
-
-
-        If dgvusuarios.CurrentRow Is Nothing Then Exit Sub
-
-        txtnombre.Text = dgvusuarios.CurrentRow.Cells("nombre").Value.ToString()
-        txtapellido.Text = dgvusuarios.CurrentRow.Cells("apellido").Value.ToString()
-        txtnomusuario.Text = dgvusuarios.CurrentRow.Cells("usuario").Value.ToString()
-        txtcontra.Text = dgvusuarios.CurrentRow.Cells("contrasena").Value.ToString()
-        rutaFoto = dgvusuarios.CurrentRow.Cells("foto").Value.ToString()
-        MostrarFoto(rutaFoto)
-
-    End Sub
 
     Private Sub fmr_usurios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ConfigurarGrilla()
@@ -104,22 +90,12 @@ Public Class fmr_usurios
 
 
     Private Sub btnnuevo_Click(sender As Object, e As EventArgs) Handles btnnuevo.Click
-        If Not DatosValidos() Then Exit Sub
-        Try
-            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now, rutaFoto)
-
-            If datos.Agregar(u) Then          ' el objeto datos hace el trabajo
-                MostrarUsuarios(datos.Listar())
-                Limpiar()
-            End If
-        Catch ex As Exception
-            MessageBox.Show("No se pudo agregar el usuario: " & ex.Message)
-        End Try
+        Limpiar()
     End Sub
 
     Private Sub btnmodificar_Click(sender As Object, e As EventArgs) Handles btnmodificar.Click ''''''''''''''''
-        If dgvusuarios.CurrentRow Is Nothing Then Exit Sub
-        If Not DatosValidos() Then Exit Sub
+
+
         Try
             Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now, rutaFoto)
 
@@ -194,7 +170,7 @@ Public Class fmr_usurios
 
 
 
-    Private Sub btnlimpiar_Click(sender As Object, e As EventArgs) Handles btnlimpiar.Click
+    Private Sub btnlimpiar_Click(sender As Object, e As EventArgs)
         Limpiar()
     End Sub
 
@@ -209,7 +185,31 @@ Public Class fmr_usurios
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
+        If Not DatosValidos() Then Exit Sub
+        Try
+            Dim p As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text.Trim(), Date.Now, rutaFoto.Trim())
 
+            If datos.Agregar(p) Then
+                MostrarUsuarios(datos.Listar())
+                Limpiar()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("No se pudo agregar el usuario: " & ex.Message)
+        End Try
     End Sub
+
+    Private Sub dgvusuarios_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvusuarios.CellContentClick
+        If dgvusuarios.CurrentRow Is Nothing Then Exit Sub
+
+        txtnombre.Text = dgvusuarios.CurrentRow.Cells("nombre").Value.ToString()
+        txtapellido.Text = dgvusuarios.CurrentRow.Cells("apellido").Value.ToString()
+        txtnomusuario.Text = dgvusuarios.CurrentRow.Cells("usuario").Value.ToString()
+        txtcontra.Text = dgvusuarios.CurrentRow.Cells("contrasena").Value.ToString()
+        rutaFoto = dgvusuarios.CurrentRow.Cells("foto").Value.ToString()
+        MostrarFoto(rutaFoto)
+    End Sub
+
+
+
 End Class

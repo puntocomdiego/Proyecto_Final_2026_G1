@@ -272,31 +272,31 @@ Partial Class MDIParent1
         ' UsuariosToolStripMenuItem
         ' 
         UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        UsuariosToolStripMenuItem.Size = New Size(130, 22)
+        UsuariosToolStripMenuItem.Size = New Size(180, 22)
         UsuariosToolStripMenuItem.Text = "Usuarios"
         ' 
         ' CategoriasToolStripMenuItem
         ' 
         CategoriasToolStripMenuItem.Name = "CategoriasToolStripMenuItem"
-        CategoriasToolStripMenuItem.Size = New Size(130, 22)
+        CategoriasToolStripMenuItem.Size = New Size(180, 22)
         CategoriasToolStripMenuItem.Text = "Categorias"
         ' 
         ' JuegosToolStripMenuItem
         ' 
         JuegosToolStripMenuItem.Name = "JuegosToolStripMenuItem"
-        JuegosToolStripMenuItem.Size = New Size(130, 22)
+        JuegosToolStripMenuItem.Size = New Size(180, 22)
         JuegosToolStripMenuItem.Text = "Juegos"
         ' 
         ' VentasToolStripMenuItem
         ' 
         VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        VentasToolStripMenuItem.Size = New Size(130, 22)
+        VentasToolStripMenuItem.Size = New Size(180, 22)
         VentasToolStripMenuItem.Text = "Ventas"
         ' 
         ' ConsultasToolStripMenuItem
         ' 
         ConsultasToolStripMenuItem.Name = "ConsultasToolStripMenuItem"
-        ConsultasToolStripMenuItem.Size = New Size(130, 22)
+        ConsultasToolStripMenuItem.Size = New Size(180, 22)
         ConsultasToolStripMenuItem.Text = "Consultas"
         ' 
         ' ToolStrip

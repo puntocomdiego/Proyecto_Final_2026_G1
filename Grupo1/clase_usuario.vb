@@ -11,8 +11,7 @@ Public Class clase_usuario
     Public Property Foto As String
 
 
-    Public Sub New()
-    End Sub
+
 
     Public Sub New(nombre As String, apellido As String, usuario As String, contrasena As String, fechaCreacion As Date, foto As String)
 

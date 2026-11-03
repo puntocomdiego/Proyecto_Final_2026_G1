@@ -121,4 +121,10 @@ Public Class MDIParent1
         f.Show()
 
     End Sub
+
+    Private Sub ConsultasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultasToolStripMenuItem.Click
+        'Dim f As New frm_consultas
+        'f.MdiParent = Me
+        'f.Show()
+    End Sub
 End Class
