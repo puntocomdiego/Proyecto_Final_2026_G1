@@ -11,7 +11,7 @@ Public Class cls_Productos_Datos
         Dim dt As New DataTable()
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-            "SELECT id, nombre, id_Categoria, precio, stock, fecha_ingreso, portada FROM juegos ORDER BY nombre"
+            "SELECT nombre, id_Categoria, precio, stock, fecha_ingreso, portada FROM juegos ORDER BY id"
             Using da As New OleDbDataAdapter(sql, cn)
                 da.Fill(dt)
             End Using
