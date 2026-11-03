@@ -1,10 +1,12 @@
 ﻿Imports System.IO
+Imports Proyecto_Final_2026_G1.cls_Productos_Datos
 
 
 Public Class frm_Juegos
 
-    Private objJuego As New CLS_PRODUCTOS()
-    Private objCat As New CLS_CATEGORIAS()
+    Private objJuego As New cls_Productos_Datos
+
+    Private objCat As New cls_categorias_datos()
     Private idJuegoSeleccionado As Integer = 0
     Private rutaImagenOrigen As String = ""
 
@@ -79,7 +81,14 @@ Public Class frm_Juegos
 
     ' Botón Guardar (Alta / Modificación)
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+
+
+
         If Not ValidarCampos() Then Exit Sub
+
+        Dim objJuego1 As New CLS_PRODUCTOS(txtNombre.Text, Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToDouble(txtPrecio.Text), Convert.ToInt32(txtStock.Text), dtpFechaIngreso.Value, rutaImagenOrigen)
+        ' objJuego1.Id = Integer.Parse(lblID.Text)
+
 
         Try
             Dim rutaGuardada As String = ""
@@ -90,23 +99,23 @@ Public Class frm_Juegos
                 rutaGuardada = Path.Combine("Portadas", Guid.NewGuid().ToString() & Path.GetExtension(rutaImagenOrigen))
                 File.Copy(rutaImagenOrigen, Path.Combine(Application.StartupPath, rutaGuardada), True)
             Else
-                rutaGuardada = If(idJuegoSeleccionado > 0, objJuego.Portada, "")
+                rutaGuardada = If(idJuegoSeleccionado > 0, objJuego1.Portada, "")
             End If
 
-            objJuego.Id = idJuegoSeleccionado
-            objJuego.Nombre = txtNombre.Text.Trim()
-            objJuego.IdCategoria = Convert.ToInt32(cmbCategoria.SelectedValue)
-            objJuego.Precio = Convert.ToDouble(txtPrecio.Text)
-            objJuego.Stock = Convert.ToInt32(txtStock.Text)
-            objJuego.FechaIngreso = dtpFechaIngreso.Value
-            objJuego.Portada = rutaGuardada
+            ' objJuego1.Id = idJuegoSeleccionado
+            objJuego1.Nombre = txtNombre.Text.Trim()
+            objJuego1.IdCategoria = Convert.ToInt32(cmbCategoria.SelectedValue)
+            objJuego1.Precio = Convert.ToDouble(txtPrecio.Text)
+            objJuego1.Stock = Convert.ToInt32(txtStock.Text)
+            objJuego1.FechaIngreso = dtpFechaIngreso.Value
+            objJuego1.Portada = rutaGuardada
 
             Dim exito As Boolean = False
             If idJuegoSeleccionado = 0 Then
-                exito = objJuego.Guardar()
+                exito = objJuego.AgregarJuego(objJuego1)
                 MessageBox.Show("Juego guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
-                exito = objJuego.Modificar()
+                exito = objJuego.ActualizarJuego(objJuego1)
                 MessageBox.Show("Juego modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
@@ -129,6 +138,7 @@ Public Class frm_Juegos
             txtPrecio.Text = row.Cells("precio").Value.ToString()
             txtStock.Text = row.Cells("stock").Value.ToString()
             dtpFechaIngreso.Value = Convert.ToDateTime(row.Cells("fecha_ingreso").Value)
+            picPortada.Image = Nothing
 
             Dim rutaFoto As String = row.Cells("portada").Value.ToString()
             If Not String.IsNullOrEmpty(rutaFoto) AndAlso File.Exists(Path.Combine(Application.StartupPath, rutaFoto)) Then
@@ -138,6 +148,17 @@ Public Class frm_Juegos
                 picPortada.Image = Nothing
                 objJuego.Portada = ""
             End If
+            'Try
+            '    If Not String.IsNullOrEmpty(rutaFoto) AndAlso IO.File.Exists(Ruta) Then
+            '        Using fs As New IO.FileStream(Ruta, IO.FileMode.Open, IO.FileAccess.Read)
+            '            picPortada.Image = Image.FromStream(fs)
+            '        End Using
+            '    Else
+            '        picPortada.Image = Nothing
+            '    End If
+            'Catch
+            '    picPortada.Image = Nothing
+            'End Try
         End If
     End Sub
 
@@ -145,7 +166,7 @@ Public Class frm_Juegos
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If idJuegoSeleccionado > 0 Then
             If MessageBox.Show("¿Desea eliminar el juego seleccionado?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                If objJuego.Eliminar(idJuegoSeleccionado) Then
+                If objJuego.EliminarJuego(idJuegoSeleccionado) Then
                     MessageBox.Show("Juego eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     CargarGridJuegos()
                     LimpiarFormulario()
@@ -169,6 +190,9 @@ Public Class frm_Juegos
         dtpFechaIngreso.Value = DateTime.Now
         picPortada.Image = Nothing
         rutaImagenOrigen = ""
+        lblID.Text = "0"
     End Sub
+
+
 End Class
 
