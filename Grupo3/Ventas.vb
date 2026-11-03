@@ -6,7 +6,7 @@ Public Class Ventas
     ' Conexión a la base de datos Access
     ' IMPORTANTE: cambiar la ruta por la de tu computadora (o usar el módulo de conexión del grupo)
     ' ------------------------------------------------------------
-    Dim cn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\60653756\Documents\1\bin\Debug\net8.0-windows\LEVEL_UP.accdb")
+    Dim cn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Ruta)
 
     ' Aquí se guardan los juegos que traemos de la base
     Dim dtJuegos As New DataTable
