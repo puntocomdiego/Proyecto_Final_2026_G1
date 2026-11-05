@@ -193,6 +193,8 @@ Public Class frm_Juegos
         lblID.Text = "0"
     End Sub
 
-
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Me.Close()
+    End Sub
 End Class
 

@@ -258,7 +258,7 @@ Partial Class frm_Juegos
         Button1.Name = "Button1"
         Button1.Size = New Size(80, 35)
         Button1.TabIndex = 11
-        Button1.Text = "Eliminar"
+        Button1.Text = "salir"
         Button1.TextAlign = ContentAlignment.MiddleLeft
         Button1.UseVisualStyleBackColor = True
         ' 
