@@ -109,7 +109,7 @@ Public Class Login
         BotonPrimario(btnIniciarSesion)
         BotonSecundario(btnSalir)
         Me.BackColor = SystemColors.ActiveCaption
-
+        'enriquee
     End Sub
 
     Private Sub txtUsuario_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsuario.KeyDown
