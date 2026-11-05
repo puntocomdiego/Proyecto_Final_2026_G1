@@ -42,6 +42,7 @@ Partial Class frm_Juegos
         Label6 = New Label()
         lblID = New Label()
         Panel1 = New Panel()
+        Button1 = New Button()
         CType(picPortada, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvJuegos, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
@@ -94,11 +95,16 @@ Partial Class frm_Juegos
         ' 
         ' btnExaminar
         ' 
-        btnExaminar.Location = New Point(520, 200)
+        btnExaminar.FlatStyle = FlatStyle.Popup
+        btnExaminar.Font = New Font("Segoe UI", 15.75F)
+        btnExaminar.ForeColor = SystemColors.GradientActiveCaption
+        btnExaminar.ImageAlign = ContentAlignment.MiddleRight
+        btnExaminar.Location = New Point(531, 200)
         btnExaminar.Name = "btnExaminar"
-        btnExaminar.Size = New Size(121, 40)
+        btnExaminar.Size = New Size(175, 50)
         btnExaminar.TabIndex = 7
         btnExaminar.Text = "Examinar"
+        btnExaminar.TextAlign = ContentAlignment.MiddleLeft
         btnExaminar.UseVisualStyleBackColor = True
         ' 
         ' btnGuardar
@@ -107,7 +113,7 @@ Partial Class frm_Juegos
         btnGuardar.Font = New Font("Segoe UI", 15.75F)
         btnGuardar.ForeColor = SystemColors.GradientActiveCaption
         btnGuardar.ImageAlign = ContentAlignment.MiddleRight
-        btnGuardar.Location = New Point(444, 6)
+        btnGuardar.Location = New Point(272, 8)
         btnGuardar.Name = "btnGuardar"
         btnGuardar.Size = New Size(175, 50)
         btnGuardar.TabIndex = 8
@@ -121,7 +127,7 @@ Partial Class frm_Juegos
         btnEliminar.Font = New Font("Segoe UI", 15.75F)
         btnEliminar.ForeColor = SystemColors.GradientActiveCaption
         btnEliminar.ImageAlign = ContentAlignment.MiddleRight
-        btnEliminar.Location = New Point(649, 6)
+        btnEliminar.Location = New Point(477, 8)
         btnEliminar.Name = "btnEliminar"
         btnEliminar.Size = New Size(175, 50)
         btnEliminar.TabIndex = 9
@@ -135,7 +141,7 @@ Partial Class frm_Juegos
         btnLimpiar.Font = New Font("Segoe UI", 15.75F)
         btnLimpiar.ForeColor = SystemColors.GradientActiveCaption
         btnLimpiar.ImageAlign = ContentAlignment.MiddleRight
-        btnLimpiar.Location = New Point(240, 6)
+        btnLimpiar.Location = New Point(68, 8)
         btnLimpiar.Name = "btnLimpiar"
         btnLimpiar.Size = New Size(175, 50)
         btnLimpiar.TabIndex = 10
@@ -230,21 +236,37 @@ Partial Class frm_Juegos
         ' 
         ' Panel1
         ' 
+        Panel1.Controls.Add(Button1)
         Panel1.Controls.Add(btnLimpiar)
         Panel1.Controls.Add(btnEliminar)
         Panel1.Controls.Add(btnGuardar)
         Panel1.Dock = DockStyle.Bottom
-        Panel1.Location = New Point(0, 510)
+        Panel1.Location = New Point(0, 518)
         Panel1.Margin = New Padding(3, 2, 3, 2)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(836, 68)
+        Panel1.Size = New Size(857, 67)
         Panel1.TabIndex = 19
+        ' 
+        ' Button1
+        ' 
+        Button1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        Button1.FlatStyle = FlatStyle.Popup
+        Button1.Font = New Font("Segoe UI", 10F)
+        Button1.ForeColor = SystemColors.GradientActiveCaption
+        Button1.ImageAlign = ContentAlignment.MiddleRight
+        Button1.Location = New Point(765, 23)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(80, 35)
+        Button1.TabIndex = 11
+        Button1.Text = "Eliminar"
+        Button1.TextAlign = ContentAlignment.MiddleLeft
+        Button1.UseVisualStyleBackColor = True
         ' 
         ' frm_Juegos
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(836, 578)
+        ClientSize = New Size(857, 585)
         Controls.Add(Panel1)
         Controls.Add(lblID)
         Controls.Add(Label6)
@@ -291,4 +313,5 @@ Partial Class frm_Juegos
     Friend WithEvents Label6 As Label
     Friend WithEvents lblID As Label
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents Button1 As Button
 End Class

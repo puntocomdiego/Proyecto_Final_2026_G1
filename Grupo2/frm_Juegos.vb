@@ -168,8 +168,8 @@ Public Class frm_Juegos
             If MessageBox.Show("¿Desea eliminar el juego seleccionado?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 If objJuego.EliminarJuego(idJuegoSeleccionado) Then
                     MessageBox.Show("Juego eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    CargarGridJuegos()
-                    LimpiarFormulario()
+                    CargarGridJuegos
+                    LimpiarFormulario
                 End If
             End If
         Else
