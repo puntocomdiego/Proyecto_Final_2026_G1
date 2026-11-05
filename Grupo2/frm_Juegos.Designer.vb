@@ -266,6 +266,7 @@ Partial Class frm_Juegos
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(857, 585)
         Controls.Add(Panel1)
         Controls.Add(lblID)
@@ -283,6 +284,8 @@ Partial Class frm_Juegos
         Controls.Add(txtPrecio)
         Controls.Add(txtStock)
         Controls.Add(txtNombre)
+        FormBorderStyle = FormBorderStyle.FixedSingle
+        MaximizeBox = False
         Name = "frm_Juegos"
         StartPosition = FormStartPosition.CenterScreen
         Text = "frm_Juegos"
