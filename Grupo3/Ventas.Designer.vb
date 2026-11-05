@@ -26,14 +26,12 @@ Partial Class Ventas
         Cmb1 = New ComboBox()
         Cmb2 = New ComboBox()
         Label2 = New Label()
-        Label3 = New Label()
+        lblStock = New Label()
         Label4 = New Label()
         Label5 = New Label()
         DataGridView1 = New DataGridView()
-        Button1 = New Button()
-        Button2 = New Button()
-        BtnFinaliza = New Button()
-        lblHora = New Label()
+        btnAgregar = New Button()
+        btnConfirmar = New Button()
         BtnSalir = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -60,7 +58,6 @@ Partial Class Ventas
         ' Cmb2
         ' 
         Cmb2.FormattingEnabled = True
-        Cmb2.Items.AddRange(New Object() {"Mario Kart 8 Deluxe", "The Legend of Zelda: Tears of the Kingdom", "Super Smash Bros Ultimate", "Splatoon 3", "Minecraft", "Stardew Valley", "Hollow Knight", "Gran Turismo 7", "Marvel's Spider-Man 2", "Forza Horizon 5", "Rocket League", "Sonic the Hedgehog (clasico)"})
         Cmb2.Location = New Point(498, 153)
         Cmb2.Name = "Cmb2"
         Cmb2.Size = New Size(224, 23)
@@ -76,15 +73,15 @@ Partial Class Ventas
         Label2.TabIndex = 3
         Label2.Text = "🕶Stock👓"
         ' 
-        ' Label3
+        ' lblStock
         ' 
-        Label3.AutoSize = True
-        Label3.ForeColor = SystemColors.ActiveCaptionText
-        Label3.Location = New Point(393, 130)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(13, 15)
-        Label3.TabIndex = 4
-        Label3.Text = "0"
+        lblStock.AutoSize = True
+        lblStock.ForeColor = SystemColors.ActiveCaptionText
+        lblStock.Location = New Point(393, 130)
+        lblStock.Name = "lblStock"
+        lblStock.Size = New Size(13, 15)
+        lblStock.TabIndex = 4
+        lblStock.Text = "0"
         ' 
         ' Label4
         ' 
@@ -92,9 +89,9 @@ Partial Class Ventas
         Label4.ForeColor = SystemColors.ActiveCaptionText
         Label4.Location = New Point(130, 115)
         Label4.Name = "Label4"
-        Label4.Size = New Size(67, 15)
+        Label4.Size = New Size(55, 15)
         Label4.TabIndex = 5
-        Label4.Text = "Cantidad💎"
+        Label4.Text = "Juegos💎"
         ' 
         ' Label5
         ' 
@@ -102,9 +99,9 @@ Partial Class Ventas
         Label5.ForeColor = SystemColors.ActiveCaptionText
         Label5.Location = New Point(586, 115)
         Label5.Name = "Label5"
-        Label5.Size = New Size(55, 15)
+        Label5.Size = New Size(67, 15)
         Label5.TabIndex = 6
-        Label5.Text = "Juegos🕹"
+        Label5.Text = "Cantidad🕹"
         ' 
         ' DataGridView1
         ' 
@@ -114,45 +111,25 @@ Partial Class Ventas
         DataGridView1.Size = New Size(674, 102)
         DataGridView1.TabIndex = 7
         ' 
-        ' Button1
+        ' btnAgregar
         ' 
-        Button1.ForeColor = SystemColors.ActiveCaptionText
-        Button1.Location = New Point(56, 297)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(141, 23)
-        Button1.TabIndex = 8
-        Button1.Text = "Agregar"
-        Button1.UseVisualStyleBackColor = True
+        btnAgregar.ForeColor = SystemColors.ActiveCaptionText
+        btnAgregar.Location = New Point(382, 409)
+        btnAgregar.Name = "btnAgregar"
+        btnAgregar.Size = New Size(141, 23)
+        btnAgregar.TabIndex = 8
+        btnAgregar.Text = "Agregar"
+        btnAgregar.UseVisualStyleBackColor = True
         ' 
-        ' Button2
+        ' btnConfirmar
         ' 
-        Button2.ForeColor = SystemColors.ActiveCaptionText
-        Button2.Location = New Point(326, 297)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(147, 23)
-        Button2.TabIndex = 9
-        Button2.Text = "Editar"
-        Button2.UseVisualStyleBackColor = True
-        ' 
-        ' BtnFinaliza
-        ' 
-        BtnFinaliza.ForeColor = SystemColors.ActiveCaptionText
-        BtnFinaliza.Location = New Point(608, 297)
-        BtnFinaliza.Name = "BtnFinaliza"
-        BtnFinaliza.Size = New Size(122, 23)
-        BtnFinaliza.TabIndex = 12
-        BtnFinaliza.Text = "Confirmar"
-        BtnFinaliza.UseVisualStyleBackColor = True
-        ' 
-        ' lblHora
-        ' 
-        lblHora.AutoSize = True
-        lblHora.ForeColor = SystemColors.ActiveCaptionText
-        lblHora.Location = New Point(705, 27)
-        lblHora.Name = "lblHora"
-        lblHora.Size = New Size(47, 15)
-        lblHora.TabIndex = 13
-        lblHora.Text = "Fecha..."
+        btnConfirmar.ForeColor = SystemColors.ActiveCaptionText
+        btnConfirmar.Location = New Point(552, 409)
+        btnConfirmar.Name = "btnConfirmar"
+        btnConfirmar.Size = New Size(122, 23)
+        btnConfirmar.TabIndex = 12
+        btnConfirmar.Text = "Confirmar"
+        btnConfirmar.UseVisualStyleBackColor = True
         ' 
         ' BtnSalir
         ' 
@@ -171,14 +148,12 @@ Partial Class Ventas
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
         Controls.Add(BtnSalir)
-        Controls.Add(lblHora)
-        Controls.Add(BtnFinaliza)
-        Controls.Add(Button2)
-        Controls.Add(Button1)
+        Controls.Add(btnConfirmar)
+        Controls.Add(btnAgregar)
         Controls.Add(DataGridView1)
         Controls.Add(Label5)
         Controls.Add(Label4)
-        Controls.Add(Label3)
+        Controls.Add(lblStock)
         Controls.Add(Label2)
         Controls.Add(Cmb2)
         Controls.Add(Cmb1)
@@ -195,13 +170,11 @@ Partial Class Ventas
     Friend WithEvents Cmb1 As ComboBox
     Friend WithEvents Cmb2 As ComboBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents lblStock As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents BtnFinaliza As Button
-    Friend WithEvents lblHora As Label
+    Friend WithEvents btnAgregar As Button
+    Friend WithEvents btnConfirmar As Button
     Friend WithEvents BtnSalir As Button
 End Class
