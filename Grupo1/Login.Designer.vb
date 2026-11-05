@@ -120,6 +120,8 @@ Partial Class Login
         Controls.Add(txtUsuario)
         Controls.Add(lblContrasena)
         Controls.Add(lblUsuario)
+        FormBorderStyle = FormBorderStyle.FixedSingle
+        MaximizeBox = False
         Name = "Login"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Login"
