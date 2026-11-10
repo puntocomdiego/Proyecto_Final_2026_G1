@@ -64,10 +64,22 @@ Partial Class FrmConsultas
         ' 
         ' DgvListadoVentas
         ' 
+        DgvListadoVentas.AllowUserToAddRows = False
+        DgvListadoVentas.AllowUserToDeleteRows = False
+        DgvListadoVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        DgvListadoVentas.BackgroundColor = Color.White
+        DgvListadoVentas.BorderStyle = BorderStyle.None
+        DgvListadoVentas.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         DgvListadoVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DgvListadoVentas.EnableHeadersVisualStyles = False
+        DgvListadoVentas.GridColor = Color.Gray
         DgvListadoVentas.Location = New Point(54, 29)
+        DgvListadoVentas.MultiSelect = False
         DgvListadoVentas.Name = "DgvListadoVentas"
+        DgvListadoVentas.ReadOnly = True
+        DgvListadoVentas.RowHeadersVisible = False
         DgvListadoVentas.RowHeadersWidth = 51
+        DgvListadoVentas.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DgvListadoVentas.Size = New Size(1280, 401)
         DgvListadoVentas.TabIndex = 3
         ' 
@@ -106,6 +118,7 @@ Partial Class FrmConsultas
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(248))
         ClientSize = New Size(1372, 497)
         Controls.Add(TxtCorreo)
         Controls.Add(BtnCancelar)
