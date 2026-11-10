@@ -55,10 +55,10 @@ Partial Class frm_categorias
         ' dgvcategorias
         ' 
         dgvcategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvcategorias.Location = New Point(515, 48)
+        dgvcategorias.Location = New Point(427, 48)
         dgvcategorias.Name = "dgvcategorias"
         dgvcategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvcategorias.Size = New Size(362, 223)
+        dgvcategorias.Size = New Size(743, 223)
         dgvcategorias.TabIndex = 0
         ' 
         ' txtnombre
@@ -80,6 +80,7 @@ Partial Class frm_categorias
         ' btnguardar
         ' 
         btnguardar.BackColor = SystemColors.AppWorkspace
+        btnguardar.Font = New Font("Segoe UI", 10F)
         btnguardar.Image = CType(resources.GetObject("btnguardar.Image"), Image)
         btnguardar.ImageAlign = ContentAlignment.MiddleRight
         btnguardar.Location = New Point(459, 22)
@@ -92,6 +93,7 @@ Partial Class frm_categorias
         ' btneliminar
         ' 
         btneliminar.BackColor = SystemColors.AppWorkspace
+        btneliminar.Font = New Font("Segoe UI", 10F)
         btneliminar.Image = CType(resources.GetObject("btneliminar.Image"), Image)
         btneliminar.ImageAlign = ContentAlignment.MiddleRight
         btneliminar.Location = New Point(258, 22)
@@ -104,6 +106,7 @@ Partial Class frm_categorias
         ' btnlimpiar
         ' 
         btnlimpiar.BackColor = SystemColors.AppWorkspace
+        btnlimpiar.Font = New Font("Segoe UI", 10F)
         btnlimpiar.Image = CType(resources.GetObject("btnlimpiar.Image"), Image)
         btnlimpiar.ImageAlign = ContentAlignment.MiddleRight
         btnlimpiar.Location = New Point(62, 22)
@@ -174,6 +177,7 @@ Partial Class frm_categorias
         ' btntutorial
         ' 
         btntutorial.BackColor = SystemColors.AppWorkspace
+        btntutorial.Font = New Font("Segoe UI", 10F)
         btntutorial.Image = CType(resources.GetObject("btntutorial.Image"), Image)
         btntutorial.ImageAlign = ContentAlignment.MiddleRight
         btntutorial.Location = New Point(831, 22)
@@ -232,6 +236,7 @@ Partial Class frm_categorias
         ' btnBuscar
         ' 
         btnBuscar.BackColor = SystemColors.AppWorkspace
+        btnBuscar.Font = New Font("Segoe UI", 10F)
         btnBuscar.Image = CType(resources.GetObject("btnBuscar.Image"), Image)
         btnBuscar.ImageAlign = ContentAlignment.MiddleRight
         btnBuscar.Location = New Point(650, 22)
@@ -239,6 +244,7 @@ Partial Class frm_categorias
         btnBuscar.Size = New Size(175, 50)
         btnBuscar.TabIndex = 13
         btnBuscar.Text = "Aplicar parametros           "
+        btnBuscar.TextAlign = ContentAlignment.MiddleRight
         btnBuscar.UseVisualStyleBackColor = False
         ' 
         ' lblcoincidencias
@@ -311,7 +317,9 @@ Partial Class frm_categorias
         Controls.Add(Label4)
         Controls.Add(dgvcategorias)
         Controls.Add(GroupBox2)
+        FormBorderStyle = FormBorderStyle.FixedSingle
         KeyPreview = True
+        MaximizeBox = False
         Name = "frm_categorias"
         Text = "CATEGORIAS"
         CType(dgvcategorias, ComponentModel.ISupportInitialize).EndInit()
