@@ -86,10 +86,11 @@ Partial Class frm_Juegos
         ' 
         ' picPortada
         ' 
-        picPortada.Location = New Point(282, 64)
+        picPortada.BackColor = SystemColors.ControlLight
+        picPortada.Location = New Point(327, 40)
         picPortada.Name = "picPortada"
-        picPortada.Size = New Size(216, 176)
-        picPortada.SizeMode = PictureBoxSizeMode.CenterImage
+        picPortada.Size = New Size(293, 259)
+        picPortada.SizeMode = PictureBoxSizeMode.Zoom
         picPortada.TabIndex = 6
         picPortada.TabStop = False
         ' 
@@ -100,7 +101,7 @@ Partial Class frm_Juegos
         btnExaminar.Font = New Font("Segoe UI", 15.75F)
         btnExaminar.ForeColor = SystemColors.Desktop
         btnExaminar.ImageAlign = ContentAlignment.MiddleRight
-        btnExaminar.Location = New Point(531, 200)
+        btnExaminar.Location = New Point(649, 249)
         btnExaminar.Name = "btnExaminar"
         btnExaminar.Size = New Size(175, 50)
         btnExaminar.TabIndex = 7
@@ -293,7 +294,7 @@ Partial Class frm_Juegos
         MaximizeBox = False
         Name = "frm_Juegos"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "frm_Juegos"
+        Text = "Administración de Juegos"
         CType(picPortada, ComponentModel.ISupportInitialize).EndInit()
         CType(dgvJuegos, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
