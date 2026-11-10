@@ -152,8 +152,7 @@ Public Class FrmConsultas
     End Sub
     Private Sub FrmConsultas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim SQL As String = ""
-        SQL = "SELECT ventas.id, ventas.fecha, ventas.id_usuario, ventas.total" _
-+ "From ventas;"
+        SQL = "SELECT ventas.id, ventas.fecha, ventas.id_usuario, ventas.total From ventas;"
 
 
         Dim da As New OleDbDataAdapter(SQL, cn)
