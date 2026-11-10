@@ -128,10 +128,21 @@ Public Class MDIParent1
         f.Show()
     End Sub
 
-    Private Sub btnsalir_Click(sender As Object, e As EventArgs)
+    'Private Sub btnsalir_Click(sender As Object, e As EventArgs)
+    '    Dim i = MessageBox.Show("¿Desea salir del sistema?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+    '    If i = DialogResult.Yes Then
+    '        Close()
+    '    End If
+    'End Sub
+
+    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
         Dim i = MessageBox.Show("¿Desea salir del sistema?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If i = DialogResult.Yes Then
             Close()
         End If
+    End Sub
+
+    Private Sub OkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OkToolStripMenuItem.Click
+
     End Sub
 End Class
