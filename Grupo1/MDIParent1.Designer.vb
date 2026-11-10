@@ -31,10 +31,10 @@ Partial Class MDIParent1
         JuegosToolStripMenuItem = New ToolStripMenuItem()
         VentasToolStripMenuItem = New ToolStripMenuItem()
         ConsultasToolStripMenuItem = New ToolStripMenuItem()
-        OkToolStripMenuItem = New ToolStripMenuItem()
+        CerrarSesionToolStripMenuItem = New ToolStripMenuItem()
         SalirToolStripMenuItem = New ToolStripMenuItem()
         StatusStrip = New StatusStrip()
-        ToolStripStatusLabel = New ToolStripStatusLabel()
+        lblInformacion = New ToolStripStatusLabel()
         ToolTip = New ToolTip(components)
         MenuStrip.SuspendLayout()
         StatusStrip.SuspendLayout()
@@ -53,7 +53,7 @@ Partial Class MDIParent1
         ' 
         ' ABREMEÇToolStripMenuItem
         ' 
-        ABREMEÇToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {UsuariosToolStripMenuItem, CategoriasToolStripMenuItem, JuegosToolStripMenuItem, VentasToolStripMenuItem, ConsultasToolStripMenuItem, OkToolStripMenuItem, SalirToolStripMenuItem})
+        ABREMEÇToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {UsuariosToolStripMenuItem, CategoriasToolStripMenuItem, JuegosToolStripMenuItem, VentasToolStripMenuItem, ConsultasToolStripMenuItem, CerrarSesionToolStripMenuItem, SalirToolStripMenuItem})
         ABREMEÇToolStripMenuItem.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ABREMEÇToolStripMenuItem.Name = "ABREMEÇToolStripMenuItem"
         ABREMEÇToolStripMenuItem.Size = New Size(62, 25)
@@ -89,11 +89,11 @@ Partial Class MDIParent1
         ConsultasToolStripMenuItem.Size = New Size(180, 26)
         ConsultasToolStripMenuItem.Text = "Consultas"
         ' 
-        ' OkToolStripMenuItem
+        ' CerrarSesionToolStripMenuItem
         ' 
-        OkToolStripMenuItem.Name = "OkToolStripMenuItem"
-        OkToolStripMenuItem.Size = New Size(180, 26)
-        OkToolStripMenuItem.Text = "Cerrar sesión"
+        CerrarSesionToolStripMenuItem.Name = "CerrarSesionToolStripMenuItem"
+        CerrarSesionToolStripMenuItem.Size = New Size(180, 26)
+        CerrarSesionToolStripMenuItem.Text = "Cerrar sesión"
         ' 
         ' SalirToolStripMenuItem
         ' 
@@ -104,7 +104,7 @@ Partial Class MDIParent1
         ' StatusStrip
         ' 
         StatusStrip.ImageScalingSize = New Size(20, 20)
-        StatusStrip.Items.AddRange(New ToolStripItem() {ToolStripStatusLabel})
+        StatusStrip.Items.AddRange(New ToolStripItem() {lblInformacion})
         StatusStrip.Location = New Point(0, 501)
         StatusStrip.Name = "StatusStrip"
         StatusStrip.Padding = New Padding(1, 0, 16, 0)
@@ -112,11 +112,11 @@ Partial Class MDIParent1
         StatusStrip.TabIndex = 7
         StatusStrip.Text = "StatusStrip"
         ' 
-        ' ToolStripStatusLabel
+        ' lblInformacion
         ' 
-        ToolStripStatusLabel.Name = "ToolStripStatusLabel"
-        ToolStripStatusLabel.Size = New Size(42, 17)
-        ToolStripStatusLabel.Text = "Estado"
+        lblInformacion.Name = "lblInformacion"
+        lblInformacion.Size = New Size(53, 17)
+        lblInformacion.Text = "Usuario: "
         ' 
         ' MDIParent1
         ' 
@@ -141,7 +141,7 @@ Partial Class MDIParent1
 
     End Sub
     Friend WithEvents ToolTip As System.Windows.Forms.ToolTip
-    Friend WithEvents ToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents lblInformacion As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents StatusStrip As System.Windows.Forms.StatusStrip
     Friend WithEvents MenuStrip As System.Windows.Forms.MenuStrip
     Friend WithEvents ABREMEÇToolStripMenuItem As ToolStripMenuItem
@@ -152,7 +152,7 @@ Partial Class MDIParent1
     Friend WithEvents JuegosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VentasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConsultasToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OkToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CerrarSesionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
 
 End Class
