@@ -26,7 +26,7 @@ Public Class frm_Juegos
     End Sub
 
     Private Sub CargarGridJuegos()
-        dgvJuegos.DataSource = objJuego.ListarJuegos()
+        dgvJuegos.DataSource = objJuego.ListarJuegos
         If dgvJuegos.Columns.Contains("id_categoria") Then
             dgvJuegos.Columns("id_categoria").Visible = False
         End If
@@ -168,8 +168,8 @@ Public Class frm_Juegos
             If MessageBox.Show("¿Desea eliminar el juego seleccionado?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 If objJuego.EliminarJuego(idJuegoSeleccionado) Then
                     MessageBox.Show("Juego eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    CargarGridJuegos()
-                    LimpiarFormulario()
+                    CargarGridJuegos
+                    LimpiarFormulario
                 End If
             End If
         Else
@@ -193,6 +193,8 @@ Public Class frm_Juegos
         lblID.Text = "0"
     End Sub
 
-
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Me.Close()
+    End Sub
 End Class
 

@@ -42,6 +42,7 @@ Partial Class frm_Juegos
         Label6 = New Label()
         lblID = New Label()
         Panel1 = New Panel()
+        Button1 = New Button()
         CType(picPortada, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvJuegos, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
@@ -49,14 +50,14 @@ Partial Class frm_Juegos
         ' 
         ' txtNombre
         ' 
-        txtNombre.Location = New Point(68, 68)
+        txtNombre.Location = New Point(68, 64)
         txtNombre.Name = "txtNombre"
         txtNombre.Size = New Size(100, 23)
         txtNombre.TabIndex = 1
         ' 
         ' txtStock
         ' 
-        txtStock.Location = New Point(68, 158)
+        txtStock.Location = New Point(68, 164)
         txtStock.Name = "txtStock"
         txtStock.Size = New Size(100, 23)
         txtStock.TabIndex = 2
@@ -71,14 +72,14 @@ Partial Class frm_Juegos
         ' cmbCategoria
         ' 
         cmbCategoria.FormattingEnabled = True
-        cmbCategoria.Location = New Point(68, 200)
+        cmbCategoria.Location = New Point(68, 216)
         cmbCategoria.Name = "cmbCategoria"
         cmbCategoria.Size = New Size(121, 23)
         cmbCategoria.TabIndex = 4
         ' 
         ' dtpFechaIngreso
         ' 
-        dtpFechaIngreso.Location = New Point(68, 244)
+        dtpFechaIngreso.Location = New Point(68, 266)
         dtpFechaIngreso.Name = "dtpFechaIngreso"
         dtpFechaIngreso.Size = New Size(200, 23)
         dtpFechaIngreso.TabIndex = 5
@@ -88,43 +89,64 @@ Partial Class frm_Juegos
         picPortada.Location = New Point(282, 64)
         picPortada.Name = "picPortada"
         picPortada.Size = New Size(216, 176)
+        picPortada.SizeMode = PictureBoxSizeMode.CenterImage
         picPortada.TabIndex = 6
         picPortada.TabStop = False
         ' 
         ' btnExaminar
         ' 
-        btnExaminar.Location = New Point(520, 200)
+        btnExaminar.FlatStyle = FlatStyle.Popup
+        btnExaminar.Font = New Font("Segoe UI", 15.75F)
+        btnExaminar.ForeColor = SystemColors.GradientActiveCaption
+        btnExaminar.ImageAlign = ContentAlignment.MiddleRight
+        btnExaminar.Location = New Point(531, 200)
         btnExaminar.Name = "btnExaminar"
-        btnExaminar.Size = New Size(121, 40)
+        btnExaminar.Size = New Size(175, 50)
         btnExaminar.TabIndex = 7
         btnExaminar.Text = "Examinar"
+        btnExaminar.TextAlign = ContentAlignment.MiddleLeft
         btnExaminar.UseVisualStyleBackColor = True
         ' 
         ' btnGuardar
         ' 
-        btnGuardar.Location = New Point(427, 16)
+        btnGuardar.FlatStyle = FlatStyle.Popup
+        btnGuardar.Font = New Font("Segoe UI", 15.75F)
+        btnGuardar.ForeColor = SystemColors.GradientActiveCaption
+        btnGuardar.ImageAlign = ContentAlignment.MiddleRight
+        btnGuardar.Location = New Point(272, 8)
         btnGuardar.Name = "btnGuardar"
-        btnGuardar.Size = New Size(121, 40)
+        btnGuardar.Size = New Size(175, 50)
         btnGuardar.TabIndex = 8
         btnGuardar.Text = "Guardar"
+        btnGuardar.TextAlign = ContentAlignment.MiddleLeft
         btnGuardar.UseVisualStyleBackColor = True
         ' 
         ' btnEliminar
         ' 
-        btnEliminar.Location = New Point(571, 16)
+        btnEliminar.FlatStyle = FlatStyle.Popup
+        btnEliminar.Font = New Font("Segoe UI", 15.75F)
+        btnEliminar.ForeColor = SystemColors.GradientActiveCaption
+        btnEliminar.ImageAlign = ContentAlignment.MiddleRight
+        btnEliminar.Location = New Point(477, 8)
         btnEliminar.Name = "btnEliminar"
-        btnEliminar.Size = New Size(121, 40)
+        btnEliminar.Size = New Size(175, 50)
         btnEliminar.TabIndex = 9
         btnEliminar.Text = "Eliminar"
+        btnEliminar.TextAlign = ContentAlignment.MiddleLeft
         btnEliminar.UseVisualStyleBackColor = True
         ' 
         ' btnLimpiar
         ' 
-        btnLimpiar.Location = New Point(268, 16)
+        btnLimpiar.FlatStyle = FlatStyle.Popup
+        btnLimpiar.Font = New Font("Segoe UI", 15.75F)
+        btnLimpiar.ForeColor = SystemColors.GradientActiveCaption
+        btnLimpiar.ImageAlign = ContentAlignment.MiddleRight
+        btnLimpiar.Location = New Point(68, 8)
         btnLimpiar.Name = "btnLimpiar"
-        btnLimpiar.Size = New Size(121, 40)
+        btnLimpiar.Size = New Size(175, 50)
         btnLimpiar.TabIndex = 10
         btnLimpiar.Text = "Limpiar"
+        btnLimpiar.TextAlign = ContentAlignment.MiddleLeft
         btnLimpiar.UseVisualStyleBackColor = True
         ' 
         ' dgvJuegos
@@ -132,10 +154,10 @@ Partial Class frm_Juegos
         dgvJuegos.AllowUserToAddRows = False
         dgvJuegos.AllowUserToDeleteRows = False
         dgvJuegos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvJuegos.Location = New Point(68, 280)
+        dgvJuegos.Location = New Point(68, 305)
         dgvJuegos.Name = "dgvJuegos"
         dgvJuegos.RowHeadersWidth = 51
-        dgvJuegos.Size = New Size(598, 188)
+        dgvJuegos.Size = New Size(756, 200)
         dgvJuegos.TabIndex = 11
         ' 
         ' ofd
@@ -145,45 +167,50 @@ Partial Class frm_Juegos
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(73, 51)
+        Label1.Font = New Font("Segoe UI", 12F)
+        Label1.Location = New Point(68, 40)
         Label1.Name = "Label1"
-        Label1.Size = New Size(54, 15)
+        Label1.Size = New Size(71, 21)
         Label1.TabIndex = 12
         Label1.Text = "Nombre:"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(73, 94)
+        Label2.Font = New Font("Segoe UI", 12F)
+        Label2.Location = New Point(68, 90)
         Label2.Name = "Label2"
-        Label2.Size = New Size(43, 15)
+        Label2.Size = New Size(56, 21)
         Label2.TabIndex = 13
         Label2.Text = "Precio:"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(73, 140)
+        Label3.Font = New Font("Segoe UI", 12F)
+        Label3.Location = New Point(68, 140)
         Label3.Name = "Label3"
-        Label3.Size = New Size(39, 15)
+        Label3.Size = New Size(50, 21)
         Label3.TabIndex = 14
         Label3.Text = "Stock:"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(73, 184)
+        Label4.Font = New Font("Segoe UI", 12F)
+        Label4.Location = New Point(68, 190)
         Label4.Name = "Label4"
-        Label4.Size = New Size(61, 15)
+        Label4.Size = New Size(80, 21)
         Label4.TabIndex = 15
         Label4.Text = "Categoria:"
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(73, 226)
+        Label5.Font = New Font("Segoe UI", 12F)
+        Label5.Location = New Point(68, 242)
         Label5.Name = "Label5"
-        Label5.Size = New Size(83, 15)
+        Label5.Size = New Size(109, 21)
         Label5.TabIndex = 16
         Label5.Text = "Fecha Ingreso:"
         ' 
@@ -209,21 +236,38 @@ Partial Class frm_Juegos
         ' 
         ' Panel1
         ' 
+        Panel1.Controls.Add(Button1)
         Panel1.Controls.Add(btnLimpiar)
         Panel1.Controls.Add(btnEliminar)
         Panel1.Controls.Add(btnGuardar)
         Panel1.Dock = DockStyle.Bottom
-        Panel1.Location = New Point(0, 396)
+        Panel1.Location = New Point(0, 518)
         Panel1.Margin = New Padding(3, 2, 3, 2)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(720, 86)
+        Panel1.Size = New Size(857, 67)
         Panel1.TabIndex = 19
+        ' 
+        ' Button1
+        ' 
+        Button1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        Button1.FlatStyle = FlatStyle.Popup
+        Button1.Font = New Font("Segoe UI", 10F)
+        Button1.ForeColor = SystemColors.GradientActiveCaption
+        Button1.ImageAlign = ContentAlignment.MiddleRight
+        Button1.Location = New Point(765, 23)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(80, 35)
+        Button1.TabIndex = 11
+        Button1.Text = "salir"
+        Button1.TextAlign = ContentAlignment.MiddleLeft
+        Button1.UseVisualStyleBackColor = True
         ' 
         ' frm_Juegos
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(720, 482)
+        BackColor = SystemColors.ActiveCaption
+        ClientSize = New Size(857, 585)
         Controls.Add(Panel1)
         Controls.Add(lblID)
         Controls.Add(Label6)
@@ -240,7 +284,10 @@ Partial Class frm_Juegos
         Controls.Add(txtPrecio)
         Controls.Add(txtStock)
         Controls.Add(txtNombre)
+        FormBorderStyle = FormBorderStyle.FixedSingle
+        MaximizeBox = False
         Name = "frm_Juegos"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "frm_Juegos"
         CType(picPortada, ComponentModel.ISupportInitialize).EndInit()
         CType(dgvJuegos, ComponentModel.ISupportInitialize).EndInit()
@@ -269,4 +316,5 @@ Partial Class frm_Juegos
     Friend WithEvents Label6 As Label
     Friend WithEvents lblID As Label
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents Button1 As Button
 End Class
