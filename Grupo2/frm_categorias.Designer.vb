@@ -83,7 +83,7 @@ Partial Class frm_categorias
         btnguardar.Font = New Font("Segoe UI", 10F)
         btnguardar.Image = CType(resources.GetObject("btnguardar.Image"), Image)
         btnguardar.ImageAlign = ContentAlignment.MiddleRight
-        btnguardar.Location = New Point(453, 22)
+        btnguardar.Location = New Point(437, 22)
         btnguardar.Name = "btnguardar"
         btnguardar.Size = New Size(175, 50)
         btnguardar.TabIndex = 4
@@ -96,7 +96,7 @@ Partial Class frm_categorias
         btneliminar.Font = New Font("Segoe UI", 10F)
         btneliminar.Image = CType(resources.GetObject("btneliminar.Image"), Image)
         btneliminar.ImageAlign = ContentAlignment.MiddleRight
-        btneliminar.Location = New Point(258, 22)
+        btneliminar.Location = New Point(225, 22)
         btneliminar.Name = "btneliminar"
         btneliminar.Size = New Size(175, 50)
         btneliminar.TabIndex = 5
@@ -109,7 +109,7 @@ Partial Class frm_categorias
         btnlimpiar.Font = New Font("Segoe UI", 10F)
         btnlimpiar.Image = CType(resources.GetObject("btnlimpiar.Image"), Image)
         btnlimpiar.ImageAlign = ContentAlignment.MiddleRight
-        btnlimpiar.Location = New Point(62, 22)
+        btnlimpiar.Location = New Point(25, 22)
         btnlimpiar.Name = "btnlimpiar"
         btnlimpiar.Size = New Size(175, 50)
         btnlimpiar.TabIndex = 6
@@ -180,7 +180,7 @@ Partial Class frm_categorias
         btntutorial.Font = New Font("Segoe UI", 10F)
         btntutorial.Image = CType(resources.GetObject("btntutorial.Image"), Image)
         btntutorial.ImageAlign = ContentAlignment.MiddleRight
-        btntutorial.Location = New Point(849, 22)
+        btntutorial.Location = New Point(837, 22)
         btntutorial.Name = "btntutorial"
         btntutorial.Size = New Size(175, 50)
         btntutorial.TabIndex = 15
@@ -239,7 +239,7 @@ Partial Class frm_categorias
         btnBuscar.Font = New Font("Segoe UI", 10F)
         btnBuscar.Image = CType(resources.GetObject("btnBuscar.Image"), Image)
         btnBuscar.ImageAlign = ContentAlignment.MiddleRight
-        btnBuscar.Location = New Point(650, 22)
+        btnBuscar.Location = New Point(636, 22)
         btnBuscar.Name = "btnBuscar"
         btnBuscar.Size = New Size(175, 50)
         btnBuscar.TabIndex = 13
@@ -280,10 +280,10 @@ Partial Class frm_categorias
         GroupBox2.Controls.Add(btnBuscar)
         GroupBox2.Controls.Add(btntutorial)
         GroupBox2.FlatStyle = FlatStyle.Flat
-        GroupBox2.Location = New Point(56, 384)
+        GroupBox2.Location = New Point(28, 384)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.RightToLeft = RightToLeft.Yes
-        GroupBox2.Size = New Size(1030, 78)
+        GroupBox2.Size = New Size(1058, 78)
         GroupBox2.TabIndex = 22
         GroupBox2.TabStop = False
         ' 
@@ -304,7 +304,7 @@ Partial Class frm_categorias
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
-        BackgroundImageLayout = ImageLayout.Zoom
+        BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(1182, 474)
         Controls.Add(Button1)
         Controls.Add(GroupBox1)
@@ -321,7 +321,7 @@ Partial Class frm_categorias
         KeyPreview = True
         MaximizeBox = False
         Name = "frm_categorias"
-        Text = "CATEGORIAS"
+        Text = "Administracion de categorias"
         CType(dgvcategorias, ComponentModel.ISupportInitialize).EndInit()
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()

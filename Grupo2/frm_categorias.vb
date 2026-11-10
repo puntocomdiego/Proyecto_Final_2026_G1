@@ -67,6 +67,7 @@
         Timer1.Interval = 1000      ' 1 segundo
         Timer1.Enabled = True
         lblHora.Text = DateTime.Now.ToString("HH:mm:ss")
+
     End Sub
     'quiero que en un formulario de categorias, cuando haga click en un dato del data grid view aparezcan el nombre y consola del jue
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btneliminar.Click
