@@ -22,6 +22,7 @@ Partial Class Ventas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Ventas))
         Label1 = New Label()
         Cmb1 = New ComboBox()
         Cmb2 = New ComboBox()
@@ -39,7 +40,7 @@ Partial Class Ventas
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 20F)
+        Label1.Font = New Font("Segoe UI", 20.25F)
         Label1.ForeColor = SystemColors.ActiveCaptionText
         Label1.Location = New Point(243, 9)
         Label1.Name = "Label1"
@@ -66,10 +67,11 @@ Partial Class Ventas
         ' Label2
         ' 
         Label2.AutoSize = True
+        Label2.Font = New Font("Segoe UI", 12F)
         Label2.ForeColor = SystemColors.ActiveCaptionText
-        Label2.Location = New Point(369, 115)
+        Label2.Location = New Point(355, 109)
         Label2.Name = "Label2"
-        Label2.Size = New Size(60, 15)
+        Label2.Size = New Size(91, 21)
         Label2.TabIndex = 3
         Label2.Text = "🕶Stock👓"
         ' 
@@ -86,20 +88,22 @@ Partial Class Ventas
         ' Label4
         ' 
         Label4.AutoSize = True
+        Label4.Font = New Font("Segoe UI", 12F)
         Label4.ForeColor = SystemColors.ActiveCaptionText
-        Label4.Location = New Point(130, 115)
+        Label4.Location = New Point(112, 115)
         Label4.Name = "Label4"
-        Label4.Size = New Size(55, 15)
+        Label4.Size = New Size(80, 21)
         Label4.TabIndex = 5
         Label4.Text = "Juegos💎"
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
+        Label5.Font = New Font("Segoe UI", 12F)
         Label5.ForeColor = SystemColors.ActiveCaptionText
-        Label5.Location = New Point(586, 115)
+        Label5.Location = New Point(570, 115)
         Label5.Name = "Label5"
-        Label5.Size = New Size(67, 15)
+        Label5.Size = New Size(94, 21)
         Label5.TabIndex = 6
         Label5.Text = "Cantidad🕹"
         ' 
@@ -113,20 +117,24 @@ Partial Class Ventas
         ' 
         ' btnAgregar
         ' 
+        btnAgregar.FlatStyle = FlatStyle.Popup
+        btnAgregar.Font = New Font("Segoe UI", 15.75F)
         btnAgregar.ForeColor = SystemColors.ActiveCaptionText
-        btnAgregar.Location = New Point(382, 409)
+        btnAgregar.Location = New Point(319, 395)
         btnAgregar.Name = "btnAgregar"
-        btnAgregar.Size = New Size(141, 23)
+        btnAgregar.Size = New Size(175, 50)
         btnAgregar.TabIndex = 8
         btnAgregar.Text = "Agregar"
         btnAgregar.UseVisualStyleBackColor = True
         ' 
         ' btnConfirmar
         ' 
+        btnConfirmar.FlatStyle = FlatStyle.Popup
+        btnConfirmar.Font = New Font("Segoe UI", 15.75F)
         btnConfirmar.ForeColor = SystemColors.ActiveCaptionText
-        btnConfirmar.Location = New Point(552, 409)
+        btnConfirmar.Location = New Point(510, 395)
         btnConfirmar.Name = "btnConfirmar"
-        btnConfirmar.Size = New Size(122, 23)
+        btnConfirmar.Size = New Size(175, 50)
         btnConfirmar.TabIndex = 12
         btnConfirmar.Text = "Confirmar"
         btnConfirmar.UseVisualStyleBackColor = True
@@ -134,8 +142,10 @@ Partial Class Ventas
         ' BtnSalir
         ' 
         BtnSalir.BackColor = Color.Red
+        BtnSalir.FlatStyle = FlatStyle.Popup
+        BtnSalir.Font = New Font("Segoe UI", 10F)
         BtnSalir.ForeColor = SystemColors.ActiveCaptionText
-        BtnSalir.Location = New Point(708, 403)
+        BtnSalir.Location = New Point(708, 407)
         BtnSalir.Name = "BtnSalir"
         BtnSalir.Size = New Size(80, 35)
         BtnSalir.TabIndex = 14
@@ -159,8 +169,10 @@ Partial Class Ventas
         Controls.Add(Cmb1)
         Controls.Add(Label1)
         ForeColor = SystemColors.ActiveCaption
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "Ventas"
-        Text = "Ventas"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "Carrito de compras"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
