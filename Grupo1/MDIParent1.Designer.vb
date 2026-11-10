@@ -31,6 +31,8 @@ Partial Class MDIParent1
         JuegosToolStripMenuItem = New ToolStripMenuItem()
         VentasToolStripMenuItem = New ToolStripMenuItem()
         ConsultasToolStripMenuItem = New ToolStripMenuItem()
+        OkToolStripMenuItem = New ToolStripMenuItem()
+        SalirToolStripMenuItem = New ToolStripMenuItem()
         StatusStrip = New StatusStrip()
         ToolStripStatusLabel = New ToolStripStatusLabel()
         ToolTip = New ToolTip(components)
@@ -51,7 +53,7 @@ Partial Class MDIParent1
         ' 
         ' ABREMEÇToolStripMenuItem
         ' 
-        ABREMEÇToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {UsuariosToolStripMenuItem, CategoriasToolStripMenuItem, JuegosToolStripMenuItem, VentasToolStripMenuItem, ConsultasToolStripMenuItem})
+        ABREMEÇToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {UsuariosToolStripMenuItem, CategoriasToolStripMenuItem, JuegosToolStripMenuItem, VentasToolStripMenuItem, ConsultasToolStripMenuItem, OkToolStripMenuItem, SalirToolStripMenuItem})
         ABREMEÇToolStripMenuItem.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ABREMEÇToolStripMenuItem.Name = "ABREMEÇToolStripMenuItem"
         ABREMEÇToolStripMenuItem.Size = New Size(62, 25)
@@ -60,32 +62,44 @@ Partial Class MDIParent1
         ' UsuariosToolStripMenuItem
         ' 
         UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        UsuariosToolStripMenuItem.Size = New Size(154, 26)
+        UsuariosToolStripMenuItem.Size = New Size(180, 26)
         UsuariosToolStripMenuItem.Text = "Usuarios"
         ' 
         ' CategoriasToolStripMenuItem
         ' 
         CategoriasToolStripMenuItem.Name = "CategoriasToolStripMenuItem"
-        CategoriasToolStripMenuItem.Size = New Size(154, 26)
+        CategoriasToolStripMenuItem.Size = New Size(180, 26)
         CategoriasToolStripMenuItem.Text = "Categorias"
         ' 
         ' JuegosToolStripMenuItem
         ' 
         JuegosToolStripMenuItem.Name = "JuegosToolStripMenuItem"
-        JuegosToolStripMenuItem.Size = New Size(154, 26)
+        JuegosToolStripMenuItem.Size = New Size(180, 26)
         JuegosToolStripMenuItem.Text = "Juegos"
         ' 
         ' VentasToolStripMenuItem
         ' 
         VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        VentasToolStripMenuItem.Size = New Size(154, 26)
+        VentasToolStripMenuItem.Size = New Size(180, 26)
         VentasToolStripMenuItem.Text = "Ventas"
         ' 
         ' ConsultasToolStripMenuItem
         ' 
         ConsultasToolStripMenuItem.Name = "ConsultasToolStripMenuItem"
-        ConsultasToolStripMenuItem.Size = New Size(154, 26)
+        ConsultasToolStripMenuItem.Size = New Size(180, 26)
         ConsultasToolStripMenuItem.Text = "Consultas"
+        ' 
+        ' OkToolStripMenuItem
+        ' 
+        OkToolStripMenuItem.Name = "OkToolStripMenuItem"
+        OkToolStripMenuItem.Size = New Size(180, 26)
+        OkToolStripMenuItem.Text = "Cerrar sesión"
+        ' 
+        ' SalirToolStripMenuItem
+        ' 
+        SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
+        SalirToolStripMenuItem.Size = New Size(180, 26)
+        SalirToolStripMenuItem.Text = "Salir"
         ' 
         ' StatusStrip
         ' 
@@ -138,5 +152,7 @@ Partial Class MDIParent1
     Friend WithEvents JuegosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VentasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConsultasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OkToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
 
 End Class
