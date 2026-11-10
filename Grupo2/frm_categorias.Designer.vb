@@ -83,7 +83,7 @@ Partial Class frm_categorias
         btnguardar.Font = New Font("Segoe UI", 10F)
         btnguardar.Image = CType(resources.GetObject("btnguardar.Image"), Image)
         btnguardar.ImageAlign = ContentAlignment.MiddleRight
-        btnguardar.Location = New Point(459, 22)
+        btnguardar.Location = New Point(453, 22)
         btnguardar.Name = "btnguardar"
         btnguardar.Size = New Size(175, 50)
         btnguardar.TabIndex = 4
@@ -180,7 +180,7 @@ Partial Class frm_categorias
         btntutorial.Font = New Font("Segoe UI", 10F)
         btntutorial.Image = CType(resources.GetObject("btntutorial.Image"), Image)
         btntutorial.ImageAlign = ContentAlignment.MiddleRight
-        btntutorial.Location = New Point(831, 22)
+        btntutorial.Location = New Point(849, 22)
         btntutorial.Name = "btntutorial"
         btntutorial.Size = New Size(175, 50)
         btntutorial.TabIndex = 15
