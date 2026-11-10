@@ -219,6 +219,18 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.Close()
+
+        'que pregunte si deseas salir del formulario de categorias y si le das a aceptar se cierra el formulario
+        Dim resultado As DialogResult = MessageBox.Show("¿Deseas salir del formulario de categorías?", "Confirmación",
+                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+
+
+
+
+
+        If resultado = DialogResult.Yes Then
+            Me.Close()
+        End If
     End Sub
 End Class
