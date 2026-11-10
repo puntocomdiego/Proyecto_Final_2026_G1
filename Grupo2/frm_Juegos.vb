@@ -168,8 +168,8 @@ Public Class frm_Juegos
             If MessageBox.Show("¿Desea eliminar el juego seleccionado?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 If objJuego.EliminarJuego(idJuegoSeleccionado) Then
                     MessageBox.Show("Juego eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    CargarGridJuegos
-                    LimpiarFormulario
+                    CargarGridJuegos()
+                    LimpiarFormulario()
                 End If
             End If
         Else
@@ -200,14 +200,16 @@ Public Class frm_Juegos
             If MessageBox.Show("¿Está seguro de que desea salir del formulario de juegos?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 If MessageBox.Show("¿Está realmente seguro de que desea salir del formulario de juegos?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                     If MessageBox.Show("¿Está absolutamente seguro de que desea salir de este hermoso formulario?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                        If MessageBox.Show("Todavia te puedes arrepentir, ¿quieres salir del formulario de juegos?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                            If MessageBox.Show("OK adios :(", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                                Me.Close()
+                        If MessageBox.Show("Todavía te puedes arrepentir, ¿quieres salir del formulario de juegos?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                            If MessageBox.Show("¿Estas 100% seguro?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                                If MessageBox.Show("OK adios :(", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                                    Me.Close()
+                                End If
                             End If
                         End If
-                        End If
                     End If
-            End If
+                End If
+                End If
         End If
 
     End Sub
