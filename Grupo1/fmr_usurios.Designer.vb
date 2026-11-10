@@ -53,8 +53,8 @@ Partial Class fmr_usurios
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 12.0F)
-        Label1.Location = New Point(6, 33)
+        Label1.Font = New Font("Segoe UI", 12F)
+        Label1.Location = New Point(137, 37)
         Label1.Name = "Label1"
         Label1.Size = New Size(75, 21)
         Label1.TabIndex = 0
@@ -64,14 +64,14 @@ Partial Class fmr_usurios
         ' 
         txtnombre.Location = New Point(218, 35)
         txtnombre.Name = "txtnombre"
-        txtnombre.Size = New Size(255, 20)
+        txtnombre.Size = New Size(255, 23)
         txtnombre.TabIndex = 1
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI", 12.0F)
-        Label2.Location = New Point(6, 99)
+        Label2.Font = New Font("Segoe UI", 12F)
+        Label2.Location = New Point(138, 99)
         Label2.Name = "Label2"
         Label2.Size = New Size(74, 21)
         Label2.TabIndex = 2
@@ -80,8 +80,8 @@ Partial Class fmr_usurios
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI", 12.0F)
-        Label3.Location = New Point(6, 160)
+        Label3.Font = New Font("Segoe UI", 12F)
+        Label3.Location = New Point(60, 160)
         Label3.Name = "Label3"
         Label3.Size = New Size(152, 21)
         Label3.TabIndex = 3
@@ -90,8 +90,8 @@ Partial Class fmr_usurios
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Segoe UI", 12.0F)
-        Label4.Location = New Point(6, 234)
+        Label4.Font = New Font("Segoe UI", 12F)
+        Label4.Location = New Point(116, 222)
         Label4.Name = "Label4"
         Label4.Size = New Size(96, 21)
         Label4.TabIndex = 4
@@ -99,23 +99,23 @@ Partial Class fmr_usurios
         ' 
         ' txtcontra
         ' 
-        txtcontra.Location = New Point(218, 237)
+        txtcontra.Location = New Point(218, 220)
         txtcontra.Name = "txtcontra"
-        txtcontra.Size = New Size(255, 20)
+        txtcontra.Size = New Size(255, 23)
         txtcontra.TabIndex = 6
         ' 
         ' txtnomusuario
         ' 
-        txtnomusuario.Location = New Point(218, 162)
+        txtnomusuario.Location = New Point(218, 158)
         txtnomusuario.Name = "txtnomusuario"
-        txtnomusuario.Size = New Size(255, 20)
+        txtnomusuario.Size = New Size(255, 23)
         txtnomusuario.TabIndex = 7
         ' 
         ' txtapellido
         ' 
-        txtapellido.Location = New Point(218, 101)
+        txtapellido.Location = New Point(218, 97)
         txtapellido.Name = "txtapellido"
-        txtapellido.Size = New Size(255, 20)
+        txtapellido.Size = New Size(255, 23)
         txtapellido.TabIndex = 8
         ' 
         ' gbx_usuarioinfo
@@ -128,19 +128,20 @@ Partial Class fmr_usurios
         gbx_usuarioinfo.Controls.Add(Label2)
         gbx_usuarioinfo.Controls.Add(txtcontra)
         gbx_usuarioinfo.Controls.Add(Label4)
-        gbx_usuarioinfo.Font = New Font("Modern No. 20", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        gbx_usuarioinfo.Location = New Point(23, 46)
+        gbx_usuarioinfo.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        gbx_usuarioinfo.Location = New Point(30, 79)
         gbx_usuarioinfo.Name = "gbx_usuarioinfo"
-        gbx_usuarioinfo.Size = New Size(485, 323)
+        gbx_usuarioinfo.Size = New Size(484, 278)
         gbx_usuarioinfo.TabIndex = 10
         gbx_usuarioinfo.TabStop = False
-        gbx_usuarioinfo.Text = "Usuario info"
+        gbx_usuarioinfo.Text = "Información del usuario"
         ' 
         ' picfoto
         ' 
-        picfoto.Location = New Point(1152, 75)
+        picfoto.Location = New Point(1135, 94)
         picfoto.Name = "picfoto"
-        picfoto.Size = New Size(256, 288)
+        picfoto.Size = New Size(273, 254)
+        picfoto.SizeMode = PictureBoxSizeMode.StretchImage
         picfoto.TabIndex = 19
         picfoto.TabStop = False
         ' 
@@ -156,7 +157,7 @@ Partial Class fmr_usurios
         btnnuevo.Name = "btnnuevo"
         btnnuevo.Size = New Size(175, 50)
         btnnuevo.TabIndex = 11
-        btnnuevo.Text = "nuevo"
+        btnnuevo.Text = "Nuevo"
         btnnuevo.TextAlign = ContentAlignment.MiddleRight
         btnnuevo.UseVisualStyleBackColor = False
         ' 
@@ -171,7 +172,7 @@ Partial Class fmr_usurios
         btnmodificar.Name = "btnmodificar"
         btnmodificar.Size = New Size(175, 50)
         btnmodificar.TabIndex = 12
-        btnmodificar.Text = "modificar"
+        btnmodificar.Text = "Modificar"
         btnmodificar.TextAlign = ContentAlignment.MiddleRight
         btnmodificar.UseVisualStyleBackColor = False
         ' 
@@ -186,7 +187,7 @@ Partial Class fmr_usurios
         btneliminar.Name = "btneliminar"
         btneliminar.Size = New Size(175, 50)
         btneliminar.TabIndex = 13
-        btneliminar.Text = "eliminar"
+        btneliminar.Text = "Eliminar"
         btneliminar.TextAlign = ContentAlignment.MiddleRight
         btneliminar.UseVisualStyleBackColor = False
         ' 
@@ -199,10 +200,10 @@ Partial Class fmr_usurios
         GroupBox1.Controls.Add(btnmodificar)
         GroupBox1.Location = New Point(189, 415)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(1027, 120)
+        GroupBox1.Size = New Size(1027, 107)
         GroupBox1.TabIndex = 16
         GroupBox1.TabStop = False
-        GroupBox1.Text = "GroupBox1"
+        GroupBox1.Text = "Opciones"
         ' 
         ' btnguardar
         ' 
@@ -216,7 +217,7 @@ Partial Class fmr_usurios
         btnguardar.Name = "btnguardar"
         btnguardar.Size = New Size(175, 50)
         btnguardar.TabIndex = 15
-        btnguardar.Text = "guardar"
+        btnguardar.Text = "Guardar"
         btnguardar.TextAlign = ContentAlignment.MiddleRight
         btnguardar.UseVisualStyleBackColor = False
         ' 
@@ -231,24 +232,24 @@ Partial Class fmr_usurios
         btnfoto.Name = "btnfoto"
         btnfoto.Size = New Size(175, 50)
         btnfoto.TabIndex = 14
-        btnfoto.Text = "cargar foto"
+        btnfoto.Text = "Cargar Foto"
         btnfoto.TextAlign = ContentAlignment.MiddleRight
         btnfoto.UseVisualStyleBackColor = False
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI", 12.0F)
-        Label6.Location = New Point(586, 37)
+        Label6.Font = New Font("Segoe UI", 12F)
+        Label6.Location = New Point(565, 39)
         Label6.Name = "Label6"
         Label6.Size = New Size(129, 21)
         Label6.TabIndex = 10
-        Label6.Text = "Usuario a busacr:"
+        Label6.Text = "Usuario a buscar:"
         ' 
         ' dgvusuarios
         ' 
         dgvusuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvusuarios.Location = New Point(565, 79)
+        dgvusuarios.Location = New Point(548, 79)
         dgvusuarios.Name = "dgvusuarios"
         dgvusuarios.Size = New Size(581, 284)
         dgvusuarios.TabIndex = 18
@@ -259,7 +260,7 @@ Partial Class fmr_usurios
         ' 
         ' txtbuscar
         ' 
-        txtbuscar.Location = New Point(746, 37)
+        txtbuscar.Location = New Point(699, 37)
         txtbuscar.Name = "txtbuscar"
         txtbuscar.Size = New Size(344, 23)
         txtbuscar.TabIndex = 9
@@ -269,7 +270,7 @@ Partial Class fmr_usurios
         btnsalir.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         btnsalir.BackColor = SystemColors.GradientActiveCaption
         btnsalir.FlatStyle = FlatStyle.Popup
-        btnsalir.Font = New Font("Segoe UI", 10.0F)
+        btnsalir.Font = New Font("Segoe UI", 10F)
         btnsalir.Image = CType(resources.GetObject("btnsalir.Image"), Image)
         btnsalir.ImageAlign = ContentAlignment.MiddleRight
         btnsalir.Location = New Point(1260, 550)
@@ -282,7 +283,7 @@ Partial Class fmr_usurios
         ' 
         ' fmr_usurios
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(1413, 597)
