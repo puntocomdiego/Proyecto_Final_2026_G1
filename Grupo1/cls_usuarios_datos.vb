@@ -13,7 +13,7 @@ Public Class cls_usuarios_datos
     Public Function Agregar(u As clase_usuario) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-            "INSERT INTO usuarios (nombre, apellido, usuario, contrasena, fecha_creacion, foto) VALUES (?, ?, ?, ?, ?, ?)"
+            "INSERT INTO usuarios (nombre, apellido, usuario, contrasena, fecha_creacion, foto, tipo) VALUES (?, ?, ?, ?, ?, ?, ?)"
             Using cmd As New OleDbCommand(sql, cn)
                 cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Nombre
                 cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Apellido
@@ -21,8 +21,10 @@ Public Class cls_usuarios_datos
                 cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Contrasena
                 cmd.Parameters.Add("?", OleDbType.Date).Value = u.FechaCreacion.Date
                 cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Foto
-
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.tipo
                 cn.Open()
+
+
                 Return cmd.ExecuteNonQuery() > 0
             End Using
         End Using
@@ -32,14 +34,18 @@ Public Class cls_usuarios_datos
     Public Function Modificar(u As clase_usuario) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-            "UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ?, contrasena = ?, foto = ? WHERE id = ?"
+            "UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ?, contrasena = ?, foto = ?, tipo = ? WHERE id = ?"
             Using cmd As New OleDbCommand(sql, cn)
                 cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Nombre
                 cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Apellido
                 cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.usuario
                 cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Contrasena
                 cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.Foto
+                cmd.Parameters.Add("?", OleDbType.VarWChar).Value = u.tipo
                 cmd.Parameters.Add("?", OleDbType.Integer).Value = u.Id
+
+
+
 
                 cn.Open()
                 Return cmd.ExecuteNonQuery() > 0
