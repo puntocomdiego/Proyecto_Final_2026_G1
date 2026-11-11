@@ -32,29 +32,31 @@ Partial Class fmr_usurios
         txtnomusuario = New TextBox()
         txtapellido = New TextBox()
         gbx_usuarioinfo = New GroupBox()
+        picfoto = New PictureBox()
         btnnuevo = New Button()
         btnmodificar = New Button()
         btneliminar = New Button()
-        btnlimpiar = New Button()
         GroupBox1 = New GroupBox()
+        btnguardar = New Button()
         btnfoto = New Button()
         Label6 = New Label()
         dgvusuarios = New DataGridView()
-        picfoto = New PictureBox()
         ofdfoto = New OpenFileDialog()
         txtbuscar = New TextBox()
         btnsalir = New Button()
+        Label5 = New Label()
+        cmbtipo = New ComboBox()
         gbx_usuarioinfo.SuspendLayout()
+        CType(picfoto, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox1.SuspendLayout()
         CType(dgvusuarios, ComponentModel.ISupportInitialize).BeginInit()
-        CType(picfoto, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 12F)
-        Label1.Location = New Point(6, 33)
+        Label1.Location = New Point(137, 37)
         Label1.Name = "Label1"
         Label1.Size = New Size(75, 21)
         Label1.TabIndex = 0
@@ -64,14 +66,14 @@ Partial Class fmr_usurios
         ' 
         txtnombre.Location = New Point(218, 35)
         txtnombre.Name = "txtnombre"
-        txtnombre.Size = New Size(255, 20)
+        txtnombre.Size = New Size(255, 23)
         txtnombre.TabIndex = 1
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 12F)
-        Label2.Location = New Point(6, 84)
+        Label2.Location = New Point(138, 99)
         Label2.Name = "Label2"
         Label2.Size = New Size(74, 21)
         Label2.TabIndex = 2
@@ -81,7 +83,7 @@ Partial Class fmr_usurios
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 12F)
-        Label3.Location = New Point(6, 144)
+        Label3.Location = New Point(60, 160)
         Label3.Name = "Label3"
         Label3.Size = New Size(152, 21)
         Label3.TabIndex = 3
@@ -91,7 +93,7 @@ Partial Class fmr_usurios
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 12F)
-        Label4.Location = New Point(6, 203)
+        Label4.Location = New Point(116, 222)
         Label4.Name = "Label4"
         Label4.Size = New Size(96, 21)
         Label4.TabIndex = 4
@@ -99,27 +101,29 @@ Partial Class fmr_usurios
         ' 
         ' txtcontra
         ' 
-        txtcontra.Location = New Point(218, 206)
+        txtcontra.Location = New Point(218, 220)
         txtcontra.Name = "txtcontra"
-        txtcontra.Size = New Size(255, 20)
+        txtcontra.Size = New Size(255, 23)
         txtcontra.TabIndex = 6
         ' 
         ' txtnomusuario
         ' 
-        txtnomusuario.Location = New Point(218, 146)
+        txtnomusuario.Location = New Point(218, 158)
         txtnomusuario.Name = "txtnomusuario"
-        txtnomusuario.Size = New Size(255, 20)
+        txtnomusuario.Size = New Size(255, 23)
         txtnomusuario.TabIndex = 7
         ' 
         ' txtapellido
         ' 
-        txtapellido.Location = New Point(218, 86)
+        txtapellido.Location = New Point(218, 97)
         txtapellido.Name = "txtapellido"
-        txtapellido.Size = New Size(255, 20)
+        txtapellido.Size = New Size(255, 23)
         txtapellido.TabIndex = 8
         ' 
         ' gbx_usuarioinfo
         ' 
+        gbx_usuarioinfo.Controls.Add(cmbtipo)
+        gbx_usuarioinfo.Controls.Add(Label5)
         gbx_usuarioinfo.Controls.Add(Label3)
         gbx_usuarioinfo.Controls.Add(Label1)
         gbx_usuarioinfo.Controls.Add(txtapellido)
@@ -128,13 +132,22 @@ Partial Class fmr_usurios
         gbx_usuarioinfo.Controls.Add(Label2)
         gbx_usuarioinfo.Controls.Add(txtcontra)
         gbx_usuarioinfo.Controls.Add(Label4)
-        gbx_usuarioinfo.Font = New Font("Modern No. 20", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        gbx_usuarioinfo.Location = New Point(36, 33)
+        gbx_usuarioinfo.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        gbx_usuarioinfo.Location = New Point(30, 79)
         gbx_usuarioinfo.Name = "gbx_usuarioinfo"
-        gbx_usuarioinfo.Size = New Size(485, 289)
+        gbx_usuarioinfo.Size = New Size(484, 308)
         gbx_usuarioinfo.TabIndex = 10
         gbx_usuarioinfo.TabStop = False
-        gbx_usuarioinfo.Text = "Usuario info"
+        gbx_usuarioinfo.Text = "Información del usuario"
+        ' 
+        ' picfoto
+        ' 
+        picfoto.Location = New Point(1135, 94)
+        picfoto.Name = "picfoto"
+        picfoto.Size = New Size(273, 254)
+        picfoto.SizeMode = PictureBoxSizeMode.StretchImage
+        picfoto.TabIndex = 19
+        picfoto.TabStop = False
         ' 
         ' btnnuevo
         ' 
@@ -144,11 +157,11 @@ Partial Class fmr_usurios
         btnnuevo.Font = New Font("Segoe UI", 15.75F)
         btnnuevo.Image = CType(resources.GetObject("btnnuevo.Image"), Image)
         btnnuevo.ImageAlign = ContentAlignment.MiddleLeft
-        btnnuevo.Location = New Point(48, 38)
+        btnnuevo.Location = New Point(28, 36)
         btnnuevo.Name = "btnnuevo"
         btnnuevo.Size = New Size(175, 50)
         btnnuevo.TabIndex = 11
-        btnnuevo.Text = "nuevo"
+        btnnuevo.Text = "Nuevo"
         btnnuevo.TextAlign = ContentAlignment.MiddleRight
         btnnuevo.UseVisualStyleBackColor = False
         ' 
@@ -159,11 +172,11 @@ Partial Class fmr_usurios
         btnmodificar.Font = New Font("Segoe UI", 15.75F)
         btnmodificar.Image = CType(resources.GetObject("btnmodificar.Image"), Image)
         btnmodificar.ImageAlign = ContentAlignment.MiddleLeft
-        btnmodificar.Location = New Point(48, 100)
+        btnmodificar.Location = New Point(432, 33)
         btnmodificar.Name = "btnmodificar"
         btnmodificar.Size = New Size(175, 50)
         btnmodificar.TabIndex = 12
-        btnmodificar.Text = "modificar"
+        btnmodificar.Text = "Modificar"
         btnmodificar.TextAlign = ContentAlignment.MiddleRight
         btnmodificar.UseVisualStyleBackColor = False
         ' 
@@ -174,35 +187,43 @@ Partial Class fmr_usurios
         btneliminar.Font = New Font("Segoe UI", 15.75F)
         btneliminar.Image = CType(resources.GetObject("btneliminar.Image"), Image)
         btneliminar.ImageAlign = ContentAlignment.MiddleLeft
-        btneliminar.Location = New Point(48, 160)
+        btneliminar.Location = New Point(838, 36)
         btneliminar.Name = "btneliminar"
         btneliminar.Size = New Size(175, 50)
         btneliminar.TabIndex = 13
-        btneliminar.Text = "eliminar"
+        btneliminar.Text = "Eliminar"
         btneliminar.TextAlign = ContentAlignment.MiddleRight
         btneliminar.UseVisualStyleBackColor = False
         ' 
-        ' btnlimpiar
-        ' 
-        btnlimpiar.Image = CType(resources.GetObject("btnlimpiar.Image"), Image)
-        btnlimpiar.Location = New Point(510, 12)
-        btnlimpiar.Name = "btnlimpiar"
-        btnlimpiar.Size = New Size(44, 33)
-        btnlimpiar.TabIndex = 15
-        btnlimpiar.UseVisualStyleBackColor = True
-        ' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(btnguardar)
         GroupBox1.Controls.Add(btnfoto)
         GroupBox1.Controls.Add(btneliminar)
         GroupBox1.Controls.Add(btnnuevo)
         GroupBox1.Controls.Add(btnmodificar)
-        GroupBox1.Location = New Point(573, 33)
+        GroupBox1.Location = New Point(189, 415)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(278, 294)
+        GroupBox1.Size = New Size(1027, 107)
         GroupBox1.TabIndex = 16
         GroupBox1.TabStop = False
-        GroupBox1.Text = "GroupBox1"
+        GroupBox1.Text = "Opciones"
+        ' 
+        ' btnguardar
+        ' 
+        btnguardar.BackColor = SystemColors.GradientActiveCaption
+        btnguardar.BackgroundImageLayout = ImageLayout.Zoom
+        btnguardar.FlatStyle = FlatStyle.Popup
+        btnguardar.Font = New Font("Segoe UI", 15.75F)
+        btnguardar.Image = CType(resources.GetObject("btnguardar.Image"), Image)
+        btnguardar.ImageAlign = ContentAlignment.MiddleLeft
+        btnguardar.Location = New Point(231, 35)
+        btnguardar.Name = "btnguardar"
+        btnguardar.Size = New Size(175, 50)
+        btnguardar.TabIndex = 15
+        btnguardar.Text = "Guardar"
+        btnguardar.TextAlign = ContentAlignment.MiddleRight
+        btnguardar.UseVisualStyleBackColor = False
         ' 
         ' btnfoto
         ' 
@@ -211,11 +232,11 @@ Partial Class fmr_usurios
         btnfoto.Font = New Font("Segoe UI", 15.75F)
         btnfoto.Image = CType(resources.GetObject("btnfoto.Image"), Image)
         btnfoto.ImageAlign = ContentAlignment.MiddleLeft
-        btnfoto.Location = New Point(48, 216)
+        btnfoto.Location = New Point(641, 35)
         btnfoto.Name = "btnfoto"
         btnfoto.Size = New Size(175, 50)
         btnfoto.TabIndex = 14
-        btnfoto.Text = "cargar foto"
+        btnfoto.Text = "Cargar Foto"
         btnfoto.TextAlign = ContentAlignment.MiddleRight
         btnfoto.UseVisualStyleBackColor = False
         ' 
@@ -223,27 +244,19 @@ Partial Class fmr_usurios
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Segoe UI", 12F)
-        Label6.Location = New Point(49, 395)
+        Label6.Location = New Point(565, 39)
         Label6.Name = "Label6"
         Label6.Size = New Size(129, 21)
         Label6.TabIndex = 10
-        Label6.Text = "Usuario a busacr:"
+        Label6.Text = "Usuario a buscar:"
         ' 
         ' dgvusuarios
         ' 
         dgvusuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvusuarios.Location = New Point(36, 480)
+        dgvusuarios.Location = New Point(548, 79)
         dgvusuarios.Name = "dgvusuarios"
-        dgvusuarios.Size = New Size(580, 209)
+        dgvusuarios.Size = New Size(581, 284)
         dgvusuarios.TabIndex = 18
-        ' 
-        ' picfoto
-        ' 
-        picfoto.Location = New Point(655, 420)
-        picfoto.Name = "picfoto"
-        picfoto.Size = New Size(218, 269)
-        picfoto.TabIndex = 19
-        picfoto.TabStop = False
         ' 
         ' ofdfoto
         ' 
@@ -251,9 +264,9 @@ Partial Class fmr_usurios
         ' 
         ' txtbuscar
         ' 
-        txtbuscar.Location = New Point(233, 394)
+        txtbuscar.Location = New Point(699, 37)
         txtbuscar.Name = "txtbuscar"
-        txtbuscar.Size = New Size(215, 23)
+        txtbuscar.Size = New Size(344, 23)
         txtbuscar.TabIndex = 9
         ' 
         ' btnsalir
@@ -264,7 +277,7 @@ Partial Class fmr_usurios
         btnsalir.Font = New Font("Segoe UI", 10F)
         btnsalir.Image = CType(resources.GetObject("btnsalir.Image"), Image)
         btnsalir.ImageAlign = ContentAlignment.MiddleRight
-        btnsalir.Location = New Point(937, 633)
+        btnsalir.Location = New Point(1260, 550)
         btnsalir.Name = "btnsalir"
         btnsalir.Size = New Size(80, 35)
         btnsalir.TabIndex = 20
@@ -272,19 +285,37 @@ Partial Class fmr_usurios
         btnsalir.TextAlign = ContentAlignment.MiddleLeft
         btnsalir.UseVisualStyleBackColor = False
         ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Font = New Font("Segoe UI", 12F)
+        Label5.Location = New Point(169, 275)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(43, 21)
+        Label5.TabIndex = 9
+        Label5.Text = "Tipo:"
+        ' 
+        ' cmbtipo
+        ' 
+        cmbtipo.FormattingEnabled = True
+        cmbtipo.Items.AddRange(New Object() {"Admin", "Vendedor"})
+        cmbtipo.Location = New Point(218, 273)
+        cmbtipo.Name = "cmbtipo"
+        cmbtipo.Size = New Size(255, 23)
+        cmbtipo.TabIndex = 11
+        ' 
         ' fmr_usurios
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
-        ClientSize = New Size(1042, 693)
+        ClientSize = New Size(1413, 597)
         Controls.Add(btnsalir)
         Controls.Add(txtbuscar)
         Controls.Add(picfoto)
         Controls.Add(dgvusuarios)
         Controls.Add(Label6)
         Controls.Add(GroupBox1)
-        Controls.Add(btnlimpiar)
         Controls.Add(gbx_usuarioinfo)
         ForeColor = SystemColors.ActiveCaptionText
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
@@ -293,9 +324,9 @@ Partial Class fmr_usurios
         Text = "Ingrese nombre de usuario y contraseña"
         gbx_usuarioinfo.ResumeLayout(False)
         gbx_usuarioinfo.PerformLayout()
+        CType(picfoto, ComponentModel.ISupportInitialize).EndInit()
         GroupBox1.ResumeLayout(False)
         CType(dgvusuarios, ComponentModel.ISupportInitialize).EndInit()
-        CType(picfoto, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -312,7 +343,6 @@ Partial Class fmr_usurios
     Friend WithEvents btnnuevo As Button
     Friend WithEvents btnmodificar As Button
     Friend WithEvents btneliminar As Button
-    Friend WithEvents btnlimpiar As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label6 As Label
     Friend WithEvents dgvusuarios As DataGridView
@@ -321,5 +351,8 @@ Partial Class fmr_usurios
     Friend WithEvents ofdfoto As OpenFileDialog
     Friend WithEvents txtbuscar As TextBox
     Friend WithEvents btnsalir As Button
+    Friend WithEvents btnguardar As Button
+    Friend WithEvents Label5 As Label
+    Friend WithEvents cmbtipo As ComboBox
 
 End Class
