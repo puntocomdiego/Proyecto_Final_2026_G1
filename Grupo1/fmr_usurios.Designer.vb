@@ -44,6 +44,8 @@ Partial Class fmr_usurios
         ofdfoto = New OpenFileDialog()
         txtbuscar = New TextBox()
         btnsalir = New Button()
+        Label5 = New Label()
+        cmbtipo = New ComboBox()
         gbx_usuarioinfo.SuspendLayout()
         CType(picfoto, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox1.SuspendLayout()
@@ -120,6 +122,8 @@ Partial Class fmr_usurios
         ' 
         ' gbx_usuarioinfo
         ' 
+        gbx_usuarioinfo.Controls.Add(cmbtipo)
+        gbx_usuarioinfo.Controls.Add(Label5)
         gbx_usuarioinfo.Controls.Add(Label3)
         gbx_usuarioinfo.Controls.Add(Label1)
         gbx_usuarioinfo.Controls.Add(txtapellido)
@@ -131,7 +135,7 @@ Partial Class fmr_usurios
         gbx_usuarioinfo.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         gbx_usuarioinfo.Location = New Point(30, 79)
         gbx_usuarioinfo.Name = "gbx_usuarioinfo"
-        gbx_usuarioinfo.Size = New Size(484, 278)
+        gbx_usuarioinfo.Size = New Size(484, 308)
         gbx_usuarioinfo.TabIndex = 10
         gbx_usuarioinfo.TabStop = False
         gbx_usuarioinfo.Text = "Información del usuario"
@@ -281,6 +285,25 @@ Partial Class fmr_usurios
         btnsalir.TextAlign = ContentAlignment.MiddleLeft
         btnsalir.UseVisualStyleBackColor = False
         ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Font = New Font("Segoe UI", 12F)
+        Label5.Location = New Point(169, 275)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(43, 21)
+        Label5.TabIndex = 9
+        Label5.Text = "Tipo:"
+        ' 
+        ' cmbtipo
+        ' 
+        cmbtipo.FormattingEnabled = True
+        cmbtipo.Items.AddRange(New Object() {"Admin", "Vendedor"})
+        cmbtipo.Location = New Point(218, 273)
+        cmbtipo.Name = "cmbtipo"
+        cmbtipo.Size = New Size(255, 23)
+        cmbtipo.TabIndex = 11
+        ' 
         ' fmr_usurios
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -329,5 +352,7 @@ Partial Class fmr_usurios
     Friend WithEvents txtbuscar As TextBox
     Friend WithEvents btnsalir As Button
     Friend WithEvents btnguardar As Button
+    Friend WithEvents Label5 As Label
+    Friend WithEvents cmbtipo As ComboBox
 
 End Class

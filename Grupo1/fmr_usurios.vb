@@ -6,7 +6,7 @@ Public Class fmr_usurios
 
     Private modo As String = ""
 
-    '████████╗██╗   ██╗███╗   ██╗ ██████╗
+    '████████╗██╗   ██╗███╗   ██╗██████╗
     '╚══██╔══╝██║   ██║████╗  ██║██╔════╝
     '   ██║   ██║   ██║██╔██╗ ██║██║  ███╗                                                                           
     '   ██║   ██║   ██║██║╚██╗██║██║   ██║                                                                   
@@ -15,7 +15,7 @@ Public Class fmr_usurios
 
 
 
-    '████████╗██╗   ██╗███╗   ██╗ ██████╗
+    '████████╗██╗   ██╗███╗   ██╗██████╗
     '╚══██╔══╝██║   ██║████╗  ██║██╔════╝
     '   ██║   ██║   ██║██╔██╗ ██║██║  ███╗
     '   ██║   ██║   ██║██║╚██╗██║██║   ██║
@@ -76,7 +76,7 @@ Public Class fmr_usurios
         dgvusuarios.Columns("fecha_creacion").Visible = False
         dgvusuarios.Columns("fecha_creacion").DefaultCellStyle.Format = "d"
         dgvusuarios.Columns("foto").Visible = False
-
+        dgvusuarios.Columns("tipo").HeaderText = "Tipo"
 
     End Sub
 
@@ -93,11 +93,11 @@ Public Class fmr_usurios
         Limpiar()
     End Sub
 
-    Private Sub btnmodificar_Click(sender As Object, e As EventArgs) Handles btnmodificar.Click ''''''''''''''''
+    Private Sub btnmodificar_Click(sender As Object, e As EventArgs) Handles btnmodificar.Click ''''''''''''''
 
 
         Try
-            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now, rutaFoto)
+            Dim u As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text, Date.Now, rutaFoto, cmbtipo.SelectedItem.ToString())
 
 
             u.Id = Integer.Parse(dgvusuarios.CurrentRow.Cells("id").Value.ToString())
@@ -123,6 +123,7 @@ Public Class fmr_usurios
     End Sub
 
     Private Sub Limpiar()
+        cmbtipo.SelectedIndex = -1
         txtnombre.Clear()
         txtapellido.Clear()
         txtnomusuario.Clear()
@@ -148,6 +149,12 @@ Public Class fmr_usurios
             MessageBox.Show("Ingresá la contraseña.")
             Return False
         End If
+
+        If cmbtipo.SelectedIndex = -1 Then
+            MessageBox.Show("Ingresá un tipo.")
+            Return False
+        End If
+
         Return True
     End Function
 
@@ -188,7 +195,7 @@ Public Class fmr_usurios
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
         If Not DatosValidos() Then Exit Sub
         Try
-            Dim p As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text.Trim(), Date.Now, rutaFoto.Trim())
+            Dim p As New clase_usuario(txtnombre.Text.Trim(), txtapellido.Text.Trim(), txtnomusuario.Text.Trim(), txtcontra.Text.Trim(), Date.Now, rutaFoto.Trim(), cmbtipo.SelectedItem.ToString())
 
             If datos.Agregar(p) Then
                 MostrarUsuarios(datos.Listar())
@@ -200,16 +207,21 @@ Public Class fmr_usurios
     End Sub
 
     Private Sub dgvusuarios_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvusuarios.CellContentClick
-        If dgvusuarios.CurrentRow Is Nothing Then Exit Sub
+
+
+        actualizar()
+        MostrarFoto(rutaFoto)
+    End Sub
+
+    Private Sub actualizar()
 
         txtnombre.Text = dgvusuarios.CurrentRow.Cells("nombre").Value.ToString()
         txtapellido.Text = dgvusuarios.CurrentRow.Cells("apellido").Value.ToString()
         txtnomusuario.Text = dgvusuarios.CurrentRow.Cells("usuario").Value.ToString()
         txtcontra.Text = dgvusuarios.CurrentRow.Cells("contrasena").Value.ToString()
         rutaFoto = dgvusuarios.CurrentRow.Cells("foto").Value.ToString()
-        MostrarFoto(rutaFoto)
+        cmbtipo.Text = dgvusuarios.CurrentRow.Cells("tipo").Value.ToString()
     End Sub
-
 
 
 End Class
