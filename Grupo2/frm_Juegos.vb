@@ -168,8 +168,8 @@ Public Class frm_Juegos
             If MessageBox.Show("¿Desea eliminar el juego seleccionado?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 If objJuego.EliminarJuego(idJuegoSeleccionado) Then
                     MessageBox.Show("Juego eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    CargarGridJuegos
-                    LimpiarFormulario
+                    CargarGridJuegos()
+                    LimpiarFormulario()
                 End If
             End If
         Else
@@ -194,7 +194,28 @@ Public Class frm_Juegos
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.Close()
+        'preguntar si desea salir del formulario
+        If MessageBox.Show("¿Desea salir del formulario de juegos?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            'si la respuesta es sí, preguntar de broma si desea salir de nuevo
+            If MessageBox.Show("¿Está seguro de que desea salir del formulario de juegos?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                If MessageBox.Show("¿Está realmente seguro de que desea salir del formulario de juegos?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    If MessageBox.Show("¿Está absolutamente seguro de que desea salir de este hermoso formulario?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                        If MessageBox.Show("Todavía te puedes arrepentir, ¿quieres salir del formulario de juegos?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                            If MessageBox.Show("¿Estas 100% seguro?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                                If MessageBox.Show("OK adios :(", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                                    Me.Close()
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+                End If
+        End If
+
+    End Sub
+
+    Private Sub picPortada_Click(sender As Object, e As EventArgs) Handles picPortada.Click
+
     End Sub
 End Class
 

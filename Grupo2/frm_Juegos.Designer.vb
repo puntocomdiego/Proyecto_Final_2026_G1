@@ -86,32 +86,35 @@ Partial Class frm_Juegos
         ' 
         ' picPortada
         ' 
-        picPortada.Location = New Point(282, 64)
+        picPortada.BackColor = SystemColors.ControlLight
+        picPortada.Location = New Point(327, 40)
         picPortada.Name = "picPortada"
-        picPortada.Size = New Size(216, 176)
-        picPortada.SizeMode = PictureBoxSizeMode.CenterImage
+        picPortada.Size = New Size(293, 259)
+        picPortada.SizeMode = PictureBoxSizeMode.Zoom
         picPortada.TabIndex = 6
         picPortada.TabStop = False
         ' 
         ' btnExaminar
         ' 
+        btnExaminar.BackColor = SystemColors.GradientActiveCaption
         btnExaminar.FlatStyle = FlatStyle.Popup
         btnExaminar.Font = New Font("Segoe UI", 15.75F)
-        btnExaminar.ForeColor = SystemColors.GradientActiveCaption
+        btnExaminar.ForeColor = SystemColors.Desktop
         btnExaminar.ImageAlign = ContentAlignment.MiddleRight
-        btnExaminar.Location = New Point(531, 200)
+        btnExaminar.Location = New Point(649, 249)
         btnExaminar.Name = "btnExaminar"
         btnExaminar.Size = New Size(175, 50)
         btnExaminar.TabIndex = 7
         btnExaminar.Text = "Examinar"
         btnExaminar.TextAlign = ContentAlignment.MiddleLeft
-        btnExaminar.UseVisualStyleBackColor = True
+        btnExaminar.UseVisualStyleBackColor = False
         ' 
         ' btnGuardar
         ' 
+        btnGuardar.BackColor = SystemColors.GradientActiveCaption
         btnGuardar.FlatStyle = FlatStyle.Popup
         btnGuardar.Font = New Font("Segoe UI", 15.75F)
-        btnGuardar.ForeColor = SystemColors.GradientActiveCaption
+        btnGuardar.ForeColor = SystemColors.Desktop
         btnGuardar.ImageAlign = ContentAlignment.MiddleRight
         btnGuardar.Location = New Point(272, 8)
         btnGuardar.Name = "btnGuardar"
@@ -119,13 +122,14 @@ Partial Class frm_Juegos
         btnGuardar.TabIndex = 8
         btnGuardar.Text = "Guardar"
         btnGuardar.TextAlign = ContentAlignment.MiddleLeft
-        btnGuardar.UseVisualStyleBackColor = True
+        btnGuardar.UseVisualStyleBackColor = False
         ' 
         ' btnEliminar
         ' 
+        btnEliminar.BackColor = SystemColors.GradientActiveCaption
         btnEliminar.FlatStyle = FlatStyle.Popup
         btnEliminar.Font = New Font("Segoe UI", 15.75F)
-        btnEliminar.ForeColor = SystemColors.GradientActiveCaption
+        btnEliminar.ForeColor = SystemColors.Desktop
         btnEliminar.ImageAlign = ContentAlignment.MiddleRight
         btnEliminar.Location = New Point(477, 8)
         btnEliminar.Name = "btnEliminar"
@@ -133,13 +137,14 @@ Partial Class frm_Juegos
         btnEliminar.TabIndex = 9
         btnEliminar.Text = "Eliminar"
         btnEliminar.TextAlign = ContentAlignment.MiddleLeft
-        btnEliminar.UseVisualStyleBackColor = True
+        btnEliminar.UseVisualStyleBackColor = False
         ' 
         ' btnLimpiar
         ' 
+        btnLimpiar.BackColor = SystemColors.GradientActiveCaption
         btnLimpiar.FlatStyle = FlatStyle.Popup
         btnLimpiar.Font = New Font("Segoe UI", 15.75F)
-        btnLimpiar.ForeColor = SystemColors.GradientActiveCaption
+        btnLimpiar.ForeColor = SystemColors.Desktop
         btnLimpiar.ImageAlign = ContentAlignment.MiddleRight
         btnLimpiar.Location = New Point(68, 8)
         btnLimpiar.Name = "btnLimpiar"
@@ -147,7 +152,7 @@ Partial Class frm_Juegos
         btnLimpiar.TabIndex = 10
         btnLimpiar.Text = "Limpiar"
         btnLimpiar.TextAlign = ContentAlignment.MiddleLeft
-        btnLimpiar.UseVisualStyleBackColor = True
+        btnLimpiar.UseVisualStyleBackColor = False
         ' 
         ' dgvJuegos
         ' 
@@ -250,9 +255,10 @@ Partial Class frm_Juegos
         ' Button1
         ' 
         Button1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        Button1.BackColor = SystemColors.GradientActiveCaption
         Button1.FlatStyle = FlatStyle.Popup
         Button1.Font = New Font("Segoe UI", 10F)
-        Button1.ForeColor = SystemColors.GradientActiveCaption
+        Button1.ForeColor = SystemColors.Desktop
         Button1.ImageAlign = ContentAlignment.MiddleRight
         Button1.Location = New Point(765, 23)
         Button1.Name = "Button1"
@@ -260,7 +266,7 @@ Partial Class frm_Juegos
         Button1.TabIndex = 11
         Button1.Text = "salir"
         Button1.TextAlign = ContentAlignment.MiddleLeft
-        Button1.UseVisualStyleBackColor = True
+        Button1.UseVisualStyleBackColor = False
         ' 
         ' frm_Juegos
         ' 
@@ -288,7 +294,7 @@ Partial Class frm_Juegos
         MaximizeBox = False
         Name = "frm_Juegos"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "frm_Juegos"
+        Text = "Administración de Juegos"
         CType(picPortada, ComponentModel.ISupportInitialize).EndInit()
         CType(dgvJuegos, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
