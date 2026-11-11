@@ -120,11 +120,13 @@ Partial Class Ventas
         btnAgregar.FlatStyle = FlatStyle.Popup
         btnAgregar.Font = New Font("Segoe UI", 15.75F)
         btnAgregar.ForeColor = SystemColors.ActiveCaptionText
+        btnAgregar.Image = CType(resources.GetObject("btnAgregar.Image"), Image)
+        btnAgregar.ImageAlign = ContentAlignment.BottomLeft
         btnAgregar.Location = New Point(319, 395)
         btnAgregar.Name = "btnAgregar"
         btnAgregar.Size = New Size(175, 50)
         btnAgregar.TabIndex = 8
-        btnAgregar.Text = "Agregar"
+        btnAgregar.Text = "    Agregar"
         btnAgregar.UseVisualStyleBackColor = True
         ' 
         ' btnConfirmar
@@ -132,11 +134,13 @@ Partial Class Ventas
         btnConfirmar.FlatStyle = FlatStyle.Popup
         btnConfirmar.Font = New Font("Segoe UI", 15.75F)
         btnConfirmar.ForeColor = SystemColors.ActiveCaptionText
+        btnConfirmar.Image = CType(resources.GetObject("btnConfirmar.Image"), Image)
+        btnConfirmar.ImageAlign = ContentAlignment.BottomLeft
         btnConfirmar.Location = New Point(510, 395)
         btnConfirmar.Name = "btnConfirmar"
         btnConfirmar.Size = New Size(175, 50)
         btnConfirmar.TabIndex = 12
-        btnConfirmar.Text = "Confirmar"
+        btnConfirmar.Text = "      Confirmar"
         btnConfirmar.UseVisualStyleBackColor = True
         ' 
         ' BtnSalir
@@ -145,11 +149,11 @@ Partial Class Ventas
         BtnSalir.FlatStyle = FlatStyle.Popup
         BtnSalir.Font = New Font("Segoe UI", 10F)
         BtnSalir.ForeColor = SystemColors.ActiveCaptionText
-        BtnSalir.Location = New Point(708, 407)
+        BtnSalir.Image = CType(resources.GetObject("BtnSalir.Image"), Image)
+        BtnSalir.Location = New Point(708, 406)
         BtnSalir.Name = "BtnSalir"
         BtnSalir.Size = New Size(80, 35)
         BtnSalir.TabIndex = 14
-        BtnSalir.Text = "X"
         BtnSalir.UseVisualStyleBackColor = False
         ' 
         ' Ventas
