@@ -108,6 +108,12 @@
 
     Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnlimpiar.Click
         LimpiarCampos()
+        If txtnombre.Text = "" Then
+            MessageBox.Show("Los campos se han limpiado correctamente.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+
     End Sub
 
     Private Sub txtnombre_TextChanged(sender As Object, e As EventArgs) Handles txtnombre.TextChanged
@@ -118,11 +124,17 @@
     Private textoBusqueda As String = ""
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+
+        'al presionar el boton buscar se debe buscar en el datagridview las letras que coincidan con lo que se escribio en el textbox y marcarlo de amarillo
+
+
+
         textoBusqueda = TXTBUSCAR.Text.Trim()
         dgvcategorias.Invalidate()   ' redibuja el grid para marcar las letras
 
         If textoBusqueda = "" Then
-            lblcoincidencias.Text = ""
+            MessageBox.Show("No hay caracteres para buscar.", "Atención",
+                       MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
@@ -143,7 +155,8 @@
             Next
         Next
 
-        lblcoincidencias.Text = $"Coincidencias: {coincidencias}"
+
+
     End Sub
 
     Private Sub dgvcategorias_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) _

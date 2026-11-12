@@ -165,7 +165,7 @@ Partial Class frm_categorias
         ' 
         lblHora.AutoSize = True
         lblHora.Font = New Font("Rockwell Condensed", 25F)
-        lblHora.Location = New Point(373, 15)
+        lblHora.Location = New Point(368, 9)
         lblHora.Name = "lblHora"
         lblHora.Size = New Size(35, 40)
         lblHora.TabIndex = 14
@@ -304,7 +304,7 @@ Partial Class frm_categorias
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
-        BackgroundImageLayout = ImageLayout.Center
+        BackgroundImageLayout = ImageLayout.None
         ClientSize = New Size(1182, 474)
         Controls.Add(Button1)
         Controls.Add(GroupBox1)
