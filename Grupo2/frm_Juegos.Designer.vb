@@ -22,6 +22,7 @@ Partial Class frm_Juegos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_Juegos))
         txtNombre = New TextBox()
         txtStock = New TextBox()
         txtPrecio = New TextBox()
@@ -39,10 +40,10 @@ Partial Class frm_Juegos
         Label3 = New Label()
         Label4 = New Label()
         Label5 = New Label()
-        Label6 = New Label()
-        lblID = New Label()
         Panel1 = New Panel()
         Button1 = New Button()
+        lblID = New Label()
+        Label6 = New Label()
         CType(picPortada, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvJuegos, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
@@ -100,6 +101,7 @@ Partial Class frm_Juegos
         btnExaminar.FlatStyle = FlatStyle.Popup
         btnExaminar.Font = New Font("Segoe UI", 15.75F)
         btnExaminar.ForeColor = SystemColors.Desktop
+        btnExaminar.Image = CType(resources.GetObject("btnExaminar.Image"), Image)
         btnExaminar.ImageAlign = ContentAlignment.MiddleRight
         btnExaminar.Location = New Point(649, 249)
         btnExaminar.Name = "btnExaminar"
@@ -115,6 +117,7 @@ Partial Class frm_Juegos
         btnGuardar.FlatStyle = FlatStyle.Popup
         btnGuardar.Font = New Font("Segoe UI", 15.75F)
         btnGuardar.ForeColor = SystemColors.Desktop
+        btnGuardar.Image = My.Resources.Resources.guardar_save_icon_1320191245245380651_48px
         btnGuardar.ImageAlign = ContentAlignment.MiddleRight
         btnGuardar.Location = New Point(272, 8)
         btnGuardar.Name = "btnGuardar"
@@ -130,6 +133,7 @@ Partial Class frm_Juegos
         btnEliminar.FlatStyle = FlatStyle.Popup
         btnEliminar.Font = New Font("Segoe UI", 15.75F)
         btnEliminar.ForeColor = SystemColors.Desktop
+        btnEliminar.Image = CType(resources.GetObject("btnEliminar.Image"), Image)
         btnEliminar.ImageAlign = ContentAlignment.MiddleRight
         btnEliminar.Location = New Point(477, 8)
         btnEliminar.Name = "btnEliminar"
@@ -145,6 +149,7 @@ Partial Class frm_Juegos
         btnLimpiar.FlatStyle = FlatStyle.Popup
         btnLimpiar.Font = New Font("Segoe UI", 15.75F)
         btnLimpiar.ForeColor = SystemColors.Desktop
+        btnLimpiar.Image = CType(resources.GetObject("btnLimpiar.Image"), Image)
         btnLimpiar.ImageAlign = ContentAlignment.MiddleRight
         btnLimpiar.Location = New Point(68, 8)
         btnLimpiar.Name = "btnLimpiar"
@@ -219,26 +224,6 @@ Partial Class frm_Juegos
         Label5.TabIndex = 16
         Label5.Text = "Fecha Ingreso:"
         ' 
-        ' Label6
-        ' 
-        Label6.AutoSize = True
-        Label6.Location = New Point(73, 21)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(54, 15)
-        Label6.TabIndex = 17
-        Label6.Text = "Nombre:"
-        Label6.Visible = False
-        ' 
-        ' lblID
-        ' 
-        lblID.AutoSize = True
-        lblID.Location = New Point(171, 21)
-        lblID.Name = "lblID"
-        lblID.Size = New Size(54, 15)
-        lblID.TabIndex = 18
-        lblID.Text = "Nombre:"
-        lblID.Visible = False
-        ' 
         ' Panel1
         ' 
         Panel1.Controls.Add(Button1)
@@ -259,6 +244,7 @@ Partial Class frm_Juegos
         Button1.FlatStyle = FlatStyle.Popup
         Button1.Font = New Font("Segoe UI", 10F)
         Button1.ForeColor = SystemColors.Desktop
+        Button1.Image = CType(resources.GetObject("Button1.Image"), Image)
         Button1.ImageAlign = ContentAlignment.MiddleRight
         Button1.Location = New Point(765, 23)
         Button1.Name = "Button1"
@@ -268,15 +254,35 @@ Partial Class frm_Juegos
         Button1.TextAlign = ContentAlignment.MiddleLeft
         Button1.UseVisualStyleBackColor = False
         ' 
+        ' lblID
+        ' 
+        lblID.AutoSize = True
+        lblID.Location = New Point(183, 9)
+        lblID.Name = "lblID"
+        lblID.Size = New Size(54, 15)
+        lblID.TabIndex = 21
+        lblID.Text = "Nombre:"
+        lblID.Visible = False
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Location = New Point(85, 9)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(54, 15)
+        Label6.TabIndex = 20
+        Label6.Text = "Nombre:"
+        Label6.Visible = False
+        ' 
         ' frm_Juegos
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(857, 585)
-        Controls.Add(Panel1)
         Controls.Add(lblID)
         Controls.Add(Label6)
+        Controls.Add(Panel1)
         Controls.Add(Label5)
         Controls.Add(Label4)
         Controls.Add(Label3)
@@ -319,8 +325,8 @@ Partial Class frm_Juegos
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents lblID As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Button1 As Button
+    Friend WithEvents lblID As Label
+    Friend WithEvents Label6 As Label
 End Class
