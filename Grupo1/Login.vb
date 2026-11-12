@@ -26,7 +26,7 @@ Public Class Login
             txtContraseña.Enabled = False
             txtUsuario.Enabled = False
 
-            MessageBox.Show("Verificando Información, esto puede tomar unos segundos, cierre esta ventana para proseguir", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            'MessageBox.Show("Verificando Información, esto puede tomar unos segundos, cierre esta ventana para proseguir", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
             Dim SQL1 As String
             Dim SQL2 As String
@@ -59,6 +59,7 @@ Public Class Login
                 da = New OleDbDataAdapter(SQL2, CadenaDeConexion)
                 dt = New DataTable
                 da.Fill(dt)
+                usuario = txtUsuario.Text
 
                 If dt.Rows.Count > 0 Then
                     rol = "admin"
@@ -81,8 +82,13 @@ Public Class Login
 
         Catch ex As Exception
             MsgBox(ex.Message)
+            btnIniciarSesion.Enabled = True
+            txtContraseña.Enabled = True
+            txtUsuario.Enabled = True
         End Try
+
     End Sub
+
     Private Sub txtContraseña_LostFocus(sender As Object, e As EventArgs) Handles txtContraseña.LostFocus
         If txtContraseña.Text = "" Then
             txtContraseña.ForeColor = Color.Gray
@@ -101,6 +107,11 @@ Public Class Login
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtContraseña_LostFocus(Nothing, Nothing)
+        AplicarEstiloFormulario(Me, "Inicio de sesión")
+        BotonPrimario(btnIniciarSesion)
+        BotonSecundario(btnSalir)
+        Me.BackColor = SystemColors.ActiveCaption
+        'enriquee
     End Sub
 
     Private Sub txtUsuario_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsuario.KeyDown
@@ -116,7 +127,7 @@ Public Class Login
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Dim i As DialogResult = MessageBox.Show("Esta seguro de que desea salir del programa?", "Salir del programa", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If i = DialogResult.Yes Then
             Application.Exit()

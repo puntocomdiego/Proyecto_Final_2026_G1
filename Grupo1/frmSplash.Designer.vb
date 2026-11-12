@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class SPLASH
+Partial Class frmSplash
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -33,10 +33,12 @@ Partial Class SPLASH
         ' lblTitulo
         ' 
         lblTitulo.AutoSize = True
-        lblTitulo.Font = New Font("News701 BT", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblTitulo.Location = New Point(32, 75)
+        lblTitulo.BackColor = Color.Black
+        lblTitulo.Font = New Font("Segoe UI Black", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblTitulo.ForeColor = Color.White
+        lblTitulo.Location = New Point(40, 63)
         lblTitulo.Name = "lblTitulo"
-        lblTitulo.Size = New Size(327, 78)
+        lblTitulo.Size = New Size(308, 86)
         lblTitulo.TabIndex = 0
         lblTitulo.Text = "Level Up"
         ' 
@@ -54,10 +56,10 @@ Partial Class SPLASH
         ' lblPorcentaje
         ' 
         lblPorcentaje.AutoSize = True
-        lblPorcentaje.Font = New Font("Segoe UI", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
-        lblPorcentaje.Location = New Point(178, 172)
+        lblPorcentaje.Font = New Font("Segoe UI", 9F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        lblPorcentaje.Location = New Point(177, 178)
         lblPorcentaje.Name = "lblPorcentaje"
-        lblPorcentaje.Size = New Size(33, 21)
+        lblPorcentaje.Size = New Size(24, 15)
         lblPorcentaje.TabIndex = 3
         lblPorcentaje.Text = "0%"
         lblPorcentaje.TextAlign = ContentAlignment.TopCenter
@@ -65,14 +67,14 @@ Partial Class SPLASH
         ' lblEstado
         ' 
         lblEstado.AutoSize = True
-        lblEstado.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblEstado.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblEstado.Location = New Point(1, 261)
         lblEstado.Name = "lblEstado"
-        lblEstado.Size = New Size(21, 20)
+        lblEstado.Size = New Size(16, 15)
         lblEstado.TabIndex = 4
         lblEstado.Text = "..."
         ' 
-        ' SPLASH
+        ' frmSplash
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
@@ -83,7 +85,7 @@ Partial Class SPLASH
         Controls.Add(pgr)
         Controls.Add(lblTitulo)
         FormBorderStyle = FormBorderStyle.None
-        Name = "SPLASH"
+        Name = "frmSplash"
         StartPosition = FormStartPosition.CenterScreen
         Text = "SPLASH"
         ResumeLayout(False)
