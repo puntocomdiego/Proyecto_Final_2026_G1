@@ -79,20 +79,8 @@ Public Class MDIParent1
 
     Private m_ChildFormNumber As Integer
 
-    Private Sub ADMINISTRADORToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub MDIParent1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub VENDEDORToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VENDEDORToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub ABREMEÇToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ABREMEÇToolStripMenuItem.Click
-
+        lblInformacion.Text = "Usuario: " & usuario & " | " & "Rol: " & rol
     End Sub
 
     Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
@@ -138,11 +126,26 @@ Public Class MDIParent1
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
         Dim i = MessageBox.Show("¿Desea salir del sistema?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If i = DialogResult.Yes Then
-            Close()
+            CerrarTodos()
+            Me.Close()
         End If
     End Sub
 
-    Private Sub OkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OkToolStripMenuItem.Click
-
+    Private Sub CerrarSesionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSesionToolStripMenuItem.Click
+        Dim i = MessageBox.Show("¿Desea cerrar sesión?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If i = DialogResult.Yes Then
+            rol = Nothing
+            usuario = Nothing
+            CerrarTodos()
+            Login.Show()
+            Me.Close()
+        End If
     End Sub
+
+    Private Sub CerrarTodos()
+        For Each ChildForm In MdiChildren
+            ChildForm.Close()
+        Next
+    End Sub
+
 End Class

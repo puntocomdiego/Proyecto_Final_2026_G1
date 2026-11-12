@@ -59,6 +59,7 @@ Public Class Login
                 da = New OleDbDataAdapter(SQL2, CadenaDeConexion)
                 dt = New DataTable
                 da.Fill(dt)
+                usuario = txtUsuario.Text
 
                 If dt.Rows.Count > 0 Then
                     rol = "admin"
@@ -87,6 +88,7 @@ Public Class Login
         End Try
 
     End Sub
+
     Private Sub txtContraseña_LostFocus(sender As Object, e As EventArgs) Handles txtContraseña.LostFocus
         If txtContraseña.Text = "" Then
             txtContraseña.ForeColor = Color.Gray

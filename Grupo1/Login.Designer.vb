@@ -107,7 +107,6 @@ Partial Class Login
         ' 
         ' Login
         ' 
-        AcceptButton = btnIniciarSesion
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
