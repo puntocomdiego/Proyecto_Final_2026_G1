@@ -32,6 +32,8 @@ Partial Class fmr_usurios
         txtnomusuario = New TextBox()
         txtapellido = New TextBox()
         gbx_usuarioinfo = New GroupBox()
+        cmbtipo = New ComboBox()
+        Label5 = New Label()
         picfoto = New PictureBox()
         btnnuevo = New Button()
         btnmodificar = New Button()
@@ -44,8 +46,6 @@ Partial Class fmr_usurios
         ofdfoto = New OpenFileDialog()
         txtbuscar = New TextBox()
         btnsalir = New Button()
-        Label5 = New Label()
-        cmbtipo = New ComboBox()
         gbx_usuarioinfo.SuspendLayout()
         CType(picfoto, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox1.SuspendLayout()
@@ -139,6 +139,25 @@ Partial Class fmr_usurios
         gbx_usuarioinfo.TabIndex = 10
         gbx_usuarioinfo.TabStop = False
         gbx_usuarioinfo.Text = "Información del usuario"
+        ' 
+        ' cmbtipo
+        ' 
+        cmbtipo.FormattingEnabled = True
+        cmbtipo.Items.AddRange(New Object() {"Admin", "Vendedor"})
+        cmbtipo.Location = New Point(218, 273)
+        cmbtipo.Name = "cmbtipo"
+        cmbtipo.Size = New Size(255, 23)
+        cmbtipo.TabIndex = 11
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Font = New Font("Segoe UI", 12F)
+        Label5.Location = New Point(169, 275)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(43, 21)
+        Label5.TabIndex = 9
+        Label5.Text = "Tipo:"
         ' 
         ' picfoto
         ' 
@@ -244,7 +263,7 @@ Partial Class fmr_usurios
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Segoe UI", 12F)
-        Label6.Location = New Point(565, 39)
+        Label6.Location = New Point(543, 42)
         Label6.Name = "Label6"
         Label6.Size = New Size(129, 21)
         Label6.TabIndex = 10
@@ -253,7 +272,7 @@ Partial Class fmr_usurios
         ' dgvusuarios
         ' 
         dgvusuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvusuarios.Location = New Point(548, 79)
+        dgvusuarios.Location = New Point(533, 94)
         dgvusuarios.Name = "dgvusuarios"
         dgvusuarios.Size = New Size(581, 284)
         dgvusuarios.TabIndex = 18
@@ -264,7 +283,7 @@ Partial Class fmr_usurios
         ' 
         ' txtbuscar
         ' 
-        txtbuscar.Location = New Point(699, 37)
+        txtbuscar.Location = New Point(678, 44)
         txtbuscar.Name = "txtbuscar"
         txtbuscar.Size = New Size(344, 23)
         txtbuscar.TabIndex = 9
@@ -284,25 +303,6 @@ Partial Class fmr_usurios
         btnsalir.Text = "salir"
         btnsalir.TextAlign = ContentAlignment.MiddleLeft
         btnsalir.UseVisualStyleBackColor = False
-        ' 
-        ' Label5
-        ' 
-        Label5.AutoSize = True
-        Label5.Font = New Font("Segoe UI", 12F)
-        Label5.Location = New Point(169, 275)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(43, 21)
-        Label5.TabIndex = 9
-        Label5.Text = "Tipo:"
-        ' 
-        ' cmbtipo
-        ' 
-        cmbtipo.FormattingEnabled = True
-        cmbtipo.Items.AddRange(New Object() {"Admin", "Vendedor"})
-        cmbtipo.Location = New Point(218, 273)
-        cmbtipo.Name = "cmbtipo"
-        cmbtipo.Size = New Size(255, 23)
-        cmbtipo.TabIndex = 11
         ' 
         ' fmr_usurios
         ' 

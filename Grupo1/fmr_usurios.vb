@@ -85,6 +85,11 @@ Public Class fmr_usurios
     Private Sub fmr_usurios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ConfigurarGrilla()
         MostrarUsuarios(datos.Listar())
+
+
+
+
+
     End Sub
 
 
@@ -206,12 +211,12 @@ Public Class fmr_usurios
         End Try
     End Sub
 
-    Private Sub dgvusuarios_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvusuarios.CellContentClick
+    'Private Sub dgvusuarios_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvusuarios.CellContentClick
 
 
-        actualizar()
-        MostrarFoto(rutaFoto)
-    End Sub
+    '    actualizar()
+    '    MostrarFoto(rutaFoto)
+    'End Sub
 
     Private Sub actualizar()
 
@@ -223,5 +228,8 @@ Public Class fmr_usurios
         cmbtipo.Text = dgvusuarios.CurrentRow.Cells("tipo").Value.ToString()
     End Sub
 
-
+    Private Sub dgvusuarios_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvusuarios.CellMouseClick
+        actualizar()
+        MostrarFoto(rutaFoto)
+    End Sub
 End Class
