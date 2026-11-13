@@ -1,27 +1,28 @@
 ﻿Imports System.Xml
 Imports System.Data.OleDb
+Imports System.Windows.Forms
 
 Public Class Ventas
 
     ' Conexión a la base de datos Access
-    ' IMPORTANTE: cambiar la ruta por la de tu computadora (o usar el módulo de conexión del grupo)
-    ' ------------------------------------------------------------
     Dim cn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Ruta)
-
-    ' Aquí se guardan los juegos que traemos de la base
     Dim dtJuegos As New DataTable
-
-    ' Usuario que hace la venta (después se cambia por el que hizo login)
     Dim idUsuario As Integer = 1
 
-    ' ------------------------------------------------------------
-    ' Al abrir el formulario
-    ' ------------------------------------------------------------
+    ' Instanciamos la clase que creamos arriba
+    Dim gestor As New clsVentas()
+
     Private Sub Ventas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Estilo de la grilla (módulo Estilos.vb)
+
+
+
+
+
+
+        ' Estilo de la grilla
         AplicarEstiloGrilla(DataGridView1)
 
-        ' Columnas de la grilla (el carrito)
+        ' Configuración de la grilla del Carrito (Izquierda)
         DataGridView1.Columns.Clear()
         DataGridView1.Columns.Add("id", "id")
         DataGridView1.Columns.Add("Juego", "Juego")
@@ -32,20 +33,24 @@ Public Class Ventas
         DataGridView1.Columns("Precio").DefaultCellStyle.Format = "C2"
         DataGridView1.Columns("Subtotal").DefaultCellStyle.Format = "C2"
 
-        ' Cantidades para elegir en Cmb2 (si no tenías cargadas)
+        ' Para que se seleccione toda la fila al hacer clic
+        DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DataGridView1.MultiSelect = False
+
         If Cmb2.Items.Count = 0 Then
             For i As Integer = 1 To 20
                 Cmb2.Items.Add(i)
             Next
         End If
-        Cmb2.Text = "1"
+        Cmb2.Text = ""
 
         CargarJuegos()
+        CargarHistorialVentas() ' <--- Carga el historial en el DataGridView de la derecha
         btnConfirmar.Enabled = False
     End Sub
 
     ' ------------------------------------------------------------
-    ' Trae los juegos con stock y los pone en el ComboBox Cmb1
+    ' Trae los juegos con stock
     ' ------------------------------------------------------------
     Private Sub CargarJuegos()
         Try
@@ -64,8 +69,39 @@ Public Class Ventas
     End Sub
 
     ' ------------------------------------------------------------
-    ' Cuando elegimos un juego, mostramos su stock
+    ' CARGAR HISTORIAL DE VENTAS (El DataGridView de la derecha)
     ' ------------------------------------------------------------
+    Private Sub CargarHistorialVentas()
+        Try
+            ' Asumo que el DataGridView de la derecha se llama DataGridView2
+            ' Si se llama diferente, cambialo acá
+            Dim dtVentas As New DataTable
+
+            ' Consulta para unir las tablas ventas, detalle_ventas y juegos
+            Dim query As String = "SELECT v.fecha AS Fecha_Hora, j.nombre AS Juego, dv.cantidad AS Cantidad, v.total AS Total " &
+                                  "FROM (ventas v INNER JOIN detalle_ventas dv ON v.id = dv.id_venta) " &
+                                  "INNER JOIN juegos j ON dv.id_juego = j.id " &
+                                  "ORDER BY v.fecha DESC"
+
+            Dim da As New OleDbDataAdapter(query, cn)
+            da.Fill(dtVentas)
+
+            DatagridVentas.DataSource = dtVentas
+
+            ' Damos formato a la columna de la fecha y el total
+            If DatagridVentas.Columns.Contains("Fecha_Hora") Then
+                DatagridVentas.Columns("Fecha_Hora").DefaultCellStyle.Format = "dd/MM/yyyy HH:mm"
+            End If
+            If DatagridVentas.Columns.Contains("Total") Then
+                DatagridVentas.Columns("Total").DefaultCellStyle.Format = "C2"
+            End If
+
+        Catch ex As Exception
+            ' Si el DatagridVentas no existe o hay error, no rompemos la app
+            MessageBox.Show("Error al cargar el historial: " & ex.Message)
+        End Try
+    End Sub
+
     Private Sub Cmb1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cmb1.SelectedIndexChanged
         If Cmb1.SelectedIndex >= 0 Then
             Dim fila As DataRow = dtJuegos.Rows(Cmb1.SelectedIndex)
@@ -75,9 +111,6 @@ Public Class Ventas
         End If
     End Sub
 
-    ' ------------------------------------------------------------
-    ' Lee la cantidad de Cmb2 (devuelve 0 si no es un número válido)
-    ' ------------------------------------------------------------
     Private Function LeerCantidad() As Integer
         Dim cantidad As Integer
         If Integer.TryParse(Cmb2.Text, cantidad) AndAlso cantidad > 0 Then
@@ -87,85 +120,63 @@ Public Class Ventas
     End Function
 
     ' ------------------------------------------------------------
-    ' Botón AGREGAR: pasa el juego al carrito (la grilla)
+    ' BOTÓN AGREGAR
     ' ------------------------------------------------------------
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
-        ' Validación: tiene que haber un juego elegido
-        If Cmb1.SelectedIndex < 0 Then
-            MessageBox.Show("Primero elegí un juego")
-            Return
-        End If
 
-        ' Validación: la cantidad tiene que ser un número mayor a 0
+
+
         Dim cantidad As Integer = LeerCantidad()
-        If cantidad = 0 Then
-            MessageBox.Show("Ingresá una cantidad válida (un número mayor a 0)")
-            Return
-        End If
 
-        QuitarTotal()
-
-        Dim fila As DataRow = dtJuegos.Rows(Cmb1.SelectedIndex)
-        Dim idJuego As Integer = CInt(fila("id"))
-        Dim nombre As String = fila("nombre").ToString()
-        Dim precio As Decimal = CDec(fila("precio"))
-        Dim stock As Integer = CInt(fila("stock"))
-
-        ' Buscamos si el juego ya está en el carrito
-        Dim filaCarrito As DataGridViewRow = Nothing
-        For Each f As DataGridViewRow In DataGridView1.Rows
-            If CInt(f.Cells("id").Value) = idJuego Then
-                filaCarrito = f
-            End If
-        Next
-
-        Dim yaEnCarrito As Integer = 0
-        If filaCarrito IsNot Nothing Then
-            yaEnCarrito = CInt(filaCarrito.Cells("Cantidad").Value)
-        End If
-
-        ' Validación: no vender más de lo que hay en stock
-        If yaEnCarrito + cantidad > stock Then
-            MessageBox.Show("No hay stock suficiente. Stock disponible: " & stock)
-            CalcularTotal()
-            Return
-        End If
-
-        If filaCarrito Is Nothing Then
-            ' Juego nuevo: agregamos un renglón al coso
-            DataGridView1.Rows.Add(idJuego, nombre, cantidad, precio, cantidad * precio)
-        Else
-            ' Juego repetido: sumamos la cantidad y recalculamos el subtotal
-            filaCarrito.Cells("Cantidad").Value = yaEnCarrito + cantidad
-            filaCarrito.Cells("Subtotal").Value = (yaEnCarrito + cantidad) * precio
-        End If
+        ' Usamos el procedimiento de la clase
+        gestor.AgregarAlCarrito(dtJuegos, DataGridView1, Cmb1.SelectedIndex, cantidad)
 
         CalcularTotal()
         Cmb2.Text = "1"
     End Sub
 
     ' ------------------------------------------------------------
-    ' Botón EDITAR: cambia la cantidad del renglón seleccionado
-    ' (se elige el renglón en la grilla, se pone la nueva cantidad en Cmb2)
+    ' BOTÓN MODIFICAR (Ventanita para cambiar la cantidad)
     ' ------------------------------------------------------------
+    Private Sub Modificar_Click(sender As Object, e As EventArgs) Handles Modificar.Click
+        If DataGridView1.SelectedRows.Count = 0 Then
+            MessageBox.Show("Seleccioná una fila del carrito para modificar.")
+            Return
+        End If
 
-    ' ------------------------------------------------------------
-    ' Saca la fila del total (si está) para poder trabajar con los juegos
-    ' ------------------------------------------------------------
-    Private Sub QuitarTotal()
-        If DataGridView1.Rows.Count > 0 Then
-            Dim ultima As DataGridViewRow = DataGridView1.Rows(DataGridView1.Rows.Count - 1)
-            If ultima.Cells("Juego").Value.ToString() = "TOTAL A PAGAR" Then
-                DataGridView1.Rows.Remove(ultima)
-            End If
+        ' Pedimos la cantidad con un InputBox simple
+        Dim input As String = InputBox("Ingrese la nueva cantidad (solo números):", "Modificar Cantidad")
+
+        ' Validamos que no esté vacío y que sean solo números
+        If String.IsNullOrWhiteSpace(input) Then Return
+
+        Dim nuevaCantidad As Integer
+        If Not Integer.TryParse(input, nuevaCantidad) Then
+            MessageBox.Show("Error: Solo se permiten números enteros.")
+            Return
+        End If
+
+        ' Llamamos al procedimiento de la clase
+        If gestor.ModificarCantidad(DataGridView1, nuevaCantidad) Then
+            CalcularTotal() ' Si se modificó bien, recalculamos el total
         End If
     End Sub
 
     ' ------------------------------------------------------------
-    ' Suma los subtotales y agrega la fila "TOTAL A PAGAR" al final
+    ' BOTÓN ELIMINAR
+    ' ------------------------------------------------------------
+    Private Sub Eliminar_Click(sender As Object, e As EventArgs) Handles Eliminar.Click
+        ' Llamamos al procedimiento de la clase
+        If gestor.EliminarDelCarrito(DataGridView1) Then
+            CalcularTotal() ' Si se eliminó bien, recalculamos el total
+        End If
+    End Sub
+
+    ' ------------------------------------------------------------
+    ' CÁLCULO DEL TOTAL
     ' ------------------------------------------------------------
     Private Sub CalcularTotal()
-        QuitarTotal()
+        gestor.QuitarTotal(DataGridView1)
 
         Dim total As Decimal = 0
         Dim cantidadTotal As Integer = 0
@@ -178,9 +189,8 @@ Public Class Ventas
         If DataGridView1.Rows.Count > 0 Then
             DataGridView1.Rows.Add(0, "TOTAL A PAGAR", cantidadTotal, "", total)
             Dim ultima As DataGridViewRow = DataGridView1.Rows(DataGridView1.Rows.Count - 1)
-            ultima.DefaultCellStyle.BackColor = ColorAmarillo
-            ultima.DefaultCellStyle.SelectionBackColor = ColorAmarillo
-            ultima.DefaultCellStyle.Font = FuenteBoton
+            ultima.DefaultCellStyle.BackColor = Color.Yellow ' Usa el color que tenías
+            ultima.DefaultCellStyle.SelectionBackColor = Color.Yellow
             btnConfirmar.Enabled = True
         Else
             btnConfirmar.Enabled = False
@@ -188,17 +198,16 @@ Public Class Ventas
     End Sub
 
     ' ------------------------------------------------------------
-    ' Botón CONFIRMAR: guarda en ventas, detalle_ventas y baja el stock
+    ' BOTÓN CONFIRMAR (MANTENIDO IGUAL PERO ACTUALIZA HISTORIAL)
     ' ------------------------------------------------------------
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
-        QuitarTotal()
+        gestor.QuitarTotal(DataGridView1)
 
         If DataGridView1.Rows.Count = 0 Then
             MessageBox.Show("El carrito está vacío")
             Return
         End If
 
-        ' Calculamos el total de la venta
         Dim total As Decimal = 0
         For Each f As DataGridViewRow In DataGridView1.Rows
             total = total + CDec(f.Cells("Subtotal").Value)
@@ -208,21 +217,17 @@ Public Class Ventas
         Dim idVenta As Integer
 
         cn.Open()
-
         Dim tran As OleDbTransaction = cn.BeginTransaction()
 
         Try
-            ' 1) Guardamos la cabecera en la tabla ventas
             cmd = New OleDbCommand("INSERT INTO ventas (fecha, id_usuario, total) VALUES (?, ?, ?)", cn, tran)
             cmd.Parameters.AddWithValue("@fecha", Now)
             cmd.Parameters.AddWithValue("@id_usuario", idUsuario)
             cmd.Parameters.AddWithValue("@total", total)
             cmd.ExecuteNonQuery()
 
-            ' 2) Averiguamos el id de la venta que se acaba de crear
             cmd = New OleDbCommand("SELECT @@IDENTITY", cn, tran)
             idVenta = CInt(cmd.ExecuteScalar())
-
 
             For Each f As DataGridViewRow In DataGridView1.Rows
                 cmd = New OleDbCommand("INSERT INTO detalle_ventas (id_venta, id_juego, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)", cn, tran)
@@ -242,9 +247,9 @@ Public Class Ventas
             tran.Commit()
             MessageBox.Show("Venta guardada. Total: " & total.ToString("C2"))
 
-            ' Dejamos todo listo para una nueva venta
             DataGridView1.Rows.Clear()
             btnConfirmar.Enabled = False
+
         Catch ex As Exception
             tran.Rollback()
             MessageBox.Show("No se pudo guardar la venta: " & ex.Message)
@@ -254,17 +259,17 @@ Public Class Ventas
         End Try
 
         CargarJuegos()
-    End Sub
-
-    Private Sub btnQuitar_Click(sender As Object, e As EventArgs)
-
+        CargarHistorialVentas() ' <--- IMPORTANTE: Actualizamos la grilla de la derecha
     End Sub
 
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
-        MsgBox("¿Seguro de que quiere salir de ventas?", MsgBoxStyle.YesNo, "Salir")
-
-        If MsgBoxResult.Yes Then
+        Dim resp As MsgBoxResult = MsgBox("¿Seguro de que quiere salir de ventas?", MsgBoxStyle.YesNo, "Salir")
+        If resp = MsgBoxResult.Yes Then
             Me.Close()
         End If
+    End Sub
+
+    Private Sub Cmb2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cmb2.SelectedIndexChanged
+
     End Sub
 End Class
