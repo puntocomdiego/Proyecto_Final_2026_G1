@@ -1,4 +1,5 @@
-﻿Imports System.Net.Mail
+﻿Imports System.Data.OleDb
+Imports System.Net.Mail
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
@@ -6,6 +7,9 @@ Imports Excel = Microsoft.Office.Interop.Excel
 Public Class FrmConsultas
     Dim correo As MailMessage
     Dim WithEvents clienteSmtp As New SmtpClient("smtp.gmail.com")
+    Dim cn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Ruta)
+    Dim dtventas As New DataTable
+
 
     Public Sub ExportarPDF(ByVal dgv As DataGridView, ByVal filename As String)
         Dim pdfTable As New PdfPTable(dgv.ColumnCount)
@@ -144,6 +148,21 @@ Public Class FrmConsultas
         BtnExcel.Visible = True
         BtnPDF.Enabled = True
         BtnPDF.Visible = True
+
+    End Sub
+    Private Sub FrmConsultas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim SQL As String = ""
+        SQL = "SELECT ventas.id, ventas.fecha, ventas.id_usuario, ventas.total From ventas;"
+
+
+        Dim da As New OleDbDataAdapter(SQL, cn)
+        da.Fill(dtventas)
+
+        DgvListadoVentas.DataSource = dtventas
+        DgvListadoVentas.Columns(0).HeaderText = "ID"
+        DgvListadoVentas.Columns(1).HeaderText = "Fecha"
+        DgvListadoVentas.Columns(2).HeaderText = "ID Usuario"
+        DgvListadoVentas.Columns(3).HeaderText = "Total"
 
     End Sub
 End Class
