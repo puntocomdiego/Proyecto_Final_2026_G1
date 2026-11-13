@@ -34,7 +34,12 @@ Partial Class Ventas
         btnAgregar = New Button()
         btnConfirmar = New Button()
         BtnSalir = New Button()
+        DatagridVentas = New DataGridView()
+        Label3 = New Label()
+        Modificar = New Button()
+        Eliminar = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DatagridVentas, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
@@ -42,7 +47,7 @@ Partial Class Ventas
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 20.25F)
         Label1.ForeColor = SystemColors.ActiveCaptionText
-        Label1.Location = New Point(243, 9)
+        Label1.Location = New Point(354, 9)
         Label1.Name = "Label1"
         Label1.Size = New Size(280, 37)
         Label1.TabIndex = 0
@@ -51,7 +56,7 @@ Partial Class Ventas
         ' Cmb1
         ' 
         Cmb1.FormattingEnabled = True
-        Cmb1.Location = New Point(56, 153)
+        Cmb1.Location = New Point(47, 131)
         Cmb1.Name = "Cmb1"
         Cmb1.Size = New Size(224, 23)
         Cmb1.TabIndex = 1
@@ -59,7 +64,7 @@ Partial Class Ventas
         ' Cmb2
         ' 
         Cmb2.FormattingEnabled = True
-        Cmb2.Location = New Point(498, 153)
+        Cmb2.Location = New Point(626, 131)
         Cmb2.Name = "Cmb2"
         Cmb2.Size = New Size(224, 23)
         Cmb2.TabIndex = 2
@@ -69,7 +74,7 @@ Partial Class Ventas
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 12F)
         Label2.ForeColor = SystemColors.ActiveCaptionText
-        Label2.Location = New Point(355, 109)
+        Label2.Location = New Point(441, 78)
         Label2.Name = "Label2"
         Label2.Size = New Size(91, 21)
         Label2.TabIndex = 3
@@ -79,7 +84,7 @@ Partial Class Ventas
         ' 
         lblStock.AutoSize = True
         lblStock.ForeColor = SystemColors.ActiveCaptionText
-        lblStock.Location = New Point(393, 130)
+        lblStock.Location = New Point(481, 99)
         lblStock.Name = "lblStock"
         lblStock.Size = New Size(13, 15)
         lblStock.TabIndex = 4
@@ -90,7 +95,7 @@ Partial Class Ventas
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 12F)
         Label4.ForeColor = SystemColors.ActiveCaptionText
-        Label4.Location = New Point(112, 115)
+        Label4.Location = New Point(122, 99)
         Label4.Name = "Label4"
         Label4.Size = New Size(80, 21)
         Label4.TabIndex = 5
@@ -101,7 +106,7 @@ Partial Class Ventas
         Label5.AutoSize = True
         Label5.Font = New Font("Segoe UI", 12F)
         Label5.ForeColor = SystemColors.ActiveCaptionText
-        Label5.Location = New Point(570, 115)
+        Label5.Location = New Point(697, 93)
         Label5.Name = "Label5"
         Label5.Size = New Size(94, 21)
         Label5.TabIndex = 6
@@ -110,9 +115,9 @@ Partial Class Ventas
         ' DataGridView1
         ' 
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(56, 189)
+        DataGridView1.Location = New Point(38, 160)
         DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(674, 102)
+        DataGridView1.Size = New Size(830, 220)
         DataGridView1.TabIndex = 7
         ' 
         ' btnAgregar
@@ -122,7 +127,7 @@ Partial Class Ventas
         btnAgregar.ForeColor = SystemColors.ActiveCaptionText
         btnAgregar.Image = CType(resources.GetObject("btnAgregar.Image"), Image)
         btnAgregar.ImageAlign = ContentAlignment.BottomLeft
-        btnAgregar.Location = New Point(319, 395)
+        btnAgregar.Location = New Point(716, 448)
         btnAgregar.Name = "btnAgregar"
         btnAgregar.Size = New Size(175, 50)
         btnAgregar.TabIndex = 8
@@ -136,7 +141,7 @@ Partial Class Ventas
         btnConfirmar.ForeColor = SystemColors.ActiveCaptionText
         btnConfirmar.Image = CType(resources.GetObject("btnConfirmar.Image"), Image)
         btnConfirmar.ImageAlign = ContentAlignment.BottomLeft
-        btnConfirmar.Location = New Point(510, 395)
+        btnConfirmar.Location = New Point(925, 448)
         btnConfirmar.Name = "btnConfirmar"
         btnConfirmar.Size = New Size(175, 50)
         btnConfirmar.TabIndex = 12
@@ -145,22 +150,73 @@ Partial Class Ventas
         ' 
         ' BtnSalir
         ' 
-        BtnSalir.BackColor = Color.Red
+        BtnSalir.BackColor = Color.AliceBlue
         BtnSalir.FlatStyle = FlatStyle.Popup
         BtnSalir.Font = New Font("Segoe UI", 10F)
         BtnSalir.ForeColor = SystemColors.ActiveCaptionText
         BtnSalir.Image = CType(resources.GetObject("BtnSalir.Image"), Image)
-        BtnSalir.Location = New Point(708, 406)
+        BtnSalir.Location = New Point(1156, 459)
         BtnSalir.Name = "BtnSalir"
         BtnSalir.Size = New Size(80, 35)
         BtnSalir.TabIndex = 14
         BtnSalir.UseVisualStyleBackColor = False
         ' 
+        ' DatagridVentas
+        ' 
+        DatagridVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DatagridVentas.Location = New Point(904, 78)
+        DatagridVentas.Name = "DatagridVentas"
+        DatagridVentas.Size = New Size(359, 327)
+        DatagridVentas.TabIndex = 15
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Font = New Font("Segoe UI", 15F)
+        Label3.ForeColor = SystemColors.ActiveCaptionText
+        Label3.Location = New Point(1032, 16)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(131, 28)
+        Label3.TabIndex = 16
+        Label3.Text = "🏆 Ventas 🏆"
+        ' 
+        ' Modificar
+        ' 
+        Modificar.FlatStyle = FlatStyle.Popup
+        Modificar.Font = New Font("Segoe UI", 15.75F)
+        Modificar.ForeColor = SystemColors.ActiveCaptionText
+        Modificar.Image = CType(resources.GetObject("Modificar.Image"), Image)
+        Modificar.ImageAlign = ContentAlignment.BottomLeft
+        Modificar.Location = New Point(521, 448)
+        Modificar.Name = "Modificar"
+        Modificar.Size = New Size(175, 50)
+        Modificar.TabIndex = 17
+        Modificar.Text = "    Modificar"
+        Modificar.UseVisualStyleBackColor = True
+        ' 
+        ' Eliminar
+        ' 
+        Eliminar.FlatStyle = FlatStyle.Popup
+        Eliminar.Font = New Font("Segoe UI", 15.75F)
+        Eliminar.ForeColor = SystemColors.ActiveCaptionText
+        Eliminar.Image = CType(resources.GetObject("Eliminar.Image"), Image)
+        Eliminar.ImageAlign = ContentAlignment.BottomLeft
+        Eliminar.Location = New Point(340, 448)
+        Eliminar.Name = "Eliminar"
+        Eliminar.Size = New Size(175, 50)
+        Eliminar.TabIndex = 18
+        Eliminar.Text = "    Eliminar"
+        Eliminar.UseVisualStyleBackColor = True
+        ' 
         ' Ventas
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(1275, 506)
+        Controls.Add(Eliminar)
+        Controls.Add(Modificar)
+        Controls.Add(Label3)
+        Controls.Add(DatagridVentas)
         Controls.Add(BtnSalir)
         Controls.Add(btnConfirmar)
         Controls.Add(btnAgregar)
@@ -178,6 +234,7 @@ Partial Class Ventas
         StartPosition = FormStartPosition.CenterScreen
         Text = "Carrito de compras"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(DatagridVentas, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -193,4 +250,8 @@ Partial Class Ventas
     Friend WithEvents btnAgregar As Button
     Friend WithEvents btnConfirmar As Button
     Friend WithEvents BtnSalir As Button
+    Friend WithEvents DatagridVentas As DataGridView
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Modificar As Button
+    Friend WithEvents Eliminar As Button
 End Class
