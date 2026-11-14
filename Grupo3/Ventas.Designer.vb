@@ -38,6 +38,7 @@ Partial Class Ventas
         Label3 = New Label()
         Modificar = New Button()
         Eliminar = New Button()
+        Button1 = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         CType(DatagridVentas, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -208,11 +209,26 @@ Partial Class Ventas
         Eliminar.Text = "    Eliminar"
         Eliminar.UseVisualStyleBackColor = True
         ' 
+        ' Button1
+        ' 
+        Button1.FlatStyle = FlatStyle.Popup
+        Button1.Font = New Font("Segoe UI", 15.75F)
+        Button1.ForeColor = SystemColors.ActiveCaptionText
+        Button1.Image = CType(resources.GetObject("Button1.Image"), Image)
+        Button1.ImageAlign = ContentAlignment.BottomLeft
+        Button1.Location = New Point(150, 448)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(175, 50)
+        Button1.TabIndex = 19
+        Button1.Text = "    Exportar"
+        Button1.UseVisualStyleBackColor = True
+        ' 
         ' Ventas
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1275, 506)
+        Controls.Add(Button1)
         Controls.Add(Eliminar)
         Controls.Add(Modificar)
         Controls.Add(Label3)
@@ -254,4 +270,5 @@ Partial Class Ventas
     Friend WithEvents Label3 As Label
     Friend WithEvents Modificar As Button
     Friend WithEvents Eliminar As Button
+    Friend WithEvents Button1 As Button
 End Class

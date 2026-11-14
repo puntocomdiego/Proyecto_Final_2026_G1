@@ -16,7 +16,7 @@ Public Class Ventas
 
 
 
-
+        Button1.Enabled = False
 
 
         ' Estilo de la grilla
@@ -249,6 +249,7 @@ Public Class Ventas
 
             DataGridView1.Rows.Clear()
             btnConfirmar.Enabled = False
+            Button1.Enabled = True
 
         Catch ex As Exception
             tran.Rollback()
@@ -271,5 +272,10 @@ Public Class Ventas
 
     Private Sub Cmb2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cmb2.SelectedIndexChanged
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        FrmConsultas.Show()
+        Me.Close()
     End Sub
 End Class
