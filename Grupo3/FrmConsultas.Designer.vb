@@ -36,15 +36,16 @@ Partial Class FrmConsultas
         Label2 = New Label()
         Label3 = New Label()
         Label4 = New Label()
-        Label5 = New Label()
         BtnCerrar = New Button()
+        Label5 = New Label()
+        BtnOk = New Button()
         CType(DgvListadoVentas, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' BtnPDF
         ' 
-        BtnPDF.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        BtnPDF.Location = New Point(871, 32)
+        BtnPDF.Font = New Font("Segoe UI", 15.75F)
+        BtnPDF.Location = New Point(392, 559)
         BtnPDF.Name = "BtnPDF"
         BtnPDF.Size = New Size(175, 50)
         BtnPDF.TabIndex = 0
@@ -53,8 +54,8 @@ Partial Class FrmConsultas
         ' 
         ' BtnExcel
         ' 
-        BtnExcel.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        BtnExcel.Location = New Point(1052, 32)
+        BtnExcel.Font = New Font("Segoe UI", 15.75F)
+        BtnExcel.Location = New Point(573, 560)
         BtnExcel.Name = "BtnExcel"
         BtnExcel.Size = New Size(175, 50)
         BtnExcel.TabIndex = 1
@@ -63,8 +64,8 @@ Partial Class FrmConsultas
         ' 
         ' BtnCorreo
         ' 
-        BtnCorreo.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        BtnCorreo.Location = New Point(1233, 32)
+        BtnCorreo.Font = New Font("Segoe UI", 15.75F)
+        BtnCorreo.Location = New Point(754, 560)
         BtnCorreo.Name = "BtnCorreo"
         BtnCorreo.Size = New Size(175, 50)
         BtnCorreo.TabIndex = 2
@@ -94,8 +95,8 @@ Partial Class FrmConsultas
         ' 
         ' BtnEnviar
         ' 
-        BtnEnviar.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        BtnEnviar.Location = New Point(397, 358)
+        BtnEnviar.Font = New Font("Segoe UI", 15.75F)
+        BtnEnviar.Location = New Point(392, 358)
         BtnEnviar.Name = "BtnEnviar"
         BtnEnviar.Size = New Size(175, 50)
         BtnEnviar.TabIndex = 4
@@ -105,7 +106,7 @@ Partial Class FrmConsultas
         ' 
         ' BtnCancelar
         ' 
-        BtnCancelar.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BtnCancelar.Font = New Font("Segoe UI", 15.75F)
         BtnCancelar.Location = New Point(749, 358)
         BtnCancelar.Name = "BtnCancelar"
         BtnCancelar.Size = New Size(175, 50)
@@ -126,21 +127,21 @@ Partial Class FrmConsultas
         ' Cmb
         ' 
         Cmb.FormattingEnabled = True
-        Cmb.Location = New Point(674, 47)
+        Cmb.Location = New Point(901, 47)
         Cmb.Name = "Cmb"
         Cmb.Size = New Size(175, 28)
         Cmb.TabIndex = 7
         ' 
         ' DateTimePicker1
         ' 
-        DateTimePicker1.Location = New Point(103, 48)
+        DateTimePicker1.Location = New Point(160, 45)
         DateTimePicker1.Name = "DateTimePicker1"
         DateTimePicker1.Size = New Size(250, 27)
         DateTimePicker1.TabIndex = 8
         ' 
         ' DateTimePicker2
         ' 
-        DateTimePicker2.Location = New Point(406, 48)
+        DateTimePicker2.Location = New Point(515, 45)
         DateTimePicker2.Name = "DateTimePicker2"
         DateTimePicker2.Size = New Size(250, 27)
         DateTimePicker2.TabIndex = 9
@@ -148,7 +149,7 @@ Partial Class FrmConsultas
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(321, 9)
+        Label1.Location = New Point(410, 9)
         Label1.Name = "Label1"
         Label1.Size = New Size(111, 20)
         Label1.TabIndex = 10
@@ -157,7 +158,7 @@ Partial Class FrmConsultas
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(54, 53)
+        Label2.Location = New Point(86, 50)
         Label2.Name = "Label2"
         Label2.Size = New Size(43, 20)
         Label2.TabIndex = 11
@@ -166,7 +167,7 @@ Partial Class FrmConsultas
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(371, 53)
+        Label3.Location = New Point(447, 50)
         Label3.Name = "Label3"
         Label3.Size = New Size(16, 20)
         Label3.TabIndex = 12
@@ -175,29 +176,39 @@ Partial Class FrmConsultas
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(724, 9)
+        Label4.Location = New Point(954, 9)
         Label4.Name = "Label4"
         Label4.Size = New Size(76, 20)
         Label4.TabIndex = 13
         Label4.Text = "Vendedor:"
         ' 
-        ' Label5
-        ' 
-        Label5.AutoSize = True
-        Label5.Location = New Point(1098, 9)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(80, 20)
-        Label5.TabIndex = 14
-        Label5.Text = "Exportar a:"
-        ' 
         ' BtnCerrar
         ' 
-        BtnCerrar.Location = New Point(1328, 574)
+        BtnCerrar.Location = New Point(1324, 568)
         BtnCerrar.Name = "BtnCerrar"
         BtnCerrar.Size = New Size(80, 35)
         BtnCerrar.TabIndex = 15
         BtnCerrar.Text = "X"
         BtnCerrar.UseVisualStyleBackColor = True
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Location = New Point(596, 526)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(80, 20)
+        Label5.TabIndex = 14
+        Label5.Text = "Exportar a:"
+        ' 
+        ' BtnOk
+        ' 
+        BtnOk.Font = New Font("Segoe UI", 9F)
+        BtnOk.Location = New Point(1126, 47)
+        BtnOk.Name = "BtnOk"
+        BtnOk.Size = New Size(80, 28)
+        BtnOk.TabIndex = 16
+        BtnOk.Text = "Ok"
+        BtnOk.UseVisualStyleBackColor = True
         ' 
         ' FrmConsultas
         ' 
@@ -205,9 +216,13 @@ Partial Class FrmConsultas
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(248))
         ClientSize = New Size(1438, 621)
-        Controls.Add(BtnCerrar)
+        Controls.Add(BtnOk)
         Controls.Add(Label5)
+        Controls.Add(BtnCorreo)
+        Controls.Add(BtnCerrar)
+        Controls.Add(BtnExcel)
         Controls.Add(Label4)
+        Controls.Add(BtnPDF)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
@@ -218,9 +233,6 @@ Partial Class FrmConsultas
         Controls.Add(BtnCancelar)
         Controls.Add(BtnEnviar)
         Controls.Add(DgvListadoVentas)
-        Controls.Add(BtnCorreo)
-        Controls.Add(BtnExcel)
-        Controls.Add(BtnPDF)
         Name = "FrmConsultas"
         Text = "FrmConsultas"
         CType(DgvListadoVentas, ComponentModel.ISupportInitialize).EndInit()
@@ -242,6 +254,7 @@ Partial Class FrmConsultas
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
     Friend WithEvents BtnCerrar As Button
+    Friend WithEvents Label5 As Label
+    Friend WithEvents BtnOk As Button
 End Class
