@@ -232,4 +232,8 @@ Public Class fmr_usurios
         actualizar()
         MostrarFoto(rutaFoto)
     End Sub
+
+    Private Sub dgvusuarios_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvusuarios.CellContentClick
+
+    End Sub
 End Class
