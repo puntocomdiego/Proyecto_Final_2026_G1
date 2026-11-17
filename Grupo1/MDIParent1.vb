@@ -96,6 +96,11 @@ Public Class MDIParent1
     End Sub
 
     Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
+
+
+
+
+
         Dim f As New fmr_usurios
         f.MdiParent = Me
         f.Show()
