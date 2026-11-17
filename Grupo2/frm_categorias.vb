@@ -51,6 +51,14 @@
         dgvcategorias.DataSource = datos.Listar()
     End Sub
 
+    Private Sub dgvcategorias_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvcategorias.CellClick
+        If e.RowIndex >= 0 Then
+            Dim fila As DataGridViewRow = dgvcategorias.Rows(e.RowIndex)
+            txtnombre.Text = Convert.ToString(fila.Cells("nombre").Value)
+            txtdescripcion.Text = Convert.ToString(fila.Cells("descripcion").Value)
+        End If
+    End Sub
+
     Private Sub frmCategorias_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarCategorias()
     End Sub
@@ -59,8 +67,9 @@
         Timer1.Interval = 1000      ' 1 segundo
         Timer1.Enabled = True
         lblHora.Text = DateTime.Now.ToString("HH:mm:ss")
-    End Sub
 
+    End Sub
+    'quiero que en un formulario de categorias, cuando haga click en un dato del data grid view aparezcan el nombre y consola del jue
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btneliminar.Click
         If dgvcategorias.CurrentRow Is Nothing Then
             MessageBox.Show("Seleccioná una categoría para eliminar.", "Atención",
@@ -208,5 +217,21 @@
 
     Private Sub lblcoincidencias_Click(sender As Object, e As EventArgs) Handles lblcoincidencias.Click
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        'que pregunte si deseas salir del formulario de categorias y si le das a aceptar se cierra el formulario
+        Dim resultado As DialogResult = MessageBox.Show("¿Deseas salir del formulario de categorías?", "Confirmación",
+                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+
+
+
+
+
+        If resultado = DialogResult.Yes Then
+            Me.Close()
+        End If
     End Sub
 End Class

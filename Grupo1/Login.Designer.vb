@@ -98,7 +98,7 @@ Partial Class Login
         btnSalir.FlatStyle = FlatStyle.Popup
         btnSalir.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnSalir.ImageAlign = ContentAlignment.MiddleRight
-        btnSalir.Location = New Point(315, 180)
+        btnSalir.Location = New Point(315, 184)
         btnSalir.Name = "btnSalir"
         btnSalir.Size = New Size(120, 36)
         btnSalir.TabIndex = 5
@@ -107,7 +107,6 @@ Partial Class Login
         ' 
         ' Login
         ' 
-        AcceptButton = btnIniciarSesion
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
@@ -121,6 +120,7 @@ Partial Class Login
         Controls.Add(lblContrasena)
         Controls.Add(lblUsuario)
         Name = "Login"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Login"
         ResumeLayout(False)
         PerformLayout()
