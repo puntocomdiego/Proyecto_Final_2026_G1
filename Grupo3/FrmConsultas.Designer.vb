@@ -44,33 +44,40 @@ Partial Class FrmConsultas
         ' 
         ' BtnPDF
         ' 
+        BtnPDF.BackColor = SystemColors.GradientActiveCaption
+        BtnPDF.FlatStyle = FlatStyle.Popup
         BtnPDF.Font = New Font("Segoe UI", 15.75F)
         BtnPDF.Location = New Point(392, 559)
         BtnPDF.Name = "BtnPDF"
         BtnPDF.Size = New Size(175, 50)
         BtnPDF.TabIndex = 0
         BtnPDF.Text = "PDF"
-        BtnPDF.UseVisualStyleBackColor = True
+        BtnPDF.UseVisualStyleBackColor = False
         ' 
         ' BtnExcel
         ' 
+        BtnExcel.BackColor = SystemColors.GradientActiveCaption
+        BtnExcel.FlatStyle = FlatStyle.Popup
         BtnExcel.Font = New Font("Segoe UI", 15.75F)
         BtnExcel.Location = New Point(573, 560)
         BtnExcel.Name = "BtnExcel"
         BtnExcel.Size = New Size(175, 50)
         BtnExcel.TabIndex = 1
         BtnExcel.Text = "Excel"
-        BtnExcel.UseVisualStyleBackColor = True
+        BtnExcel.UseVisualStyleBackColor = False
         ' 
         ' BtnCorreo
         ' 
+        BtnCorreo.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        BtnCorreo.BackColor = SystemColors.GradientActiveCaption
+        BtnCorreo.FlatStyle = FlatStyle.Popup
         BtnCorreo.Font = New Font("Segoe UI", 15.75F)
         BtnCorreo.Location = New Point(754, 560)
         BtnCorreo.Name = "BtnCorreo"
         BtnCorreo.Size = New Size(175, 50)
         BtnCorreo.TabIndex = 2
         BtnCorreo.Text = "Correo"
-        BtnCorreo.UseVisualStyleBackColor = True
+        BtnCorreo.UseVisualStyleBackColor = False
         ' 
         ' DgvListadoVentas
         ' 
@@ -95,24 +102,28 @@ Partial Class FrmConsultas
         ' 
         ' BtnEnviar
         ' 
+        BtnEnviar.BackColor = SystemColors.GradientActiveCaption
+        BtnEnviar.FlatStyle = FlatStyle.Popup
         BtnEnviar.Font = New Font("Segoe UI", 15.75F)
         BtnEnviar.Location = New Point(392, 358)
         BtnEnviar.Name = "BtnEnviar"
         BtnEnviar.Size = New Size(175, 50)
         BtnEnviar.TabIndex = 4
         BtnEnviar.Text = "Enviar"
-        BtnEnviar.UseVisualStyleBackColor = True
+        BtnEnviar.UseVisualStyleBackColor = False
         BtnEnviar.Visible = False
         ' 
         ' BtnCancelar
         ' 
+        BtnCancelar.BackColor = SystemColors.GradientActiveCaption
+        BtnCancelar.FlatStyle = FlatStyle.Popup
         BtnCancelar.Font = New Font("Segoe UI", 15.75F)
         BtnCancelar.Location = New Point(749, 358)
         BtnCancelar.Name = "BtnCancelar"
         BtnCancelar.Size = New Size(175, 50)
         BtnCancelar.TabIndex = 5
         BtnCancelar.Text = "Cancelar"
-        BtnCancelar.UseVisualStyleBackColor = True
+        BtnCancelar.UseVisualStyleBackColor = False
         BtnCancelar.Visible = False
         ' 
         ' TxtCorreo
@@ -134,6 +145,7 @@ Partial Class FrmConsultas
         ' 
         ' DateTimePicker1
         ' 
+        DateTimePicker1.CalendarFont = New Font("Segoe UI", 12F)
         DateTimePicker1.Location = New Point(160, 45)
         DateTimePicker1.Name = "DateTimePicker1"
         DateTimePicker1.Size = New Size(250, 27)
@@ -149,16 +161,17 @@ Partial Class FrmConsultas
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(410, 9)
+        Label1.Font = New Font("Segoe UI", 12F)
+        Label1.Location = New Point(392, 9)
         Label1.Name = "Label1"
-        Label1.Size = New Size(111, 20)
+        Label1.Size = New Size(146, 28)
         Label1.TabIndex = 10
         Label1.Text = "Fecha de venta:"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(86, 50)
+        Label2.Location = New Point(97, 50)
         Label2.Name = "Label2"
         Label2.Size = New Size(43, 20)
         Label2.TabIndex = 11
@@ -167,7 +180,7 @@ Partial Class FrmConsultas
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(447, 50)
+        Label3.Location = New Point(451, 51)
         Label3.Name = "Label3"
         Label3.Size = New Size(16, 20)
         Label3.TabIndex = 12
@@ -176,27 +189,32 @@ Partial Class FrmConsultas
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(954, 9)
+        Label4.Font = New Font("Segoe UI", 12F)
+        Label4.Location = New Point(935, 9)
         Label4.Name = "Label4"
-        Label4.Size = New Size(76, 20)
+        Label4.Size = New Size(101, 28)
         Label4.TabIndex = 13
         Label4.Text = "Vendedor:"
         ' 
         ' BtnCerrar
         ' 
+        BtnCerrar.BackColor = SystemColors.GradientActiveCaption
+        BtnCerrar.FlatStyle = FlatStyle.Popup
+        BtnCerrar.ForeColor = SystemColors.ControlText
         BtnCerrar.Location = New Point(1324, 568)
         BtnCerrar.Name = "BtnCerrar"
         BtnCerrar.Size = New Size(80, 35)
         BtnCerrar.TabIndex = 15
         BtnCerrar.Text = "X"
-        BtnCerrar.UseVisualStyleBackColor = True
+        BtnCerrar.UseVisualStyleBackColor = False
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(596, 526)
+        Label5.Font = New Font("Segoe UI", 12F)
+        Label5.Location = New Point(614, 526)
         Label5.Name = "Label5"
-        Label5.Size = New Size(80, 20)
+        Label5.Size = New Size(105, 28)
         Label5.TabIndex = 14
         Label5.Text = "Exportar a:"
         ' 
@@ -214,7 +232,7 @@ Partial Class FrmConsultas
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(248))
+        BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(1438, 621)
         Controls.Add(BtnOk)
         Controls.Add(Label5)
