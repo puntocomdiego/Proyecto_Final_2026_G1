@@ -90,20 +90,13 @@ Public Class FrmConsultas
 
     Private Sub BtnCorreo_Click(sender As Object, e As EventArgs) Handles BtnCorreo.Click
 
-        TxtCorreo.Enabled = True
         TxtCorreo.Visible = True
         TxtCorreo.Focus()
-        BtnEnviar.Enabled = True
         BtnEnviar.Visible = True
-        BtnCancelar.Enabled = True
         BtnCancelar.Visible = True
-        BtnPDF.Enabled = False
         BtnPDF.Visible = False
-        BtnExcel.Enabled = False
         BtnExcel.Visible = False
-        BtnCorreo.Enabled = False
         BtnCorreo.Visible = False
-        DgvListadoVentas.Enabled = False
         DgvListadoVentas.Visible = False
 
     End Sub
