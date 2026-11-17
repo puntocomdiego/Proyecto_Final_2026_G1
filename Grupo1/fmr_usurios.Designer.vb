@@ -37,10 +37,10 @@ Partial Class fmr_usurios
         picfoto = New PictureBox()
         btnnuevo = New Button()
         btnmodificar = New Button()
-        btneliminar = New Button()
         GroupBox1 = New GroupBox()
         btnguardar = New Button()
         btnfoto = New Button()
+        btneliminar = New Button()
         Label6 = New Label()
         dgvusuarios = New DataGridView()
         ofdfoto = New OpenFileDialog()
@@ -104,21 +104,21 @@ Partial Class fmr_usurios
         txtcontra.Location = New Point(218, 220)
         txtcontra.Name = "txtcontra"
         txtcontra.Size = New Size(255, 23)
-        txtcontra.TabIndex = 6
+        txtcontra.TabIndex = 4
         ' 
         ' txtnomusuario
         ' 
         txtnomusuario.Location = New Point(218, 158)
         txtnomusuario.Name = "txtnomusuario"
         txtnomusuario.Size = New Size(255, 23)
-        txtnomusuario.TabIndex = 7
+        txtnomusuario.TabIndex = 3
         ' 
         ' txtapellido
         ' 
         txtapellido.Location = New Point(218, 97)
         txtapellido.Name = "txtapellido"
         txtapellido.Size = New Size(255, 23)
-        txtapellido.TabIndex = 8
+        txtapellido.TabIndex = 2
         ' 
         ' gbx_usuarioinfo
         ' 
@@ -147,7 +147,7 @@ Partial Class fmr_usurios
         cmbtipo.Location = New Point(218, 273)
         cmbtipo.Name = "cmbtipo"
         cmbtipo.Size = New Size(255, 23)
-        cmbtipo.TabIndex = 11
+        cmbtipo.TabIndex = 5
         ' 
         ' Label5
         ' 
@@ -180,7 +180,7 @@ Partial Class fmr_usurios
         btnnuevo.Name = "btnnuevo"
         btnnuevo.Size = New Size(175, 50)
         btnnuevo.TabIndex = 11
-        btnnuevo.Text = "Nuevo"
+        btnnuevo.Text = "&Nuevo"
         btnnuevo.TextAlign = ContentAlignment.MiddleRight
         btnnuevo.UseVisualStyleBackColor = False
         ' 
@@ -195,24 +195,9 @@ Partial Class fmr_usurios
         btnmodificar.Name = "btnmodificar"
         btnmodificar.Size = New Size(175, 50)
         btnmodificar.TabIndex = 12
-        btnmodificar.Text = "Modificar"
+        btnmodificar.Text = "&Modificar"
         btnmodificar.TextAlign = ContentAlignment.MiddleRight
         btnmodificar.UseVisualStyleBackColor = False
-        ' 
-        ' btneliminar
-        ' 
-        btneliminar.BackColor = SystemColors.GradientActiveCaption
-        btneliminar.FlatStyle = FlatStyle.Popup
-        btneliminar.Font = New Font("Segoe UI", 15.75F)
-        btneliminar.Image = CType(resources.GetObject("btneliminar.Image"), Image)
-        btneliminar.ImageAlign = ContentAlignment.MiddleLeft
-        btneliminar.Location = New Point(838, 36)
-        btneliminar.Name = "btneliminar"
-        btneliminar.Size = New Size(175, 50)
-        btneliminar.TabIndex = 13
-        btneliminar.Text = "Eliminar"
-        btneliminar.TextAlign = ContentAlignment.MiddleRight
-        btneliminar.UseVisualStyleBackColor = False
         ' 
         ' GroupBox1
         ' 
@@ -240,7 +225,7 @@ Partial Class fmr_usurios
         btnguardar.Name = "btnguardar"
         btnguardar.Size = New Size(175, 50)
         btnguardar.TabIndex = 15
-        btnguardar.Text = "Guardar"
+        btnguardar.Text = "&Guardar"
         btnguardar.TextAlign = ContentAlignment.MiddleRight
         btnguardar.UseVisualStyleBackColor = False
         ' 
@@ -255,9 +240,24 @@ Partial Class fmr_usurios
         btnfoto.Name = "btnfoto"
         btnfoto.Size = New Size(175, 50)
         btnfoto.TabIndex = 14
-        btnfoto.Text = "Cargar Foto"
+        btnfoto.Text = "Cargar &Foto"
         btnfoto.TextAlign = ContentAlignment.MiddleRight
         btnfoto.UseVisualStyleBackColor = False
+        ' 
+        ' btneliminar
+        ' 
+        btneliminar.BackColor = SystemColors.GradientActiveCaption
+        btneliminar.FlatStyle = FlatStyle.Popup
+        btneliminar.Font = New Font("Segoe UI", 15.75F)
+        btneliminar.Image = CType(resources.GetObject("btneliminar.Image"), Image)
+        btneliminar.ImageAlign = ContentAlignment.MiddleLeft
+        btneliminar.Location = New Point(838, 36)
+        btneliminar.Name = "btneliminar"
+        btneliminar.Size = New Size(175, 50)
+        btneliminar.TabIndex = 13
+        btneliminar.Text = "&Eliminar"
+        btneliminar.TextAlign = ContentAlignment.MiddleRight
+        btneliminar.UseVisualStyleBackColor = False
         ' 
         ' Label6
         ' 
@@ -293,15 +293,14 @@ Partial Class fmr_usurios
         btnsalir.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         btnsalir.BackColor = SystemColors.GradientActiveCaption
         btnsalir.FlatStyle = FlatStyle.Popup
-        btnsalir.Font = New Font("Segoe UI", 10F)
+        btnsalir.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnsalir.Image = CType(resources.GetObject("btnsalir.Image"), Image)
         btnsalir.ImageAlign = ContentAlignment.MiddleRight
-        btnsalir.Location = New Point(1260, 550)
+        btnsalir.Location = New Point(1226, 535)
         btnsalir.Name = "btnsalir"
-        btnsalir.Size = New Size(80, 35)
+        btnsalir.Size = New Size(175, 50)
         btnsalir.TabIndex = 20
         btnsalir.Text = "salir"
-        btnsalir.TextAlign = ContentAlignment.MiddleLeft
         btnsalir.UseVisualStyleBackColor = False
         ' 
         ' fmr_usurios
@@ -318,6 +317,7 @@ Partial Class fmr_usurios
         Controls.Add(GroupBox1)
         Controls.Add(gbx_usuarioinfo)
         ForeColor = SystemColors.ActiveCaptionText
+        FormBorderStyle = FormBorderStyle.SizableToolWindow
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Margin = New Padding(3, 2, 3, 2)
         Name = "fmr_usurios"
@@ -342,7 +342,6 @@ Partial Class fmr_usurios
     Friend WithEvents gbx_usuarioinfo As GroupBox
     Friend WithEvents btnnuevo As Button
     Friend WithEvents btnmodificar As Button
-    Friend WithEvents btneliminar As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label6 As Label
     Friend WithEvents dgvusuarios As DataGridView
@@ -354,5 +353,6 @@ Partial Class fmr_usurios
     Friend WithEvents btnguardar As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents cmbtipo As ComboBox
+    Friend WithEvents btneliminar As Button
 
 End Class
