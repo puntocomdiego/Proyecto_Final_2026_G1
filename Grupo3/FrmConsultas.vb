@@ -93,8 +93,8 @@ Public Class FrmConsultas
         TxtCorreo.Enabled = True
         TxtCorreo.Visible = True
         TxtCorreo.Focus()
-        BtnOk.Enabled = True
-        BtnOk.Visible = True
+        BtnEnviar.Enabled = True
+        BtnEnviar.Visible = True
         BtnCancelar.Enabled = True
         BtnCancelar.Visible = True
         BtnPDF.Enabled = False
@@ -108,7 +108,7 @@ Public Class FrmConsultas
 
     End Sub
 
-    Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
+    Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnEnviar.Click
         Try
             If ValidarMail(TxtCorreo.Text) = False Then
                 Throw New Exception("La dirección del receptor no tiene un formato válido (ejemplo @gmail.com).")
@@ -134,8 +134,8 @@ Public Class FrmConsultas
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
         MessageBox.Show("Se canceló el envío del correo.", "Envío de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        BtnOk.Enabled = False
-        BtnOk.Visible = False
+        BtnEnviar.Enabled = False
+        BtnEnviar.Visible = False
         BtnCancelar.Enabled = False
         BtnCancelar.Visible = False
         TxtCorreo.Enabled = False
@@ -164,5 +164,10 @@ Public Class FrmConsultas
         DgvListadoVentas.Columns(2).HeaderText = "ID Usuario"
         DgvListadoVentas.Columns(3).HeaderText = "Total"
 
+    End Sub
+
+    Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
+        MsgBox("¿Desea cerrar la ventana consultas?", MessageBoxButtons.OK, MessageBoxButtons.OKCancel)
+        Me.Close()
     End Sub
 End Class
