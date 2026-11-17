@@ -138,7 +138,7 @@ Partial Class FrmConsultas
         ' Cmb
         ' 
         Cmb.FormattingEnabled = True
-        Cmb.Location = New Point(901, 47)
+        Cmb.Location = New Point(713, 47)
         Cmb.Name = "Cmb"
         Cmb.Size = New Size(175, 28)
         Cmb.TabIndex = 7
@@ -146,16 +146,18 @@ Partial Class FrmConsultas
         ' DateTimePicker1
         ' 
         DateTimePicker1.CalendarFont = New Font("Segoe UI", 12F)
-        DateTimePicker1.Location = New Point(160, 45)
+        DateTimePicker1.Format = DateTimePickerFormat.Short
+        DateTimePicker1.Location = New Point(301, 46)
         DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(250, 27)
+        DateTimePicker1.Size = New Size(122, 27)
         DateTimePicker1.TabIndex = 8
         ' 
         ' DateTimePicker2
         ' 
-        DateTimePicker2.Location = New Point(515, 45)
+        DateTimePicker2.Format = DateTimePickerFormat.Short
+        DateTimePicker2.Location = New Point(497, 46)
         DateTimePicker2.Name = "DateTimePicker2"
-        DateTimePicker2.Size = New Size(250, 27)
+        DateTimePicker2.Size = New Size(122, 27)
         DateTimePicker2.TabIndex = 9
         ' 
         ' Label1
@@ -171,7 +173,7 @@ Partial Class FrmConsultas
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(97, 50)
+        Label2.Location = New Point(239, 51)
         Label2.Name = "Label2"
         Label2.Size = New Size(43, 20)
         Label2.TabIndex = 11
@@ -180,7 +182,7 @@ Partial Class FrmConsultas
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(451, 51)
+        Label3.Location = New Point(453, 50)
         Label3.Name = "Label3"
         Label3.Size = New Size(16, 20)
         Label3.TabIndex = 12
@@ -190,7 +192,7 @@ Partial Class FrmConsultas
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 12F)
-        Label4.Location = New Point(935, 9)
+        Label4.Location = New Point(749, 9)
         Label4.Name = "Label4"
         Label4.Size = New Size(101, 28)
         Label4.TabIndex = 13
@@ -220,13 +222,15 @@ Partial Class FrmConsultas
         ' 
         ' BtnOk
         ' 
-        BtnOk.Font = New Font("Segoe UI", 9F)
-        BtnOk.Location = New Point(1126, 47)
+        BtnOk.BackColor = SystemColors.GradientActiveCaption
+        BtnOk.FlatStyle = FlatStyle.Popup
+        BtnOk.Font = New Font("Segoe UI", 15.75F)
+        BtnOk.Location = New Point(966, 31)
         BtnOk.Name = "BtnOk"
-        BtnOk.Size = New Size(80, 28)
+        BtnOk.Size = New Size(175, 50)
         BtnOk.TabIndex = 16
         BtnOk.Text = "Ok"
-        BtnOk.UseVisualStyleBackColor = True
+        BtnOk.UseVisualStyleBackColor = False
         ' 
         ' FrmConsultas
         ' 
