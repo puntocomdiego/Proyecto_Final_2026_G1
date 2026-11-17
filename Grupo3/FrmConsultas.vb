@@ -89,15 +89,20 @@ Public Class FrmConsultas
     End Function
 
     Private Sub BtnCorreo_Click(sender As Object, e As EventArgs) Handles BtnCorreo.Click
+        Try
 
-        TxtCorreo.Visible = True
-        TxtCorreo.Focus()
-        BtnEnviar.Visible = True
-        BtnCancelar.Visible = True
-        BtnPDF.Visible = False
-        BtnExcel.Visible = False
-        BtnCorreo.Visible = False
-        DgvListadoVentas.Visible = False
+            TxtCorreo.Visible = True
+            TxtCorreo.Focus()
+            BtnEnviar.Visible = True
+            BtnCancelar.Visible = True
+            BtnPDF.Visible = False
+            BtnExcel.Visible = False
+            BtnCorreo.Visible = False
+            DgvListadoVentas.Visible = False
+
+        Catch ex As Exception
+            MessageBox.Show("Error al enviar el correo: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
     End Sub
 
@@ -127,20 +132,19 @@ Public Class FrmConsultas
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
         MessageBox.Show("Se canceló el envío del correo.", "Envío de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        BtnEnviar.Enabled = False
-        BtnEnviar.Visible = False
-        BtnCancelar.Enabled = False
-        BtnCancelar.Visible = False
-        TxtCorreo.Enabled = False
-        TxtCorreo.Visible = False
-        DgvListadoVentas.Enabled = True
-        DgvListadoVentas.Visible = True
-        BtnCorreo.Enabled = True
-        BtnCorreo.Visible = True
-        BtnExcel.Enabled = True
-        BtnExcel.Visible = True
-        BtnPDF.Enabled = True
-        BtnPDF.Visible = True
+        Try
+
+            BtnEnviar.Visible = False
+            BtnCancelar.Visible = False
+            TxtCorreo.Visible = False
+            DgvListadoVentas.Visible = True
+            BtnCorreo.Visible = True
+            BtnExcel.Visible = True
+            BtnPDF.Visible = True
+
+        Catch ex As Exception
+            MessageBox.Show("Error al cancelar el envío del correo: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
     End Sub
     Private Sub FrmConsultas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
