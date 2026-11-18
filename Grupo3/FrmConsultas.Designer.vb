@@ -26,7 +26,7 @@ Partial Class FrmConsultas
         BtnExcel = New Button()
         BtnCorreo = New Button()
         DgvListadoVentas = New DataGridView()
-        BtnOk = New Button()
+        BtnEnviar = New Button()
         BtnCancelar = New Button()
         TxtCorreo = New TextBox()
         Cmb = New ComboBox()
@@ -36,38 +36,48 @@ Partial Class FrmConsultas
         Label2 = New Label()
         Label3 = New Label()
         Label4 = New Label()
+        BtnCerrar = New Button()
+        Label5 = New Label()
+        BtnOk = New Button()
         CType(DgvListadoVentas, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' BtnPDF
         ' 
-        BtnPDF.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        BtnPDF.Location = New Point(54, 560)
+        BtnPDF.BackColor = SystemColors.GradientActiveCaption
+        BtnPDF.FlatStyle = FlatStyle.Popup
+        BtnPDF.Font = New Font("Segoe UI", 15.75F)
+        BtnPDF.Location = New Point(392, 559)
         BtnPDF.Name = "BtnPDF"
-        BtnPDF.Size = New Size(286, 49)
+        BtnPDF.Size = New Size(175, 50)
         BtnPDF.TabIndex = 0
-        BtnPDF.Text = "Exportar a PDF"
-        BtnPDF.UseVisualStyleBackColor = True
+        BtnPDF.Text = "PDF"
+        BtnPDF.UseVisualStyleBackColor = False
         ' 
         ' BtnExcel
         ' 
-        BtnExcel.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        BtnExcel.Location = New Point(556, 560)
+        BtnExcel.BackColor = SystemColors.GradientActiveCaption
+        BtnExcel.FlatStyle = FlatStyle.Popup
+        BtnExcel.Font = New Font("Segoe UI", 15.75F)
+        BtnExcel.Location = New Point(573, 560)
         BtnExcel.Name = "BtnExcel"
-        BtnExcel.Size = New Size(294, 49)
+        BtnExcel.Size = New Size(175, 50)
         BtnExcel.TabIndex = 1
-        BtnExcel.Text = "Exportar a Excel"
-        BtnExcel.UseVisualStyleBackColor = True
+        BtnExcel.Text = "Excel"
+        BtnExcel.UseVisualStyleBackColor = False
         ' 
         ' BtnCorreo
         ' 
-        BtnCorreo.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        BtnCorreo.Location = New Point(1066, 560)
+        BtnCorreo.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        BtnCorreo.BackColor = SystemColors.GradientActiveCaption
+        BtnCorreo.FlatStyle = FlatStyle.Popup
+        BtnCorreo.Font = New Font("Segoe UI", 15.75F)
+        BtnCorreo.Location = New Point(754, 560)
         BtnCorreo.Name = "BtnCorreo"
-        BtnCorreo.Size = New Size(268, 49)
+        BtnCorreo.Size = New Size(175, 50)
         BtnCorreo.TabIndex = 2
-        BtnCorreo.Text = "Enviar por Correo"
-        BtnCorreo.UseVisualStyleBackColor = True
+        BtnCorreo.Text = "Correo"
+        BtnCorreo.UseVisualStyleBackColor = False
         ' 
         ' DgvListadoVentas
         ' 
@@ -90,26 +100,30 @@ Partial Class FrmConsultas
         DgvListadoVentas.Size = New Size(1280, 401)
         DgvListadoVentas.TabIndex = 3
         ' 
-        ' BtnOk
+        ' BtnEnviar
         ' 
-        BtnOk.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        BtnOk.Location = New Point(397, 358)
-        BtnOk.Name = "BtnOk"
-        BtnOk.Size = New Size(192, 51)
-        BtnOk.TabIndex = 4
-        BtnOk.Text = "Ok"
-        BtnOk.UseVisualStyleBackColor = True
-        BtnOk.Visible = False
+        BtnEnviar.BackColor = SystemColors.GradientActiveCaption
+        BtnEnviar.FlatStyle = FlatStyle.Popup
+        BtnEnviar.Font = New Font("Segoe UI", 15.75F)
+        BtnEnviar.Location = New Point(392, 358)
+        BtnEnviar.Name = "BtnEnviar"
+        BtnEnviar.Size = New Size(175, 50)
+        BtnEnviar.TabIndex = 4
+        BtnEnviar.Text = "Enviar"
+        BtnEnviar.UseVisualStyleBackColor = False
+        BtnEnviar.Visible = False
         ' 
         ' BtnCancelar
         ' 
-        BtnCancelar.Font = New Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BtnCancelar.BackColor = SystemColors.GradientActiveCaption
+        BtnCancelar.FlatStyle = FlatStyle.Popup
+        BtnCancelar.Font = New Font("Segoe UI", 15.75F)
         BtnCancelar.Location = New Point(749, 358)
         BtnCancelar.Name = "BtnCancelar"
-        BtnCancelar.Size = New Size(192, 51)
+        BtnCancelar.Size = New Size(175, 50)
         BtnCancelar.TabIndex = 5
         BtnCancelar.Text = "Cancelar"
-        BtnCancelar.UseVisualStyleBackColor = True
+        BtnCancelar.UseVisualStyleBackColor = False
         BtnCancelar.Visible = False
         ' 
         ' TxtCorreo
@@ -124,38 +138,42 @@ Partial Class FrmConsultas
         ' Cmb
         ' 
         Cmb.FormattingEnabled = True
-        Cmb.Location = New Point(684, 47)
+        Cmb.Location = New Point(713, 47)
         Cmb.Name = "Cmb"
-        Cmb.Size = New Size(151, 28)
+        Cmb.Size = New Size(175, 28)
         Cmb.TabIndex = 7
         ' 
         ' DateTimePicker1
         ' 
-        DateTimePicker1.Location = New Point(103, 48)
+        DateTimePicker1.CalendarFont = New Font("Segoe UI", 12F)
+        DateTimePicker1.Format = DateTimePickerFormat.Short
+        DateTimePicker1.Location = New Point(301, 46)
         DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(250, 27)
+        DateTimePicker1.Size = New Size(122, 27)
         DateTimePicker1.TabIndex = 8
         ' 
         ' DateTimePicker2
         ' 
-        DateTimePicker2.Location = New Point(406, 48)
+        DateTimePicker2.Format = DateTimePickerFormat.Short
+        DateTimePicker2.Location = New Point(497, 46)
         DateTimePicker2.Name = "DateTimePicker2"
-        DateTimePicker2.Size = New Size(250, 27)
+        DateTimePicker2.Size = New Size(122, 27)
         DateTimePicker2.TabIndex = 9
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(321, 9)
+        Label1.Font = New Font("Segoe UI", 12F)
+        Label1.Location = New Point(392, 9)
         Label1.Name = "Label1"
-        Label1.Size = New Size(111, 20)
+        Label1.Size = New Size(146, 28)
         Label1.TabIndex = 10
         Label1.Text = "Fecha de venta:"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(54, 53)
+        Label2.Location = New Point(239, 51)
         Label2.Name = "Label2"
         Label2.Size = New Size(43, 20)
         Label2.TabIndex = 11
@@ -164,7 +182,7 @@ Partial Class FrmConsultas
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(371, 53)
+        Label3.Location = New Point(453, 50)
         Label3.Name = "Label3"
         Label3.Size = New Size(16, 20)
         Label3.TabIndex = 12
@@ -173,19 +191,60 @@ Partial Class FrmConsultas
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(724, 9)
+        Label4.Font = New Font("Segoe UI", 12F)
+        Label4.Location = New Point(749, 9)
         Label4.Name = "Label4"
-        Label4.Size = New Size(76, 20)
+        Label4.Size = New Size(101, 28)
         Label4.TabIndex = 13
         Label4.Text = "Vendedor:"
+        ' 
+        ' BtnCerrar
+        ' 
+        BtnCerrar.BackColor = SystemColors.GradientActiveCaption
+        BtnCerrar.FlatStyle = FlatStyle.Popup
+        BtnCerrar.ForeColor = SystemColors.ControlText
+        BtnCerrar.Location = New Point(1324, 568)
+        BtnCerrar.Name = "BtnCerrar"
+        BtnCerrar.Size = New Size(80, 35)
+        BtnCerrar.TabIndex = 15
+        BtnCerrar.Text = "X"
+        BtnCerrar.UseVisualStyleBackColor = False
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Font = New Font("Segoe UI", 12F)
+        Label5.Location = New Point(614, 526)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(105, 28)
+        Label5.TabIndex = 14
+        Label5.Text = "Exportar a:"
+        ' 
+        ' BtnOk
+        ' 
+        BtnOk.BackColor = SystemColors.GradientActiveCaption
+        BtnOk.FlatStyle = FlatStyle.Popup
+        BtnOk.Font = New Font("Segoe UI", 15.75F)
+        BtnOk.Location = New Point(966, 31)
+        BtnOk.Name = "BtnOk"
+        BtnOk.Size = New Size(175, 50)
+        BtnOk.TabIndex = 16
+        BtnOk.Text = "Ok"
+        BtnOk.UseVisualStyleBackColor = False
         ' 
         ' FrmConsultas
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(248))
-        ClientSize = New Size(1386, 621)
+        BackColor = SystemColors.ActiveCaption
+        ClientSize = New Size(1438, 621)
+        Controls.Add(BtnOk)
+        Controls.Add(Label5)
+        Controls.Add(BtnCorreo)
+        Controls.Add(BtnCerrar)
+        Controls.Add(BtnExcel)
         Controls.Add(Label4)
+        Controls.Add(BtnPDF)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
@@ -194,11 +253,8 @@ Partial Class FrmConsultas
         Controls.Add(Cmb)
         Controls.Add(TxtCorreo)
         Controls.Add(BtnCancelar)
-        Controls.Add(BtnOk)
+        Controls.Add(BtnEnviar)
         Controls.Add(DgvListadoVentas)
-        Controls.Add(BtnCorreo)
-        Controls.Add(BtnExcel)
-        Controls.Add(BtnPDF)
         Name = "FrmConsultas"
         Text = "FrmConsultas"
         CType(DgvListadoVentas, ComponentModel.ISupportInitialize).EndInit()
@@ -210,7 +266,7 @@ Partial Class FrmConsultas
     Friend WithEvents BtnExcel As Button
     Friend WithEvents BtnCorreo As Button
     Friend WithEvents DgvListadoVentas As DataGridView
-    Friend WithEvents BtnOk As Button
+    Friend WithEvents BtnEnviar As Button
     Friend WithEvents BtnCancelar As Button
     Friend WithEvents TxtCorreo As TextBox
     Friend WithEvents Cmb As ComboBox
@@ -220,4 +276,7 @@ Partial Class FrmConsultas
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents BtnCerrar As Button
+    Friend WithEvents Label5 As Label
+    Friend WithEvents BtnOk As Button
 End Class

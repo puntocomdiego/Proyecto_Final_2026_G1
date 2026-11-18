@@ -89,26 +89,24 @@ Public Class FrmConsultas
     End Function
 
     Private Sub BtnCorreo_Click(sender As Object, e As EventArgs) Handles BtnCorreo.Click
+        Try
 
-        TxtCorreo.Enabled = True
-        TxtCorreo.Visible = True
-        TxtCorreo.Focus()
-        BtnOk.Enabled = True
-        BtnOk.Visible = True
-        BtnCancelar.Enabled = True
-        BtnCancelar.Visible = True
-        BtnPDF.Enabled = False
-        BtnPDF.Visible = False
-        BtnExcel.Enabled = False
-        BtnExcel.Visible = False
-        BtnCorreo.Enabled = False
-        BtnCorreo.Visible = False
-        DgvListadoVentas.Enabled = False
-        DgvListadoVentas.Visible = False
+            TxtCorreo.Visible = True
+            TxtCorreo.Focus()
+            BtnEnviar.Visible = True
+            BtnCancelar.Visible = True
+            BtnPDF.Visible = False
+            BtnExcel.Visible = False
+            BtnCorreo.Visible = False
+            DgvListadoVentas.Visible = False
+
+        Catch ex As Exception
+            MessageBox.Show("Error al enviar el correo: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
     End Sub
 
-    Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
+    Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnEnviar.Click
         Try
             If ValidarMail(TxtCorreo.Text) = False Then
                 Throw New Exception("La dirección del receptor no tiene un formato válido (ejemplo @gmail.com).")
@@ -134,20 +132,19 @@ Public Class FrmConsultas
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
         MessageBox.Show("Se canceló el envío del correo.", "Envío de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        BtnOk.Enabled = False
-        BtnOk.Visible = False
-        BtnCancelar.Enabled = False
-        BtnCancelar.Visible = False
-        TxtCorreo.Enabled = False
-        TxtCorreo.Visible = False
-        DgvListadoVentas.Enabled = True
-        DgvListadoVentas.Visible = True
-        BtnCorreo.Enabled = True
-        BtnCorreo.Visible = True
-        BtnExcel.Enabled = True
-        BtnExcel.Visible = True
-        BtnPDF.Enabled = True
-        BtnPDF.Visible = True
+        Try
+
+            BtnEnviar.Visible = False
+            BtnCancelar.Visible = False
+            TxtCorreo.Visible = False
+            DgvListadoVentas.Visible = True
+            BtnCorreo.Visible = True
+            BtnExcel.Visible = True
+            BtnPDF.Visible = True
+
+        Catch ex As Exception
+            MessageBox.Show("Error al cancelar el envío del correo: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
     End Sub
     Private Sub FrmConsultas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -164,5 +161,10 @@ Public Class FrmConsultas
         DgvListadoVentas.Columns(2).HeaderText = "ID Usuario"
         DgvListadoVentas.Columns(3).HeaderText = "Total"
 
+    End Sub
+
+    Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
+        MsgBox("¿Desea cerrar la ventana consultas?", MessageBoxButtons.OK, MessageBoxButtons.OKCancel)
+        Me.Close()
     End Sub
 End Class
