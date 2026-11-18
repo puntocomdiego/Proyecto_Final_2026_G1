@@ -78,10 +78,14 @@ Public Class Ventas
             Dim dtVentas As New DataTable
 
             ' Consulta para unir las tablas ventas, detalle_ventas y juegos
-            Dim query As String = "SELECT v.fecha AS Fecha_Hora, j.nombre AS Juego, dv.cantidad AS Cantidad, v.total AS Total " &
-                                  "FROM (ventas v INNER JOIN detalle_ventas dv ON v.id = dv.id_venta) " &
-                                  "INNER JOIN juegos j ON dv.id_juego = j.id " &
-                                  "ORDER BY v.fecha DESC"
+            'Dim query As String = "SELECT v.fecha AS Fecha_Hora, j.nombre AS Juego, dv.cantidad AS Cantidad, v.total AS Total " &
+            '                      "FROM (ventas v INNER JOIN detalle_ventas dv ON v.id = dv.id_venta) " &
+            '                      "INNER JOIN juegos j ON dv.id_juego = j.id " &
+            '                      "ORDER BY v.fecha DESC"
+
+            Dim query As String = "SELECT ventas.id, ventas.fecha,usuarios.nombre, ventas.total " &
+"FROM usuarios " &
+    "INNER JOIN ventas ON usuarios.id = ventas.id_usuario; ORDER BY v.fecha DESC"
 
             Dim da As New OleDbDataAdapter(query, cn)
             da.Fill(dtVentas)
@@ -90,7 +94,7 @@ Public Class Ventas
 
             ' Damos formato a la columna de la fecha y el total
             If DatagridVentas.Columns.Contains("Fecha_Hora") Then
-                DatagridVentas.Columns("Fecha_Hora").DefaultCellStyle.Format = "dd/MM/yyyy HH:mm"
+                DatagridVentas.Columns("Fecha_Hora").DefaultCellStyle.Format = "dd/MM/yyyy"
             End If
             If DatagridVentas.Columns.Contains("Total") Then
                 DatagridVentas.Columns("Total").DefaultCellStyle.Format = "C2"
@@ -277,5 +281,9 @@ Public Class Ventas
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         FrmConsultas.Show()
         Me.Close()
+    End Sub
+
+    Private Sub DatagridVentas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DatagridVentas.CellContentClick
+
     End Sub
 End Class
