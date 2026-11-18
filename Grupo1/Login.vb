@@ -106,12 +106,11 @@ Public Class Login
     End Sub
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        txtContraseña_LostFocus(Nothing, Nothing)
-        AplicarEstiloFormulario(Me, "Inicio de sesión")
-        BotonPrimario(btnIniciarSesion)
-        BotonSecundario(btnSalir)
-        Me.BackColor = SystemColors.ActiveCaption
-        'enriquee
+        'txtContraseña_LostFocus(Nothing, Nothing)
+        'AplicarEstiloFormulario(Me, "Inicio de sesión")
+        'BotonPrimario(btnIniciarSesion)
+        'BotonSecundario(btnSalir)
+        'Me.BackColor = SystemColors.ActiveCaption
     End Sub
 
     Private Sub txtUsuario_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsuario.KeyDown
