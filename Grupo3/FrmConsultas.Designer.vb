@@ -29,9 +29,9 @@ Partial Class FrmConsultas
         BtnEnviar = New Button()
         BtnCancelar = New Button()
         TxtCorreo = New TextBox()
-        Cmb = New ComboBox()
-        DateTimePicker1 = New DateTimePicker()
-        DateTimePicker2 = New DateTimePicker()
+        CmbVendedor = New ComboBox()
+        DtpInicial = New DateTimePicker()
+        DtpFinal = New DateTimePicker()
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
@@ -135,30 +135,32 @@ Partial Class FrmConsultas
         TxtCorreo.TabIndex = 6
         TxtCorreo.Visible = False
         ' 
-        ' Cmb
+        ' CmbVendedor
         ' 
-        Cmb.FormattingEnabled = True
-        Cmb.Location = New Point(713, 47)
-        Cmb.Name = "Cmb"
-        Cmb.Size = New Size(175, 28)
-        Cmb.TabIndex = 7
+        CmbVendedor.FormattingEnabled = True
+        CmbVendedor.Location = New Point(713, 47)
+        CmbVendedor.Name = "CmbVendedor"
+        CmbVendedor.Size = New Size(175, 28)
+        CmbVendedor.TabIndex = 7
         ' 
-        ' DateTimePicker1
+        ' DtpInicial
         ' 
-        DateTimePicker1.CalendarFont = New Font("Segoe UI", 12F)
-        DateTimePicker1.Format = DateTimePickerFormat.Short
-        DateTimePicker1.Location = New Point(301, 46)
-        DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(122, 27)
-        DateTimePicker1.TabIndex = 8
+        DtpInicial.CalendarFont = New Font("Segoe UI", 12F)
+        DtpInicial.Format = DateTimePickerFormat.Short
+        DtpInicial.Location = New Point(301, 46)
+        DtpInicial.Name = "DtpInicial"
+        DtpInicial.Size = New Size(122, 27)
+        DtpInicial.TabIndex = 8
+        DtpInicial.Value = New Date(2026, 11, 19, 0, 0, 0, 0)
         ' 
-        ' DateTimePicker2
+        ' DtpFinal
         ' 
-        DateTimePicker2.Format = DateTimePickerFormat.Short
-        DateTimePicker2.Location = New Point(497, 46)
-        DateTimePicker2.Name = "DateTimePicker2"
-        DateTimePicker2.Size = New Size(122, 27)
-        DateTimePicker2.TabIndex = 9
+        DtpFinal.Format = DateTimePickerFormat.Short
+        DtpFinal.Location = New Point(497, 46)
+        DtpFinal.Name = "DtpFinal"
+        DtpFinal.Size = New Size(122, 27)
+        DtpFinal.TabIndex = 9
+        DtpFinal.Value = New Date(2026, 11, 19, 0, 0, 0, 0)
         ' 
         ' Label1
         ' 
@@ -200,6 +202,7 @@ Partial Class FrmConsultas
         ' 
         ' BtnCerrar
         ' 
+        BtnCerrar.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         BtnCerrar.BackColor = SystemColors.GradientActiveCaption
         BtnCerrar.FlatStyle = FlatStyle.Popup
         BtnCerrar.ForeColor = SystemColors.ControlText
@@ -248,9 +251,9 @@ Partial Class FrmConsultas
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
-        Controls.Add(DateTimePicker2)
-        Controls.Add(DateTimePicker1)
-        Controls.Add(Cmb)
+        Controls.Add(DtpFinal)
+        Controls.Add(DtpInicial)
+        Controls.Add(CmbVendedor)
         Controls.Add(TxtCorreo)
         Controls.Add(BtnCancelar)
         Controls.Add(BtnEnviar)
@@ -269,9 +272,9 @@ Partial Class FrmConsultas
     Friend WithEvents BtnEnviar As Button
     Friend WithEvents BtnCancelar As Button
     Friend WithEvents TxtCorreo As TextBox
-    Friend WithEvents Cmb As ComboBox
-    Friend WithEvents DateTimePicker1 As DateTimePicker
-    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents CmbVendedor As ComboBox
+    Friend WithEvents DtpInicial As DateTimePicker
+    Friend WithEvents DtpFinal As DateTimePicker
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
