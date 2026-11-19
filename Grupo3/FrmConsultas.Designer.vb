@@ -151,6 +151,7 @@ Partial Class FrmConsultas
         DtpInicial.Name = "DtpInicial"
         DtpInicial.Size = New Size(122, 27)
         DtpInicial.TabIndex = 8
+        DtpInicial.Value = New Date(2026, 11, 19, 0, 0, 0, 0)
         ' 
         ' DtpFinal
         ' 
@@ -159,6 +160,7 @@ Partial Class FrmConsultas
         DtpFinal.Name = "DtpFinal"
         DtpFinal.Size = New Size(122, 27)
         DtpFinal.TabIndex = 9
+        DtpFinal.Value = New Date(2026, 11, 19, 0, 0, 0, 0)
         ' 
         ' Label1
         ' 

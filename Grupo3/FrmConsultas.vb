@@ -172,13 +172,15 @@ Public Class FrmConsultas
         ' se busca entre la fecha inicial y la fecha final
         Dim fechainicial As Date = DtpInicial.Value.Date
         Dim fechafinal As Date = DtpFinal.Value.Date
+
         ' se crea la consulta SQL con parámetros para evitar inyecciones SQL
         Dim SQL As String = "SELECT ventas.id, ventas.fecha, ventas.id_usuario, ventas.total From ventas WHERE fecha BETWEEN ? AND ?;"
+
         Dim cmd As New OleDbCommand(SQL, cn) ' se crea el comando con la consulta y la conexión
 
-        cmd.Parameters.AddWithValue("?", fechainicial) ' se agregan los parámetros a la consulta
+        cmd.Parameters.AddWithValue("?", OleDbType.Date).Value = fechainicial.Date ' se agregan los parámetros a la consulta
 
-        cmd.Parameters.AddWithValue("?", fechafinal) ' se agregan los parámetros a la consulta
+        cmd.Parameters.AddWithValue("?", OleDbType.date).Value = fechafinal.Date.AddDays(1) ' se agregan los parámetros a la consulta
 
         cmd.Connection.Open() ' se abre la conexión
 
@@ -189,6 +191,17 @@ Public Class FrmConsultas
 
         da.Fill(dtventas) ' se llena el DataTable con los datos obtenidos de la consulta
 
+
+        DgvListadoVentas.DataSource = dtventas
+        DgvListadoVentas.Columns(0).HeaderText = "ID"
+        DgvListadoVentas.Columns(1).HeaderText = "Fecha"
+        DgvListadoVentas.Columns(2).HeaderText = "ID Usuario"
+        DgvListadoVentas.Columns(3).HeaderText = "Total"
+
         cmd.Connection.Close() ' se cierra la conexión
+
+
+
+
     End Sub
 End Class
