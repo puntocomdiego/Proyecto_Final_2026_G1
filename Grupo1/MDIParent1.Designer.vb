@@ -24,6 +24,7 @@ Partial Class MDIParent1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MDIParent1))
         MenuStrip = New MenuStrip()
         ABREMEÇToolStripMenuItem = New ToolStripMenuItem()
         UsuariosToolStripMenuItem = New ToolStripMenuItem()
@@ -62,43 +63,43 @@ Partial Class MDIParent1
         ' UsuariosToolStripMenuItem
         ' 
         UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        UsuariosToolStripMenuItem.Size = New Size(180, 26)
+        UsuariosToolStripMenuItem.Size = New Size(172, 26)
         UsuariosToolStripMenuItem.Text = "Usuarios"
         ' 
         ' CategoriasToolStripMenuItem
         ' 
         CategoriasToolStripMenuItem.Name = "CategoriasToolStripMenuItem"
-        CategoriasToolStripMenuItem.Size = New Size(180, 26)
+        CategoriasToolStripMenuItem.Size = New Size(172, 26)
         CategoriasToolStripMenuItem.Text = "Categorias"
         ' 
         ' JuegosToolStripMenuItem
         ' 
         JuegosToolStripMenuItem.Name = "JuegosToolStripMenuItem"
-        JuegosToolStripMenuItem.Size = New Size(180, 26)
+        JuegosToolStripMenuItem.Size = New Size(172, 26)
         JuegosToolStripMenuItem.Text = "Juegos"
         ' 
         ' VentasToolStripMenuItem
         ' 
         VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        VentasToolStripMenuItem.Size = New Size(180, 26)
+        VentasToolStripMenuItem.Size = New Size(172, 26)
         VentasToolStripMenuItem.Text = "Ventas"
         ' 
         ' ConsultasToolStripMenuItem
         ' 
         ConsultasToolStripMenuItem.Name = "ConsultasToolStripMenuItem"
-        ConsultasToolStripMenuItem.Size = New Size(180, 26)
+        ConsultasToolStripMenuItem.Size = New Size(172, 26)
         ConsultasToolStripMenuItem.Text = "Consultas"
         ' 
         ' CerrarSesionToolStripMenuItem
         ' 
         CerrarSesionToolStripMenuItem.Name = "CerrarSesionToolStripMenuItem"
-        CerrarSesionToolStripMenuItem.Size = New Size(180, 26)
+        CerrarSesionToolStripMenuItem.Size = New Size(172, 26)
         CerrarSesionToolStripMenuItem.Text = "Cerrar sesión"
         ' 
         ' SalirToolStripMenuItem
         ' 
         SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        SalirToolStripMenuItem.Size = New Size(180, 26)
+        SalirToolStripMenuItem.Size = New Size(172, 26)
         SalirToolStripMenuItem.Text = "Salir"
         ' 
         ' StatusStrip
@@ -122,10 +123,13 @@ Partial Class MDIParent1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = SystemColors.ActiveCaption
+        BackColor = Color.DarkGray
+        BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
+        BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(737, 523)
         Controls.Add(MenuStrip)
         Controls.Add(StatusStrip)
+        DoubleBuffered = True
         IsMdiContainer = True
         MainMenuStrip = MenuStrip
         Margin = New Padding(4, 3, 4, 3)

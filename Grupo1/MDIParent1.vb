@@ -86,34 +86,34 @@ Public Class MDIParent1
     Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
         Dim f As New fmr_usurios
         f.MdiParent = Me
-        f.Show()
+        f.Show
 
     End Sub
 
     Private Sub CategoriasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoriasToolStripMenuItem.Click
         Dim f As New frm_categorias
         f.MdiParent = Me
-        f.Show()
+        f.Show
 
     End Sub
 
     Private Sub JuegosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JuegosToolStripMenuItem.Click
         Dim f As New frm_Juegos
         f.MdiParent = Me
-        f.Show()
+        f.Show
 
     End Sub
 
     Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
         Dim f As New Ventas
         f.MdiParent = Me
-        f.Show()
+        f.Show
     End Sub
 
     Private Sub ConsultasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultasToolStripMenuItem.Click
         Dim f As New FrmConsultas
         f.MdiParent = Me
-        f.Show()
+        f.Show
     End Sub
 
     'Private Sub btnsalir_Click(sender As Object, e As EventArgs)
@@ -126,8 +126,8 @@ Public Class MDIParent1
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
         Dim i = MessageBox.Show("¿Desea salir del sistema?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If i = DialogResult.Yes Then
-            CerrarTodos()
-            Me.Close()
+            CerrarTodos
+            Close
         End If
     End Sub
 
@@ -136,9 +136,9 @@ Public Class MDIParent1
         If i = DialogResult.Yes Then
             rol = Nothing
             usuario = Nothing
-            CerrarTodos()
-            Login.Show()
-            Me.Close()
+            CerrarTodos
+            Login.Show
+            Close
         End If
     End Sub
 
@@ -148,4 +148,7 @@ Public Class MDIParent1
         Next
     End Sub
 
+    Private Sub StatusStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs)
+
+    End Sub
 End Class
