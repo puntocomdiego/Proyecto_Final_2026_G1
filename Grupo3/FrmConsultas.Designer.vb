@@ -200,6 +200,7 @@ Partial Class FrmConsultas
         ' 
         ' BtnCerrar
         ' 
+        BtnCerrar.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         BtnCerrar.BackColor = SystemColors.GradientActiveCaption
         BtnCerrar.FlatStyle = FlatStyle.Popup
         BtnCerrar.ForeColor = SystemColors.ControlText
