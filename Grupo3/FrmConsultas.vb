@@ -201,6 +201,26 @@ Public Class FrmConsultas
 
             cmd.Connection.Close() ' se cierra la conexión 
 
+            ' agrega al combo box los vendedores únicos de la tabla usuarios que tengan ventas en el rango de fechas seleccionado
+            Dim SQLVendedores As String = "SELECT DISTINCT usuarios.nombre FROM usuarios INNER JOIN ventas ON usuarios.id = ventas.id_usuario WHERE ventas.fecha BETWEEN ? AND ?;" ' se crea la consulta SQL para obtener los vendedores únicos
+
+            Dim cmdVendedores As New OleDbCommand(SQLVendedores, cn) ' se crea el comando con la consulta y la conexión
+
+            cmdVendedores.Parameters.AddWithValue("?", OleDbType.Date).Value = fechainicial.Date ' se agregan los parámetros a la consulta
+
+            cmdVendedores.Parameters.AddWithValue("?", OleDbType.Date).Value = fechafinal.Date.AddDays(1) ' se agregan los parámetros a la consulta
+
+            Dim daVendedores As New OleDbDataAdapter(cmdVendedores) ' se crea el adaptador de datos con el comando
+
+            Dim dtVendedores As New DataTable() ' se crea un DataTable para almacenar los vendedores únicos
+
+            daVendedores.Fill(dtVendedores) ' se llena el DataTable con los datos obtenidos de la consulta
+
+            CmbVendedor.DataSource = dtVendedores ' se asigna el DataTable como fuente de datos del ComboBox
+
+            CmbVendedor.DisplayMember = "nombre" ' se asigna el nombre de la columna que se mostrará en el ComboBox
+
+
 
             If CmbVendedor.SelectedIndex = -1 Then
                 MessageBox.Show("Debe seleccionar un vendedor.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error)
