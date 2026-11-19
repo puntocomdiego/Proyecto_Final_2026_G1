@@ -38,15 +38,15 @@ Partial Class frm_categorias
         lblHora = New Label()
         Timer1 = New Timer(components)
         btntutorial = New Button()
-        Label5 = New Label()
-        Label6 = New Label()
-        Label7 = New Label()
-        Label8 = New Label()
         btnBuscar = New Button()
         lblcoincidencias = New Label()
         GroupBox1 = New GroupBox()
         GroupBox2 = New GroupBox()
         Button1 = New Button()
+        RichTextBox1 = New RichTextBox()
+        RichTextBox2 = New RichTextBox()
+        RichTextBox3 = New RichTextBox()
+        RichTextBox4 = New RichTextBox()
         CType(dgvcategorias, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
@@ -54,11 +54,12 @@ Partial Class frm_categorias
         ' 
         ' dgvcategorias
         ' 
+        dgvcategorias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         dgvcategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvcategorias.Location = New Point(427, 48)
+        dgvcategorias.Location = New Point(417, 68)
         dgvcategorias.Name = "dgvcategorias"
         dgvcategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvcategorias.Size = New Size(743, 223)
+        dgvcategorias.Size = New Size(669, 203)
         dgvcategorias.TabIndex = 0
         ' 
         ' txtnombre
@@ -138,7 +139,7 @@ Partial Class frm_categorias
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 25F)
-        Label4.Location = New Point(112, 9)
+        Label4.Location = New Point(53, 15)
         Label4.Name = "Label4"
         Label4.Size = New Size(214, 46)
         Label4.TabIndex = 10
@@ -165,7 +166,7 @@ Partial Class frm_categorias
         ' 
         lblHora.AutoSize = True
         lblHora.Font = New Font("Rockwell Condensed", 25F)
-        lblHora.Location = New Point(368, 9)
+        lblHora.Location = New Point(291, 21)
         lblHora.Name = "lblHora"
         lblHora.Size = New Size(35, 40)
         lblHora.TabIndex = 14
@@ -186,52 +187,6 @@ Partial Class frm_categorias
         btntutorial.TabIndex = 15
         btntutorial.Text = " ?Como usar                  "
         btntutorial.UseVisualStyleBackColor = False
-        ' 
-        ' Label5
-        ' 
-        Label5.AutoSize = True
-        Label5.Font = New Font("Segoe UI", 10F)
-        Label5.Location = New Point(77, 321)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(1057, 23)
-        Label5.TabIndex = 16
-        Label5.Text = "GUARDAR: Coloca el nombre en la caja de texto y descripcion antes de tocar el boton. Luego de haber colocado los parametros toca el boton y se guardara automaticamente"
-        Label5.TextAlign = ContentAlignment.MiddleCenter
-        Label5.UseCompatibleTextRendering = True
-        Label5.Visible = False
-        ' 
-        ' Label6
-        ' 
-        Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI", 10F)
-        Label6.Location = New Point(77, 302)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(805, 19)
-        Label6.TabIndex = 17
-        Label6.Text = "ELIMINAR: Toca la flecha al inicio de la linea que quieras borrar para seleccionarla y luego toca el boton eliminar para borrar la linea"
-        Label6.Visible = False
-        ' 
-        ' Label7
-        ' 
-        Label7.AutoSize = True
-        Label7.Font = New Font("Segoe UI", 10F)
-        Label7.Location = New Point(77, 341)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(884, 19)
-        Label7.TabIndex = 18
-        Label7.Text = "LIMPIAR:Al colocar un texto que te hayas arrepentido oprime el boton para eliminar lo que colocaste en las cajas de texto nombre y descripcion"
-        Label7.Visible = False
-        ' 
-        ' Label8
-        ' 
-        Label8.AutoSize = True
-        Label8.Font = New Font("Segoe UI", 10F)
-        Label8.Location = New Point(77, 362)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(868, 19)
-        Label8.TabIndex = 19
-        Label8.Text = "APLICAR PARAMETROS: Coloca una letra o palabra en la caja de texto buscar y al tocar el boton se remarcaran las letras que hayas colocado "
-        Label8.Visible = False
         ' 
         ' btnBuscar
         ' 
@@ -283,7 +238,7 @@ Partial Class frm_categorias
         GroupBox2.Location = New Point(28, 384)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.RightToLeft = RightToLeft.Yes
-        GroupBox2.Size = New Size(1058, 78)
+        GroupBox2.Size = New Size(1037, 92)
         GroupBox2.TabIndex = 22
         GroupBox2.TabStop = False
         ' 
@@ -292,12 +247,48 @@ Partial Class frm_categorias
         Button1.BackColor = SystemColors.AppWorkspace
         Button1.Image = CType(resources.GetObject("Button1.Image"), Image)
         Button1.ImageAlign = ContentAlignment.MiddleLeft
-        Button1.Location = New Point(1092, 425)
+        Button1.Location = New Point(1071, 425)
         Button1.Name = "Button1"
         Button1.Size = New Size(78, 37)
         Button1.TabIndex = 23
         Button1.Text = "     Salir"
         Button1.UseVisualStyleBackColor = False
+        ' 
+        ' RichTextBox1
+        ' 
+        RichTextBox1.Location = New Point(12, 274)
+        RichTextBox1.Name = "RichTextBox1"
+        RichTextBox1.Size = New Size(723, 22)
+        RichTextBox1.TabIndex = 24
+        RichTextBox1.Text = "ELIMINAR: Toca la flecha al inicio de la línea que quieras borrar para seleccionarla y luego toca el botón «Eliminar» para borrarla."
+        RichTextBox1.Visible = False
+        ' 
+        ' RichTextBox2
+        ' 
+        RichTextBox2.Location = New Point(12, 300)
+        RichTextBox2.Name = "RichTextBox2"
+        RichTextBox2.Size = New Size(1028, 25)
+        RichTextBox2.TabIndex = 25
+        RichTextBox2.Text = "GUARDAR: Coloca el nombre y la descripción en las cajas de texto antes de tocar el botón. Luego de haber ingresado los parámetros, toca el botón «Guardar» y se guardará automáticamente."
+        RichTextBox2.Visible = False
+        ' 
+        ' RichTextBox3
+        ' 
+        RichTextBox3.Location = New Point(12, 362)
+        RichTextBox3.Name = "RichTextBox3"
+        RichTextBox3.Size = New Size(784, 25)
+        RichTextBox3.TabIndex = 26
+        RichTextBox3.Text = "APLICAR PARÁMETROS: Coloca una letra o palabra en la caja de texto «Buscar» y, al tocar el botón, se remarcarán las letras que hayas ingresado."
+        RichTextBox3.Visible = False
+        ' 
+        ' RichTextBox4
+        ' 
+        RichTextBox4.Location = New Point(12, 331)
+        RichTextBox4.Name = "RichTextBox4"
+        RichTextBox4.Size = New Size(881, 25)
+        RichTextBox4.TabIndex = 27
+        RichTextBox4.Text = "LIMPIAR: Si colocaste un texto del que te hayas arrepentido, oprime el botón «Limpiar» para eliminar lo que escribiste en las cajas de texto de nombre y descripción"
+        RichTextBox4.Visible = False
         ' 
         ' frm_categorias
         ' 
@@ -305,14 +296,14 @@ Partial Class frm_categorias
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
         BackgroundImageLayout = ImageLayout.None
-        ClientSize = New Size(1182, 474)
+        ClientSize = New Size(1161, 488)
+        Controls.Add(RichTextBox4)
+        Controls.Add(RichTextBox3)
+        Controls.Add(RichTextBox2)
+        Controls.Add(RichTextBox1)
         Controls.Add(Button1)
         Controls.Add(GroupBox1)
         Controls.Add(lblcoincidencias)
-        Controls.Add(Label8)
-        Controls.Add(Label7)
-        Controls.Add(Label6)
-        Controls.Add(Label5)
         Controls.Add(lblHora)
         Controls.Add(Label4)
         Controls.Add(dgvcategorias)
@@ -344,13 +335,13 @@ Partial Class frm_categorias
     Friend WithEvents lblHora As Label
     Friend WithEvents Timer1 As Timer
     Friend WithEvents btntutorial As Button
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label8 As Label
     Friend WithEvents btnBuscar As Button
     Friend WithEvents lblcoincidencias As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents RichTextBox2 As RichTextBox
+    Friend WithEvents RichTextBox3 As RichTextBox
+    Friend WithEvents RichTextBox4 As RichTextBox
 End Class
