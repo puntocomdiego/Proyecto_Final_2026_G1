@@ -106,7 +106,7 @@ Public Class FrmConsultas
 
     End Sub
 
-    Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnEnviar.Click
+    Private Sub BtnEnviar_Click(sender As Object, e As EventArgs) Handles BtnEnviar.Click
         Try
             If ValidarMail(TxtCorreo.Text) = False Then
                 Throw New Exception("La dirección del receptor no tiene un formato válido (ejemplo @gmail.com).")
@@ -170,7 +170,25 @@ Public Class FrmConsultas
 
     Private Sub BtnOk_Click_1(sender As Object, e As EventArgs) Handles BtnOk.Click
         ' se busca entre la fecha inicial y la fecha final
-        Dim fechaInicio As Date = DtpInicial.Value.Date
-        Dim fechaFin As Date = DtpFinal.Value.Date
+        Dim fechainicial As Date = DtpInicial.Value.Date
+        Dim fechafinal As Date = DtpFinal.Value.Date
+        ' se crea la consulta SQL con parámetros para evitar inyecciones SQL
+        Dim SQL As String = "SELECT ventas.id, ventas.fecha, ventas.id_usuario, ventas.total From ventas WHERE fecha BETWEEN ? AND ?;"
+        Dim cmd As New OleDbCommand(SQL, cn) ' se crea el comando con la consulta y la conexión
+
+        cmd.Parameters.AddWithValue("?", fechainicial) ' se agregan los parámetros a la consulta
+
+        cmd.Parameters.AddWithValue("?", fechafinal) ' se agregan los parámetros a la consulta
+
+        cmd.Connection.Open() ' se abre la conexión
+
+        Dim da As New OleDbDataAdapter(cmd) ' se crea el adaptador de datos con el comando
+
+        ' se llena el DataTable con los datos obtenidos de la consulta
+        dtventas.Clear() ' se limpia el DataTable antes de llenarlo
+
+        da.Fill(dtventas) ' se llena el DataTable con los datos obtenidos de la consulta
+
+        cmd.Connection.Close() ' se cierra la conexión
     End Sub
 End Class
