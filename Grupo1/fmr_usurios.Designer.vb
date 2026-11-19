@@ -93,7 +93,7 @@ Partial Class fmr_usurios
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 12F)
-        Label4.Location = New Point(116, 222)
+        Label4.Location = New Point(117, 224)
         Label4.Name = "Label4"
         Label4.Size = New Size(96, 21)
         Label4.TabIndex = 4
@@ -101,21 +101,21 @@ Partial Class fmr_usurios
         ' 
         ' txtcontra
         ' 
-        txtcontra.Location = New Point(218, 220)
+        txtcontra.Location = New Point(218, 222)
         txtcontra.Name = "txtcontra"
         txtcontra.Size = New Size(255, 23)
         txtcontra.TabIndex = 4
         ' 
         ' txtnomusuario
         ' 
-        txtnomusuario.Location = New Point(218, 158)
+        txtnomusuario.Location = New Point(218, 160)
         txtnomusuario.Name = "txtnomusuario"
         txtnomusuario.Size = New Size(255, 23)
         txtnomusuario.TabIndex = 3
         ' 
         ' txtapellido
         ' 
-        txtapellido.Location = New Point(218, 97)
+        txtapellido.Location = New Point(218, 98)
         txtapellido.Name = "txtapellido"
         txtapellido.Size = New Size(255, 23)
         txtapellido.TabIndex = 2
@@ -135,7 +135,7 @@ Partial Class fmr_usurios
         gbx_usuarioinfo.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         gbx_usuarioinfo.Location = New Point(30, 79)
         gbx_usuarioinfo.Name = "gbx_usuarioinfo"
-        gbx_usuarioinfo.Size = New Size(484, 308)
+        gbx_usuarioinfo.Size = New Size(484, 330)
         gbx_usuarioinfo.TabIndex = 10
         gbx_usuarioinfo.TabStop = False
         gbx_usuarioinfo.Text = "Información del usuario"
@@ -144,7 +144,7 @@ Partial Class fmr_usurios
         ' 
         cmbtipo.FormattingEnabled = True
         cmbtipo.Items.AddRange(New Object() {"Admin", "Vendedor"})
-        cmbtipo.Location = New Point(218, 273)
+        cmbtipo.Location = New Point(218, 284)
         cmbtipo.Name = "cmbtipo"
         cmbtipo.Size = New Size(255, 23)
         cmbtipo.TabIndex = 5
@@ -153,7 +153,7 @@ Partial Class fmr_usurios
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Segoe UI", 12F)
-        Label5.Location = New Point(169, 275)
+        Label5.Location = New Point(169, 284)
         Label5.Name = "Label5"
         Label5.Size = New Size(43, 21)
         Label5.TabIndex = 9
