@@ -169,39 +169,50 @@ Public Class FrmConsultas
     End Sub
 
     Private Sub BtnOk_Click_1(sender As Object, e As EventArgs) Handles BtnOk.Click
-        ' se busca entre la fecha inicial y la fecha final
-        Dim fechainicial As Date = DtpInicial.Value.Date
-        Dim fechafinal As Date = DtpFinal.Value.Date
+        Try
+            ' se busca entre la fecha inicial y la fecha final
+            Dim fechainicial As Date = DtpInicial.Value.Date
+            Dim fechafinal As Date = DtpFinal.Value.Date
 
-        ' se crea la consulta SQL con parámetros para evitar inyecciones SQL
-        Dim SQL As String = "SELECT ventas.id, ventas.fecha, ventas.id_usuario, ventas.total From ventas WHERE fecha BETWEEN ? AND ?;"
+            ' se crea la consulta SQL con parámetros para evitar inyecciones SQL
+            Dim SQL As String = "SELECT ventas.id, ventas.fecha, ventas.id_usuario, ventas.total From ventas WHERE fecha BETWEEN ? AND ?;"
 
-        Dim cmd As New OleDbCommand(SQL, cn) ' se crea el comando con la consulta y la conexión
+            Dim cmd As New OleDbCommand(SQL, cn) ' se crea el comando con la consulta y la conexión
 
-        cmd.Parameters.AddWithValue("?", OleDbType.Date).Value = fechainicial.Date ' se agregan los parámetros a la consulta
+            cmd.Parameters.AddWithValue("?", OleDbType.Date).Value = fechainicial.Date ' se agregan los parámetros a la consulta
 
-        cmd.Parameters.AddWithValue("?", OleDbType.date).Value = fechafinal.Date.AddDays(1) ' se agregan los parámetros a la consulta
+            cmd.Parameters.AddWithValue("?", OleDbType.Date).Value = fechafinal.Date.AddDays(1) ' se agregan los parámetros a la consulta
 
-        cmd.Connection.Open() ' se abre la conexión
+            cmd.Connection.Open() ' se abre la conexión
 
-        Dim da As New OleDbDataAdapter(cmd) ' se crea el adaptador de datos con el comando
+            Dim da As New OleDbDataAdapter(cmd) ' se crea el adaptador de datos con el comando
 
-        ' se llena el DataTable con los datos obtenidos de la consulta
-        dtventas.Clear() ' se limpia el DataTable antes de llenarlo
+            ' se llena el DataTable con los datos obtenidos de la consulta
+            dtventas.Clear() ' se limpia el DataTable antes de llenarlo
 
-        da.Fill(dtventas) ' se llena el DataTable con los datos obtenidos de la consulta
-
-
-        DgvListadoVentas.DataSource = dtventas
-        DgvListadoVentas.Columns(0).HeaderText = "ID"
-        DgvListadoVentas.Columns(1).HeaderText = "Fecha"
-        DgvListadoVentas.Columns(2).HeaderText = "ID Usuario"
-        DgvListadoVentas.Columns(3).HeaderText = "Total"
-
-        cmd.Connection.Close() ' se cierra la conexión
+            da.Fill(dtventas) ' se llena el DataTable con los datos obtenidos de la consulta
 
 
+            DgvListadoVentas.DataSource = dtventas
+            DgvListadoVentas.Columns(0).HeaderText = "ID"
+            DgvListadoVentas.Columns(1).HeaderText = "Fecha"
+            DgvListadoVentas.Columns(2).HeaderText = "ID Usuario"
+            DgvListadoVentas.Columns(3).HeaderText = "Total"
+
+            cmd.Connection.Close() ' se cierra la conexión 
 
 
+            If CmbVendedor.SelectedIndex = -1 Then
+                MessageBox.Show("Debe seleccionar un vendedor.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+
+            If fechainicial < "03/05/2026" Then
+                MessageBox.Show("No hay ventas registradas antes del 03/05/2026.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Error al filtrar las ventas: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class

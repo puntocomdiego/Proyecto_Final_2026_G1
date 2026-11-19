@@ -29,7 +29,7 @@ Partial Class FrmConsultas
         BtnEnviar = New Button()
         BtnCancelar = New Button()
         TxtCorreo = New TextBox()
-        Cmb = New ComboBox()
+        CmbVendedor = New ComboBox()
         DtpInicial = New DateTimePicker()
         DtpFinal = New DateTimePicker()
         Label1 = New Label()
@@ -135,13 +135,13 @@ Partial Class FrmConsultas
         TxtCorreo.TabIndex = 6
         TxtCorreo.Visible = False
         ' 
-        ' Cmb
+        ' CmbVendedor
         ' 
-        Cmb.FormattingEnabled = True
-        Cmb.Location = New Point(713, 47)
-        Cmb.Name = "Cmb"
-        Cmb.Size = New Size(175, 28)
-        Cmb.TabIndex = 7
+        CmbVendedor.FormattingEnabled = True
+        CmbVendedor.Location = New Point(713, 47)
+        CmbVendedor.Name = "CmbVendedor"
+        CmbVendedor.Size = New Size(175, 28)
+        CmbVendedor.TabIndex = 7
         ' 
         ' DtpInicial
         ' 
@@ -253,7 +253,7 @@ Partial Class FrmConsultas
         Controls.Add(Label1)
         Controls.Add(DtpFinal)
         Controls.Add(DtpInicial)
-        Controls.Add(Cmb)
+        Controls.Add(CmbVendedor)
         Controls.Add(TxtCorreo)
         Controls.Add(BtnCancelar)
         Controls.Add(BtnEnviar)
@@ -272,7 +272,7 @@ Partial Class FrmConsultas
     Friend WithEvents BtnEnviar As Button
     Friend WithEvents BtnCancelar As Button
     Friend WithEvents TxtCorreo As TextBox
-    Friend WithEvents Cmb As ComboBox
+    Friend WithEvents CmbVendedor As ComboBox
     Friend WithEvents DtpInicial As DateTimePicker
     Friend WithEvents DtpFinal As DateTimePicker
     Friend WithEvents Label1 As Label
