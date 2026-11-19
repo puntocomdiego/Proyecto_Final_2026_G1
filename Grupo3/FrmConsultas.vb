@@ -164,7 +164,13 @@ Public Class FrmConsultas
     End Sub
 
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
-        MsgBox("¿Desea cerrar la ventana consultas?", MessageBoxButtons.OK, MessageBoxButtons.OKCancel)
+        MsgBox("¿Desea cerrar la ventana consultas?", MessageBoxButtons.YesNo)
         Me.Close()
+    End Sub
+
+    Private Sub BtnOk_Click_1(sender As Object, e As EventArgs) Handles BtnOk.Click
+        ' se busca entre la fecha inicial y la fecha final
+        Dim fechaInicio As Date = DtpInicial.Value.Date
+        Dim fechaFin As Date = DtpFinal.Value.Date
     End Sub
 End Class
