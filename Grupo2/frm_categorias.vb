@@ -348,5 +348,5 @@
         ' Cancela cualquier carácter que intente insertarse
         e.Handled = True
     End Sub
-    'el pepe es un 
+
 End Class
