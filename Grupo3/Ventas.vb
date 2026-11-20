@@ -83,9 +83,7 @@ Public Class Ventas
             '                      "INNER JOIN juegos j ON dv.id_juego = j.id " &
             '                      "ORDER BY v.fecha DESC"
 
-            Dim query As String = "SELECT ventas.id, ventas.fecha,usuarios.nombre, ventas.total " &
-"FROM usuarios " &
-    "INNER JOIN ventas ON usuarios.id = ventas.id_usuario; ORDER BY v.fecha DESC"
+            Dim query As String = "SELECT ventas.id, ventas.fecha,usuarios.nombre, ventas.total FROM usuarios INNER JOIN ventas ON usuarios.id = ventas.id_usuario ORDER BY v.fecha DESC"
 
             Dim da As New OleDbDataAdapter(query, cn)
             da.Fill(dtVentas)
