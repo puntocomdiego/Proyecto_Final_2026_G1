@@ -48,14 +48,15 @@
 
     Private Sub CargarCategorias()
         Dim datos As New cls_categorias_datos()
-        dgvcategorias.DataSource = datos.Listar()
+        dgvcategorias.DataSource = datos.Lista
+        r()
     End Sub
 
     Private Sub dgvcategorias_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvcategorias.CellClick
         If e.RowIndex >= 0 Then
             Dim fila As DataGridViewRow = dgvcategorias.Rows(e.RowIndex)
-            txtnombre.Text = Convert.ToString(fila.Cells("nombre").Value)
-            txtdescripcion.Text = Convert.ToString(fila.Cells("descripcion").Value)
+            txtnombre.Text = Convert.ToString(fila.Cells("Nombre").Value)
+            txtdescripcion.Text = Convert.ToString(fila.Cells("Descripcion").Value)
         End If
     End Sub
 

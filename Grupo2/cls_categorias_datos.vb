@@ -51,12 +51,11 @@ Public Class cls_categorias_datos
         Dim dt As New DataTable()
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-                "SELECT ID, nombre, descripcion FROM categorias ORDER BY nombre"
+                "SELECT ID, Nombre, Descripción FROM categorias ORDER BY Nombre"
             Using da As New OleDbDataAdapter(sql, cn)
                 da.Fill(dt)
             End Using
         End Using
         Return dt
     End Function
-
 End Class
