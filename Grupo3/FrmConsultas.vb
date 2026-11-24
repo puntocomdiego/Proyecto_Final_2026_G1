@@ -2,6 +2,7 @@
 Imports System.Net.Mail
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports iTextSharp.text
+Imports iTextSharp.text.Actions
 Imports iTextSharp.text.pdf
 Imports Excel = Microsoft.Office.Interop.Excel
 Public Class FrmConsultas
@@ -9,6 +10,7 @@ Public Class FrmConsultas
     Dim WithEvents clienteSmtp As New SmtpClient("smtp.gmail.com")
     Dim cn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Ruta)
     Dim dtventas As New DataTable
+    Dim opcion As Byte = 0
 
 
     Public Sub ExportarPDF(ByVal dgv As DataGridView, ByVal filename As String)
@@ -149,7 +151,8 @@ Public Class FrmConsultas
     End Sub
     Private Sub FrmConsultas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim SQL As String = ""
-        SQL = "SELECT ventas.id, ventas.fecha, ventas.id_usuario, ventas.total From ventas;"
+        ' SQL = "SELECT ventas.id, ventas.fecha, ventas.id_usuario, ventas.total From ventas;"
+        SQL = "Select  ventas.id, ventas.fecha, ventas.total, usuarios.usuario From usuarios INNER Join ventas On usuarios.id = ventas.id_usuario;"
 
 
         Dim da As New OleDbDataAdapter(SQL, cn)
@@ -158,8 +161,25 @@ Public Class FrmConsultas
         DgvListadoVentas.DataSource = dtventas
         DgvListadoVentas.Columns(0).HeaderText = "ID"
         DgvListadoVentas.Columns(1).HeaderText = "Fecha"
-        DgvListadoVentas.Columns(2).HeaderText = "ID Usuario"
-        DgvListadoVentas.Columns(3).HeaderText = "Total"
+        DgvListadoVentas.Columns(3).HeaderText = "ID Usuario"
+        DgvListadoVentas.Columns(2).HeaderText = "Total"
+
+        ' agrega al combo box los vendedores únicos de la tabla usuarios que tengan ventas
+        Dim SQLVendedores As String = "SELECT DISTINCT usuarios.usuario FROM usuarios INNER JOIN ventas ON usuarios.id = ventas.id_usuario;" ' se crea la consulta SQL para obtener los vendedores únicos
+
+        Dim cmdVendedores As New OleDbCommand(SQLVendedores, cn) ' se crea el comando con la consulta y la conexión
+
+        Dim daVendedores As New OleDbDataAdapter(cmdVendedores) ' se crea el adaptador de datos con el comando
+
+        Dim dtVendedores As New DataTable() ' se crea un DataTable para almacenar los vendedores únicos
+
+        daVendedores.Fill(dtVendedores) ' se llena el DataTable con los datos obtenidos de la consulta
+
+        CmbVendedor.DataSource = dtVendedores ' se asigna el DataTable como fuente de datos del ComboBox
+
+        ' se asigna el nombre de la columna que se mostrará en el ComboBox
+        CmbVendedor.DisplayMember = "usuario"
+
 
     End Sub
 
@@ -169,19 +189,53 @@ Public Class FrmConsultas
     End Sub
 
     Private Sub BtnOk_Click_1(sender As Object, e As EventArgs) Handles BtnOk.Click
+
+        Dim SQL As String
+
+
         Try
             ' se busca entre la fecha inicial y la fecha final
             Dim fechainicial As Date = DtpInicial.Value.Date
             Dim fechafinal As Date = DtpFinal.Value.Date
 
-            ' se crea la consulta SQL con parámetros para evitar inyecciones SQL
-            Dim SQL As String = "SELECT ventas.id, ventas.fecha, ventas.id_usuario, ventas.total From ventas WHERE fecha BETWEEN ? AND ?;"
+            Select Case opcion
+               
+                Case 1
+                    ' se crea la consulta SQL con parámetros para evitar inyecciones SQL
+                    SQL = "SELECT ventas.id, ventas.fecha, ventas.total, ventas.id_usuario " &
+                    "FROM usuarios INNER JOIN ventas ON usuarios.id = ventas.id_usuario " &
+                    "WHERE ventas.fecha >= #" & fechainicial.ToString("MM/dd/yyyy") & "# " &
+                    "AND ventas.fecha <= #" & fechafinal.ToString("MM/dd/yyyy") & "#;"
+
+
+                Case 2
+                    ' se crea la consulta SQL con parámetros para evitar inyecciones SQL
+                    SQL = "SELECT ventas.id, ventas.fecha, ventas.total, ventas.id_usuario " &
+                    "FROM usuarios INNER JOIN ventas ON usuarios.id = ventas.id_usuario " &
+                    "WHERE "
+
+                Case 3
+                    ' se crea la consulta SQL con parámetros para evitar inyecciones SQL
+                    SQL = "SELECT ventas.id, ventas.fecha, ventas.total, ventas.id_usuario " &
+                    "FROM usuarios INNER JOIN ventas ON usuarios.id = ventas.id_usuario " &
+                    "WHERE ventas.fecha >= #" & fechainicial.ToString("MM/dd/yyyy") & "# " &
+                    "AND ventas.fecha <= #" & fechafinal.ToString("MM/dd/yyyy") & "#;"
+
+
+
+
+            End Select
+
+
 
             Dim cmd As New OleDbCommand(SQL, cn) ' se crea el comando con la consulta y la conexión
 
             cmd.Parameters.AddWithValue("?", OleDbType.Date).Value = fechainicial.Date ' se agregan los parámetros a la consulta
 
             cmd.Parameters.AddWithValue("?", OleDbType.Date).Value = fechafinal.Date.AddDays(1) ' se agregan los parámetros a la consulta
+
+
+
 
             cmd.Connection.Open() ' se abre la conexión
 
@@ -201,24 +255,26 @@ Public Class FrmConsultas
 
             cmd.Connection.Close() ' se cierra la conexión 
 
-            ' agrega al combo box los vendedores únicos de la tabla usuarios que tengan ventas en el rango de fechas seleccionado
-            Dim SQLVendedores As String = "SELECT DISTINCT usuarios.nombre FROM usuarios INNER JOIN ventas ON usuarios.id = ventas.id_usuario WHERE ventas.fecha BETWEEN ? AND ?;" ' se crea la consulta SQL para obtener los vendedores únicos
+            ''agrega al combo box los vendedores únicos de la tabla usuarios que tengan ventas en el rango de fechas seleccionado
+            'Dim SQLVendedores As String = "SELECT DISTINCT usuarios.usuario FROM usuarios INNER JOIN ventas ON usuarios.id = ventas.id_usuario WHERE ventas.fecha BETWEEN ? AND ?;" ' se crea la consulta SQL para obtener los vendedores únicos
 
-            Dim cmdVendedores As New OleDbCommand(SQLVendedores, cn) ' se crea el comando con la consulta y la conexión
+            'Dim cmdVendedores As New OleDbCommand(SQLVendedores, cn) ' se crea el comando con la consulta y la conexión
 
-            cmdVendedores.Parameters.AddWithValue("?", OleDbType.Date).Value = fechainicial.Date ' se agregan los parámetros a la consulta
+            'cmdVendedores.Parameters.AddWithValue("?", OleDbType.Date).Value = fechainicial.Date ' se agregan los parámetros a la consulta
 
-            cmdVendedores.Parameters.AddWithValue("?", OleDbType.Date).Value = fechafinal.Date.AddDays(1) ' se agregan los parámetros a la consulta
+            'cmdVendedores.Parameters.AddWithValue("?", OleDbType.Date).Value = fechafinal.Date.AddDays(1) ' se agregan los parámetros a la consulta
 
-            Dim daVendedores As New OleDbDataAdapter(cmdVendedores) ' se crea el adaptador de datos con el comando
+            'Dim daVendedores As New OleDbDataAdapter(cmdVendedores) ' se crea el adaptador de datos con el comando
 
-            Dim dtVendedores As New DataTable() ' se crea un DataTable para almacenar los vendedores únicos
+            'Dim dtVendedores As New DataTable() ' se crea un DataTable para almacenar los vendedores únicos
 
-            daVendedores.Fill(dtVendedores) ' se llena el DataTable con los datos obtenidos de la consulta
+            'daVendedores.Fill(dtVendedores) ' se llena el DataTable con los datos obtenidos de la consulta
 
-            CmbVendedor.DataSource = dtVendedores ' se asigna el DataTable como fuente de datos del ComboBox
+            'CmbVendedor.DataSource = dtVendedores ' se asigna el DataTable como fuente de datos del ComboBox
 
-            CmbVendedor.DisplayMember = "nombre" ' se asigna el nombre de la columna que se mostrará en el ComboBox
+            'CmbVendedor.DisplayMember = "nombre" ' se asigna el nombre de la columna que se mostrará en el ComboBox
+
+            '' se relaciona el ComboBox con el DataTable para que muestre los vendedores únicos en el rango de fechas seleccionado
 
 
 
@@ -234,5 +290,17 @@ Public Class FrmConsultas
         Catch ex As Exception
             MessageBox.Show("Error al filtrar las ventas: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
+        opcion = 3
+    End Sub
+
+    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
+        opcion = 1
+    End Sub
+
+    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
+        opcion = 2
     End Sub
 End Class

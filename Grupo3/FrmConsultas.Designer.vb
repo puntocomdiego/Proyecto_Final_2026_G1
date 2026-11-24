@@ -39,7 +39,12 @@ Partial Class FrmConsultas
         BtnCerrar = New Button()
         Label5 = New Label()
         BtnOk = New Button()
+        GroupBox1 = New GroupBox()
+        RadioButton3 = New RadioButton()
+        RadioButton2 = New RadioButton()
+        RadioButton1 = New RadioButton()
         CType(DgvListadoVentas, ComponentModel.ISupportInitialize).BeginInit()
+        GroupBox1.SuspendLayout()
         SuspendLayout()
         ' 
         ' BtnPDF
@@ -138,7 +143,7 @@ Partial Class FrmConsultas
         ' CmbVendedor
         ' 
         CmbVendedor.FormattingEnabled = True
-        CmbVendedor.Location = New Point(713, 47)
+        CmbVendedor.Location = New Point(529, 45)
         CmbVendedor.Name = "CmbVendedor"
         CmbVendedor.Size = New Size(175, 28)
         CmbVendedor.TabIndex = 7
@@ -147,7 +152,7 @@ Partial Class FrmConsultas
         ' 
         DtpInicial.CalendarFont = New Font("Segoe UI", 12F)
         DtpInicial.Format = DateTimePickerFormat.Short
-        DtpInicial.Location = New Point(301, 46)
+        DtpInicial.Location = New Point(117, 44)
         DtpInicial.Name = "DtpInicial"
         DtpInicial.Size = New Size(122, 27)
         DtpInicial.TabIndex = 8
@@ -156,7 +161,7 @@ Partial Class FrmConsultas
         ' DtpFinal
         ' 
         DtpFinal.Format = DateTimePickerFormat.Short
-        DtpFinal.Location = New Point(497, 46)
+        DtpFinal.Location = New Point(313, 44)
         DtpFinal.Name = "DtpFinal"
         DtpFinal.Size = New Size(122, 27)
         DtpFinal.TabIndex = 9
@@ -166,7 +171,7 @@ Partial Class FrmConsultas
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 12F)
-        Label1.Location = New Point(392, 9)
+        Label1.Location = New Point(208, 7)
         Label1.Name = "Label1"
         Label1.Size = New Size(146, 28)
         Label1.TabIndex = 10
@@ -175,7 +180,7 @@ Partial Class FrmConsultas
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(239, 51)
+        Label2.Location = New Point(55, 49)
         Label2.Name = "Label2"
         Label2.Size = New Size(43, 20)
         Label2.TabIndex = 11
@@ -184,7 +189,7 @@ Partial Class FrmConsultas
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(453, 50)
+        Label3.Location = New Point(269, 48)
         Label3.Name = "Label3"
         Label3.Size = New Size(16, 20)
         Label3.TabIndex = 12
@@ -194,7 +199,7 @@ Partial Class FrmConsultas
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 12F)
-        Label4.Location = New Point(749, 9)
+        Label4.Location = New Point(565, 7)
         Label4.Name = "Label4"
         Label4.Size = New Size(101, 28)
         Label4.TabIndex = 13
@@ -228,12 +233,57 @@ Partial Class FrmConsultas
         BtnOk.BackColor = SystemColors.GradientActiveCaption
         BtnOk.FlatStyle = FlatStyle.Popup
         BtnOk.Font = New Font("Segoe UI", 15.75F)
-        BtnOk.Location = New Point(966, 31)
+        BtnOk.Location = New Point(1169, 44)
         BtnOk.Name = "BtnOk"
         BtnOk.Size = New Size(175, 50)
         BtnOk.TabIndex = 16
         BtnOk.Text = "Ok"
         BtnOk.UseVisualStyleBackColor = False
+        ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Controls.Add(RadioButton3)
+        GroupBox1.Controls.Add(RadioButton2)
+        GroupBox1.Controls.Add(RadioButton1)
+        GroupBox1.Location = New Point(749, 23)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.Size = New Size(404, 83)
+        GroupBox1.TabIndex = 17
+        GroupBox1.TabStop = False
+        GroupBox1.Text = "Filtrar por:"
+        ' 
+        ' RadioButton3
+        ' 
+        RadioButton3.AutoSize = True
+        RadioButton3.Location = New Point(259, 39)
+        RadioButton3.Name = "RadioButton3"
+        RadioButton3.Size = New Size(76, 24)
+        RadioButton3.TabIndex = 2
+        RadioButton3.TabStop = True
+        RadioButton3.Text = "Ambas"
+        RadioButton3.UseVisualStyleBackColor = True
+        ' 
+        ' RadioButton2
+        ' 
+        RadioButton2.AutoSize = True
+        RadioButton2.Location = New Point(128, 39)
+        RadioButton2.Name = "RadioButton2"
+        RadioButton2.Size = New Size(94, 24)
+        RadioButton2.TabIndex = 1
+        RadioButton2.TabStop = True
+        RadioButton2.Text = "Vendedor"
+        RadioButton2.UseVisualStyleBackColor = True
+        ' 
+        ' RadioButton1
+        ' 
+        RadioButton1.AutoSize = True
+        RadioButton1.Location = New Point(19, 39)
+        RadioButton1.Name = "RadioButton1"
+        RadioButton1.Size = New Size(68, 24)
+        RadioButton1.TabIndex = 0
+        RadioButton1.TabStop = True
+        RadioButton1.Text = "Fecha"
+        RadioButton1.UseVisualStyleBackColor = True
         ' 
         ' FrmConsultas
         ' 
@@ -241,6 +291,7 @@ Partial Class FrmConsultas
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
         ClientSize = New Size(1438, 621)
+        Controls.Add(GroupBox1)
         Controls.Add(BtnOk)
         Controls.Add(Label5)
         Controls.Add(BtnCorreo)
@@ -261,6 +312,8 @@ Partial Class FrmConsultas
         Name = "FrmConsultas"
         Text = "FrmConsultas"
         CType(DgvListadoVentas, ComponentModel.ISupportInitialize).EndInit()
+        GroupBox1.ResumeLayout(False)
+        GroupBox1.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -282,4 +335,8 @@ Partial Class FrmConsultas
     Friend WithEvents BtnCerrar As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents BtnOk As Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents RadioButton3 As RadioButton
+    Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents RadioButton1 As RadioButton
 End Class
