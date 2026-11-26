@@ -203,6 +203,11 @@ Public Class FrmConsultas
             Dim fechainicial As Date = DtpInicial.Value.Date
             Dim fechafinal As Date = DtpFinal.Value.Date
             Dim vendedor As String = CmbVendedor.SelectedItem.ToString() ' obtiene el vendedor seleccionado del ComboBox
+            Dim usuario As String = DgvListadoVentas.Columns(3).HeaderText = "ID Usuario"
+            vendedor = usuario
+
+
+
 
             Select Case opcion
 
