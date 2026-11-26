@@ -248,6 +248,7 @@ Partial Class Ventas
         Controls.Add(Label1)
         ForeColor = SystemColors.ActiveCaptionText
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        MaximizeBox = False
         Name = "Ventas"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Carrito de compras"
