@@ -79,8 +79,37 @@ Public Class MDIParent1
 
     Private m_ChildFormNumber As Integer
 
+    Private fondo As Form
+
     Private Sub MDIParent1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblInformacion.Text = "Usuario: " & usuario & " | " & "Rol: " & rol
+
+        Dim mdiClient As MdiClient = Me.Controls.OfType(Of MdiClient)().First()
+
+        ' Posición actual del panel, relativa al área MDI
+        Dim pos As Point = mdiClient.PointToClient(Me.PointToScreen(TableLayoutPanel1.Location))
+
+        ' Formulario "fondo" sin bordes que va a contener al panel
+        Fondo = New Form With {
+        .FormBorderStyle = FormBorderStyle.None,
+        .ShowInTaskbar = False,
+        .StartPosition = FormStartPosition.Manual,
+        .MdiParent = Me,
+        .BackColor = mdiClient.BackColor,
+        .Size = TableLayoutPanel1.Size,
+        .Location = pos
+    }
+
+        ' Pasar el panel al formulario fondo
+        Me.Controls.Remove(TableLayoutPanel1)
+        Fondo.Controls.Add(TableLayoutPanel1)
+        TableLayoutPanel1.Location = Point.Empty
+
+        ' Si alguien hace clic en él, vuelve al fondo
+        AddHandler Fondo.Activated, Sub() Fondo.SendToBack()
+
+        Fondo.Show()
+        Fondo.SendToBack()
     End Sub
 
     Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
@@ -94,7 +123,8 @@ Public Class MDIParent1
 
         Dim f As New fmr_usurios
         f.MdiParent = Me
-        f.Show
+        f.Show()
+
 
 
     End Sub
@@ -141,7 +171,7 @@ Public Class MDIParent1
     End Sub
 
     Private Sub CerrarSesionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSesionToolStripMenuItem.Click
-        Dim i = MessageBox.Show("¿Desea cerrar sesión?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim i = MessageBox.Show("¿Desea cerrar sesión? Cerrará sesión pero los cambios seran guardados.", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If i = DialogResult.Yes Then
             rol = Nothing
             usuario = Nothing
@@ -158,6 +188,10 @@ Public Class MDIParent1
     End Sub
 
     Private Sub StatusStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs)
+
+    End Sub
+
+    Private Sub PictureBox3_Click(sender As Object, e As EventArgs)
 
     End Sub
 End Class
