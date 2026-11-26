@@ -65,7 +65,7 @@ Partial Class frm_categorias
         ' txtnombre
         ' 
         txtnombre.BackColor = SystemColors.ScrollBar
-        txtnombre.Location = New Point(94, 36)
+        txtnombre.Location = New Point(89, 51)
         txtnombre.Name = "txtnombre"
         txtnombre.Size = New Size(208, 23)
         txtnombre.TabIndex = 2
@@ -73,7 +73,7 @@ Partial Class frm_categorias
         ' txtdescripcion
         ' 
         txtdescripcion.BackColor = SystemColors.ScrollBar
-        txtdescripcion.Location = New Point(94, 83)
+        txtdescripcion.Location = New Point(89, 101)
         txtdescripcion.Name = "txtdescripcion"
         txtdescripcion.Size = New Size(208, 23)
         txtdescripcion.TabIndex = 3
@@ -120,7 +120,7 @@ Partial Class frm_categorias
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(29, 39)
+        Label1.Location = New Point(25, 54)
         Label1.Name = "Label1"
         Label1.Size = New Size(59, 15)
         Label1.TabIndex = 7
@@ -129,7 +129,7 @@ Partial Class frm_categorias
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(4, 83)
+        Label2.Location = New Point(4, 104)
         Label2.Name = "Label2"
         Label2.Size = New Size(84, 15)
         Label2.TabIndex = 8
@@ -148,7 +148,7 @@ Partial Class frm_categorias
         ' TXTBUSCAR
         ' 
         TXTBUSCAR.BackColor = SystemColors.ScrollBar
-        TXTBUSCAR.Location = New Point(94, 126)
+        TXTBUSCAR.Location = New Point(89, 144)
         TXTBUSCAR.Name = "TXTBUSCAR"
         TXTBUSCAR.Size = New Size(208, 23)
         TXTBUSCAR.TabIndex = 11
@@ -156,7 +156,7 @@ Partial Class frm_categorias
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(29, 129)
+        Label3.Location = New Point(29, 147)
         Label3.Name = "Label3"
         Label3.Size = New Size(54, 15)
         Label3.TabIndex = 12
@@ -220,9 +220,9 @@ Partial Class frm_categorias
         GroupBox1.Controls.Add(Label1)
         GroupBox1.Controls.Add(txtdescripcion)
         GroupBox1.Controls.Add(txtnombre)
-        GroupBox1.Location = New Point(24, 87)
+        GroupBox1.Location = New Point(24, 64)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(326, 184)
+        GroupBox1.Size = New Size(369, 207)
         GroupBox1.TabIndex = 21
         GroupBox1.TabStop = False
         ' 
@@ -233,12 +233,13 @@ Partial Class frm_categorias
         GroupBox2.Controls.Add(btneliminar)
         GroupBox2.Controls.Add(btnguardar)
         GroupBox2.Controls.Add(btnBuscar)
+        GroupBox2.Controls.Add(Button1)
         GroupBox2.Controls.Add(btntutorial)
         GroupBox2.FlatStyle = FlatStyle.Flat
-        GroupBox2.Location = New Point(28, 384)
+        GroupBox2.Location = New Point(24, 381)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.RightToLeft = RightToLeft.Yes
-        GroupBox2.Size = New Size(1037, 92)
+        GroupBox2.Size = New Size(1230, 92)
         GroupBox2.TabIndex = 22
         GroupBox2.TabStop = False
         ' 
@@ -247,15 +248,16 @@ Partial Class frm_categorias
         Button1.BackColor = SystemColors.AppWorkspace
         Button1.Image = CType(resources.GetObject("Button1.Image"), Image)
         Button1.ImageAlign = ContentAlignment.MiddleLeft
-        Button1.Location = New Point(1071, 425)
+        Button1.Location = New Point(1027, 22)
         Button1.Name = "Button1"
-        Button1.Size = New Size(78, 37)
+        Button1.Size = New Size(175, 50)
         Button1.TabIndex = 23
         Button1.Text = "     Salir"
         Button1.UseVisualStyleBackColor = False
         ' 
         ' RichTextBox1
         ' 
+        RichTextBox1.ForeColor = SystemColors.InactiveCaptionText
         RichTextBox1.Location = New Point(12, 274)
         RichTextBox1.Name = "RichTextBox1"
         RichTextBox1.Size = New Size(723, 22)
@@ -296,12 +298,11 @@ Partial Class frm_categorias
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
         BackgroundImageLayout = ImageLayout.None
-        ClientSize = New Size(1161, 488)
+        ClientSize = New Size(1284, 488)
         Controls.Add(RichTextBox4)
         Controls.Add(RichTextBox3)
         Controls.Add(RichTextBox2)
         Controls.Add(RichTextBox1)
-        Controls.Add(Button1)
         Controls.Add(GroupBox1)
         Controls.Add(lblcoincidencias)
         Controls.Add(lblHora)
@@ -312,6 +313,7 @@ Partial Class frm_categorias
         KeyPreview = True
         MaximizeBox = False
         Name = "frm_categorias"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Administracion de categorias"
         CType(dgvcategorias, ComponentModel.ISupportInitialize).EndInit()
         GroupBox1.ResumeLayout(False)

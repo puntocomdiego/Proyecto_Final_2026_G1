@@ -58,5 +58,4 @@ Public Class cls_categorias_datos
         End Using
         Return dt
     End Function
-
 End Class
