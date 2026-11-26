@@ -48,7 +48,7 @@ Partial Class Ventas
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 20.25F)
         Label1.ForeColor = SystemColors.ActiveCaptionText
-        Label1.Location = New Point(354, 9)
+        Label1.Location = New Point(235, 16)
         Label1.Name = "Label1"
         Label1.Size = New Size(280, 37)
         Label1.TabIndex = 0
@@ -57,7 +57,7 @@ Partial Class Ventas
         ' Cmb1
         ' 
         Cmb1.FormattingEnabled = True
-        Cmb1.Location = New Point(47, 131)
+        Cmb1.Location = New Point(38, 131)
         Cmb1.Name = "Cmb1"
         Cmb1.Size = New Size(224, 23)
         Cmb1.TabIndex = 1
@@ -65,7 +65,7 @@ Partial Class Ventas
         ' Cmb2
         ' 
         Cmb2.FormattingEnabled = True
-        Cmb2.Location = New Point(626, 131)
+        Cmb2.Location = New Point(445, 131)
         Cmb2.Name = "Cmb2"
         Cmb2.Size = New Size(224, 23)
         Cmb2.TabIndex = 2
@@ -75,7 +75,7 @@ Partial Class Ventas
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 12F)
         Label2.ForeColor = SystemColors.ActiveCaptionText
-        Label2.Location = New Point(441, 78)
+        Label2.Location = New Point(340, 69)
         Label2.Name = "Label2"
         Label2.Size = New Size(91, 21)
         Label2.TabIndex = 3
@@ -85,7 +85,7 @@ Partial Class Ventas
         ' 
         lblStock.AutoSize = True
         lblStock.ForeColor = SystemColors.ActiveCaptionText
-        lblStock.Location = New Point(481, 99)
+        lblStock.Location = New Point(377, 105)
         lblStock.Name = "lblStock"
         lblStock.Size = New Size(13, 15)
         lblStock.TabIndex = 4
@@ -96,7 +96,7 @@ Partial Class Ventas
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 12F)
         Label4.ForeColor = SystemColors.ActiveCaptionText
-        Label4.Location = New Point(122, 99)
+        Label4.Location = New Point(114, 99)
         Label4.Name = "Label4"
         Label4.Size = New Size(80, 21)
         Label4.TabIndex = 5
@@ -107,7 +107,7 @@ Partial Class Ventas
         Label5.AutoSize = True
         Label5.Font = New Font("Segoe UI", 12F)
         Label5.ForeColor = SystemColors.ActiveCaptionText
-        Label5.Location = New Point(697, 93)
+        Label5.Location = New Point(521, 100)
         Label5.Name = "Label5"
         Label5.Size = New Size(94, 21)
         Label5.TabIndex = 6
@@ -118,7 +118,7 @@ Partial Class Ventas
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Location = New Point(38, 160)
         DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(830, 220)
+        DataGridView1.Size = New Size(631, 220)
         DataGridView1.TabIndex = 7
         ' 
         ' btnAgregar
@@ -165,9 +165,10 @@ Partial Class Ventas
         ' DatagridVentas
         ' 
         DatagridVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DatagridVentas.Location = New Point(904, 78)
+        DatagridVentas.GridColor = SystemColors.MenuText
+        DatagridVentas.Location = New Point(708, 78)
         DatagridVentas.Name = "DatagridVentas"
-        DatagridVentas.Size = New Size(359, 327)
+        DatagridVentas.Size = New Size(490, 327)
         DatagridVentas.TabIndex = 15
         ' 
         ' Label3
@@ -175,7 +176,7 @@ Partial Class Ventas
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 15F)
         Label3.ForeColor = SystemColors.ActiveCaptionText
-        Label3.Location = New Point(1032, 16)
+        Label3.Location = New Point(912, 16)
         Label3.Name = "Label3"
         Label3.Size = New Size(131, 28)
         Label3.TabIndex = 16
@@ -228,6 +229,7 @@ Partial Class Ventas
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1275, 506)
+        ControlBox = False
         Controls.Add(Button1)
         Controls.Add(Eliminar)
         Controls.Add(Modificar)
@@ -244,7 +246,7 @@ Partial Class Ventas
         Controls.Add(Cmb2)
         Controls.Add(Cmb1)
         Controls.Add(Label1)
-        ForeColor = SystemColors.ActiveCaption
+        ForeColor = SystemColors.ActiveCaptionText
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "Ventas"
         StartPosition = FormStartPosition.CenterScreen
