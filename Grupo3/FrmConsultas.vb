@@ -34,40 +34,45 @@ Public Class FrmConsultas
     End Sub
 
     Private Sub ExportarAExcel(dt As DataTable, rutaDestino As String)
-        Dim excelApp As Excel.Application = Nothing
-        Dim libro As Excel.Workbook = Nothing
-        Dim hoja As Excel.Worksheet = Nothing
+        Dim excelApp As Excel.Application = Nothing ' Variable para la aplicación de Excel
+        Dim libro As Excel.Workbook = Nothing ' Variable para el libro de Excel
+        Dim hoja As Excel.Worksheet = Nothing  ' Variable para la hoja de Excel
 
         Try
-            excelApp = New Excel.Application
-            libro = excelApp.Workbooks.Add()
-            hoja = CType(libro.Worksheets(1), Excel.Worksheet)
+            excelApp = New Excel.Application ' Se crea una nueva instancia de la aplicación de Excel
+            libro = excelApp.Workbooks.Add()  ' Se agrega un nuevo libro de Excel
+            hoja = CType(libro.Worksheets(1), Excel.Worksheet) ' Se obtiene la primera hoja del libro
 
-            For col As Integer = 0 To dt.Columns.Count - 1
-                hoja.Cells(1, col + 1) = dt.Columns(col).ColumnName
+            For col As Integer = 0 To dt.Columns.Count - 1  ' Se recorre cada columna del DataTable
+                hoja.Cells(1, col + 1) = dt.Columns(col).ColumnName ' Se asigna el nombre de la columna a la primera fila de la hoja de Excel
             Next
 
-            For fila As Integer = 0 To dt.Rows.Count - 1
-                For col As Integer = 0 To dt.Columns.Count - 1
-                    hoja.Cells(fila + 2, col + 1) = dt.Rows(fila)(col).ToString()
+            For fila As Integer = 0 To dt.Rows.Count - 1 ' Se recorre cada fila del DataTable
+                For col As Integer = 0 To dt.Columns.Count - 1 ' Se recorre cada columna del DataTable
+                    hoja.Cells(fila + 2, col + 1) = dt.Rows(fila)(col).ToString() ' Se asigna el valor de la celda correspondiente en la hoja de Excel
                 Next
             Next
 
-            hoja.Columns.AutoFit()
-            libro.SaveAs(rutaDestino)
+            hoja.Columns.AutoFit() ' Se ajusta automáticamente el ancho de las columnas para que se adapten al contenido
+            libro.SaveAs(rutaDestino) ' Se guarda el libro de Excel en la ruta especificada
             MessageBox.Show("Datos exportados correctamente a: " & rutaDestino,
-                         "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                         "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information) ' Se muestra un mensaje indicando que la exportación fue exitosa
+
+
+
+
+
 
         Catch ex As Exception
             MessageBox.Show("Error al exportar a Excel: " & ex.Message, "Error",
                          MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
-            libro?.Close()
-            excelApp?.Quit()
+            libro?.Close() ' Se cierra el libro de Excel si no es Nothing
+            excelApp?.Quit() ' Se cierra la aplicación de Excel si no es Nothing
 
-            If hoja IsNot Nothing Then ReleaseObject(hoja)
-            If libro IsNot Nothing Then ReleaseObject(libro)
-            If excelApp IsNot Nothing Then ReleaseObject(excelApp)
+            If hoja IsNot Nothing Then ReleaseObject(hoja) ' Se libera la hoja de Excel si no es Nothing
+            If libro IsNot Nothing Then ReleaseObject(libro) ' Se libera el libro de Excel si no es Nothing
+            If excelApp IsNot Nothing Then ReleaseObject(excelApp) ' Se libera la aplicación de Excel si no es Nothing
 
         End Try
 
@@ -197,9 +202,10 @@ Public Class FrmConsultas
             ' se busca entre la fecha inicial y la fecha final
             Dim fechainicial As Date = DtpInicial.Value.Date
             Dim fechafinal As Date = DtpFinal.Value.Date
+            Dim vendedor As String = CmbVendedor.SelectedItem.ToString() ' obtiene el vendedor seleccionado del ComboBox
 
             Select Case opcion
-               
+
                 Case 1
                     ' se crea la consulta SQL con parámetros para evitar inyecciones SQL
                     SQL = "SELECT ventas.id, ventas.fecha, ventas.total, ventas.id_usuario " &
@@ -212,7 +218,7 @@ Public Class FrmConsultas
                     ' se crea la consulta SQL con parámetros para evitar inyecciones SQL
                     SQL = "SELECT ventas.id, ventas.fecha, ventas.total, ventas.id_usuario " &
                     "FROM usuarios INNER JOIN ventas ON usuarios.id = ventas.id_usuario " &
-                    "WHERE "
+                    "WHERE  #" & vendedor & "#;"
 
                 Case 3
                     ' se crea la consulta SQL con parámetros para evitar inyecciones SQL
@@ -302,5 +308,22 @@ Public Class FrmConsultas
 
     Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
         opcion = 2
+    End Sub
+
+    Private Sub BtnExcel_Click(sender As Object, e As EventArgs) Handles BtnExcel.Click
+        ' Exporta los datos del DataGridView a un archivo Excel 
+        Dim rutaDestino As String = "S:\pf\bin\Debug\net8.0-windows" ' Ruta de destino del archivo Excel
+
+
+
+
+    End Sub
+
+    Private Sub BtnPDF_Click(sender As Object, e As EventArgs) Handles BtnPDF.Click
+
+    End Sub
+
+    Private Sub CmbVendedor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbVendedor.SelectedIndexChanged
+
     End Sub
 End Class
