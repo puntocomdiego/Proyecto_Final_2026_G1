@@ -46,6 +46,11 @@ Public Class Ventas
 
         CargarJuegos()
         CargarHistorialVentas() ' <--- Carga el historial en el DataGridView de la derecha
+
+        AplicarEstiloGrilla(DatagridVentas)
+
+
+
         btnConfirmar.Enabled = False
     End Sub
 
@@ -83,7 +88,7 @@ Public Class Ventas
             '                      "INNER JOIN juegos j ON dv.id_juego = j.id " &
             '                      "ORDER BY v.fecha DESC"
 
-            Dim query As String = "SELECT ventas.id, ventas.fecha,usuarios.nombre, ventas.total FROM usuarios INNER JOIN ventas ON usuarios.id = ventas.id_usuario ORDER BY v.fecha DESC"
+            Dim query As String = "SELECT ventas.id, ventas.fecha,usuarios.nombre, ventas.total FROM usuarios INNER JOIN ventas ON usuarios.id = ventas.id_usuario ORDER BY ventas.fecha DESC"
 
             Dim da As New OleDbDataAdapter(query, cn)
             da.Fill(dtVentas)
@@ -203,66 +208,90 @@ Public Class Ventas
     ' BOTÓN CONFIRMAR (MANTENIDO IGUAL PERO ACTUALIZA HISTORIAL)
     ' ------------------------------------------------------------
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
-        gestor.QuitarTotal(DataGridView1)
-
-        If DataGridView1.Rows.Count = 0 Then
-            MessageBox.Show("El carrito está vacío")
-            Return
-        End If
-
-        Dim total As Decimal = 0
-        For Each f As DataGridViewRow In DataGridView1.Rows
-            total = total + CDec(f.Cells("Subtotal").Value)
-        Next
-
-        Dim cmd As OleDbCommand
-        Dim idVenta As Integer
-
-        cn.Open()
-        Dim tran As OleDbTransaction = cn.BeginTransaction()
 
         Try
-            cmd = New OleDbCommand("INSERT INTO ventas (fecha, id_usuario, total) VALUES (?, ?, ?)", cn, tran)
-            cmd.Parameters.AddWithValue("@fecha", Now)
-            cmd.Parameters.AddWithValue("@id_usuario", idUsuario)
-            cmd.Parameters.AddWithValue("@total", total)
-            cmd.ExecuteNonQuery()
 
-            cmd = New OleDbCommand("SELECT @@IDENTITY", cn, tran)
-            idVenta = CInt(cmd.ExecuteScalar())
 
-            For Each f As DataGridViewRow In DataGridView1.Rows
-                cmd = New OleDbCommand("INSERT INTO detalle_ventas (id_venta, id_juego, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)", cn, tran)
-                cmd.Parameters.AddWithValue("@id_venta", idVenta)
-                cmd.Parameters.AddWithValue("@id_juego", CInt(f.Cells("id").Value))
-                cmd.Parameters.AddWithValue("@cantidad", CInt(f.Cells("Cantidad").Value))
-                cmd.Parameters.AddWithValue("@precio_unitario", CDec(f.Cells("Precio").Value))
-                cmd.Parameters.AddWithValue("@subtotal", CDec(f.Cells("Subtotal").Value))
-                cmd.ExecuteNonQuery()
 
-                cmd = New OleDbCommand("UPDATE juegos SET stock = stock - ? WHERE id = ?", cn, tran)
-                cmd.Parameters.AddWithValue("@cantidad", CInt(f.Cells("Cantidad").Value))
-                cmd.Parameters.AddWithValue("@id", CInt(f.Cells("id").Value))
-                cmd.ExecuteNonQuery()
-            Next
+            'Preguntams si desea realizar la venta
+            Dim SI As MsgBoxResult = MsgBox("¿Desea confirmar esta venta?", MsgBoxStyle.YesNo, " venta")
+            If SI = MsgBoxResult.Yes Then
 
-            tran.Commit()
-            MessageBox.Show("Venta guardada. Total: " & total.ToString("C2"))
+                gestor.QuitarTotal(DataGridView1)
 
-            DataGridView1.Rows.Clear()
-            btnConfirmar.Enabled = False
-            Button1.Enabled = True
+                If DataGridView1.Rows.Count = 0 Then
+                    MessageBox.Show("El carrito está vacío")
+                    Return
+                End If
+
+                Dim total As Decimal = 0
+                For Each f As DataGridViewRow In DataGridView1.Rows
+                    total = total + CDec(f.Cells("Subtotal").Value)
+                Next
+
+                Dim cmd As OleDbCommand
+                Dim idVenta As Integer
+
+                cn.Open()
+                Dim tran As OleDbTransaction = cn.BeginTransaction()
+
+                Try
+                    cmd = New OleDbCommand("INSERT INTO ventas (fecha, id_usuario, total) VALUES (?, ?, ?)", cn, tran)
+                    cmd.Parameters.AddWithValue("@fecha", Now)
+                    cmd.Parameters.AddWithValue("@id_usuario", idUsuario)
+                    cmd.Parameters.AddWithValue("@total", total)
+                    cmd.ExecuteNonQuery()
+
+                    cmd = New OleDbCommand("SELECT @@IDENTITY", cn, tran)
+                    idVenta = CInt(cmd.ExecuteScalar())
+
+                    For Each f As DataGridViewRow In DataGridView1.Rows
+                        cmd = New OleDbCommand("INSERT INTO detalle_ventas (id_venta, id_juego, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)", cn, tran)
+                        cmd.Parameters.AddWithValue("@id_venta", idVenta)
+                        cmd.Parameters.AddWithValue("@id_juego", CInt(f.Cells("id").Value))
+                        cmd.Parameters.AddWithValue("@cantidad", CInt(f.Cells("Cantidad").Value))
+                        cmd.Parameters.AddWithValue("@precio_unitario", CDec(f.Cells("Precio").Value))
+                        cmd.Parameters.AddWithValue("@subtotal", CDec(f.Cells("Subtotal").Value))
+                        cmd.ExecuteNonQuery()
+
+                        cmd = New OleDbCommand("UPDATE juegos SET stock = stock - ? WHERE id = ?", cn, tran)
+                        cmd.Parameters.AddWithValue("@cantidad", CInt(f.Cells("Cantidad").Value))
+                        cmd.Parameters.AddWithValue("@id", CInt(f.Cells("id").Value))
+                        cmd.ExecuteNonQuery()
+                    Next
+
+                    tran.Commit()
+                    MessageBox.Show("Venta guardada. Total: " & total.ToString("C2"))
+
+                    DataGridView1.Rows.Clear()
+                    btnConfirmar.Enabled = False
+
+
+                Catch ex As Exception
+                    tran.Rollback()
+                    MessageBox.Show("No se pudo guardar la venta: " & ex.Message)
+                    CalcularTotal()
+                Finally
+                    cn.Close()
+                End Try
+
+                CargarJuegos()
+                CargarHistorialVentas() ' <--- IMPORTANTE: Actualizamos la grilla de la derecha
+
+
+                'Preguntamos si esque desea realizar la exportacion en el formulario de NAZA en este caso
+
+                Dim resp As MsgBoxResult = MsgBox("¿Desea exportar la venta?", MsgBoxStyle.YesNo, "Exportar Venta")
+                If resp = MsgBoxResult.Yes Then
+                    Button1.Enabled = True
+                End If
+
+            End If
 
         Catch ex As Exception
-            tran.Rollback()
-            MessageBox.Show("No se pudo guardar la venta: " & ex.Message)
-            CalcularTotal()
-        Finally
-            cn.Close()
+            MessageBox.Show("Error inesperado en En insertar valores al -!!DataGridView!!-")
         End Try
 
-        CargarJuegos()
-        CargarHistorialVentas() ' <--- IMPORTANTE: Actualizamos la grilla de la derecha
     End Sub
 
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
