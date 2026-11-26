@@ -309,6 +309,7 @@ Partial Class FrmConsultas
         Controls.Add(BtnCancelar)
         Controls.Add(BtnEnviar)
         Controls.Add(DgvListadoVentas)
+        MinimizeBox = False
         Name = "FrmConsultas"
         Text = "FrmConsultas"
         CType(DgvListadoVentas, ComponentModel.ISupportInitialize).EndInit()
