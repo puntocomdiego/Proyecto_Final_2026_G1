@@ -48,8 +48,7 @@
 
     Private Sub CargarCategorias()
         Dim datos As New cls_categorias_datos()
-        dgvcategorias.DataSource = datos.Lista
-        r()
+        dgvcategorias.DataSource = datos.Listar()
     End Sub
 
     Private Sub dgvcategorias_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvcategorias.CellClick
