@@ -156,9 +156,9 @@ Partial Class Ventas
         BtnSalir.Font = New Font("Segoe UI", 10F)
         BtnSalir.ForeColor = SystemColors.ActiveCaptionText
         BtnSalir.Image = CType(resources.GetObject("BtnSalir.Image"), Image)
-        BtnSalir.Location = New Point(1156, 459)
+        BtnSalir.Location = New Point(1115, 448)
         BtnSalir.Name = "BtnSalir"
-        BtnSalir.Size = New Size(80, 35)
+        BtnSalir.Size = New Size(175, 50)
         BtnSalir.TabIndex = 14
         BtnSalir.UseVisualStyleBackColor = False
         ' 
