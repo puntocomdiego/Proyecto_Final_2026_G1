@@ -16,7 +16,7 @@
 
     ' --- Tamaños de botón ---
     Public ReadOnly TamBoton As New Size(120, 36)
-    Public ReadOnly TamBotonGrande As New Size(160, 44)
+    Public ReadOnly TamBotonGrande As New Size(175, 50)
 
     Public Sub AplicarEstiloFormulario(frm As Form, titulo As String)
         frm.BackColor = ColorFondo

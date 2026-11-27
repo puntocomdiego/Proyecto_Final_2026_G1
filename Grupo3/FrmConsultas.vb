@@ -1,4 +1,5 @@
-﻿Imports System.Net.Mail
+﻿Imports System.Data.OleDb
+Imports System.Net.Mail
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
@@ -6,6 +7,9 @@ Imports Excel = Microsoft.Office.Interop.Excel
 Public Class FrmConsultas
     Dim correo As MailMessage
     Dim WithEvents clienteSmtp As New SmtpClient("smtp.gmail.com")
+    Dim cn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Ruta)
+    Dim dtventas As New DataTable
+
 
     Public Sub ExportarPDF(ByVal dgv As DataGridView, ByVal filename As String)
         Dim pdfTable As New PdfPTable(dgv.ColumnCount)
@@ -85,26 +89,24 @@ Public Class FrmConsultas
     End Function
 
     Private Sub BtnCorreo_Click(sender As Object, e As EventArgs) Handles BtnCorreo.Click
+        Try
 
-        TxtCorreo.Enabled = True
-        TxtCorreo.Visible = True
-        TxtCorreo.Focus()
-        BtnOk.Enabled = True
-        BtnOk.Visible = True
-        BtnCancelar.Enabled = True
-        BtnCancelar.Visible = True
-        BtnPDF.Enabled = False
-        BtnPDF.Visible = False
-        BtnExcel.Enabled = False
-        BtnExcel.Visible = False
-        BtnCorreo.Enabled = False
-        BtnCorreo.Visible = False
-        DgvListadoVentas.Enabled = False
-        DgvListadoVentas.Visible = False
+            TxtCorreo.Visible = True
+            TxtCorreo.Focus()
+            BtnEnviar.Visible = True
+            BtnCancelar.Visible = True
+            BtnPDF.Visible = False
+            BtnExcel.Visible = False
+            BtnCorreo.Visible = False
+            DgvListadoVentas.Visible = False
+
+        Catch ex As Exception
+            MessageBox.Show("Error al enviar el correo: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
     End Sub
 
-    Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnOk.Click
+    Private Sub BtnEnviar_Click(sender As Object, e As EventArgs) Handles BtnEnviar.Click
         Try
             If ValidarMail(TxtCorreo.Text) = False Then
                 Throw New Exception("La dirección del receptor no tiene un formato válido (ejemplo @gmail.com).")
@@ -130,20 +132,87 @@ Public Class FrmConsultas
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
         MessageBox.Show("Se canceló el envío del correo.", "Envío de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        BtnOk.Enabled = False
-        BtnOk.Visible = False
-        BtnCancelar.Enabled = False
-        BtnCancelar.Visible = False
-        TxtCorreo.Enabled = False
-        TxtCorreo.Visible = False
-        DgvListadoVentas.Enabled = True
-        DgvListadoVentas.Visible = True
-        BtnCorreo.Enabled = True
-        BtnCorreo.Visible = True
-        BtnExcel.Enabled = True
-        BtnExcel.Visible = True
-        BtnPDF.Enabled = True
-        BtnPDF.Visible = True
+        Try
 
+            BtnEnviar.Visible = False
+            BtnCancelar.Visible = False
+            TxtCorreo.Visible = False
+            DgvListadoVentas.Visible = True
+            BtnCorreo.Visible = True
+            BtnExcel.Visible = True
+            BtnPDF.Visible = True
+
+        Catch ex As Exception
+            MessageBox.Show("Error al cancelar el envío del correo: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Private Sub FrmConsultas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim SQL As String = ""
+        SQL = "SELECT ventas.id, ventas.fecha, ventas.id_usuario, ventas.total From ventas;"
+
+
+        Dim da As New OleDbDataAdapter(SQL, cn)
+        da.Fill(dtventas)
+
+        DgvListadoVentas.DataSource = dtventas
+        DgvListadoVentas.Columns(0).HeaderText = "ID"
+        DgvListadoVentas.Columns(1).HeaderText = "Fecha"
+        DgvListadoVentas.Columns(2).HeaderText = "ID Usuario"
+        DgvListadoVentas.Columns(3).HeaderText = "Total"
+
+    End Sub
+
+    Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
+        MsgBox("¿Desea cerrar la ventana consultas?", MessageBoxButtons.YesNo)
+        Me.Close()
+    End Sub
+
+    Private Sub BtnOk_Click_1(sender As Object, e As EventArgs) Handles BtnOk.Click
+        Try
+            ' se busca entre la fecha inicial y la fecha final
+            Dim fechainicial As Date = DtpInicial.Value.Date
+            Dim fechafinal As Date = DtpFinal.Value.Date
+
+            ' se crea la consulta SQL con parámetros para evitar inyecciones SQL
+            Dim SQL As String = "SELECT ventas.id, ventas.fecha, ventas.id_usuario, ventas.total From ventas WHERE fecha BETWEEN ? AND ?;"
+
+            Dim cmd As New OleDbCommand(SQL, cn) ' se crea el comando con la consulta y la conexión
+
+            cmd.Parameters.AddWithValue("?", OleDbType.Date).Value = fechainicial.Date ' se agregan los parámetros a la consulta
+
+            cmd.Parameters.AddWithValue("?", OleDbType.Date).Value = fechafinal.Date.AddDays(1) ' se agregan los parámetros a la consulta
+
+            cmd.Connection.Open() ' se abre la conexión
+
+            Dim da As New OleDbDataAdapter(cmd) ' se crea el adaptador de datos con el comando
+
+            ' se llena el DataTable con los datos obtenidos de la consulta
+            dtventas.Clear() ' se limpia el DataTable antes de llenarlo
+
+            da.Fill(dtventas) ' se llena el DataTable con los datos obtenidos de la consulta
+
+
+            DgvListadoVentas.DataSource = dtventas
+            DgvListadoVentas.Columns(0).HeaderText = "ID"
+            DgvListadoVentas.Columns(1).HeaderText = "Fecha"
+            DgvListadoVentas.Columns(2).HeaderText = "ID Usuario"
+            DgvListadoVentas.Columns(3).HeaderText = "Total"
+
+            cmd.Connection.Close() ' se cierra la conexión 
+
+
+            If CmbVendedor.SelectedIndex = -1 Then
+                MessageBox.Show("Debe seleccionar un vendedor.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+
+            If fechainicial < "03/05/2026" Then
+                MessageBox.Show("No hay ventas registradas antes del 03/05/2026.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Error al filtrar las ventas: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class

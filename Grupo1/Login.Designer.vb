@@ -72,9 +72,9 @@ Partial Class Login
         btnIniciarSesion.FlatStyle = FlatStyle.Popup
         btnIniciarSesion.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnIniciarSesion.ImageAlign = ContentAlignment.MiddleRight
-        btnIniciarSesion.Location = New Point(12, 180)
+        btnIniciarSesion.Location = New Point(12, 183)
         btnIniciarSesion.Name = "btnIniciarSesion"
-        btnIniciarSesion.Size = New Size(160, 44)
+        btnIniciarSesion.Size = New Size(175, 50)
         btnIniciarSesion.TabIndex = 4
         btnIniciarSesion.Text = "&Iniciar Sesion"
         btnIniciarSesion.UseVisualStyleBackColor = False
@@ -83,10 +83,10 @@ Partial Class Login
         ' 
         btnMostrar.BackColor = Color.White
         btnMostrar.FlatStyle = FlatStyle.Flat
-        btnMostrar.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnMostrar.Location = New Point(377, 99)
+        btnMostrar.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnMostrar.Location = New Point(377, 105)
         btnMostrar.Name = "btnMostrar"
-        btnMostrar.Size = New Size(30, 30)
+        btnMostrar.Size = New Size(30, 24)
         btnMostrar.TabIndex = 3
         btnMostrar.Text = "👁"
         btnMostrar.TextAlign = ContentAlignment.TopCenter
@@ -96,18 +96,17 @@ Partial Class Login
         ' 
         btnSalir.BackColor = SystemColors.GradientActiveCaption
         btnSalir.FlatStyle = FlatStyle.Popup
-        btnSalir.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnSalir.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnSalir.ImageAlign = ContentAlignment.MiddleRight
-        btnSalir.Location = New Point(315, 180)
+        btnSalir.Location = New Point(280, 183)
         btnSalir.Name = "btnSalir"
-        btnSalir.Size = New Size(120, 36)
+        btnSalir.Size = New Size(175, 50)
         btnSalir.TabIndex = 5
         btnSalir.Text = "&Salir"
         btnSalir.UseVisualStyleBackColor = False
         ' 
         ' Login
         ' 
-        AcceptButton = btnIniciarSesion
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ActiveCaption
@@ -120,7 +119,9 @@ Partial Class Login
         Controls.Add(txtUsuario)
         Controls.Add(lblContrasena)
         Controls.Add(lblUsuario)
+        MaximizeBox = False
         Name = "Login"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Login"
         ResumeLayout(False)
         PerformLayout()
