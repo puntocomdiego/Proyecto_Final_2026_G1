@@ -4,7 +4,6 @@ Imports Proyecto_Final_2026_G1.cls_Productos_Datos
 
 Public Class frm_Juegos
 
-    Private objJuego As New cls_Productos_Datos
 
     Private objCat As New cls_categorias_datos()
     Private idJuegoSeleccionado As Integer = 0
@@ -212,7 +211,6 @@ Public Class frm_Juegos
                 End If
         End If
 
-    End Sub
 
     Private Sub picPortada_Click(sender As Object, e As EventArgs) Handles picPortada.Click
 
