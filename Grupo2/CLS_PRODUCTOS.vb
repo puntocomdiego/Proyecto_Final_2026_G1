@@ -20,14 +20,14 @@ Public Class CLS_PRODUCTOS
     Public Sub New()
         ' Constructor vacío: crear el objeto y cargar sus datos después.
     End Sub
-    Public Sub New(nombre As String, idCategoria As Integer, precio As Double, stock As Integer, fechaIngreso As Date, portada As String)
+    Public Sub New(nombre As String, idCategoria As Integer, precio As Double, stock As Integer, fechaIngreso As Date, portada As String, id As Integer)
         Me.Nombre = nombre
         Me.IdCategoria = idCategoria
         Me.Precio = precio
         Me.Stock = stock
         Me.FechaIngreso = fechaIngreso
         Me.Portada = portada
-
+        Me.Id = id
     End Sub
 
 End Class

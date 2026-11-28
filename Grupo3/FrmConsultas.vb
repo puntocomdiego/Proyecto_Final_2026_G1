@@ -15,7 +15,7 @@ Public Class FrmConsultas
         ' Agregar encabezados de columna
         For Each column As DataGridViewColumn In dgv.Columns
             Dim cell As New PdfPCell(New Phrase(column.HeaderText))
-            cell.BackgroundColor = New iTextSharp.text.BaseColor(240, 240, 240) ' Color de fondo gris claro
+            cell.BackgroundColor = New Proyecto_Final_2026_G1.iTextSharp.text.BaseColor(240, 240, 240) ' Color de fondo gris claro
             pdfTable.AddCell(cell)
         Next
         ' Agregar filas de datos

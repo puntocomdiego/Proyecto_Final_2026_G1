@@ -1,6 +1,19 @@
 ﻿Imports System.Data.OleDb
+Imports System.Runtime.InteropServices.JavaScript.JSType
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports ClosedXML.Excel
+
+'Imports iTextSharp.text
+'Imports iTextSharp.text.pdf
+Imports Microsoft.Office.Interop
 
 Public Class cls_Productos_Datos
+    Private idJuegoSeleccionado As Integer = 0
+    Private rutaImagenOrigen As String = ""
+    Private frm_Juegos As frm_Juegos
+    Private objCat As New cls_categorias_datos()
+
+
     Private Shared ReadOnly ruta As String =
             IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "level_up.accdb")
     Private Shared ReadOnly cadenaConexion As String =
@@ -41,20 +54,31 @@ Public Class cls_Productos_Datos
 
     Public Function ActualizarJuego(p As CLS_PRODUCTOS) As Boolean
         Using cn As New OleDbConnection(cadenaConexion)
-            Dim sql As String =
-            "UPDATE Juegos SET nombre = ?, id_Categoria = ?, precio = ?, fecha_Ingreso = ? WHERE portada = ?"
-            Using cmd As New OleDbCommand(sql, cn)
-                'cmd.Parameters.AddWithValue("?", p.Id)
-                cmd.Parameters.AddWithValue("?", p.Nombre)
-                cmd.Parameters.AddWithValue("?", p.IdCategoria)
-                cmd.Parameters.AddWithValue("?", p.Precio)
-                cmd.Parameters.AddWithValue("?", p.Stock)
-                cmd.Parameters.AddWithValue("?", p.FechaIngreso)
-                cmd.Parameters.AddWithValue("?", p.Portada)
+            Dim sql As String = "UPDATE Juegos SET nombre = ?, id_categoria = ?, precio = ?, stock = ?, fecha_Ingreso = ?, portada = ? WHERE id = ?"
+            Try
 
-                cn.Open()
-                Return cmd.ExecuteNonQuery() > 0
-            End Using
+
+
+
+                Using cmd As New OleDbCommand(sql, cn)
+
+                    cmd.Parameters.AddWithValue("?", p.Nombre)
+                    cmd.Parameters.AddWithValue("?", p.IdCategoria)
+                    cmd.Parameters.AddWithValue("?", p.Precio)
+                    cmd.Parameters.AddWithValue("?", p.Stock)
+                    cmd.Parameters.AddWithValue("?", p.FechaIngreso)
+                    cmd.Parameters.AddWithValue("?", p.Portada)
+                    cmd.Parameters.AddWithValue("?", p.Id)
+                    cn.Open()
+                    Return cmd.ExecuteNonQuery() > 0
+                End Using
+
+            Catch ex As Exception
+                MsgBox("Error al actualizar el juego: " & ex.Message, MsgBoxStyle.Critical, "Error")
+                Return False
+            End Try
+
+
         End Using
     End Function
 
@@ -93,6 +117,70 @@ Public Class cls_Productos_Datos
 
     End Function
 
+    Public Function GetColumnasSize(ByVal dg As DataGridView) As Single()
+        Dim values As Single() = New Single(dg.ColumnCount - 1) {}
+        For i As Integer = 0 To dg.ColumnCount - 1
+            values(i) = CSng(dg.Columns(i).Width)
+        Next
+        Return values
+    End Function
+
+    Public Sub LimpiarFormulario()
+
+        idJuegoSeleccionado = 0
+        frm_Juegos.txtNombre.Clear()
+        frm_Juegos.txtPrecio.Clear()
+        frm_Juegos.txtStock.Clear()
+        frm_Juegos.cmbCategoria.SelectedIndex = -1
+        frm_Juegos.dtpFechaIngreso.Value = DateTime.Now
+        frm_Juegos.picPortada.Image = Nothing
+        rutaImagenOrigen = ""
+        frm_Juegos.lblID.Text = "0"
+    End Sub
+
+    Public Sub ExportarAExcel(dt As DataTable, rutaDestino As String)
+
+        Try
+            Using wb As New XLWorkbook()
+                wb.Worksheets.Add(dt, "Juegos")
+                wb.SaveAs(rutaDestino)
+            End Using
+            MessageBox.Show("Datos exportados a Excel correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("Error al exportar a Excel: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+
+    End Sub
+
+    Public Sub FiltrarJuegos(criterio As String)
+        Dim dt As DataTable = ListarJuegos()
+        If Not String.IsNullOrWhiteSpace(criterio) Then
+            Dim filtro As String = $"nombre LIKE '%{criterio}%'"
+            Dim dv As New DataView(dt)
+            dv.RowFilter = filtro
+            frm_Juegos.dgvJuegos.DataSource = dv.ToTable()
+        Else
+            frm_Juegos.dgvJuegos.DataSource = dt
+        End If
+    End Sub
+
+    ' Llena el ComboBox llamando a la clase del formulario de mi amigo
+    Public Sub CargarCategoriasCombo()
+        Dim dt As DataTable = objCat.obtenercategorias()
+        frm_Juegos.cmbCategoria.DataSource = dt
+        frm_Juegos.cmbCategoria.DisplayMember = "nombre"
+        frm_Juegos.cmbCategoria.ValueMember = "id"
+        frm_Juegos.cmbCategoria.SelectedIndex = -1
+    End Sub
+
+    Public Sub CargarGridJuegos()
+        frm_Juegos.dgvJuegos.DataSource = ListarJuegos()
+
+        If frm_Juegos.dgvJuegos.Columns.Contains("id_categoria") Then
+            frm_Juegos.dgvJuegos.Columns("id_categoria").Visible = False
+        End If
+    End Sub
 
     '' ---------- CATEGORÍAS ----------
 

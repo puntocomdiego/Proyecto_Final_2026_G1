@@ -64,7 +64,7 @@ Public Class cls_usuarios_datos
         Dim dt As New DataTable()
         Using cn As New OleDbConnection(cadenaConexion)
             Dim sql As String =
-                "SELECT id, nombre, apellido, usuario, contrasena, fecha_creacion, foto, tipo FROM usuarios ORDER BY nombre"
+                "SELECT * FROM usuarios ORDER BY nombre"
             Using da As New OleDbDataAdapter(sql, cn)
                 da.Fill(dt)
             End Using

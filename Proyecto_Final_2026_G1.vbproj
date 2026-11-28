@@ -23,7 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="iTextSharp" Version="5.5.13.6" />
+    <PackageReference Include="ClosedXML" Version="0.105.1" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.7" />
     <PackageReference Include="Microsoft.Office.Interop.Excel" Version="16.0.18925.20022" />
     <PackageReference Include="System.Data.OleDb" Version="10.0.12" />
   </ItemGroup>
@@ -54,6 +55,10 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="iTextSharp\text\io\" />
   </ItemGroup>
 
 </Project>
